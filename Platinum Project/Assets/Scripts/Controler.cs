@@ -30,7 +30,7 @@ public class Controler : MonoBehaviour
     {
         //float horizontal = Input.GetAxisRaw("Horizontal");
         //float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(MovementInput.x, 0f, MovementInput.y).normalized;
+        Vector3 direction = new Vector3(MovementInput.x, 0f, 0f).normalized;
 
         if (direction.magnitude >= 0.1f)
         {
@@ -38,7 +38,8 @@ public class Controler : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            controller.Move(direction * speed * Time.deltaTime);
+            var movement = new Vector3(MovementInput.x, 0,0);
+            transform.position += movement * Time.deltaTime * speed;
         }
     }
 }
