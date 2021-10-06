@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class Controler : MonoBehaviour
 {
     public float movementSpeed = 6;
+    public float jumpForce = 30; 
     float distToGround;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
@@ -44,8 +45,7 @@ public class Controler : MonoBehaviour
         Debug.Log(IsGrounded());
         if (jump && IsGrounded())
         {
-            Debug.Log("jump");
-            _rigidbody.AddForce(new Vector3(0, 100,0));
+            _rigidbody.AddForce(new Vector3(0, jumpForce,0));
         }
         //Debug.DrawLine(transform.position, /*transform.position + */(-Vector3.up * distToGround),Color.red);
 
