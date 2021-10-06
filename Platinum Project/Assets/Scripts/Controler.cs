@@ -1,12 +1,8 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
 public class Controler : MonoBehaviour
 {
-    CharacterController controller;
-
     public float movementSpeed = 6;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
@@ -27,11 +23,11 @@ public class Controler : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         jump = context.action.triggered;
+        Debug.Log("jump");
     }
 
     private void Awake()
     {
-        controller = GetComponent<CharacterController>();
         _rigidbody = GetComponent<Rigidbody>();
     }
 

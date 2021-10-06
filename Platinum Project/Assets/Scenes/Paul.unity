@@ -468,7 +468,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471917469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000047683716, y: 1.826, z: 3.7799997}
+  m_LocalPosition: {x: 7.1999993, y: 2.08, z: 3.7799997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 537102555}
@@ -553,7 +553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478628216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000047683716, y: 1.826, z: 3.7799997}
+  m_LocalPosition: {x: 7.1999993, y: 2.08, z: 3.7799997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -921,29 +921,27 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 23061fb7-41cd-4ff7-94d0-51c6bebccad3
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 784246314}
+        m_TargetAssemblyTypeName: Controler, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bd93e288-fe41-42d3-b758-18603d874768
+    m_ActionName: Player/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!143 &784246311
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784246309}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.49999997
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &784246312
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -971,7 +969,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 72
   m_CollisionDetection: 0
 --- !u!114 &784246314
 MonoBehaviour:
@@ -985,10 +983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0490b9a4410a4204f86bb591719c529d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  movementSpeed: 10
   turnSmoothTime: 0.1
-  jumpSpeed: 0
-  gravity: 0
 --- !u!1 &824772529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,11 +2515,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544293951017371560, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 4544293951017371560, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.826
+      value: 2.08
       objectReference: {fileID: 0}
     - target: {fileID: 4544293951017371560, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
       propertyPath: m_LocalPosition.z
