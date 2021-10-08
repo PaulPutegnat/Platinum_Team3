@@ -42,10 +42,10 @@ public class Controler : MonoBehaviour
 
         var movement = MovementInput.x;
         transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * movementSpeed;
-        Debug.Log(IsGrounded());
         if (jump && IsGrounded())
         {
-            _rigidbody.AddForce(new Vector3(0, jumpForce,0));
+            //_rigidbody.AddForce(new Vector3(0, jumpForce,0));
+            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
         }
         //Debug.DrawLine(transform.position, /*transform.position + */(-Vector3.up * distToGround),Color.red);
 
