@@ -1,45 +1,73 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
 public class Controler : MonoBehaviour
 {
-    CharacterController controller;
-
-    public float speed = 6f;
-    private Vector2 MovementInput = Vector2.zero;
+    public float movementSpeed = 6;
+    public float jumpForce = 30; 
+    float distToGround;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
-    public float jumpSpeed;
-    public float gravity;
+    private Vector2 MovementInput = Vector2.zero;
+    private Rigidbody _rigidbody;
 
+    bool jump;
 
+    // Mouvements
     public void OnMove(InputAction.CallbackContext context)
     {
         MovementInput = context.ReadValue<Vector2>();
     }
 
-    private void Awake()
+    // Saut
+
+    public void OnJump(InputAction.CallbackContext context)
     {
-        controller = GetComponent<CharacterController>();
+        jump = context.action.triggered;
+        
     }
 
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+    private void Start()
+    {
+        distToGround = GetComponent<BoxCollider>().bounds.extents.y;
+    }
     void Update()
     {
-        //float horizontal = Input.GetAxisRaw("Horizontal");
-        //float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(MovementInput.x, 0f, 0f).normalized;
+        // Mouvements du personnage
+
+        var movement = MovementInput.x;
+        transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * movementSpeed;
+        if (jump && IsGrounded())
+        {
+            //_rigidbody.AddForce(new Vector3(0, jumpForce,0));
+            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
+        }
+        //Debug.DrawLine(transform.position, /*transform.position + */(-Vector3.up * distToGround),Color.red);
+
+        // Rotation du personnage
+
+        Vector3 direction = new Vector3(movement, 0f, 0f).normalized;
 
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            var movement = new Vector3(MovementInput.x, 0,0);
-            transform.position += movement * Time.deltaTime * speed;
         }
+    }
+
+    bool IsGrounded()
+    {
+        return Physics.Raycast(gameObject.transform.position - Vector3.up * (distToGround + 0.1f), -Vector3.up, 0.1f);
+    }
+   private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * distToGround));
     }
 }

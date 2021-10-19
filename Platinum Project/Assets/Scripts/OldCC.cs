@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public class OldCC : MonoBehaviour
 {
     public float movementSpeed = 10;
     public float jumpForce = 5;
