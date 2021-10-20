@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class TrackerPoint
+public class TrackerPoint : MonoBehaviour
 {
-    public GameObject Point;
+    public Transform Point;
     public float Speed;
+
+    void Start()
+    {
+        Point = transform;
+    }
 }
