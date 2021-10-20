@@ -1,76 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class TestCam : MonoBehaviour
 {
+    bool index1;
+    bool index2;
+    public TrackerPoint[] tracker;
+    public float _speed;
+    Transform currentPoint;
 
-    public bool _left;
-    public bool _right;
-    public bool _up;
-    public bool _down;
-
-    public bool _zeroX;
-    public bool _zeroY;
-
-    [Range(-15f, 15f)]
-    public float _speedX;    
-    [Range(-15f, 15f)]
-    public float _speedY;
-    void Start()
+    private void Start()
     {
-        
+        tracker = GameObject.FindObjectsOfType<TrackerPoint>();
+        currentPoint = tracker[0].Point;
+    }
+    // Update is called once per frame
+    void LateUpdate()
+    {
+        if (index1)
+        {
+            currentPoint = tracker[0].Point;
+        }
+        if (index2)
+        {
+            currentPoint = tracker[1].Point;
+        }
+
+        transform.position = Vector3.Lerp(transform.position, currentPoint.position, Time.deltaTime * _speed);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void pressG(InputAction.CallbackContext context)
     {
-        transform.position += new Vector3(_speedX, _speedY, 0) * Time.deltaTime;
+        index1 = context.action.triggered;
+    }
 
-        //Active le boolean _right
-        if(_speedX > 0)
-        {
-            _left = false;
-            _right = true;
-            _zeroX = false;
-        }
-        //Active le boolean _left
-        else if (_speedX < 0)
-        {
-            _left = true;
-            _right = false;
-            _zeroX = false;
-        }
-        //Active le boolean _zeroX
-        else
-        {
-            _zeroX = true;
-            _left = false;
-            _right = false;
-        }
-
-
-
-        //Active le boolean _up
-        if (_speedY > 0)
-        {
-            _down = false;
-            _up = true;
-            _zeroY = false;
-        }
-        //Active le boolean _down
-        else if (_speedY < 0)
-        {
-            _down = true;
-            _up = false;
-            _zeroY = false;
-        }
-        //Active le boolean _zeroY
-        else
-        {
-            _zeroY = true;
-            _down = false;
-            _up = false;
-        }
+    public void pressH(InputAction.CallbackContext context)
+    {
+        index2 = context.action.triggered;
     }
 }
+
+
