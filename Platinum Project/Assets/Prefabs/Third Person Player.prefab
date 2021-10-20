@@ -130,12 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0490b9a4410a4204f86bb591719c529d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2000
+  movementSpeed: 10
   jumpForce: 10
   turnSmoothTime: 0.05
-  Accel: 5
+  Accel: 0.1
   Initial_CT: 0.2
-  GravMultiplier: 3
+  GravMultiplier: 0.1
 --- !u!54 &3172980243302745092
 Rigidbody:
   m_ObjectHideFlags: 0
