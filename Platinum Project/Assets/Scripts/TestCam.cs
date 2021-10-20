@@ -1,60 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class TestCam : MonoBehaviour
 {
-    /*
-    bool index1;
-    bool index2;
-    */
-
+    public bool loop = false;
     public PointInfo[] PointsInfos;
+    private int i = 0;
+    private float Timer = 0;
 
-    //Transform currentPoint;
-
-    private void Start()
+    void Update()
     {
-        // currentPoint = tracker[0].Point;
-    }
+        Timer += Time.deltaTime;
 
-    void LateUpdate()
-    {
-        /*
-        if (index1)
+        if (i < PointsInfos.Length - 1)
         {
-            currentPoint = tracker[0].Point;
+            GetTargets();
         }
-        if (index2)
-        {
-            currentPoint = tracker[1].Point;
-        }
-        */
 
-        //transform.position = Vector3.Lerp(transform.position, currentPoint.position, Time.deltaTime * TargetsInfos[i].SpeedToNextTarget);
+        else if (loop)
+        {
+            i = 0;
+        }
     }
 
     public void GetTargets()
     {
-        for (int i = 0; i < 4; i++)
+        Transform currentPosition = PointsInfos[i].Target.transform;
+        Transform targetPosition = PointsInfos[i + 1].Target.transform;
+
+        float duration = PointsInfos[i].Duration;
+        float percent = (duration > 0) ? Timer / duration : 1f;
+
+        transform.position = Vector3.Lerp(currentPosition.position, targetPosition.position, percent);
+
+        if (transform.position == targetPosition.position)
         {
-            Transform currentPosition = PointsInfos[i].Target.transform;
-            Transform targetPosition = PointsInfos[i+1].Target.transform;
+            Timer = 0;
+
+            if (i < PointsInfos.Length)
+            {
+                i++;
+            }
         }
     }
-
-    /*
-    public void pressG(InputAction.CallbackContext context)
-    {
-        index1 = context.action.triggered;
-    }
-
-    public void pressH(InputAction.CallbackContext context)
-    {
-        index2 = context.action.triggered;
-    }
-    */
 }
-
-
