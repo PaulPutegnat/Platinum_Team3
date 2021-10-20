@@ -5,20 +5,23 @@ using UnityEngine;
 
 public class TestCam : MonoBehaviour
 {
+    /*
     bool index1;
     bool index2;
-    public TrackerPoint[] tracker;
-    public float _speed;
-    Transform currentPoint;
+    */
+
+    public PointInfo[] PointsInfos;
+
+    //Transform currentPoint;
 
     private void Start()
     {
-        tracker = GameObject.FindObjectsOfType<TrackerPoint>();
-        currentPoint = tracker[0].Point;
+        // currentPoint = tracker[0].Point;
     }
-    // Update is called once per frame
+
     void LateUpdate()
     {
+        /*
         if (index1)
         {
             currentPoint = tracker[0].Point;
@@ -27,10 +30,21 @@ public class TestCam : MonoBehaviour
         {
             currentPoint = tracker[1].Point;
         }
+        */
 
-        transform.position = Vector3.Lerp(transform.position, currentPoint.position, Time.deltaTime * _speed);
+        //transform.position = Vector3.Lerp(transform.position, currentPoint.position, Time.deltaTime * TargetsInfos[i].SpeedToNextTarget);
     }
 
+    public void GetTargets()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            Transform currentPosition = PointsInfos[i].Target.transform;
+            Transform targetPosition = PointsInfos[i+1].Target.transform;
+        }
+    }
+
+    /*
     public void pressG(InputAction.CallbackContext context)
     {
         index1 = context.action.triggered;
@@ -40,6 +54,7 @@ public class TestCam : MonoBehaviour
     {
         index2 = context.action.triggered;
     }
+    */
 }
 
 
