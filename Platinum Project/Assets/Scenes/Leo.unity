@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1622765335}
     m_Modifications:
+    - target: {fileID: 2827591195245609015, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 4544293951017371560, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -424,7 +428,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -466,7 +470,7 @@ Transform:
   m_LocalScale: {x: 3.9554, y: 1.3847394, z: 4.5961}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055764880
 GameObject:
@@ -480,6 +484,7 @@ GameObject:
   - component: {fileID: 1055764882}
   - component: {fileID: 1055764881}
   - component: {fileID: 1055764884}
+  - component: {fileID: 1055764885}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -546,7 +551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055764880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 174.70251, y: 3.08, z: -9.08}
+  m_LocalPosition: {x: 174.70251, y: 3.08, z: -13.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -564,6 +569,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983a608b57caca642ab144efec2ed2f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1055764885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055764880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1179259014
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +855,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bd93e288-fe41-42d3-b758-18603d874768
     m_ActionName: Player/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b30efb4c-7649-4381-b50d-978c0f82827d
+    m_ActionName: Player/PressG[/Keyboard/g]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5f564d11-149c-4785-94b8-d67a60f4cd79
+    m_ActionName: Player/PressH[/Keyboard/h]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
@@ -836,7 +881,7 @@ Transform:
   m_Children:
   - {fileID: 20966419}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1864824425
 GameObject:
@@ -882,28 +927,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1001 &3172980241923509658
+--- !u!1001 &1954874954
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 807603993566738057, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 3172980243302745090, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3172980243302745090, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 174.08
+      value: 172.69307
       objectReference: {fileID: 0}
     - target: {fileID: 3172980243302745090, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.61
+      value: 2.61
       objectReference: {fileID: 0}
     - target: {fileID: 3172980243302745090, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3172980243302745090, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -932,6 +981,14 @@ PrefabInstance:
     - target: {fileID: 3172980243302745090, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3172980243302745095, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
+      propertyPath: movementSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3172980243302745095, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
+      propertyPath: GravMultiplier
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3172980243302745101, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
       propertyPath: m_Name

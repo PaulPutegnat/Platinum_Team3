@@ -12,7 +12,7 @@ public class Controler : MonoBehaviour
 
     private Vector2 _movementInput = Vector2.zero;
     private Rigidbody _rigidbody;
-    private float Acceleration;
+    private float _acceleration;
     public float Accel;
     
 
@@ -59,16 +59,16 @@ public class Controler : MonoBehaviour
 
         if (movement != 0)
         {
-            Acceleration += Accel*Time.deltaTime;
-            Acceleration = Mathf.Clamp(Acceleration, 0,1f);
-            Debug.Log(Acceleration);
+            _acceleration += Accel*Time.deltaTime;
+            _acceleration = Mathf.Clamp(_acceleration, 0,1f);
+            Debug.Log(_acceleration);
         }
         else
         {
-            Acceleration = 0f;
+            _acceleration = 0f;
         }
 
-        _rigidbody.velocity = new Vector3(movement * (Time.deltaTime * (movementSpeed * Acceleration)) , _rigidbody.velocity.y, 0);
+        _rigidbody.velocity = new Vector3(movement * (Time.deltaTime * (movementSpeed * _acceleration)) , _rigidbody.velocity.y, 0);
 
 
         //JUMP
@@ -123,16 +123,16 @@ public class Controler : MonoBehaviour
 
         if (movement != 0)
         {
-            Acceleration += Accel;
-            Acceleration = Mathf.Clamp(Acceleration, 0, 1f);
-            Debug.Log(Acceleration);
+            _acceleration += Accel;
+            _acceleration = Mathf.Clamp(_acceleration, 0, 1f);
+            Debug.Log(_acceleration);
         }
         else
         {
-            Acceleration = 0f;
+            _acceleration = 0f;
         }
 
-        _rigidbody.velocity = new Vector3(movement * ((movementSpeed * Acceleration)), _rigidbody.velocity.y, 0);
+        _rigidbody.velocity = new Vector3(movement * ((movementSpeed * _acceleration)), _rigidbody.velocity.y, 0);
 
 
         //JUMP
@@ -154,7 +154,7 @@ public class Controler : MonoBehaviour
 
         if (_rigidbody.velocity.y < 0)
         {
-            _rigidbody.velocity += new Vector3(0, Physics.gravity.y * GravMultiplier, 0);
+            _rigidbody.velocity += new Vector3(0, -GravMultiplier, 0);
         }
 
 
