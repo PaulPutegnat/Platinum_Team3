@@ -1,0 +1,74 @@
+{
+    "name": "MiniGameAction",
+    "maps": [
+        {
+            "name": "MiniGame",
+            "id": "a57a313c-96b4-4f09-8db5-63f7c43bb9b4",
+            "actions": [
+                {
+                    "name": "SlidingBarP1",
+                    "type": "Button",
+                    "id": "11e6ffb5-b1ce-4658-869f-ef5c32760261",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SlidingBarP2",
+                    "type": "Button",
+                    "id": "3f06103b-5ec3-445f-baeb-6966e12c8c06",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2b1f76d1-6015-4089-99fe-4fc259cfae4b",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlidingBarP1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d32f99e-7ddb-48f5-aca8-c60c41537d1a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlidingBarP1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0b20ee6-4d1f-4d05-8923-76563b8370b3",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlidingBarP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0714bad-7f96-4056-ae8c-35a3811b3bae",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlidingBarP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
