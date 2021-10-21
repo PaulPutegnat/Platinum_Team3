@@ -1,45 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
 public class TestCam : MonoBehaviour
 {
-    bool index1;
-    bool index2;
-    public TrackerPoint[] tracker;
-    public float _speed;
-    Transform currentPoint;
+    public bool loop = false;
+    public PointInfo[] PointsInfos;
+    private int i = 0;
+    private float Timer = 0;
 
-    private void Start()
+    void Update()
     {
-        tracker = GameObject.FindObjectsOfType<TrackerPoint>();
-        currentPoint = tracker[0].Point;
-    }
-    // Update is called once per frame
-    void LateUpdate()
-    {
-        if (index1)
+        Timer += Time.deltaTime;
+
+        if (i < PointsInfos.Length - 1)
         {
-            currentPoint = tracker[0].Point;
-        }
-        if (index2)
-        {
-            currentPoint = tracker[1].Point;
+            GetTargets();
         }
 
-        transform.position = Vector3.Lerp(transform.position, currentPoint.position, Time.deltaTime * _speed);
+        else if (loop)
+        {
+            i = 0;
+        }
     }
 
-    public void pressG(InputAction.CallbackContext context)
+    public void GetTargets()
     {
-        index1 = context.action.triggered;
-    }
+        Transform currentPosition = PointsInfos[i].Target.transform;
+        Transform targetPosition = PointsInfos[i + 1].Target.transform;
 
-    public void pressH(InputAction.CallbackContext context)
-    {
-        index2 = context.action.triggered;
+        float duration = PointsInfos[i].Duration;
+        float percent = (duration > 0) ? Timer / duration : 1f;
+
+        transform.position = Vector3.Lerp(currentPosition.position, targetPosition.position, percent);
+
+        if (transform.position == targetPosition.position)
+        {
+            Timer = 0;
+
+            if (i < PointsInfos.Length)
+            {
+                i++;
+            }
+        }
     }
 }
-
-
