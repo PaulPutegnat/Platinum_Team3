@@ -6,5 +6,5 @@ using UnityEngine;
 public class PointInfo
 {
     public GameObject Target;
-    public float Duration = 1;
+    public float DurationToNextTarget = 1;
 }
