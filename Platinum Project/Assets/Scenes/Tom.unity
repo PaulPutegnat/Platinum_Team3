@@ -242,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71479121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.26, y: 23.41, z: -2.44}
+  m_LocalPosition: {x: 7.54, y: 23.41, z: -2.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1383910214}
@@ -5659,10 +5659,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
-      propertyPath: i
-      value: -76
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: loop
       value: 1
       objectReference: {fileID: 0}
@@ -5672,10 +5668,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
-      propertyPath: DurationFromLastToFirstTarget
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
@@ -5697,26 +5689,26 @@ PrefabInstance:
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[4].Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 71479121}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[5].Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 71479121}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].Duration
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].Duration
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].Duration
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[3].Duration
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[4].Duration
@@ -5725,30 +5717,6 @@ PrefabInstance:
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[5].Duration
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
-      propertyPath: PointsInfos.Array.data[0].DurationToNextTarget
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
-      propertyPath: PointsInfos.Array.data[1].DurationToNextTarget
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
-      propertyPath: PointsInfos.Array.data[2].DurationToNextTarget
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
-      propertyPath: PointsInfos.Array.data[3].DurationToNextTarget
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
-      propertyPath: PointsInfos.Array.data[4].DurationToNextTarget
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
-      propertyPath: PointsInfos.Array.data[5].DurationToNextTarget
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728093, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: m_Name
