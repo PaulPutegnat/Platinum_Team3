@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class IsOffCamera : MonoBehaviour
 {
@@ -16,5 +17,6 @@ public class IsOffCamera : MonoBehaviour
     {
         Console.Clear();
         Debug.Log("Player is Invisible !");
+        SceneManager.LoadScene("Victoire");
     }
 }
