@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    bool play;
-    bool exit;
     public string sceneToPlay;
 
     public void PlayGame()
