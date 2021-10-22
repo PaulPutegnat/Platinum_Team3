@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Echap",
+                    "type": "Button",
+                    "id": "fd7e0692-6ecd-46ed-9803-bc541e693501",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -146,6 +154,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "PressH",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ec1d657-a3ca-498a-8787-d6077658357b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Echap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ced620dc-099a-4eb3-b40e-44dac515a1f9",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Echap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

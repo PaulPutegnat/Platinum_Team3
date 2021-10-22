@@ -125,7 +125,7 @@ public class Controler : MonoBehaviour
         {
             _acceleration += Accel;
             _acceleration = Mathf.Clamp(_acceleration, 0, 1f);
-            Debug.Log(_acceleration);
+            // Debug.Log(_acceleration);
         }
         else
         {
