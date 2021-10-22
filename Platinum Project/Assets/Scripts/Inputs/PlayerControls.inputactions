@@ -268,6 +268,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(behavior=1)"
+                },
+                {
+                    "name": "PlayTest",
+                    "type": "Button",
+                    "id": "1d0dcf97-da46-44d1-826d-c39ebf57f474",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -334,6 +342,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3152a024-0ade-47b7-9864-4bf416d01a3c",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PlayTest",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

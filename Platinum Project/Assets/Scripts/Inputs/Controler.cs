@@ -10,14 +10,14 @@ public class Controler : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float _turnSmoothVelocity;
 
-    private Vector2 _movementInput = Vector2.zero;
+    public Vector2 _movementInput = Vector2.zero;
     private Rigidbody _rigidbody;
     private float _acceleration;
     public float Accel;
     
 
     [Header("Coyote Time")]
-    bool jump;
+    public bool jump;
     public float Initial_CT;
     float CT;
     public float GravMultiplier;
@@ -35,7 +35,7 @@ public class Controler : MonoBehaviour
         jump = context.action.triggered;
         
     }
-
+    
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
