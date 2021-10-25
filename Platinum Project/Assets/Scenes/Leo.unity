@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 0
-  m_MaxPlayerCount: 4
+  m_MaxPlayerCount: 1
   m_AllowJoining: 1
   m_JoinBehavior: 2
   m_PlayerJoinedEvent:
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3cabe71a3c79044816b634f605f53d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Runner: {fileID: 3172980243302745095, guid: 480612d629fbfdd45b8d77901a28ca6c, type: 3}
+  Runner: {fileID: 5214100567882547065, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
   Trapper: {fileID: -7291034527539299295, guid: 91d1c878edbc34e4e850c871be496d66, type: 3}
   players:
   - {fileID: 0}
@@ -1001,19 +1001,67 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 957599739}
+        m_TargetAssemblyTypeName: neutralcontroller, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 23061fb7-41cd-4ff7-94d0-51c6bebccad3
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 957599739}
+        m_TargetAssemblyTypeName: neutralcontroller, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: bd93e288-fe41-42d3-b758-18603d874768
     m_ActionName: Player/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9219923476659221820, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
+        m_TargetAssemblyTypeName: Controler, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: b30efb4c-7649-4381-b50d-978c0f82827d
     m_ActionName: Player/PressG[/Keyboard/g]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9219923476659221820, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
+        m_TargetAssemblyTypeName: Controler, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5f564d11-149c-4785-94b8-d67a60f4cd79
     m_ActionName: Player/PressH[/Keyboard/h]
   - m_PersistentCalls:
@@ -1068,6 +1116,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2b94c29d-edf5-42ce-9341-46b1d5b7b454
     m_ActionName: Neutral/Back[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9219923476659221820, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
+        m_TargetAssemblyTypeName: Controler, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fd7e0692-6ecd-46ed-9803-bc541e693501
+    m_ActionName: Player/Echap[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 957599739}
+        m_TargetAssemblyTypeName: neutralcontroller, Assembly-CSharp
+        m_MethodName: InitPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1d0dcf97-da46-44d1-826d-c39ebf57f474
+    m_ActionName: Neutral/PlayTest[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Neutral

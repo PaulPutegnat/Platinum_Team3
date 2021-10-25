@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3172980243302745101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 174.08, y: 1.61, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1375889259055067414}
@@ -100,6 +100,30 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5f564d11-149c-4785-94b8-d67a60f4cd79
     m_ActionName: Player/PressH[/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fd7e0692-6ecd-46ed-9803-bc541e693501
+    m_ActionName: Player/Echap[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a093115c-94bc-413e-9c04-0ffa77239479
+    m_ActionName: Trapper/Trap Selection[/Keyboard/e,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e02f4e07-8b56-4f57-b60c-87713047c611
+    m_ActionName: Neutral/Menu Selection[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c515da0d-61ff-4e68-875e-6fe1bd2ae422
+    m_ActionName: Neutral/Comfirmation[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b94c29d-edf5-42ce-9341-46b1d5b7b454
+    m_ActionName: Neutral/Back[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1d0dcf97-da46-44d1-826d-c39ebf57f474
+    m_ActionName: Neutral/PlayTest[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
@@ -133,7 +157,9 @@ MonoBehaviour:
   movementSpeed: 10
   jumpForce: 10
   turnSmoothTime: 0.05
+  _movementInput: {x: 0, y: 0}
   Accel: 0.1
+  jump: 0
   Initial_CT: 0.2
   GravMultiplier: 0.1
 --- !u!54 &3172980243302745092
