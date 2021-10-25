@@ -101,9 +101,13 @@ public class neutralcontroller : MonoBehaviour
                     {
                         GameManager.gameManager.players[0] = this.gameObject;
                     }
-                    else
+                    else if(GameManager.gameManager.players[1] == null)
                     {
                         GameManager.gameManager.players[1] = this.gameObject;
+                    }
+                    else
+                    {
+                        Debug.LogError("IL Y A DEJA 2 RUNNERS");
                     }
                     GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
                     break;
@@ -119,10 +123,14 @@ public class neutralcontroller : MonoBehaviour
                         GameManager.gameManager.players[2] = this.gameObject;
                         TrapperRef.GetComponent<TrapController>().initTrapper(2);
                     }
-                    else
+                    else if(GameManager.gameManager.players[3] == null)
                     {
                         GameManager.gameManager.players[3] = this.gameObject;
                         TrapperRef.GetComponent<TrapController>().initTrapper(3);
+                    }
+                    else
+                    {
+                        Debug.LogError("IL Y A DEJA 2 TRAPPERS");
                     }
                     break;
 
