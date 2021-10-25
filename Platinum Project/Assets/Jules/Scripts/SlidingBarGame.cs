@@ -18,6 +18,8 @@ public class SlidingBarGame : MonoBehaviour
 
     [Header("Settings")]
     public bool isDoubleInterval = false;
+
+    [Range(0, 1)]
     public float speed;
     public float minIntervalSize, maxIntervalSize;
 
