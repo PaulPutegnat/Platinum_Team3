@@ -13,7 +13,6 @@ public class SlidingBarGame : MonoBehaviour
     [Header("GameObjects")]
     public GameObject handleP1;
     public GameObject handleP2;
-    public GameObject slidingBox;
     public GameObject intervalP1;
     public GameObject intervalP2;
 
@@ -26,14 +25,13 @@ public class SlidingBarGame : MonoBehaviour
     private float minIntervalPos = -550f, maxIntervalPos = 550f;
     private Vector2 intervalP1Size;
     private Vector2 intervalP2Size;
-    private Vector3 startPosP1;
-    private Vector3 startPosP2;
     private Vector3 lastPosP1;
     private Vector3 lastPosP2;
     private bool isP1Playing = false;
     private bool isP2Playing = false;
-    private float maxBoundBox;
 
+    private float posPercentP1;
+    private float posPercentP2;
 
     private void Awake()
     {
@@ -68,12 +66,17 @@ public class SlidingBarGame : MonoBehaviour
         intervalP1Size = intervalP1.GetComponent<RectTransform>().sizeDelta;
         intervalP2Size = intervalP2.GetComponent<RectTransform>().sizeDelta;
 
-        startPosP1 = handleP1.transform.localPosition;
-        startPosP2 = handleP2.transform.localPosition;
-        maxBoundBox = slidingBox.GetComponent<RectTransform>().sizeDelta.x - 10f;
-
         StartSlidingBarGame(true);
+
+        posPercentP1 = Random.Range(-1, 1.1f);
+        handleP1.transform.localPosition = new Vector3(posPercentP1 * 600, 0f, 0f);
+        Debug.Log(posPercentP1);
+
+        posPercentP2 = Random.Range(-1, 1.1f);
+        handleP2.transform.localPosition = new Vector3(posPercentP2 * 600, 0f, 0f);
+        Debug.Log(posPercentP2);
     }
+
     void Update()
     {
         p1ButtonPressed = inputActions.MiniGame.SlidingBarP1.triggered;
@@ -91,7 +94,8 @@ public class SlidingBarGame : MonoBehaviour
 
         if (isP1Playing)
         {
-            handleP1.transform.localPosition = new Vector3(startPosP1.x + Mathf.PingPong(Time.time * speed, maxBoundBox), handleP1.transform.localPosition.y, 0);
+            handleP1.transform.localPosition = Vector3.Lerp(new Vector3(-590f, 0, 0), new Vector3(590f, 0, 0), posPercentP1);
+            posPercentP1 = Mathf.PingPong(Time.time * speed, 1f);
             lastPosP1 = handleP1.transform.localPosition;
         }
         else
@@ -101,7 +105,8 @@ public class SlidingBarGame : MonoBehaviour
 
         if (isP2Playing)
         {
-            handleP2.transform.localPosition = new Vector3(startPosP2.x - Mathf.PingPong(Time.time * speed, maxBoundBox), handleP2.transform.localPosition.y, 0);
+            handleP2.transform.localPosition = Vector3.Lerp(new Vector3(590f, 0, 0), new Vector3(-590f, 0, 0), posPercentP2);
+            posPercentP2 = Mathf.PingPong(Time.time * speed, 1f);
             lastPosP2 = handleP2.transform.localPosition;
         }
         else
