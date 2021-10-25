@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3cabe71a3c79044816b634f605f53d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Runner: {fileID: 5214100567882547065, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
+  Runner: {fileID: 432608686766742288, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
   Trapper: {fileID: -7291034527539299295, guid: 91d1c878edbc34e4e850c871be496d66, type: 3}
   players:
   - {fileID: 0}
@@ -1149,7 +1149,7 @@ MonoBehaviour:
     m_ActionId: 1d0dcf97-da46-44d1-826d-c39ebf57f474
     m_ActionName: Neutral/PlayTest[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Controller
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Neutral
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -1165,6 +1165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02da4f5e1811e69458cb936f1334a755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runnerRef: {fileID: 0}
+  TrapperRef: {fileID: 0}
 --- !u!1 &1055764880
 GameObject:
   m_ObjectHideFlags: 0
