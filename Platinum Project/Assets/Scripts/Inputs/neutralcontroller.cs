@@ -100,6 +100,7 @@ public class neutralcontroller : MonoBehaviour
                     if (GameManager.gameManager.players[0] == null)
                     {
                         GameManager.gameManager.players[0] = this.gameObject;
+                        
                     }
                     else if(GameManager.gameManager.players[1] == null)
                     {
@@ -110,6 +111,10 @@ public class neutralcontroller : MonoBehaviour
                         Debug.LogError("IL Y A DEJA 2 RUNNERS");
                     }
                     GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
+                    InitRunner();
+
+
+
                     break;
 
                 case STATE.TRAPPER:
@@ -141,13 +146,12 @@ public class neutralcontroller : MonoBehaviour
         }
 
     }
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        runnerRef.GetComponent<TESTCONTROLER>()._movementInput = context.ReadValue<Vector2>();
-    }
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        runnerRef.GetComponent<TESTCONTROLER>().jump = context.action.triggered;
 
+    void InitRunner()
+    {
+        GetComponent<PlayerInput>().actions.FindAction("Echap").performed += new Action<InputAction.CallbackContext>(GameObject.Find("Pause").GetComponent<Pause>().PausePressed);
+        GetComponent<PlayerInput>().actions.FindAction("Movement").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnMove);
+        GetComponent<PlayerInput>().actions.FindAction("Jump").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnJump);
     }
+
 }

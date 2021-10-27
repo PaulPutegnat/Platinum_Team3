@@ -7,15 +7,23 @@ using UnityEngine.Serialization;
 
 public class TESTCONTROLER : MonoBehaviour
 {
+    [Header("Movement")]
     public float movementSpeed = 6;
     public float jumpForce = 30;
     float _distToGround;
     public float turnSmoothTime = 0.1f;
     float _turnSmoothVelocity;
 
+    [HideInInspector]
     public Vector2 _movementInput = Vector2.zero;
+
     private Rigidbody _rigidbody;
     private float _acceleration;
+
+    [Range(0.0f, 3f)]
+    public float maxspeed;
+
+    [Range(0.0f, 3f)]
     public float Accel;
 
     [SerializeField] private float deadZoneController = 0.1f;
@@ -51,7 +59,7 @@ public class TESTCONTROLER : MonoBehaviour
         if (movement != 0)
         {
             _acceleration += Accel;
-            _acceleration = Mathf.Clamp01(_acceleration);
+            _acceleration = Mathf.Clamp(_acceleration,0, maxspeed);
 
         }
         else
@@ -98,6 +106,7 @@ public class TESTCONTROLER : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
+        jump = false;
     }
 
     bool IsGrounded()
@@ -110,5 +119,14 @@ public class TESTCONTROLER : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * _distToGround));
     }
 
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        _movementInput = context.ReadValue<Vector2>();
+    }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        jump = context.action.triggered;
+
+    }
 }
 

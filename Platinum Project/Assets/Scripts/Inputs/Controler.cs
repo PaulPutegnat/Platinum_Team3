@@ -4,17 +4,26 @@ using UnityEngine.InputSystem;
 
 public class Controler : MonoBehaviour
 {
+    [Header("Movement")]
     public float movementSpeed = 6;
-    public float jumpForce = 30; 
+    public float jumpForce = 30;
     float _distToGround;
     public float turnSmoothTime = 0.1f;
     float _turnSmoothVelocity;
 
+    [HideInInspector]
     public Vector2 _movementInput = Vector2.zero;
+
     private Rigidbody _rigidbody;
     private float _acceleration;
+
+    [Range(0.0f, 3f)]
+    public float maxspeed;
+
+    [Range(0.0f, 3f)]
     public float Accel;
-    
+
+    [SerializeField] private float deadZoneController = 0.1f;
 
     [Header("Coyote Time")]
     public bool jump;
@@ -22,91 +31,24 @@ public class Controler : MonoBehaviour
     float CT;
     public float GravMultiplier;
 
-    //Mouvements
     public void OnMove(InputAction.CallbackContext context)
     {
         _movementInput = context.ReadValue<Vector2>();
     }
-
-    //Saut
-
     public void OnJump(InputAction.CallbackContext context)
     {
         jump = context.action.triggered;
-        
+
     }
-    
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        Console.Clear();
     }
     private void Start()
     {
         _distToGround = GetComponent<BoxCollider>().bounds.extents.y;
-    }
-    void Update()
-    {
-        
-        /*//Mouvements du personnage
-
-          var movement = _movementInput.x;
-        if (_movementInput.x < 0.1 && _movementInput.x > -0.1)
-        {
-            _movementInput.x = 0f;
-            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x / 2, _rigidbody.velocity.y, _rigidbody.velocity.z);
-
-        }
-
-        if (movement != 0)
-        {
-            _acceleration += Accel*Time.deltaTime;
-            _acceleration = Mathf.Clamp(_acceleration, 0,1f);
-            Debug.Log(_acceleration);
-        }
-        else
-        {
-            _acceleration = 0f;
-        }
-
-        _rigidbody.velocity = new Vector3(movement * (Time.deltaTime * (movementSpeed * _acceleration)) , _rigidbody.velocity.y, 0);
-
-
-        //JUMP
-        if (IsGrounded())
-        {
-            CT = Initial_CT;
-        }
-        else
-        {
-            CT -= Time.deltaTime;
-        }
-
-        if (jump && (IsGrounded() || CT > 0))
-        {
-            //Vector2.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
-            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
-            CT = 0;
-        }
-
-        if (_rigidbody.velocity.y < 0)
-        {
-            _rigidbody.velocity += new Vector3(0,Physics.gravity.y*GravMultiplier*Time.deltaTime,0);
-        }
-
-
-
-        //Debug.DrawLine(transform.position, /*transform.position + (-Vector3.up * _distToGround),Color.red);
-
-        // Rotation du personnage
-
-        Vector3 direction = new Vector3(movement, 0f, 0f).normalized;
-
-        if (direction.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-        }*/
     }
 
     private void FixedUpdate()
@@ -114,7 +56,7 @@ public class Controler : MonoBehaviour
         //Mouvements du personnage
 
         var movement = _movementInput.x;
-        if (_movementInput.x < 0.1 && _movementInput.x > -0.1)
+        if (_movementInput.x < deadZoneController && _movementInput.x > -deadZoneController)
         {
             _movementInput.x = 0f;
             _rigidbody.velocity = new Vector3(_rigidbody.velocity.x / 2, _rigidbody.velocity.y, _rigidbody.velocity.z);
@@ -124,8 +66,8 @@ public class Controler : MonoBehaviour
         if (movement != 0)
         {
             _acceleration += Accel;
-            _acceleration = Mathf.Clamp(_acceleration, 0, 1f);
-            // Debug.Log(_acceleration);
+            _acceleration = Mathf.Clamp(_acceleration, 0, maxspeed);
+
         }
         else
         {
@@ -177,7 +119,7 @@ public class Controler : MonoBehaviour
     {
         return Physics.Raycast(gameObject.transform.position - Vector3.up * (_distToGround + 0.1f), -Vector3.up, 0.1f);
     }
-   private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * _distToGround));
