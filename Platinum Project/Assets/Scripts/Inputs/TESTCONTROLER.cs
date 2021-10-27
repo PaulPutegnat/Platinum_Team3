@@ -14,7 +14,9 @@ public class TESTCONTROLER : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float _turnSmoothVelocity;
 
+    [HideInInspector]
     public Vector2 _movementInput = Vector2.zero;
+
     private Rigidbody _rigidbody;
     private float _acceleration;
 
@@ -104,6 +106,7 @@ public class TESTCONTROLER : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
+        jump = false;
     }
 
     bool IsGrounded()
@@ -116,5 +119,14 @@ public class TESTCONTROLER : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * _distToGround));
     }
 
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        _movementInput = context.ReadValue<Vector2>();
+    }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        jump = context.action.triggered;
+
+    }
 }
 
