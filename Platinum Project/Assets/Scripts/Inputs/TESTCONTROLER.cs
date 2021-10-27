@@ -14,7 +14,9 @@ public class TESTCONTROLER : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float _turnSmoothVelocity;
 
+    [HideInInspector]
     public Vector2 _movementInput = Vector2.zero;
+
     private Rigidbody _rigidbody;
     private float _acceleration;
 
