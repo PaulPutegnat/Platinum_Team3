@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SlidingBarGame : MonoBehaviour
 {
     // Inputs Action
-    private MiniGameAction inputActions;
+    private PlayerControls inputActions;
     private bool p1ButtonPressed = false;
     private bool p2ButtonPressed = false;
 
@@ -37,7 +37,7 @@ public class SlidingBarGame : MonoBehaviour
 
     private void Awake()
     {
-        inputActions = new MiniGameAction();
+        inputActions = new PlayerControls();
     }
 
     private void OnEnable()
@@ -81,8 +81,8 @@ public class SlidingBarGame : MonoBehaviour
 
     void Update()
     {
-        p1ButtonPressed = inputActions.MiniGame.SlidingBarP1.triggered;
-        p2ButtonPressed = inputActions.MiniGame.SlidingBarP2.triggered;
+        p1ButtonPressed = inputActions.Trapper.SlidingBarP1.triggered;
+        p2ButtonPressed = inputActions.Trapper.SlidingBarP2.triggered;
 
         if (p1ButtonPressed)
         {
