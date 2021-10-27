@@ -5,6 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class PointInfo
 {
+    public bool IsChangingFov;
+
     public GameObject Target;
-    public float DurationToNextTarget = 1;
+    public float Fov;
+    public float DurationToFov;
+    public float DurationToNextTarget;
 }

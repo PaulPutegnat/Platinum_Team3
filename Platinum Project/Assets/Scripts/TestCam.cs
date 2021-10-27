@@ -33,10 +33,14 @@ public class TestCam : MonoBehaviour
         Transform currentPosition = PointsInfos[i].Target.transform;
         Transform targetPosition = PointsInfos[i + 1].Target.transform;
 
-        float duration = PointsInfos[i].DurationToNextTarget;
-        float percent = (duration > 0) ? Timer / duration : 1f;
+        float durationToTarget = PointsInfos[i].DurationToNextTarget;
+        float durationToFov = PointsInfos[i].DurationToFov;
+        float percent = (durationToTarget > 0) ? Timer / durationToTarget : 1f;
+        float fovPercent = Timer / durationToFov;
 
         transform.position = Vector3.Lerp(currentPosition.position, targetPosition.position, percent);
+        Camera.main.fieldOfView = Mathf.Lerp(60, 90, fovPercent);
+
 
         if (transform.position == targetPosition.position)
         {
