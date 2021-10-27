@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 0
-  m_MaxPlayerCount: 1
+  m_MaxPlayerCount: 4
   m_AllowJoining: 1
   m_JoinBehavior: 2
   m_PlayerJoinedEvent:
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3cabe71a3c79044816b634f605f53d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Runner: {fileID: 5214100567882547065, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
+  Runner: {fileID: 432608686766742288, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
   Trapper: {fileID: -7291034527539299295, guid: 91d1c878edbc34e4e850c871be496d66, type: 3}
   players:
   - {fileID: 0}
@@ -898,6 +898,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &902035177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 902035178}
+  m_Layer: 0
+  m_Name: amogusAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &902035178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902035177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &957599734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,7 +1179,7 @@ MonoBehaviour:
     m_ActionId: 1d0dcf97-da46-44d1-826d-c39ebf57f474
     m_ActionName: Neutral/PlayTest[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Controller
+  m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Neutral
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -1165,6 +1195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02da4f5e1811e69458cb936f1334a755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runnerRef: {fileID: 0}
+  TrapperRef: {fileID: 0}
 --- !u!1 &1055764880
 GameObject:
   m_ObjectHideFlags: 0

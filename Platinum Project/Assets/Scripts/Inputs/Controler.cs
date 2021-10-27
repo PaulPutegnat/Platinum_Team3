@@ -49,10 +49,10 @@ public class Controler : MonoBehaviour
         
         /*//Mouvements du personnage
 
-          var movement = _movementInput.x;
-        if (_movementInput.x < 0.1 && _movementInput.x > -0.1)
+          var movement = movementInput.x;
+        if (movementInput.x < 0.1 && movementInput.x > -0.1)
         {
-            _movementInput.x = 0f;
+            movementInput.x = 0f;
             _rigidbody.velocity = new Vector3(_rigidbody.velocity.x / 2, _rigidbody.velocity.y, _rigidbody.velocity.z);
 
         }

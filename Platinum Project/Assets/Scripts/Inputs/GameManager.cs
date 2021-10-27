@@ -8,9 +8,13 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
+
+    [Header("Prefab")]
     public TESTCONTROLER Runner;
     public TrapController Trapper;
     public GameObject[] players;
+
+    [Header("Spawn")]
     public Transform spawn;
 
     public float TrapperNumber = 0;

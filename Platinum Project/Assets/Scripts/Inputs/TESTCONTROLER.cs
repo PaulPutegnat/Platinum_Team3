@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 
 public class TESTCONTROLER : MonoBehaviour
 {
+    [Header("Movement")]
     public float movementSpeed = 6;
     public float jumpForce = 30;
     float _distToGround;
@@ -16,6 +17,11 @@ public class TESTCONTROLER : MonoBehaviour
     public Vector2 _movementInput = Vector2.zero;
     private Rigidbody _rigidbody;
     private float _acceleration;
+
+    [Range(0.0f, 3f)]
+    public float maxspeed;
+
+    [Range(0.0f, 3f)]
     public float Accel;
 
     [SerializeField] private float deadZoneController = 0.1f;
@@ -51,7 +57,7 @@ public class TESTCONTROLER : MonoBehaviour
         if (movement != 0)
         {
             _acceleration += Accel;
-            _acceleration = Mathf.Clamp01(_acceleration);
+            _acceleration = Mathf.Clamp(_acceleration,0, maxspeed);
 
         }
         else
@@ -111,3 +117,4 @@ public class TESTCONTROLER : MonoBehaviour
     }
 
 }
+
