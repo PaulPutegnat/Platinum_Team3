@@ -13,7 +13,9 @@ public class PointInfoEditor : PropertyDrawer
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         //Get variable from Pointinfo
-        SerializedProperty PropertyIsChangingFov = property.FindPropertyRelative("IsChangingFov");
+        SerializedProperty changeFovProperty = property.FindPropertyRelative("ChangeFov");
+        SerializedProperty changePositionProperty = property.FindPropertyRelative("ChangePosition");
+        SerializedProperty changeRotationProperty = property.FindPropertyRelative("ChangeRotation");
 
         //Change element size based on default unity element size
         position.height = EditorGUIUtility.singleLineHeight;
@@ -23,26 +25,60 @@ public class PointInfoEditor : PropertyDrawer
 
         //Move rectangle based on previous element height;
         position.y += EditorGUIUtility.singleLineHeight;
-        EditorGUI.PropertyField(position, PropertyIsChangingFov);
+        EditorGUI.PropertyField(position, changeFovProperty);
 
-        if (PropertyIsChangingFov.boolValue)
+        if (changeFovProperty.boolValue)
         {
             position.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(position, property.FindPropertyRelative("Fov"));
+            position.y += EditorGUIUtility.singleLineHeight;
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToFov"));
+        }
+
+        position.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(position, changePositionProperty);
+
+        if (changePositionProperty.boolValue)
+        {
+            position.y += EditorGUIUtility.singleLineHeight;
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToNextTarget"));
+        }
+
+
+        position.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(position, changeRotationProperty);
+
+        if (changeRotationProperty.boolValue)
+        {
+            position.y += EditorGUIUtility.singleLineHeight;
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToRotate"));
         }
     }
 
     //Size of an element
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        float height = EditorGUIUtility.singleLineHeight * 2;
+        float height = EditorGUIUtility.singleLineHeight * 4;
 
-        SerializedProperty PropertyIsChangingFov = property.FindPropertyRelative("IsChangingFov");
+        SerializedProperty changeFovProperty = property.FindPropertyRelative("ChangeFov");
+        SerializedProperty changePositionProperty = property.FindPropertyRelative("ChangePosition");
+        SerializedProperty changeRotationProperty = property.FindPropertyRelative("ChangeRotation");
 
-        if (PropertyIsChangingFov.boolValue)
+        if (changeFovProperty.boolValue)
+        {
+            height += EditorGUIUtility.singleLineHeight * 2;
+        }
+
+        if (changePositionProperty.boolValue)
         {
             height += EditorGUIUtility.singleLineHeight;
         }
+
+        if (changeRotationProperty.boolValue)
+        {
+            height += EditorGUIUtility.singleLineHeight;
+        }
+
         return height;
     }
 } 
