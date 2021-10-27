@@ -13,9 +13,12 @@ public class SlidingBarGameEditor : Editor
         SlidingBarGame game = (SlidingBarGame) target;
 
         GUILayout.Space(20f);
-        EditorGUILayout.LabelField("Toggle Double Interval");
-        game.isDoubleInterval = GUILayout.Toggle(game.isDoubleInterval, "Double Interval");
+        EditorGUILayout.LabelField("Editor Window", EditorStyles.boldLabel);
 
+        EditorGUILayout.LabelField("Toggle Double Interval");
+        EditorGUI.indentLevel++;
+        game.isDoubleInterval = EditorGUILayout.Toggle("Double Interval", game.isDoubleInterval);
+        EditorGUI.indentLevel--;
         EditorGUI.BeginChangeCheck();
 
         Color handleP1Color = game.handleP1.GetComponent<Image>().color;
@@ -41,12 +44,10 @@ public class SlidingBarGameEditor : Editor
 
         if (!game.isDoubleInterval)
         {
-            Debug.Log("Only one interval!!");
             game.intervalP2.SetActive(false);
         }
         else
         {
-            Debug.Log("Double interval!!");
             game.intervalP2.SetActive(true);
         }
     }

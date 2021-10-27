@@ -20,6 +20,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SpamQTEP1",
+                    "type": "Button",
+                    "id": "691cf0f1-c54e-457c-af94-e5c0e3c25ced",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SpamQTEP2",
+                    "type": "Button",
+                    "id": "0e06671f-9ad8-4079-a780-0873a035eb20",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -64,6 +80,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "SlidingBarP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cc53fe4-def0-4fa1-a139-1b5a2e2ce7cf",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpamQTEP1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5cbabd9-7fbe-4e19-82b2-5b7d919d7146",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpamQTEP1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c7dade3d-2be3-4e18-8c5e-b50406cc4dd5",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpamQTEP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a305e3b1-8ae6-44ba-b4b0-b9fba07f2823",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpamQTEP2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
