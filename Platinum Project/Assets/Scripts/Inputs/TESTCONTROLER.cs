@@ -106,6 +106,7 @@ public class TESTCONTROLER : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
+        jump = false;
     }
 
     bool IsGrounded()
@@ -118,5 +119,14 @@ public class TESTCONTROLER : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * _distToGround));
     }
 
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        _movementInput = context.ReadValue<Vector2>();
+    }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        jump = context.action.triggered;
+
+    }
 }
 
