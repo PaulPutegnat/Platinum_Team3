@@ -7,7 +7,7 @@ using UnityEngine;
 public class TestCam : MonoBehaviour
 {
     public bool loop = false;
-    public float DurationFromLastToFirstTarget;
+    public float TimeFromLastToFirstTarget;
     public PointInfo[] PointsInfos;
 
     private int i = 0;
@@ -33,8 +33,8 @@ public class TestCam : MonoBehaviour
         Transform currentPosition = PointsInfos[i].Target.transform;
         Transform targetPosition = PointsInfos[i + 1].Target.transform;
 
-        float durationToTarget = PointsInfos[i].DurationToNextTarget;
-        float durationToFov = PointsInfos[i].DurationToFov;
+        float durationToTarget = PointsInfos[i].TimeToNextTarget;
+        float durationToFov = PointsInfos[i].TimeToFov;
         float percent = (durationToTarget > 0) ? Timer / durationToTarget : 1f;
         float fovPercent = Timer / durationToFov;
 
@@ -58,7 +58,7 @@ public class TestCam : MonoBehaviour
         Transform currentPosition = PointsInfos[PointsInfos.Length - 1].Target.transform;
         Transform targetPosition = PointsInfos[0].Target.transform;
 
-        float duration = DurationFromLastToFirstTarget;
+        float duration = TimeFromLastToFirstTarget;
         float percent = (duration > 0) ? Timer / duration : 1f;
 
         transform.position = Vector3.Lerp(currentPosition.position, targetPosition.position, percent);

@@ -17,13 +17,13 @@ public class amogus : EditorWindow
         amogus sus = GetWindow<amogus>();
         
         sus.titleContent = new GUIContent("Amogus Box");
-        
 
         sus.Show();
-    }
 
+    }
     private void OnGUI()
     {
+        PlayClip((AmogAudioclip));
         //EditorGUILayout.TextArea("AMOGUS", GUILayout.Width(400), GUILayout.Height(400));
         GUILayout.Box(AmogusTexture);
         if (GUILayout.Button("AMOGUS"))
