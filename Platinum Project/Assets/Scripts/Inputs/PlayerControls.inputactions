@@ -243,6 +243,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "FortuneWheel",
+                    "type": "Button",
+                    "id": "52842daa-391f-4b0e-866f-ea1b5b311a64",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -375,6 +383,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "SpamQTEP1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f6e2d2f-23c4-4192-8dd7-47cdc9aa1153",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FortuneWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb49a3ce-06d0-4c25-807c-4d03f6485e30",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FortuneWheel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

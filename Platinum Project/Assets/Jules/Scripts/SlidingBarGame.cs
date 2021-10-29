@@ -35,6 +35,9 @@ public class SlidingBarGame : MonoBehaviour
     private float posPercentP1;
     private float posPercentP2;
 
+    private bool isP1Win = false;
+    private bool isP2Win = false;
+
     private void Awake()
     {
         inputActions = new PlayerControls();
@@ -115,6 +118,32 @@ public class SlidingBarGame : MonoBehaviour
         {
             StopP2SlidingBarGame();
         }
+
+        if (!isP1Playing && !isP2Playing)
+        {
+            if (isP1Win && isP2Win)
+            {
+                // Game finish Win
+                Debug.Log("GAME IS WIN");
+                Destroy(this.gameObject);
+                GameManager.gameManager.SpawnFortuneWheel();
+            }
+            else if ((isP1Win && !isP2Win) || (!isP1Win && isP2Win))
+            {
+                // Game finish Semi-win
+                Debug.Log("GAME IS SEMI-WIN");
+                Destroy(this.gameObject);
+                GameManager.gameManager.SpawnFortuneWheel();
+            }
+            else if (!isP1Win && !isP2Win)
+            {
+                // Game finish lose
+                Debug.Log("GAME IS LOSE");
+                Destroy(this.gameObject);
+                GameManager.gameManager.SpawnFortuneWheel();
+            }
+        }
+        
     }
 
     public void StartSlidingBarGame(bool state)
@@ -131,6 +160,12 @@ public class SlidingBarGame : MonoBehaviour
             if (handlePosP1.x < (intervalP1.transform.localPosition + ((Vector3)intervalP1Size / 2)).x && handlePosP1.x > (intervalP1.transform.localPosition - ((Vector3)intervalP1Size / 2)).x)
             {
                 Debug.Log("P1 a gagné!!!");
+                isP1Win = true;
+            }
+            else
+            {
+                Debug.Log("P1 a perdu!!!");
+                isP1Win = false;
             }
         
     }
@@ -144,6 +179,12 @@ public class SlidingBarGame : MonoBehaviour
             if (handlePosP2.x < (intervalP1.transform.localPosition + ((Vector3)intervalP1Size / 2)).x && handlePosP2.x > (intervalP1.transform.localPosition - ((Vector3)intervalP1Size / 2)).x)
             {
                 Debug.Log("P2 a gagné!!!");
+                isP2Win = true;
+            }
+            else
+            {
+                Debug.Log("P2 a perdu!!!");
+                isP2Win = false;
             }
         }
         else
@@ -151,6 +192,12 @@ public class SlidingBarGame : MonoBehaviour
             if (handlePosP2.x < (intervalP2.transform.localPosition + ((Vector3)intervalP2Size / 2)).x && handlePosP2.x > (intervalP2.transform.localPosition - ((Vector3)intervalP2Size / 2)).x)
             {
                 Debug.Log("P2 a gagné!!!");
+                isP2Win = true;
+            }
+            else
+            {
+                Debug.Log("P2 a perdu!!!");
+                isP2Win = false;
             }
         }
 
