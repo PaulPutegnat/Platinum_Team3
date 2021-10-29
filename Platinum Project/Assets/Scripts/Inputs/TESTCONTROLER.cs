@@ -14,7 +14,7 @@ public class TESTCONTROLER : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float _turnSmoothVelocity;
 
-    //[HideInInspector]
+    [HideInInspector]
     public Vector2 _movementInput = Vector2.zero;
 
     private Rigidbody _rigidbody;
@@ -34,9 +34,9 @@ public class TESTCONTROLER : MonoBehaviour
     float CT;
     public float GravMultiplier;
 
-    public bool Slide;
+    private bool Slide;
     private bool IsLocked = false;
-    public float VelocityLastFrame;
+    private float VelocityLastFrame;
     private BoxCollider box;
     private Vector3 InitialSize;
 
