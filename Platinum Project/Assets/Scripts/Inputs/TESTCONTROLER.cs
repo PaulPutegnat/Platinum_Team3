@@ -34,6 +34,12 @@ public class TESTCONTROLER : MonoBehaviour
     float CT;
     public float GravMultiplier;
 
+    private bool Slide;
+    private bool IsLocked = false;
+    private float VelocityLastFrame;
+    private BoxCollider box;
+    private Vector3 InitialSize;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -42,11 +48,14 @@ public class TESTCONTROLER : MonoBehaviour
     private void Start()
     {
         _distToGround = GetComponent<BoxCollider>().bounds.extents.y;
+        box = GetComponent<BoxCollider>();
+        InitialSize = box.size;
     }
 
     private void FixedUpdate()
     {
         //Mouvements du personnage
+        Debug.Log(IsGrounded());
 
         var movement = _movementInput.x;
         if (_movementInput.x < deadZoneController && _movementInput.x > -deadZoneController)
@@ -92,7 +101,25 @@ public class TESTCONTROLER : MonoBehaviour
             _rigidbody.velocity += new Vector3(0, -GravMultiplier, 0);
         }
 
+        if (Slide)
+        {
+            if (Mathf.Abs(VelocityLastFrame) > 4f)
+            {
+                _rigidbody.velocity = new Vector3(VelocityLastFrame, 0, 0);
+                box.size = new Vector3(box.size.x, box.size.y / 2, box.size.z);
+                
+                VelocityLastFrame /= 1.02f;
+            }
+            else
+            {
+                _rigidbody.velocity = new Vector3(0,0,0);
+                VelocityLastFrame = 0f;
+                Slide = false;
+                IsLocked = false;
+                box.size = InitialSize;
+            }
 
+        }
 
         //Debug.DrawLine(transform.position, /*transform.position + */(-Vector3.up * _distToGround),Color.red);
 
@@ -121,12 +148,26 @@ public class TESTCONTROLER : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        _movementInput = context.ReadValue<Vector2>();
+        _movementInput = Vector2.zero;
+        if (!IsLocked)
+            _movementInput = context.ReadValue<Vector2>();
     }
     public void OnJump(InputAction.CallbackContext context)
     {
         jump = context.action.triggered;
 
     }
+
+    public void OnSlide(InputAction.CallbackContext context)
+    {
+        if (!IsLocked)
+        {
+        Slide = context.ReadValueAsButton();
+        VelocityLastFrame = _rigidbody.velocity.x;
+        IsLocked = true;
+        }
+
+    }
+
 }
 

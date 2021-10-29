@@ -57,6 +57,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sliding"",
+                    ""type"": ""Button"",
+                    ""id"": ""a51c1b86-9d8e-4a76-b007-a49f85c3fc4e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -189,6 +197,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Echap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d222977c-5ac1-40c9-b589-3dfbd2101b6f"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sliding"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -488,6 +507,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""PlayTest"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6d9777d-a9d8-4136-975c-de8651796733"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayTest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -524,6 +554,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_PressG = m_Player.FindAction("PressG", throwIfNotFound: true);
         m_Player_PressH = m_Player.FindAction("PressH", throwIfNotFound: true);
         m_Player_Echap = m_Player.FindAction("Echap", throwIfNotFound: true);
+        m_Player_Sliding = m_Player.FindAction("Sliding", throwIfNotFound: true);
         // Trapper
         m_Trapper = asset.FindActionMap("Trapper", throwIfNotFound: true);
         m_Trapper_TrapSelection = m_Trapper.FindAction("Trap Selection", throwIfNotFound: true);
@@ -591,6 +622,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_PressG;
     private readonly InputAction m_Player_PressH;
     private readonly InputAction m_Player_Echap;
+    private readonly InputAction m_Player_Sliding;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -600,6 +632,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @PressG => m_Wrapper.m_Player_PressG;
         public InputAction @PressH => m_Wrapper.m_Player_PressH;
         public InputAction @Echap => m_Wrapper.m_Player_Echap;
+        public InputAction @Sliding => m_Wrapper.m_Player_Sliding;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -624,6 +657,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Echap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEchap;
                 @Echap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEchap;
                 @Echap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEchap;
+                @Sliding.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSliding;
+                @Sliding.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSliding;
+                @Sliding.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSliding;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -643,6 +679,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Echap.started += instance.OnEchap;
                 @Echap.performed += instance.OnEchap;
                 @Echap.canceled += instance.OnEchap;
+                @Sliding.started += instance.OnSliding;
+                @Sliding.performed += instance.OnSliding;
+                @Sliding.canceled += instance.OnSliding;
             }
         }
     }
@@ -794,6 +833,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnPressG(InputAction.CallbackContext context);
         void OnPressH(InputAction.CallbackContext context);
         void OnEchap(InputAction.CallbackContext context);
+        void OnSliding(InputAction.CallbackContext context);
     }
     public interface ITrapperActions
     {
