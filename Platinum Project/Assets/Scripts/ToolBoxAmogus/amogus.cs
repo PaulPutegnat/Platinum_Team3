@@ -23,7 +23,6 @@ public class amogus : EditorWindow
     }
     private void OnGUI()
     {
-        PlayClip((AmogAudioclip));
         //EditorGUILayout.TextArea("AMOGUS", GUILayout.Width(400), GUILayout.Height(400));
         GUILayout.Box(AmogusTexture);
         if (GUILayout.Button("AMOGUS"))
