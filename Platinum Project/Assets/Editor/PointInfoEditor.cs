@@ -21,7 +21,7 @@ public class PointInfoEditor : PropertyDrawer
         position.height = EditorGUIUtility.singleLineHeight;
 
         //Display into editor using position 
-        EditorGUI.PropertyField(position, property.FindPropertyRelative("Target"));
+        EditorGUI.PropertyField(position, property.FindPropertyRelative("Name"));
 
         //Move rectangle based on previous element height;
         position.y += EditorGUIUtility.singleLineHeight;
@@ -41,15 +41,18 @@ public class PointInfoEditor : PropertyDrawer
         if (changePositionProperty.boolValue)
         {
             position.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToNextTarget"));
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("Target"));
+            position.y += EditorGUIUtility.singleLineHeight;
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToNextPostion"));
         }
-
 
         position.y += EditorGUIUtility.singleLineHeight;
         EditorGUI.PropertyField(position, changeRotationProperty);
 
         if (changeRotationProperty.boolValue)
         {
+            position.y += EditorGUIUtility.singleLineHeight;
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("Target"));
             position.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToRotate"));
         }
@@ -71,12 +74,12 @@ public class PointInfoEditor : PropertyDrawer
 
         if (changePositionProperty.boolValue)
         {
-            height += EditorGUIUtility.singleLineHeight;
+            height += EditorGUIUtility.singleLineHeight * 2;
         }
 
         if (changeRotationProperty.boolValue)
         {
-            height += EditorGUIUtility.singleLineHeight;
+            height += EditorGUIUtility.singleLineHeight * 2;
         }
 
         return height;
