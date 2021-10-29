@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor;
-using UnityEditor.Rendering;
 
 public class SpamQTEGame : MonoBehaviour
 {
@@ -120,10 +118,6 @@ public class SpamQTEGame : MonoBehaviour
             {
                 sliderCurrentValue = sliderMaxValue;
             }
-        }
-        else
-        {
-            
         }
 
         if (gameDuration > 0)
