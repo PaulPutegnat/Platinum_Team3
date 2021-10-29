@@ -15,8 +15,8 @@ public class neutralcontroller : MonoBehaviour
     private STATE _state;
     private bool IsActivated = false;
     private int limit = 1;
-    [SerializeField] private GameObject runnerRef;
-    [SerializeField] private GameObject TrapperRef;
+    private GameObject runnerRef;
+    private GameObject TrapperRef;
     enum STATE
     {
         RUNNER,
@@ -93,7 +93,7 @@ public class neutralcontroller : MonoBehaviour
             {
                 case STATE.RUNNER:
                     IsActivated = true;
-                    transform.parent = null;
+                    transform.SetParent(null);
                     /*transform.localScale = new Vector3(1, 1, 1);
                     transform.position = Vector3.zero;*/
                     runnerRef = Instantiate(GameManager.gameManager.Runner.gameObject, GameManager.gameManager.spawn.position, Quaternion.identity);
@@ -119,7 +119,7 @@ public class neutralcontroller : MonoBehaviour
 
                 case STATE.TRAPPER:
                     IsActivated = true;
-                    transform.parent = null;
+                    transform.SetParent(null);
                     /*transform.localScale = new Vector3(1, 1, 1);
                     transform.position = Vector3.zero;*/
                     TrapperRef = Instantiate(GameManager.gameManager.Trapper.gameObject, new Vector3(0, 0, 0), Quaternion.identity);

@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 6
-  jumpForce: 12
+  jumpForce: 15
   turnSmoothTime: 0.1
   _movementInput: {x: 0, y: 0}
-  maxspeed: 0.83
+  maxspeed: 2.43
   Accel: 0.86
   deadZoneController: 0.1
   jump: 0
@@ -118,8 +118,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.2038794, z: 1}
+  m_Center: {x: 0, y: -0.11318189, z: 0}
 --- !u!54 &3381624550268567953
 Rigidbody:
   m_ObjectHideFlags: 0
