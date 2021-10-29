@@ -55,6 +55,7 @@ public class TESTCONTROLER : MonoBehaviour
     private void FixedUpdate()
     {
         //Mouvements du personnage
+        Debug.Log(IsGrounded());
 
         var movement = _movementInput.x;
         if (_movementInput.x < deadZoneController && _movementInput.x > -deadZoneController)
