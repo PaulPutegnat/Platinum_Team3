@@ -26,7 +26,7 @@ public class neutralcontroller : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(GetComponent<PlayerInput>().currentActionMap.name);
+       // Debug.Log(GetComponent<PlayerInput>().currentActionMap.name);
     }
 
     public void ChangeTeam(InputAction.CallbackContext context)
@@ -152,6 +152,7 @@ public class neutralcontroller : MonoBehaviour
         GetComponent<PlayerInput>().actions.FindAction("Echap").performed += new Action<InputAction.CallbackContext>(GameObject.Find("Pause").GetComponent<Pause>().PausePressed);
         GetComponent<PlayerInput>().actions.FindAction("Movement").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnMove);
         GetComponent<PlayerInput>().actions.FindAction("Jump").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnJump);
+        GetComponent<PlayerInput>().actions.FindAction("Sliding").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnSlide);
     }
 
 }

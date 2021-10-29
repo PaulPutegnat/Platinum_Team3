@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3cabe71a3c79044816b634f605f53d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Runner: {fileID: 432608686766742288, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
+  Runner: {fileID: -5257060118275399638, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
   Trapper: {fileID: -7291034527539299295, guid: 91d1c878edbc34e4e850c871be496d66, type: 3}
   players:
   - {fileID: 0}

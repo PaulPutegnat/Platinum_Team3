@@ -124,6 +124,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1d0dcf97-da46-44d1-826d-c39ebf57f474
     m_ActionName: Neutral/PlayTest[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a51c1b86-9d8e-4a76-b007-a49f85c3fc4e
+    m_ActionName: Player/Sliding[/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 027a09cc-7fc8-4d6f-91c6-050bc52e4f06
+    m_ActionName: Trapper/SlidingBarP1[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a56b8ce7-f54c-47c5-b55c-c45f509fff0b
+    m_ActionName: Trapper/SlidingBarP2[/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 83a0a0a1-9a6c-4117-ac03-4f6b80349fd1
+    m_ActionName: Trapper/SpamQTEP1[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 43ca17f9-9e23-44ab-b545-b5eab31a3cac
+    m_ActionName: Trapper/SpamQTEP2[/Keyboard/k]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
