@@ -256,6 +256,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""FortuneWheel"",
+                    ""type"": ""Button"",
+                    ""id"": ""52842daa-391f-4b0e-866f-ea1b5b311a64"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -388,6 +396,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SpamQTEP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f6e2d2f-23c4-4192-8dd7-47cdc9aa1153"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FortuneWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb49a3ce-06d0-4c25-807c-4d03f6485e30"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FortuneWheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -562,6 +592,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Trapper_SlidingBarP2 = m_Trapper.FindAction("SlidingBarP2", throwIfNotFound: true);
         m_Trapper_SpamQTEP1 = m_Trapper.FindAction("SpamQTEP1", throwIfNotFound: true);
         m_Trapper_SpamQTEP2 = m_Trapper.FindAction("SpamQTEP2", throwIfNotFound: true);
+        m_Trapper_FortuneWheel = m_Trapper.FindAction("FortuneWheel", throwIfNotFound: true);
         // Neutral
         m_Neutral = asset.FindActionMap("Neutral", throwIfNotFound: true);
         m_Neutral_MenuSelection = m_Neutral.FindAction("Menu Selection", throwIfNotFound: true);
@@ -695,6 +726,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Trapper_SlidingBarP2;
     private readonly InputAction m_Trapper_SpamQTEP1;
     private readonly InputAction m_Trapper_SpamQTEP2;
+    private readonly InputAction m_Trapper_FortuneWheel;
     public struct TrapperActions
     {
         private @PlayerControls m_Wrapper;
@@ -704,6 +736,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @SlidingBarP2 => m_Wrapper.m_Trapper_SlidingBarP2;
         public InputAction @SpamQTEP1 => m_Wrapper.m_Trapper_SpamQTEP1;
         public InputAction @SpamQTEP2 => m_Wrapper.m_Trapper_SpamQTEP2;
+        public InputAction @FortuneWheel => m_Wrapper.m_Trapper_FortuneWheel;
         public InputActionMap Get() { return m_Wrapper.m_Trapper; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -728,6 +761,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SpamQTEP2.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
                 @SpamQTEP2.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
                 @SpamQTEP2.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
+                @FortuneWheel.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
+                @FortuneWheel.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
+                @FortuneWheel.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
             }
             m_Wrapper.m_TrapperActionsCallbackInterface = instance;
             if (instance != null)
@@ -747,6 +783,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SpamQTEP2.started += instance.OnSpamQTEP2;
                 @SpamQTEP2.performed += instance.OnSpamQTEP2;
                 @SpamQTEP2.canceled += instance.OnSpamQTEP2;
+                @FortuneWheel.started += instance.OnFortuneWheel;
+                @FortuneWheel.performed += instance.OnFortuneWheel;
+                @FortuneWheel.canceled += instance.OnFortuneWheel;
             }
         }
     }
@@ -842,6 +881,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSlidingBarP2(InputAction.CallbackContext context);
         void OnSpamQTEP1(InputAction.CallbackContext context);
         void OnSpamQTEP2(InputAction.CallbackContext context);
+        void OnFortuneWheel(InputAction.CallbackContext context);
     }
     public interface INeutralActions
     {

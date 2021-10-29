@@ -42,7 +42,7 @@ public class SpamQTEGame : MonoBehaviour
     private bool p1ButtonPressed;
     private bool p2ButtonPressed;
 
-    private PlayerTurnState _state;
+    private PlayerTurnState _state = PlayerTurnState.P1;
     
 
     private void Awake()
@@ -65,6 +65,7 @@ public class SpamQTEGame : MonoBehaviour
         timeSlider.maxValue = gameDuration;
 
         spamSlider.maxValue = sliderMaxValue;
+        spamSlider.value = 1f;
         sliderCurrentValue = sliderMaxValue;
         timerText.text = gameDuration.ToString();
 
@@ -113,12 +114,16 @@ public class SpamQTEGame : MonoBehaviour
 
         if (spamSlider.value > 0)
         {
-            spamSlider.value = sliderCurrentValue;
             sliderCurrentValue -= Time.deltaTime * decreaseSpeed;
+
             if (sliderCurrentValue >= sliderMaxValue)
             {
                 sliderCurrentValue = sliderMaxValue;
             }
+        }
+        else
+        {
+            
         }
 
         if (gameDuration > 0)
@@ -138,6 +143,8 @@ public class SpamQTEGame : MonoBehaviour
         {
             // Game Finish
             Debug.Log("Game Finish !");
+            Destroy(this.gameObject);
+            GameManager.gameManager.SpawnFortuneWheel();
         }
 
         if (ShakeTimer > intervalTime)
@@ -174,5 +181,6 @@ public class SpamQTEGame : MonoBehaviour
 
         ShakeTimer += Time.deltaTime;
         timerText.text = gameDuration.ToString("f2");
+        spamSlider.value = sliderCurrentValue;
     }
 }
