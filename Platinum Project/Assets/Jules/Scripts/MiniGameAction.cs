@@ -33,6 +33,22 @@ public class @MiniGameAction : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SpamQTEP1"",
+                    ""type"": ""Button"",
+                    ""id"": ""691cf0f1-c54e-457c-af94-e5c0e3c25ced"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SpamQTEP2"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e06671f-9ad8-4079-a780-0873a035eb20"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -79,6 +95,50 @@ public class @MiniGameAction : IInputActionCollection, IDisposable
                     ""action"": ""SlidingBarP2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7cc53fe4-def0-4fa1-a139-1b5a2e2ce7cf"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpamQTEP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5cbabd9-7fbe-4e19-82b2-5b7d919d7146"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpamQTEP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7dade3d-2be3-4e18-8c5e-b50406cc4dd5"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpamQTEP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a305e3b1-8ae6-44ba-b4b0-b9fba07f2823"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpamQTEP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -89,6 +149,8 @@ public class @MiniGameAction : IInputActionCollection, IDisposable
         m_MiniGame = asset.FindActionMap("MiniGame", throwIfNotFound: true);
         m_MiniGame_SlidingBarP1 = m_MiniGame.FindAction("SlidingBarP1", throwIfNotFound: true);
         m_MiniGame_SlidingBarP2 = m_MiniGame.FindAction("SlidingBarP2", throwIfNotFound: true);
+        m_MiniGame_SpamQTEP1 = m_MiniGame.FindAction("SpamQTEP1", throwIfNotFound: true);
+        m_MiniGame_SpamQTEP2 = m_MiniGame.FindAction("SpamQTEP2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -140,12 +202,16 @@ public class @MiniGameAction : IInputActionCollection, IDisposable
     private IMiniGameActions m_MiniGameActionsCallbackInterface;
     private readonly InputAction m_MiniGame_SlidingBarP1;
     private readonly InputAction m_MiniGame_SlidingBarP2;
+    private readonly InputAction m_MiniGame_SpamQTEP1;
+    private readonly InputAction m_MiniGame_SpamQTEP2;
     public struct MiniGameActions
     {
         private @MiniGameAction m_Wrapper;
         public MiniGameActions(@MiniGameAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @SlidingBarP1 => m_Wrapper.m_MiniGame_SlidingBarP1;
         public InputAction @SlidingBarP2 => m_Wrapper.m_MiniGame_SlidingBarP2;
+        public InputAction @SpamQTEP1 => m_Wrapper.m_MiniGame_SpamQTEP1;
+        public InputAction @SpamQTEP2 => m_Wrapper.m_MiniGame_SpamQTEP2;
         public InputActionMap Get() { return m_Wrapper.m_MiniGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -161,6 +227,12 @@ public class @MiniGameAction : IInputActionCollection, IDisposable
                 @SlidingBarP2.started -= m_Wrapper.m_MiniGameActionsCallbackInterface.OnSlidingBarP2;
                 @SlidingBarP2.performed -= m_Wrapper.m_MiniGameActionsCallbackInterface.OnSlidingBarP2;
                 @SlidingBarP2.canceled -= m_Wrapper.m_MiniGameActionsCallbackInterface.OnSlidingBarP2;
+                @SpamQTEP1.started -= m_Wrapper.m_MiniGameActionsCallbackInterface.OnSpamQTEP1;
+                @SpamQTEP1.performed -= m_Wrapper.m_MiniGameActionsCallbackInterface.OnSpamQTEP1;
+                @SpamQTEP1.canceled -= m_Wrapper.m_MiniGameActionsCallbackInterface.OnSpamQTEP1;
+                @SpamQTEP2.started -= m_Wrapper.m_MiniGameActionsCallbackInterface.OnSpamQTEP2;
+                @SpamQTEP2.performed -= m_Wrapper.m_MiniGameActionsCallbackInterface.OnSpamQTEP2;
+                @SpamQTEP2.canceled -= m_Wrapper.m_MiniGameActionsCallbackInterface.OnSpamQTEP2;
             }
             m_Wrapper.m_MiniGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -171,6 +243,12 @@ public class @MiniGameAction : IInputActionCollection, IDisposable
                 @SlidingBarP2.started += instance.OnSlidingBarP2;
                 @SlidingBarP2.performed += instance.OnSlidingBarP2;
                 @SlidingBarP2.canceled += instance.OnSlidingBarP2;
+                @SpamQTEP1.started += instance.OnSpamQTEP1;
+                @SpamQTEP1.performed += instance.OnSpamQTEP1;
+                @SpamQTEP1.canceled += instance.OnSpamQTEP1;
+                @SpamQTEP2.started += instance.OnSpamQTEP2;
+                @SpamQTEP2.performed += instance.OnSpamQTEP2;
+                @SpamQTEP2.canceled += instance.OnSpamQTEP2;
             }
         }
     }
@@ -179,5 +257,7 @@ public class @MiniGameAction : IInputActionCollection, IDisposable
     {
         void OnSlidingBarP1(InputAction.CallbackContext context);
         void OnSlidingBarP2(InputAction.CallbackContext context);
+        void OnSpamQTEP1(InputAction.CallbackContext context);
+        void OnSpamQTEP2(InputAction.CallbackContext context);
     }
 }

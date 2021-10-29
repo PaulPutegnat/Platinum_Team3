@@ -205,6 +205,38 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SlidingBarP1"",
+                    ""type"": ""Button"",
+                    ""id"": ""027a09cc-7fc8-4d6f-91c6-050bc52e4f06"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SlidingBarP2"",
+                    ""type"": ""Button"",
+                    ""id"": ""a56b8ce7-f54c-47c5-b55c-c45f509fff0b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SpamQTEP1"",
+                    ""type"": ""Button"",
+                    ""id"": ""83a0a0a1-9a6c-4117-ac03-4f6b80349fd1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SpamQTEP2"",
+                    ""type"": ""Button"",
+                    ""id"": ""43ca17f9-9e23-44ab-b545-b5eab31a3cac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -249,6 +281,94 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Trap Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a9deea7-841d-4ab3-a3ec-48e807001d57"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpamQTEP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ddc24656-7e91-4cc9-81b5-49c74a1e21ca"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpamQTEP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6979f2b1-4a2f-4bef-8cf9-7220e6835160"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlidingBarP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2286dad7-8c92-4ab4-aff1-1ba20cf08fc0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlidingBarP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8791c1b2-7c0a-4d67-9447-ac81b1903551"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlidingBarP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""624fbdd0-29ba-420b-8ded-075f3cc97c8c"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlidingBarP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec92aa19-0a42-4036-bdba-24ef5a2434cb"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpamQTEP1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb8fe9ec-f080-4b66-a94b-0605130eb22d"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpamQTEP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -407,6 +527,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Trapper
         m_Trapper = asset.FindActionMap("Trapper", throwIfNotFound: true);
         m_Trapper_TrapSelection = m_Trapper.FindAction("Trap Selection", throwIfNotFound: true);
+        m_Trapper_SlidingBarP1 = m_Trapper.FindAction("SlidingBarP1", throwIfNotFound: true);
+        m_Trapper_SlidingBarP2 = m_Trapper.FindAction("SlidingBarP2", throwIfNotFound: true);
+        m_Trapper_SpamQTEP1 = m_Trapper.FindAction("SpamQTEP1", throwIfNotFound: true);
+        m_Trapper_SpamQTEP2 = m_Trapper.FindAction("SpamQTEP2", throwIfNotFound: true);
         // Neutral
         m_Neutral = asset.FindActionMap("Neutral", throwIfNotFound: true);
         m_Neutral_MenuSelection = m_Neutral.FindAction("Menu Selection", throwIfNotFound: true);
@@ -528,11 +652,19 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Trapper;
     private ITrapperActions m_TrapperActionsCallbackInterface;
     private readonly InputAction m_Trapper_TrapSelection;
+    private readonly InputAction m_Trapper_SlidingBarP1;
+    private readonly InputAction m_Trapper_SlidingBarP2;
+    private readonly InputAction m_Trapper_SpamQTEP1;
+    private readonly InputAction m_Trapper_SpamQTEP2;
     public struct TrapperActions
     {
         private @PlayerControls m_Wrapper;
         public TrapperActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @TrapSelection => m_Wrapper.m_Trapper_TrapSelection;
+        public InputAction @SlidingBarP1 => m_Wrapper.m_Trapper_SlidingBarP1;
+        public InputAction @SlidingBarP2 => m_Wrapper.m_Trapper_SlidingBarP2;
+        public InputAction @SpamQTEP1 => m_Wrapper.m_Trapper_SpamQTEP1;
+        public InputAction @SpamQTEP2 => m_Wrapper.m_Trapper_SpamQTEP2;
         public InputActionMap Get() { return m_Wrapper.m_Trapper; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -545,6 +677,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @TrapSelection.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnTrapSelection;
                 @TrapSelection.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnTrapSelection;
                 @TrapSelection.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnTrapSelection;
+                @SlidingBarP1.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP1;
+                @SlidingBarP1.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP1;
+                @SlidingBarP1.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP1;
+                @SlidingBarP2.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP2;
+                @SlidingBarP2.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP2;
+                @SlidingBarP2.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP2;
+                @SpamQTEP1.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP1;
+                @SpamQTEP1.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP1;
+                @SpamQTEP1.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP1;
+                @SpamQTEP2.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
+                @SpamQTEP2.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
+                @SpamQTEP2.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
             }
             m_Wrapper.m_TrapperActionsCallbackInterface = instance;
             if (instance != null)
@@ -552,6 +696,18 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @TrapSelection.started += instance.OnTrapSelection;
                 @TrapSelection.performed += instance.OnTrapSelection;
                 @TrapSelection.canceled += instance.OnTrapSelection;
+                @SlidingBarP1.started += instance.OnSlidingBarP1;
+                @SlidingBarP1.performed += instance.OnSlidingBarP1;
+                @SlidingBarP1.canceled += instance.OnSlidingBarP1;
+                @SlidingBarP2.started += instance.OnSlidingBarP2;
+                @SlidingBarP2.performed += instance.OnSlidingBarP2;
+                @SlidingBarP2.canceled += instance.OnSlidingBarP2;
+                @SpamQTEP1.started += instance.OnSpamQTEP1;
+                @SpamQTEP1.performed += instance.OnSpamQTEP1;
+                @SpamQTEP1.canceled += instance.OnSpamQTEP1;
+                @SpamQTEP2.started += instance.OnSpamQTEP2;
+                @SpamQTEP2.performed += instance.OnSpamQTEP2;
+                @SpamQTEP2.canceled += instance.OnSpamQTEP2;
             }
         }
     }
@@ -642,6 +798,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface ITrapperActions
     {
         void OnTrapSelection(InputAction.CallbackContext context);
+        void OnSlidingBarP1(InputAction.CallbackContext context);
+        void OnSlidingBarP2(InputAction.CallbackContext context);
+        void OnSpamQTEP1(InputAction.CallbackContext context);
+        void OnSpamQTEP2(InputAction.CallbackContext context);
     }
     public interface INeutralActions
     {
