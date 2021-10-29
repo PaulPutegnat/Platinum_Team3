@@ -12,6 +12,8 @@ public class TestCam : MonoBehaviour
 
     private int i = 0;
     private float Timer = 0;
+    private bool _startPositionSet = false;
+    private float _startFov;
 
     void Update()
     {
@@ -29,6 +31,11 @@ public class TestCam : MonoBehaviour
 
         if (PointsInfos[i].ChangeFov && i < PointsInfos.Length - 1)
         {
+            if(!_startPositionSet)
+            {
+                _startFov = Camera.main.fieldOfView;
+                _startPositionSet = true;
+            }
             ChangeFov();
         }
         
@@ -43,7 +50,7 @@ public class TestCam : MonoBehaviour
         Transform currentPosition = PointsInfos[i].Target.transform;
         Transform targetPosition = PointsInfos[i + 1].Target.transform;
 
-        float timeToTarget = PointsInfos[i].TimeToNextPostion;
+        float timeToTarget = PointsInfos[i].TimeToNextPosition;
         float positionPercent = (timeToTarget > 0) ? Timer / timeToTarget : 1f;
 
         transform.position = Vector3.Lerp(currentPosition.position, targetPosition.position, positionPercent);
@@ -82,9 +89,8 @@ public class TestCam : MonoBehaviour
 
     public void ChangeFov()
     {
-        float currentFov = Camera.main.fieldOfView;
-        float targetFov = PointsInfos[i].Fov;
-
+        float currentFov = _startFov;
+        int targetFov = PointsInfos[i].Fov;
         float timeToFov = PointsInfos[i].TimeToFov;
         float fovPercent = Timer / timeToFov;
 
@@ -93,6 +99,7 @@ public class TestCam : MonoBehaviour
         if (Camera.main.fieldOfView == targetFov)
         {
             Timer = 0;
+            _startPositionSet = false;
 
             if (i < PointsInfos.Length)
             {

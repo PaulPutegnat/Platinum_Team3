@@ -43,7 +43,7 @@ public class PointInfoEditor : PropertyDrawer
             position.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(position, property.FindPropertyRelative("Target"));
             position.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToNextPostion"));
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToNextPosition"));
         }
 
         position.y += EditorGUIUtility.singleLineHeight;
