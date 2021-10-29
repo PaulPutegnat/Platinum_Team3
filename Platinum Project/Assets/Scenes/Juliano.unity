@@ -1311,7 +1311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7887477738972433870, guid: c63d4a5c850d4814390e919545516e3f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7887477738972433870, guid: c63d4a5c850d4814390e919545516e3f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7897,7 +7897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657918967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 39.8, y: 14.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1449766701}
@@ -34970,7 +34970,7 @@ Transform:
   m_Children:
   - {fileID: 657918968}
   m_Father: {fileID: 0}
-  m_RootOrder: 48
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1465283874
 GameObject:
@@ -35574,7 +35574,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 62fe2bbb98f505d4db2159018b8fc457, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 62fe2bbb98f505d4db2159018b8fc457, type: 3}
       propertyPath: m_LocalScale.x
@@ -46850,6 +46850,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bc6d87a09fdefce428f22b0e11107d7e, type: 3}
   m_PrefabInstance: {fileID: 1906412738}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1943687212 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8990142025894160572, guid: baec128bdd4b06b468e4616dc2b6de85, type: 3}
+  m_PrefabInstance: {fileID: 944646031}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1964258775
 GameObject:
   m_ObjectHideFlags: 0
@@ -51877,7 +51882,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1001 &1998335434
 PrefabInstance:
@@ -52117,7 +52122,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 149847589}
-  - {fileID: 948155147}
+  - {fileID: 1943687212}
   - {fileID: 1089324033}
   - {fileID: 2080234665}
   - {fileID: 1350629363}
