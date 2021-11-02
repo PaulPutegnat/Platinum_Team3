@@ -11,29 +11,54 @@ public class TestCam : MonoBehaviour
 
     private int i = 0;
     private float Timer = 0;
-    private bool _startPositionSet = false;
+
+    private bool _positionSettings = false;
+    private Vector3 _startPosition;
+    private float _timeToMove;
+    private float _positionPercent;
+
+
+    private bool _rotationSettings = false;
+    private Quaternion _startRotation;
+    private float _timeToRotate;
+    private float _rotationPercent; 
+
+
+    private bool _fovSettings = false;
     private float _startFov;
+    private float _timeToFov;
+    private float _fovPercent;
 
     void Update()
     {
         Timer += Time.deltaTime;
 
-        if (PointsInfos[i].ChangePosition && i < PointsInfos.Length - 1)
+        if (PointsInfos[i].ChangePosition && i < PointsInfos.Length)
         {
+            if (!_positionSettings)
+            {
+                _startPosition = Camera.main.transform.position;
+                _positionSettings = true;
+            }
             MoveCamera();
         }
 
-        if (PointsInfos[i].ChangeRotation && i < PointsInfos.Length - 1)
+        if (PointsInfos[i].ChangeRotation && i < PointsInfos.Length)
         {
+            if (!_rotationSettings)
+            {
+                _startRotation = Camera.main.transform.rotation;
+                _rotationSettings = true;
+            }
             RotateCamera();
         }
 
-        if (PointsInfos[i].ChangeFov && i < PointsInfos.Length - 1)
+        if (PointsInfos[i].ChangeFov && i < PointsInfos.Length)
         {
-            if(!_startPositionSet)
+            if(!_fovSettings)
             {
                 _startFov = Camera.main.fieldOfView;
-                _startPositionSet = true;
+                _fovSettings = true;
             }
             ChangeFov();
         }
@@ -46,64 +71,67 @@ public class TestCam : MonoBehaviour
 
     public void MoveCamera()
     {
-        Transform currentPosition = PointsInfos[i].Target.transform;
-        Transform targetPosition = PointsInfos[i + 1].Target.transform;
+        Vector3 currentPosition = _startPosition;
+        Vector3 targetPosition = PointsInfos[i].Target.transform.position;
 
-        float timeToTarget = PointsInfos[i].TimeToNextPosition;
-        float positionPercent = (timeToTarget > 0) ? Timer / timeToTarget : 1f;
+        _timeToMove = PointsInfos[i].TimeToNextPosition;
+        _positionPercent = (_timeToMove > 0) ? Timer / _timeToMove : 1f;
 
-        transform.position = Vector3.Lerp(currentPosition.position, targetPosition.position, positionPercent);
+        transform.position = Vector3.Lerp(currentPosition, targetPosition, _positionPercent);
 
-        if (transform.position == targetPosition.position)
+        if (transform.position == targetPosition)
         {
             Timer = 0;
-
-            if (i < PointsInfos.Length)
-            {
-                i++;
-            }
+            NextElement();
+            _positionSettings = false;
         }
     }
 
     public void RotateCamera()
     {
-        Transform currentRotation = PointsInfos[i].Target.transform;
-        Transform targetRotation = PointsInfos[i + 1].Target.transform;
+        Quaternion currentRotation = _startRotation;
+        Quaternion targetRotation = PointsInfos[i].Target.transform.rotation;
 
-        float timeToRotate = PointsInfos[i].TimeToRotate;
-        float rotationPercent = Timer / timeToRotate;
+        _timeToRotate = PointsInfos[i].TimeToRotate;
+        _rotationPercent = Timer / _timeToRotate;
 
-        transform.rotation = Quaternion.Lerp(currentRotation.rotation, targetRotation.rotation, rotationPercent);
+        transform.rotation = Quaternion.Lerp(currentRotation, targetRotation, _rotationPercent);
 
-        if (transform.rotation == targetRotation.rotation)
+        if (transform.rotation == targetRotation)
         {
             Timer = 0;
-
-            if (i < PointsInfos.Length)
-            {
-                i++;
-            }
+            NextElement();
+            _rotationSettings = false;
         }
     }
 
     public void ChangeFov()
     {
         float currentFov = _startFov;
-        int targetFov = PointsInfos[i].Fov;
-        float timeToFov = PointsInfos[i].TimeToFov;
-        float fovPercent = Timer / timeToFov;
+        float targetFov = PointsInfos[i].Fov;
 
-        Camera.main.fieldOfView = Mathf.Lerp(currentFov, targetFov, fovPercent);
+        _timeToFov = PointsInfos[i].TimeToFov;
+        _fovPercent = Timer / _timeToFov;
+
+        Camera.main.fieldOfView = Mathf.Lerp(currentFov, targetFov, _fovPercent);
 
         if (Camera.main.fieldOfView == targetFov)
         {
             Timer = 0;
-            _startPositionSet = false;
+            NextElement();
+            _fovSettings = false;
+        }
+    }
 
-            if (i < PointsInfos.Length)
-            {
-                i++;
-            }
+    public void NextElement()
+    {
+        if (_positionSettings && _rotationSettings && _fovSettings)
+        {
+            //Mathf.Max();
+        }
+        if (i < PointsInfos.Length - 1)
+        {
+            i++;
         }
     }
 
