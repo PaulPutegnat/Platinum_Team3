@@ -92,7 +92,8 @@ public class TESTCONTROLER : MonoBehaviour
         if (jump && (IsGrounded() || CT > 0))
         {
             //Vector2.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
-            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
+            float InertyMultiplier = Mathf.Clamp(Mathf.Abs(_rigidbody.velocity.x) / maxspeed, 0.6f, 1) ;
+            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce* InertyMultiplier, 0);
             CT = 0;
         }
 
