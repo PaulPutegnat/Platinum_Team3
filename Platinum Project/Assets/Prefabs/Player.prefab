@@ -98,16 +98,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06139af229e2a454d8b72e0f88f92bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
+  movementSpeed: 10
   jumpForce: 15
-  turnSmoothTime: 0.1
+  neutralJumpForce: 0.8
+  turnSmoothTime: 0.05
   _movementInput: {x: 0, y: 0}
-  maxspeed: 2.43
-  Accel: 0.86
+  maxspeed: 1.3
+  Accel: 0.3
   deadZoneController: 0.1
   jump: 0
   Initial_CT: 0.2
-  GravMultiplier: 1.1
+  GravMultiplier: 1.5
+  airControlDiviser: 1.3
+  HasChangedDirection: 0
 --- !u!65 &-1963897707382321597
 BoxCollider:
   m_ObjectHideFlags: 0
