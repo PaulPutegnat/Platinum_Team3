@@ -10,6 +10,11 @@ public class TESTCONTROLER : MonoBehaviour
     [Header("Movement")]
     public float movementSpeed = 6;
     public float jumpForce = 30;
+
+    [SerializeField]
+    [Range(0.6f, 0.8f)]
+    float neutralJumpForce;
+
     float _distToGround;
     public float turnSmoothTime = 0.1f;
     float _turnSmoothVelocity;
@@ -32,7 +37,10 @@ public class TESTCONTROLER : MonoBehaviour
 
     [Header("Coyote Time")]
     public bool jump;
+
+    [Range(0.1f, 0.3f)]
     public float Initial_CT;
+
     float CT;
     public float GravMultiplier;
 
@@ -105,7 +113,7 @@ public class TESTCONTROLER : MonoBehaviour
          if (jump && (IsGrounded() || CT > 0))
          { 
              //Vector2.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
-             float InertyMultiplier = Mathf.Clamp(Mathf.Abs(_rigidbody.velocity.x) / maxspeed, 0.6f, 1) ;
+             float InertyMultiplier = Mathf.Clamp(Mathf.Abs(_rigidbody.velocity.x) / maxspeed, neutralJumpForce, 1) ;
              _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce* InertyMultiplier, 0);
              CT = 0;
          }

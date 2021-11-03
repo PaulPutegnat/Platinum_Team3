@@ -27,7 +27,7 @@ public class neutralcontroller : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log(GameManager.gameManager.gameObject.GetComponent<PlayerInputManager>().playerCount);
+        //Debug.Log(GameManager.gameManager.gameObject.GetComponent<PlayerInputManager>().playerCount);
         transform.SetParent(GameObject.Find("Canvas").transform);
         transform.localScale *= 0.5f;
         switch (GameManager.gameManager.gameObject.GetComponent<PlayerInputManager>().playerCount)
