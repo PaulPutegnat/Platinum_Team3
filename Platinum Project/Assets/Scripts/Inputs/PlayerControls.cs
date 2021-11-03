@@ -465,7 +465,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""58b5adc1-504b-4ac8-a192-4398a34b6a3d"",
                     ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Menu Selection"",

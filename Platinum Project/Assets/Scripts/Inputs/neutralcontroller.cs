@@ -25,6 +25,32 @@ public class neutralcontroller : MonoBehaviour
         TRAPPER
     }
 
+    private void Awake()
+    {
+        //Debug.Log(GameManager.gameManager.gameObject.GetComponent<PlayerInputManager>().playerCount);
+        transform.SetParent(GameObject.Find("Canvas").transform);
+        transform.localScale *= 0.5f;
+        switch (GameManager.gameManager.gameObject.GetComponent<PlayerInputManager>().playerCount)
+        {
+            case 1:
+                GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 300, 0);
+                break;
+
+            case 2:
+                GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 100, 0);
+                break;
+
+            case 3:
+                GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -100, 0);
+                break;
+
+            case 4:
+                GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -300, 0);
+                break;
+        }
+        
+
+    }
 
     private void Update()
     {

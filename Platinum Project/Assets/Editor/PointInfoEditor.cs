@@ -20,7 +20,7 @@ public class PointInfoEditor : PropertyDrawer
         //Change element size based on default unity element size
         position.height = EditorGUIUtility.singleLineHeight;
 
-        //Display into editor using position 
+        //Display into editor using position
         EditorGUI.PropertyField(position, property.FindPropertyRelative("Name"));
 
         //Move rectangle based on previous element height;

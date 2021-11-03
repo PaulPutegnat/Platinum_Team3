@@ -10,12 +10,19 @@ public class TESTCONTROLER : MonoBehaviour
     [Header("Movement")]
     public float movementSpeed = 6;
     public float jumpForce = 30;
+
+    [SerializeField]
+    [Range(0.6f, 1f)]
+    float neutralJumpForce;
+
     float _distToGround;
     public float turnSmoothTime = 0.1f;
     float _turnSmoothVelocity;
 
     [HideInInspector]
     public Vector2 _movementInput = Vector2.zero;
+
+
 
     private Rigidbody _rigidbody;
     private float _acceleration;
@@ -30,13 +37,21 @@ public class TESTCONTROLER : MonoBehaviour
 
     [Header("Coyote Time")]
     public bool jump;
+
+    [Range(0.1f, 0.3f)]
     public float Initial_CT;
+
     float CT;
     public float GravMultiplier;
 
+    [Range(1f, 3f)]
+    public float airControlDiviser;
+
     private bool Slide;
     private bool IsLocked = false;
-    private float VelocityLastFrame;
+    private float VelocityYLastFrame;
+    private float VelocityXLastFrame;
+    [SerializeField]bool HasChangedDirection = false;
     private BoxCollider box;
     private Vector3 InitialSize;
 
@@ -50,19 +65,38 @@ public class TESTCONTROLER : MonoBehaviour
         _distToGround = GetComponent<BoxCollider>().bounds.extents.y;
         box = GetComponent<BoxCollider>();
         InitialSize = box.size;
+        GameObject.Find("RUNNER").SetActive(false);
+        GameObject.Find("TRAPPER").SetActive(false);
     }
 
     private void FixedUpdate()
     {
         //Mouvements du personnage
-        Debug.Log(IsGrounded());
 
         var movement = _movementInput.x;
+
+        //JUMP
+        if (IsGrounded())
+        {
+            CT = Initial_CT;
+            HasChangedDirection = false;
+        }
+        else
+        {
+            CT -= Time.deltaTime;
+
+            if ((VelocityXLastFrame >= 0 && movement <= 0) || (VelocityXLastFrame <= 0 && movement >= 0))
+            {
+                HasChangedDirection = true;
+            }
+        }
+
+       
+       
         if (_movementInput.x < deadZoneController && _movementInput.x > -deadZoneController)
         {
             _movementInput.x = 0f;
             _rigidbody.velocity = new Vector3(_rigidbody.velocity.x / 2, _rigidbody.velocity.y, _rigidbody.velocity.z);
-
         }
 
         if (movement != 0)
@@ -78,42 +112,34 @@ public class TESTCONTROLER : MonoBehaviour
 
         _rigidbody.velocity = new Vector3(movement * ((movementSpeed * _acceleration)), _rigidbody.velocity.y, 0);
 
+         if (jump && (IsGrounded() || CT > 0))
+         { 
+             //Vector2.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
+             float InertyMultiplier = Mathf.Clamp(Mathf.Abs(_rigidbody.velocity.x) / maxspeed, neutralJumpForce, 1) ;
+             _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce* InertyMultiplier, 0);
+             CT = 0;
+         }
 
-        //JUMP
-        if (IsGrounded())
-        {
-            CT = Initial_CT;
-        }
-        else
-        {
-            CT -= Time.deltaTime;
-        }
+         if (_rigidbody.velocity.y < 0)
+         {
+             _rigidbody.velocity += new Vector3(0, -GravMultiplier, 0);
+         }
 
-        if (jump && (IsGrounded() || CT > 0))
-        {
-            //Vector2.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
-            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce, 0);
-            CT = 0;
-        }
 
-        if (_rigidbody.velocity.y < 0)
-        {
-            _rigidbody.velocity += new Vector3(0, -GravMultiplier, 0);
-        }
 
         if (Slide)
         {
-            if (Mathf.Abs(VelocityLastFrame) > 4f)
+            if (Mathf.Abs(VelocityYLastFrame) > 4f)
             {
-                _rigidbody.velocity = new Vector3(VelocityLastFrame, 0, 0);
+                _rigidbody.velocity = new Vector3(VelocityYLastFrame, 0, 0);
                 box.size = new Vector3(box.size.x, box.size.y / 2, box.size.z);
                 
-                VelocityLastFrame /= 1.02f;
+                VelocityYLastFrame /= 1.02f;
             }
             else
             {
                 _rigidbody.velocity = new Vector3(0,0,0);
-                VelocityLastFrame = 0f;
+                VelocityYLastFrame = 0f;
                 Slide = false;
                 IsLocked = false;
                 box.size = InitialSize;
@@ -134,6 +160,7 @@ public class TESTCONTROLER : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
         jump = false;
+        VelocityXLastFrame = _rigidbody.velocity.x;
     }
 
     bool IsGrounded()
@@ -148,9 +175,22 @@ public class TESTCONTROLER : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        
         _movementInput = Vector2.zero;
         if (!IsLocked)
-            _movementInput = context.ReadValue<Vector2>();
+        {
+            if (!HasChangedDirection)
+            {
+                _movementInput = context.ReadValue<Vector2>();
+            }
+            else
+            {
+                _movementInput = context.ReadValue<Vector2>() / airControlDiviser;
+            }
+        }
+
+
+
     }
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -163,7 +203,7 @@ public class TESTCONTROLER : MonoBehaviour
         if (!IsLocked)
         {
         Slide = context.ReadValueAsButton();
-        VelocityLastFrame = _rigidbody.velocity.x;
+        VelocityYLastFrame = _rigidbody.velocity.x;
         IsLocked = true;
         }
 
