@@ -175,7 +175,7 @@ public class TESTCONTROLER : MonoBehaviour
             }
             else
             {
-                _movementInput = context.ReadValue<Vector2>() * airControlDiviser;
+                _movementInput = context.ReadValue<Vector2>() / airControlDiviser;
             }
         }
 
