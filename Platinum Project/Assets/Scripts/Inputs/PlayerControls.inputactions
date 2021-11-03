@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Sliding",
+                    "type": "Button",
+                    "id": "a51c1b86-9d8e-4a76-b007-a49f85c3fc4e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -178,6 +186,17 @@
                     "action": "Echap",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d222977c-5ac1-40c9-b589-3dfbd2101b6f",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sliding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -221,6 +240,14 @@
                     "name": "SpamQTEP2",
                     "type": "Button",
                     "id": "43ca17f9-9e23-44ab-b545-b5eab31a3cac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "FortuneWheel",
+                    "type": "Button",
+                    "id": "52842daa-391f-4b0e-866f-ea1b5b311a64",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -358,6 +385,28 @@
                     "action": "SpamQTEP1",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f6e2d2f-23c4-4192-8dd7-47cdc9aa1153",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FortuneWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb49a3ce-06d0-4c25-807c-4d03f6485e30",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FortuneWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -403,7 +452,7 @@
                     "name": "",
                     "id": "58b5adc1-504b-4ac8-a192-4398a34b6a3d",
                     "path": "<Gamepad>/leftStick",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "Controller",
                     "action": "Menu Selection",
@@ -472,6 +521,17 @@
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "PlayTest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6d9777d-a9d8-4136-975c-de8651796733",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "PlayTest",
                     "isComposite": false,
                     "isPartOfComposite": false

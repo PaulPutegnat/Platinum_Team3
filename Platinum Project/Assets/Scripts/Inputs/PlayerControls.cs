@@ -57,6 +57,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sliding"",
+                    ""type"": ""Button"",
+                    ""id"": ""a51c1b86-9d8e-4a76-b007-a49f85c3fc4e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -191,6 +199,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Echap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d222977c-5ac1-40c9-b589-3dfbd2101b6f"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sliding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -234,6 +253,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": ""SpamQTEP2"",
                     ""type"": ""Button"",
                     ""id"": ""43ca17f9-9e23-44ab-b545-b5eab31a3cac"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""FortuneWheel"",
+                    ""type"": ""Button"",
+                    ""id"": ""52842daa-391f-4b0e-866f-ea1b5b311a64"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -371,6 +398,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""SpamQTEP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f6e2d2f-23c4-4192-8dd7-47cdc9aa1153"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FortuneWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fb49a3ce-06d0-4c25-807c-4d03f6485e30"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FortuneWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -416,7 +465,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""58b5adc1-504b-4ac8-a192-4398a34b6a3d"",
                     ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Menu Selection"",
@@ -488,6 +537,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""PlayTest"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6d9777d-a9d8-4136-975c-de8651796733"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayTest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -524,6 +584,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_PressG = m_Player.FindAction("PressG", throwIfNotFound: true);
         m_Player_PressH = m_Player.FindAction("PressH", throwIfNotFound: true);
         m_Player_Echap = m_Player.FindAction("Echap", throwIfNotFound: true);
+        m_Player_Sliding = m_Player.FindAction("Sliding", throwIfNotFound: true);
         // Trapper
         m_Trapper = asset.FindActionMap("Trapper", throwIfNotFound: true);
         m_Trapper_TrapSelection = m_Trapper.FindAction("Trap Selection", throwIfNotFound: true);
@@ -531,6 +592,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Trapper_SlidingBarP2 = m_Trapper.FindAction("SlidingBarP2", throwIfNotFound: true);
         m_Trapper_SpamQTEP1 = m_Trapper.FindAction("SpamQTEP1", throwIfNotFound: true);
         m_Trapper_SpamQTEP2 = m_Trapper.FindAction("SpamQTEP2", throwIfNotFound: true);
+        m_Trapper_FortuneWheel = m_Trapper.FindAction("FortuneWheel", throwIfNotFound: true);
         // Neutral
         m_Neutral = asset.FindActionMap("Neutral", throwIfNotFound: true);
         m_Neutral_MenuSelection = m_Neutral.FindAction("Menu Selection", throwIfNotFound: true);
@@ -591,6 +653,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_PressG;
     private readonly InputAction m_Player_PressH;
     private readonly InputAction m_Player_Echap;
+    private readonly InputAction m_Player_Sliding;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -600,6 +663,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @PressG => m_Wrapper.m_Player_PressG;
         public InputAction @PressH => m_Wrapper.m_Player_PressH;
         public InputAction @Echap => m_Wrapper.m_Player_Echap;
+        public InputAction @Sliding => m_Wrapper.m_Player_Sliding;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -624,6 +688,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Echap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEchap;
                 @Echap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEchap;
                 @Echap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEchap;
+                @Sliding.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSliding;
+                @Sliding.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSliding;
+                @Sliding.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSliding;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -643,6 +710,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Echap.started += instance.OnEchap;
                 @Echap.performed += instance.OnEchap;
                 @Echap.canceled += instance.OnEchap;
+                @Sliding.started += instance.OnSliding;
+                @Sliding.performed += instance.OnSliding;
+                @Sliding.canceled += instance.OnSliding;
             }
         }
     }
@@ -656,6 +726,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Trapper_SlidingBarP2;
     private readonly InputAction m_Trapper_SpamQTEP1;
     private readonly InputAction m_Trapper_SpamQTEP2;
+    private readonly InputAction m_Trapper_FortuneWheel;
     public struct TrapperActions
     {
         private @PlayerControls m_Wrapper;
@@ -665,6 +736,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @SlidingBarP2 => m_Wrapper.m_Trapper_SlidingBarP2;
         public InputAction @SpamQTEP1 => m_Wrapper.m_Trapper_SpamQTEP1;
         public InputAction @SpamQTEP2 => m_Wrapper.m_Trapper_SpamQTEP2;
+        public InputAction @FortuneWheel => m_Wrapper.m_Trapper_FortuneWheel;
         public InputActionMap Get() { return m_Wrapper.m_Trapper; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -689,6 +761,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SpamQTEP2.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
                 @SpamQTEP2.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
                 @SpamQTEP2.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
+                @FortuneWheel.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
+                @FortuneWheel.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
+                @FortuneWheel.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
             }
             m_Wrapper.m_TrapperActionsCallbackInterface = instance;
             if (instance != null)
@@ -708,6 +783,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SpamQTEP2.started += instance.OnSpamQTEP2;
                 @SpamQTEP2.performed += instance.OnSpamQTEP2;
                 @SpamQTEP2.canceled += instance.OnSpamQTEP2;
+                @FortuneWheel.started += instance.OnFortuneWheel;
+                @FortuneWheel.performed += instance.OnFortuneWheel;
+                @FortuneWheel.canceled += instance.OnFortuneWheel;
             }
         }
     }
@@ -794,6 +872,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnPressG(InputAction.CallbackContext context);
         void OnPressH(InputAction.CallbackContext context);
         void OnEchap(InputAction.CallbackContext context);
+        void OnSliding(InputAction.CallbackContext context);
     }
     public interface ITrapperActions
     {
@@ -802,6 +881,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSlidingBarP2(InputAction.CallbackContext context);
         void OnSpamQTEP1(InputAction.CallbackContext context);
         void OnSpamQTEP2(InputAction.CallbackContext context);
+        void OnFortuneWheel(InputAction.CallbackContext context);
     }
     public interface INeutralActions
     {

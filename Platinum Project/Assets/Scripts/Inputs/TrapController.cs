@@ -23,4 +23,12 @@ public class TrapController : MonoBehaviour
         }
     }
 
+    public void SlidingGameInput(InputAction.CallbackContext context)
+    {
+        if (GameObject.FindObjectOfType<SlidingBarGame>())
+        {
+            //Call de la fonction
+            //GameObject.FindObjectOfType<SlidingBarGame>()."future fonction"
+        }
+    }
 }

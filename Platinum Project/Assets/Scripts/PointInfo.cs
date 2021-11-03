@@ -5,13 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class PointInfo
 {
+    public string Name;
+
     public bool ChangeFov;
     public bool ChangePosition;
     public bool ChangeRotation;
 
     public GameObject Target;
-    public float Fov;
+    public int Fov;
     public float TimeToFov;
-    public float TimeToNextTarget;
+    public float TimeToNextPosition;
     public float TimeToRotate;
 }

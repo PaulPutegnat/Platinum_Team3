@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 99d75edc62fcd2d4e9867215b322218a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Paul.unity
     guid: a369b128b659d5d42b9daa16751a1480
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Tom.unity
     guid: 9f6bcc6d4823293478082841517f5b72
   - enabled: 1
     path: Assets/Scenes/Victoire.unity
     guid: db57be0e4789c7748bf9939f18f19277
+  - enabled: 1
+    path: Assets/Scenes/Juliano.unity
+    guid: 0f28fdd32fd694942bc46deb2bc11d4a
   m_configObjects: {}
