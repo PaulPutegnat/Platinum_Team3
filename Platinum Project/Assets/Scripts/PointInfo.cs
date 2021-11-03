@@ -13,7 +13,5 @@ public class PointInfo
 
     public GameObject Target;
     public int Fov;
-    public float TimeToFov;
-    public float TimeToNextPosition;
-    public float TimeToRotate;
+    public float StepDuration;
 }

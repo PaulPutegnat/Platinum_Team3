@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   jumpForce: 15
-  neutralJumpForce: 0.8
+  neutralJumpForce: 0.9
   turnSmoothTime: 0.05
   _movementInput: {x: 0, y: 0}
   maxspeed: 1.3
