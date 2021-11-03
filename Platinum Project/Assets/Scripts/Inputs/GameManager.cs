@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public TrapController Trapper;
     public GameObject[] players;
     public GameObject fortuneWheel;
+    public GameObject QTEGame;
+    private GameObject QteGameRefGameObject;
+    public SpamQTEGame QteGameScriptGame;
+    
 
     [Header("Spawn")]
     public Transform spawn;
@@ -32,7 +36,8 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        canvas = FindObjectOfType<Canvas>().transform;
+        canvas = GameObject.Find("Canvas").transform;
+        StartCoroutine(SpawnQTE());
     }
 
     public void SpawnFortuneWheel()
@@ -40,6 +45,12 @@ public class GameManager : MonoBehaviour
         GameObject fortuneWheelGameObject = Instantiate(fortuneWheel, Vector3.zero, Quaternion.identity, canvas);
         fortuneWheelGameObject.transform.localPosition = Vector3.zero;
     }
-
+    IEnumerator SpawnQTE()
+    {
+        yield return new WaitForSeconds(5);
+        QteGameRefGameObject = Instantiate(QTEGame, Vector3.zero, Quaternion.identity, canvas);
+        QteGameScriptGame = QteGameRefGameObject.GetComponent<SpamQTEGame>();
+    }
+    
 
 }
