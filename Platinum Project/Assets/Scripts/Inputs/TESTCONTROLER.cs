@@ -65,6 +65,8 @@ public class TESTCONTROLER : MonoBehaviour
         _distToGround = GetComponent<BoxCollider>().bounds.extents.y;
         box = GetComponent<BoxCollider>();
         InitialSize = box.size;
+        GameObject.Find("RUNNER").SetActive(false);
+        GameObject.Find("TRAPPER").SetActive(false);
     }
 
     private void FixedUpdate()
