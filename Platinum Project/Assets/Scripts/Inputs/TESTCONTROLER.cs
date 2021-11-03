@@ -12,7 +12,7 @@ public class TESTCONTROLER : MonoBehaviour
     public float jumpForce = 30;
 
     [SerializeField]
-    [Range(0.6f, 0.8f)]
+    [Range(0.6f, 1f)]
     float neutralJumpForce;
 
     float _distToGround;
