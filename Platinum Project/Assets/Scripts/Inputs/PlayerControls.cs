@@ -341,7 +341,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""SpamQTEP2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -352,7 +352,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""SpamQTEP2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -404,10 +404,10 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ec92aa19-0a42-4036-bdba-24ef5a2434cb"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/j"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""SpamQTEP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -418,7 +418,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""SpamQTEP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -429,7 +429,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""FortuneWheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -440,7 +440,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""FortuneWheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

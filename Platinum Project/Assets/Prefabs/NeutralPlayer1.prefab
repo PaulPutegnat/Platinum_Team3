@@ -167,7 +167,19 @@ MonoBehaviour:
     m_ActionId: 5f564d11-149c-4785-94b8-d67a60f4cd79
     m_ActionName: Player/PressH[/Keyboard/h]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a093115c-94bc-413e-9c04-0ffa77239479
     m_ActionName: Trapper/Trap Selection[/Keyboard/e,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
@@ -250,6 +262,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1d0dcf97-da46-44d1-826d-c39ebf57f474
     m_ActionName: Neutral/PlayTest[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a51c1b86-9d8e-4a76-b007-a49f85c3fc4e
+    m_ActionName: Player/Sliding[/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 027a09cc-7fc8-4d6f-91c6-050bc52e4f06
+    m_ActionName: Trapper/SlidingBarP1[/Keyboard/1,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a56b8ce7-f54c-47c5-b55c-c45f509fff0b
+    m_ActionName: Trapper/SlidingBarP2[/Keyboard/2,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 83a0a0a1-9a6c-4117-ac03-4f6b80349fd1
+    m_ActionName: Trapper/SpamQTEP1[/Keyboard/j,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 43ca17f9-9e23-44ab-b545-b5eab31a3cac
+    m_ActionName: Trapper/SpamQTEP2[/Keyboard/k,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 52842daa-391f-4b0e-866f-ea1b5b311a64
+    m_ActionName: Trapper/FortuneWheel[/XInputControllerWindows/buttonSouth,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Neutral
@@ -267,5 +327,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02da4f5e1811e69458cb936f1334a755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runnerRef: {fileID: 0}
-  TrapperRef: {fileID: 0}
