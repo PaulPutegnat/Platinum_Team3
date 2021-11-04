@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class SpamQTEGame : MonoBehaviour
 {
@@ -37,8 +38,8 @@ public class SpamQTEGame : MonoBehaviour
     public float sliderCurrentValue;
     public float decreaseSpeed;
 
-    private bool p1ButtonPressed;
-    private bool p2ButtonPressed;
+    public bool p1ButtonPressed;
+    public bool p2ButtonPressed;
 
     private PlayerTurnState _state = PlayerTurnState.P1;
     
@@ -75,11 +76,15 @@ public class SpamQTEGame : MonoBehaviour
 
     }
 
-
     void Update()
     {
-        p1ButtonPressed = inputActions.Trapper.SpamQTEP1.triggered;
-        p2ButtonPressed = inputActions.Trapper.SpamQTEP2.triggered;
+        
+        //p1ButtonPressed = inputActions.Trapper.SpamQTEP1.triggered;
+        p1ButtonPressed = GameManager.gameManager.players[2].GetComponent<PlayerInput>().actions.FindAction("SpamQTEP1").triggered;
+        //p2ButtonPressed = inputActions.Trapper.SpamQTEP2.triggered;
+        p2ButtonPressed = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("SpamQTEP2").triggered;
+
+
 
         switch (_state)
         {
@@ -99,16 +104,21 @@ public class SpamQTEGame : MonoBehaviour
             case PlayerTurnState.P2:
                 if (p2ButtonPressed)
                 {
+                    
                     sliderCurrentValue += 2f;
                     _state = PlayerTurnState.P1;
                     buttonP2Sprite.sprite = Resources.Load<Sprite>("Sprites/AButtonP2Smashed");
+                    
                 }
                 else
                 {
                     buttonP2Sprite.sprite = Resources.Load<Sprite>("Sprites/AButtonP2");
                 }
+                
                 break;
         }
+
+
 
         if (spamSlider.value > 0)
         {
@@ -176,5 +186,6 @@ public class SpamQTEGame : MonoBehaviour
         ShakeTimer += Time.deltaTime;
         timerText.text = gameDuration.ToString("f2");
         spamSlider.value = sliderCurrentValue;
+
     }
 }

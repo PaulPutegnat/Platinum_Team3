@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class TestCam : MonoBehaviour
 {
     public PointInfo[] PointsInfos;
-    public bool loop = false;
 
     private int i = 0;
     private float _timer = 0;
@@ -21,11 +23,6 @@ public class TestCam : MonoBehaviour
 
     private bool _fovSettings = false;
     private float _currentFov;
-
-    void Start()
-    {
-        Vector3 org = transform.position;
-    }
 
     void Update()
     {
@@ -68,11 +65,6 @@ public class TestCam : MonoBehaviour
             {
                 i++;
                 _canIncrement = false;
-            }
-
-            else if (loop && i == PointsInfos.Length)
-            {
-                GetLoopingTargets();
             }
         }
     }
@@ -119,23 +111,6 @@ public class TestCam : MonoBehaviour
             _timer = 0;
             _canIncrement = true;
             _fovSettings = false;
-        }
-    }
-
-    public void GetLoopingTargets()
-    {
-        Vector3 currentPosition = PointsInfos[PointsInfos.Length].TargetPosition.transform.position;
-        Vector3 targetPosition = PointsInfos[0].TargetPosition.transform.position;
-
-        //float duration = TimeFromLastToFirstTarget;
-        //float percent = (duration > 0) ? _timer / duration : 1f;
-
-        //transform.position = Vector3.Lerp(currentPosition, targetPosition, percent);
-
-        if (transform.position == targetPosition)
-        {
-            _timer = 0;
-            i = 0;
         }
     }
 }
