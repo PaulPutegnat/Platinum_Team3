@@ -19,7 +19,7 @@ public class MiniGamesEditor : Editor
         GUILayout.Button("+");
     }
 
-    public void CreateNewGame()
+    void AddTimer()
     {
 
     }
