@@ -39539,6 +39539,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   fortuneWheel: {fileID: 0}
+  QTEGame: {fileID: 836991248607273005, guid: e7826b9cc4d1e064984ac016ef0382a8, type: 3}
+  QteGameRefGameObject: {fileID: 0}
   spawn: {fileID: 1605209464}
   TrapperNumber: 0
   RunnererNumber: 0
@@ -47780,7 +47782,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
