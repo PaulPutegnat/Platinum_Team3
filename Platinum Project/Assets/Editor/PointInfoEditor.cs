@@ -31,8 +31,6 @@ public class PointInfoEditor : PropertyDrawer
         {
             position.y += EditorGUIUtility.singleLineHeight;
             EditorGUI.PropertyField(position, property.FindPropertyRelative("Fov"));
-            position.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToFov"));
         }
 
         position.y += EditorGUIUtility.singleLineHeight;
@@ -41,9 +39,7 @@ public class PointInfoEditor : PropertyDrawer
         if (changePositionProperty.boolValue)
         {
             position.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("Target"));
-            position.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToNextPosition"));
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("TargetPosition"));
         }
 
         position.y += EditorGUIUtility.singleLineHeight;
@@ -52,16 +48,17 @@ public class PointInfoEditor : PropertyDrawer
         if (changeRotationProperty.boolValue)
         {
             position.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("Target"));
-            position.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("TimeToRotate"));
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("TargetRotation"));
         }
+
+        position.y += EditorGUIUtility.singleLineHeight;
+        EditorGUI.PropertyField(position, property.FindPropertyRelative("StepDuration"));
     }
 
     //Size of an element
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
-        float height = EditorGUIUtility.singleLineHeight * 4;
+        float height = EditorGUIUtility.singleLineHeight * 5;
 
         SerializedProperty changeFovProperty = property.FindPropertyRelative("ChangeFov");
         SerializedProperty changePositionProperty = property.FindPropertyRelative("ChangePosition");
@@ -69,17 +66,17 @@ public class PointInfoEditor : PropertyDrawer
 
         if (changeFovProperty.boolValue)
         {
-            height += EditorGUIUtility.singleLineHeight * 2;
+            height += EditorGUIUtility.singleLineHeight;
         }
 
         if (changePositionProperty.boolValue)
         {
-            height += EditorGUIUtility.singleLineHeight * 2;
+            height += EditorGUIUtility.singleLineHeight;
         }
 
         if (changeRotationProperty.boolValue)
         {
-            height += EditorGUIUtility.singleLineHeight * 2;
+            height += EditorGUIUtility.singleLineHeight;
         }
 
         return height;

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Clouds
+  m_Shader: {fileID: -6465566751694194690, guid: ca6b527264b8a844dafabe01a856c837, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_059b580218414bf1be85ae6adabf9ce3: 90.4
+    - Vector1_13cf75ac57b94ce9a5a3e610b29b5c1a: 125
+    - Vector1_189621618a3b4ef28696351a2213d359: 0.004
+    - Vector1_22681c9d5ca347b7a46e097cfa15b892: 0.16
+    - Vector1_2a2d99e9375242eaa6e26a7079738cd9: 1.14
+    - Vector1_7ef45903eeb140c39bcdeaad4ec4f682: 2.07
+    - Vector1_8c01da9f49c940db8fbc521c61ebe00a: 30
+    - Vector1_8e17b0e1d84842fd90199b3a65b2ceb3: 0.016
+    - Vector1_98d070d948b24d7d8e56f609ded984f9: 0.25
+    - Vector1_9af9f3312ddb4bacb98c6bc306c5c723: 60
+    - Vector1_9b2b7ec373e24157a9ac6f2286778fbe: 2
+    - Vector1_b808a105da2a419c8ee3fd0d027bb909: 1
+    - Vector1_d422db366d344478823184c1b15f6e91: 20
+    - Vector1_e3c930afe3f4434bb582071c3b0b0279: 2
+    - Vector1_ea3771e82edc4522834c13c231b2259b: 1.45
+    m_Colors:
+    - Color_a519e87aa3be459cac97ca17d16dcd1e: {r: 1, g: 1, b: 1, a: 1}
+    - Color_ba4b0676764f4dc584803bc065965d44: {r: 0.35506406, g: 0.610261, b: 0.745283, a: 1}
+    - Vector4_9232cb1db0d943f89c00f1ead7fc0442: {r: 1, g: 0, b: 0, a: 90}
+    - Vector4_cb333279ae23425f8cfdbd7720062816: {r: -0.24, g: 1.12, b: -1.27, a: 0.06}
+  m_BuildTextureStacks: []
