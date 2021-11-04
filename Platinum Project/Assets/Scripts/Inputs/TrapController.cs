@@ -7,17 +7,19 @@ using UnityEngine.InputSystem;
 public class TrapController : MonoBehaviour
 {
     [SerializeField] private GameObject[] Traps = new GameObject[2];
-  
+    public int index;
 
     public void initTrapper(int index)
     {
         if (index == 2)
         {
+            index = 2;
             Traps[0] = GameObject.Find("Trap1");
             Traps[1] = GameObject.Find("Trap2");
         }
         else if (index == 3)
         {
+            index = 3;
             Traps[0] = GameObject.Find("Trap3");
             Traps[1] = GameObject.Find("Trap4");
         }
