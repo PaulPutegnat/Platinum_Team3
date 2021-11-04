@@ -21,7 +21,7 @@ public class PointInfoEditor : PropertyDrawer
         position.height = EditorGUIUtility.singleLineHeight;
 
         //Display into editor using position
-        EditorGUI.PropertyField(position, property.FindPropertyRelative("Name"));
+        EditorGUI.PropertyField(position, property.FindPropertyRelative("Step"));
 
         //Move rectangle based on previous element height;
         position.y += EditorGUIUtility.singleLineHeight;
