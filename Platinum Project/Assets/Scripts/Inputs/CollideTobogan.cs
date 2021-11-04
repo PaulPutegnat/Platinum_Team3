@@ -8,7 +8,7 @@ public class CollideTobogan : MonoBehaviour
     private Rigidbody rbRigidbody;
     private bool isGrounded;
 
-    [Range(0.0f, 50f)]
+    [Range(20.0f, 50f)]
     public float AccelerationTobogan;
 
     [Range(0.0f, 50f)]
