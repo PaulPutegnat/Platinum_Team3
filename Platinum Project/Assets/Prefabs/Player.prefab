@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24e29e17bde80c4d85d8e6baf881e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AccelerationTobogan: 0.6
+  AccelerationTobogan: 50
   MaxSpeedTobogan: 50
 --- !u!1001 &2542845853779536306
 PrefabInstance:

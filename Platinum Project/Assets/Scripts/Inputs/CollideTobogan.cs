@@ -33,9 +33,8 @@ public class CollideTobogan : MonoBehaviour
 
             VelY = rbRigidbody.velocity.y;
             VelX = rbRigidbody.velocity.x;
-            /*Mathf.Clamp(rbRigidbody.velocity.y, -7, -1);
-            Mathf.Clamp(rbRigidbody.velocity.x, -10, 10);*/
-            if(rbRigidbody.velocity.magnitude < MaxSpeedTobogan)
+
+            if(rbRigidbody.velocity.magnitude < MaxSpeedTobogan || rbRigidbody.velocity.magnitude > -MaxSpeedTobogan)
                 rbRigidbody.velocity = new Vector3(VelX * (1 + AccelerationTobogan / 1000), VelY * (1 + AccelerationTobogan / 1000), 0);
             
         }
