@@ -251,6 +251,30 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Aiming",
+                    "type": "Value",
+                    "id": "387d9ee7-6dc4-4f8c-961f-fcc12c7c01d5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ShootP1",
+                    "type": "Button",
+                    "id": "543e5385-85bf-4a03-a5ea-78f39fffd773",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "ShootP2",
+                    "type": "Button",
+                    "id": "96aa8d67-6e52-474f-a963-2caed415f4af",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -405,6 +429,39 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "FortuneWheel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1985666-3d43-43fc-8911-3a3beea13ce8",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Aiming",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c5f1733d-0003-40b1-a57b-c178eaa6fcc2",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "ShootP1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eead13e8-8023-46f5-bbd6-bb245acae1de",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootP2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -170,7 +170,7 @@ public class TESTCONTROLER : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * _distToGround));
+        Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * (_distToGround + 0.1f)));
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -208,6 +208,7 @@ public class TESTCONTROLER : MonoBehaviour
         }
 
     }
+
 
 }
 
