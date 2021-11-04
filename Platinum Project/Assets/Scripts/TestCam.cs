@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class TestCam : MonoBehaviour
 {
-    public bool loop = false;
-    public float TimeFromLastToFirstTarget;
     public PointInfo[] PointsInfos;
 
     private int i = 0;
@@ -15,18 +16,18 @@ public class TestCam : MonoBehaviour
     private bool _canIncrement = false;
 
     private bool _positionSettings = false;
-    private Vector3 _startPosition;
+    private Vector3 _currentPosition;
 
     private bool _rotationSettings = false;
-    private Quaternion _startRotation;
+    private Quaternion _currentRotation;
 
     private bool _fovSettings = false;
-    private float _startFov;
+    private float _currentFov;
 
     void Update()
     {
         _timer += Time.deltaTime;
-        _percent = (PointsInfos[i].StepDuration > 0) ? _timer / PointsInfos[i].StepDuration : 1f;
+        _percent = _timer / PointsInfos[i].StepDuration;
 
         if (i < PointsInfos.Length)
         {
@@ -34,7 +35,7 @@ public class TestCam : MonoBehaviour
             {
                 if (!_positionSettings)
                 {
-                    _startPosition = Camera.main.transform.position;
+                    _currentPosition = Camera.main.transform.position;
                     _positionSettings = true;
                 }
                 MoveCamera();
@@ -44,7 +45,7 @@ public class TestCam : MonoBehaviour
             {
                 if (!_rotationSettings)
                 {
-                    _startRotation = Camera.main.transform.rotation;
+                    _currentRotation = Camera.main.transform.rotation;
                     _rotationSettings = true;
                 }
                 RotateCamera();
@@ -54,7 +55,7 @@ public class TestCam : MonoBehaviour
             {
                 if (!_fovSettings)
                 {
-                    _startFov = Camera.main.fieldOfView;
+                    _currentFov = Camera.main.fieldOfView;
                     _fovSettings = true;
                 }
                 ChangeFov();
@@ -66,17 +67,12 @@ public class TestCam : MonoBehaviour
                 _canIncrement = false;
             }
         }
-
-        else if (loop && i == PointsInfos.Length - 1)
-        {
-            GetLoopingTargets();
-        }
     }
 
     public void MoveCamera()
     {
-        Vector3 currentPosition = _startPosition;
-        Vector3 targetPosition = PointsInfos[i].Target.transform.position;
+        Vector3 currentPosition = _currentPosition;
+        Vector3 targetPosition = PointsInfos[i].TargetPosition.transform.position;
 
         transform.position = Vector3.Lerp(currentPosition, targetPosition, _percent);
 
@@ -90,8 +86,8 @@ public class TestCam : MonoBehaviour
 
     public void RotateCamera()
     {
-        Quaternion currentRotation = _startRotation;
-        Quaternion targetRotation = PointsInfos[i].Target.transform.rotation;
+        Quaternion currentRotation = _currentRotation;
+        Quaternion targetRotation = PointsInfos[i].TargetRotation.transform.rotation;
 
         transform.rotation = Quaternion.Lerp(currentRotation, targetRotation, _percent);
 
@@ -105,7 +101,7 @@ public class TestCam : MonoBehaviour
 
     public void ChangeFov()
     {
-        float currentFov = _startFov;
+        float currentFov = _currentFov;
         float targetFov = PointsInfos[i].Fov;
 
         Camera.main.fieldOfView = Mathf.Lerp(currentFov, targetFov, _percent);
@@ -115,23 +111,6 @@ public class TestCam : MonoBehaviour
             _timer = 0;
             _canIncrement = true;
             _fovSettings = false;
-        }
-    }
-
-    public void GetLoopingTargets()
-    {
-        Transform currentPosition = PointsInfos[PointsInfos.Length - 1].Target.transform;
-        Transform targetPosition = PointsInfos[0].Target.transform;
-
-        float duration = TimeFromLastToFirstTarget;
-        float percent = (duration > 0) ? _timer / duration : 1f;
-
-        transform.position = Vector3.Lerp(currentPosition.position, targetPosition.position, percent);
-
-        if (transform.position == targetPosition.position)
-        {
-            _timer = 0;
-            i = 0;
         }
     }
 }

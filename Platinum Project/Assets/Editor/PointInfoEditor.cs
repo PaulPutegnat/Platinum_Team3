@@ -39,7 +39,7 @@ public class PointInfoEditor : PropertyDrawer
         if (changePositionProperty.boolValue)
         {
             position.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("Target"));
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("TargetPosition"));
         }
 
         position.y += EditorGUIUtility.singleLineHeight;
@@ -48,7 +48,7 @@ public class PointInfoEditor : PropertyDrawer
         if (changeRotationProperty.boolValue)
         {
             position.y += EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, property.FindPropertyRelative("Target"));
+            EditorGUI.PropertyField(position, property.FindPropertyRelative("TargetRotation"));
         }
 
         position.y += EditorGUIUtility.singleLineHeight;
