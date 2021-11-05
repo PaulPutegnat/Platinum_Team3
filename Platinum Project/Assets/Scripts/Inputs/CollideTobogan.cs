@@ -16,6 +16,7 @@ public class CollideTobogan : MonoBehaviour
     private float VelY;
     private float VelX;
 
+    private float velocityXLastFrame;
     private void Awake()
     {
         rbRigidbody = GetComponent<Rigidbody>();
@@ -36,7 +37,10 @@ public class CollideTobogan : MonoBehaviour
 
             if(rbRigidbody.velocity.magnitude < MaxSpeedTobogan || rbRigidbody.velocity.magnitude > -MaxSpeedTobogan)
                 rbRigidbody.velocity = new Vector3(VelX * (1 + AccelerationTobogan / 1000), VelY * (1 + AccelerationTobogan / 1000), 0);
-            
+
+            velocityXLastFrame = rbRigidbody.velocity.x;
+
+
         }
 
     }
@@ -46,6 +50,7 @@ public class CollideTobogan : MonoBehaviour
         if (other.transform.CompareTag("tobogan"))
         {
             GetComponent<TESTCONTROLER>().enabled = true;
+            rbRigidbody.velocity = new Vector3(velocityXLastFrame, 1,0);
         }
     }
 }
