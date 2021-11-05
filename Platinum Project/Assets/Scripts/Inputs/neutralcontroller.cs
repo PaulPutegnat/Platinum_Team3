@@ -118,6 +118,7 @@ public class neutralcontroller : MonoBehaviour
     public void Confirmation(InputAction.CallbackContext context)
     {
         Comfirmation = true;
+
     }
     public void Back(InputAction.CallbackContext context)
     {
@@ -191,6 +192,8 @@ public class neutralcontroller : MonoBehaviour
 
     void InitRunner()
     {
+        GameManager.gameManager.ActivePlayer++;
+        GameManager.gameManager.checkUI();
         GetComponent<PlayerInput>().actions.FindAction("Echap").performed += new Action<InputAction.CallbackContext>(GameObject.Find("Pause").GetComponent<Pause>().PausePressed);
         GetComponent<PlayerInput>().actions.FindAction("Movement").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnMove);
         GetComponent<PlayerInput>().actions.FindAction("Jump").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnJump);
