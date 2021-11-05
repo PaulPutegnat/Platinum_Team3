@@ -140,7 +140,7 @@ public class TESTCONTROLER : MonoBehaviour
 
                 if (!IsSlidingUnder())
                 {
-                    VelocityYLastFrame /= 1.02f;
+                    VelocityYLastFrame /= 1.025f;
                 }
 
             }
