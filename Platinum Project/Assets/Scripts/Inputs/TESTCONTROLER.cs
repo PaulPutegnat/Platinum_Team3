@@ -11,6 +11,9 @@ public class TESTCONTROLER : MonoBehaviour
     public float movementSpeed = 6;
     public float jumpForce = 30;
 
+    [Range(0.2f, 1f)]
+    public float JumpCheckLength;
+
     [SerializeField]
     [Range(0.6f, 1f)]
     float neutralJumpForce;
@@ -129,12 +132,17 @@ public class TESTCONTROLER : MonoBehaviour
 
         if (Slide)
         {
+
             if (Mathf.Abs(VelocityYLastFrame) > 4f)
             {
                 _rigidbody.velocity = new Vector3(VelocityYLastFrame, 0, 0);
-                box.size = new Vector3(box.size.x, box.size.y / 2, box.size.z);
-                
-                VelocityYLastFrame /= 1.02f;
+                box.size = new Vector3(InitialSize.x, InitialSize.y / 2, InitialSize.z);
+
+                if (!IsSlidingUnder())
+                {
+                    VelocityYLastFrame /= 1.02f;
+                }
+
             }
             else
             {
@@ -165,12 +173,22 @@ public class TESTCONTROLER : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.Raycast(gameObject.transform.position - Vector3.up * (_distToGround + 0.1f), -Vector3.up, 0.1f);
+        return Physics.Raycast(gameObject.transform.position - (Vector3.up * _distToGround), -Vector3.up, JumpCheckLength);
     }
+
+    bool IsSlidingUnder()
+    {
+        Vector3 origin = gameObject.transform.position + Vector3.up * (GetComponent<BoxCollider>().bounds.extents.y);
+        return Physics.Raycast(origin, Vector3.up,3f);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * (_distToGround + 0.1f)));
+        Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * (_distToGround + JumpCheckLength)));
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine( transform.position + Vector3.up * (GetComponent<BoxCollider>().bounds.extents.y), transform.position + Vector3.up * (GetComponent<BoxCollider>().bounds.extents.y) + Vector3.up * 3);
     }
 
     public void OnMove(InputAction.CallbackContext context)
