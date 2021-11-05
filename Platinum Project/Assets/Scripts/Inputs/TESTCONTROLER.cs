@@ -136,7 +136,7 @@ public class TESTCONTROLER : MonoBehaviour
             if (Mathf.Abs(VelocityYLastFrame) > 4f)
             {
                 _rigidbody.velocity = new Vector3(VelocityYLastFrame, 0, 0);
-                box.size = new Vector3(box.size.x, box.size.y / 2, box.size.z);
+                box.size = new Vector3(InitialSize.x, InitialSize.y / 2, InitialSize.z);
 
                 if (!IsSlidingUnder())
                 {
