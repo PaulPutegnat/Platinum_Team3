@@ -50,7 +50,7 @@ public class CollideTobogan : MonoBehaviour
         if (other.transform.CompareTag("tobogan"))
         {
             GetComponent<TESTCONTROLER>().enabled = true;
-            rbRigidbody.velocity = new Vector3(velocityXLastFrame, 0,0);
+            rbRigidbody.velocity = new Vector3(velocityXLastFrame, 1,0);
         }
     }
 }
