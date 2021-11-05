@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -1963897707382321597}
   - component: {fileID: 3381624550268567953}
   - component: {fileID: 2723991284456419385}
+  - component: {fileID: 9203114728576726928}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -122,7 +123,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.2038794, z: 1}
+  m_Size: {x: 1, y: 2.2038794, z: 0.84}
   m_Center: {x: 0, y: -0.11318189, z: 0}
 --- !u!54 &3381624550268567953
 Rigidbody:
@@ -152,6 +153,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed275bf2d7dfb8243ac5fb4e16957d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9203114728576726928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4544293951017371564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24e29e17bde80c4d85d8e6baf881e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AccelerationTobogan: 50
+  MaxSpeedTobogan: 50
 --- !u!1001 &2542845853779536306
 PrefabInstance:
   m_ObjectHideFlags: 0
