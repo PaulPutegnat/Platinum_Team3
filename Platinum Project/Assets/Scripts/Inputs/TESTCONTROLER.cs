@@ -238,7 +238,7 @@ public class TESTCONTROLER : MonoBehaviour
 
     public void OnSlide(InputAction.CallbackContext context)
     {
-        if (!IsLocked)
+        if (!IsLocked && IsGrounded())
         {
         Slide = context.ReadValueAsButton();
         VelocityYLastFrame = _rigidbody.velocity.x;
