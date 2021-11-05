@@ -33,9 +33,18 @@ public class ShootingGame : MonoBehaviour
     private bool IsP1Shooting = false;
     private bool IsP2Shooting = false;
 
+    GraphicRaycaster m_Raycaster;
+    PointerEventData m_PointerEventData;
+    EventSystem m_EventSystem;
+
     void Start()
     {
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
+
+        //Fetch the Raycaster from the GameObject (the Canvas)
+        m_Raycaster = FindObjectOfType<GraphicRaycaster>();
+        //Fetch the Event System from the Scene
+        m_EventSystem = FindObjectOfType<EventSystem>();
     }
 
     void Update()
@@ -49,19 +58,37 @@ public class ShootingGame : MonoBehaviour
 
         if (IsP1Shooting)
         {
-            Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().localPosition;
+            Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().position;
 
-            RaycastHit[] hit = Physics.RaycastAll(sightPos, Vector3.forward);
+            //Set up the new Pointer Event
+            m_PointerEventData = new PointerEventData(m_EventSystem);
+            //Set the Pointer Event Position to that of the mouse position
+            m_PointerEventData.position = Camera.main.WorldToScreenPoint(sightPos);
+
+            //Create a list of Raycast Results
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            //Raycast using the Graphics Raycaster and mouse click position
+            m_Raycaster.Raycast(m_PointerEventData, results);
+            Debug.Log(m_PointerEventData.position);
+
+            if (results.Count == 0)
+            {
+                Debug.Log("results.Count = 0");
+                return;
+            }
+
             Debug.Log("sightPos : " + sightPos);
 
-            GameObject firstTarget = hit[0].collider?.gameObject;
+            GameObject firstTarget = results[0].gameObject;
             GameObject hitTarget = null;
 
- 
-            if (hit.Length == 1)
+            
+
+            if (results.Count == 1)
             {
-                Debug.Log("hit.Length = 1");
-                if (hit[0].collider.gameObject.CompareTag("Target"))
+                Debug.Log("results.Count = 1");
+                if (results[0].gameObject.CompareTag("Target"))
                 {
                     hitTarget = firstTarget;
                     Debug.Log(hitTarget);
@@ -69,22 +96,22 @@ public class ShootingGame : MonoBehaviour
             }
             else
             {
-                foreach (RaycastHit h in hit)
+                foreach (RaycastResult h in results)
                 {
-                    if (h.collider.gameObject.CompareTag("Target") && h.collider.gameObject.GetComponent<RectTransform>())
+                    if (h.gameObject.CompareTag("Target") && h.gameObject.GetComponent<RectTransform>())
                     {
-                        if (firstTarget != h.collider.gameObject)
+                        if (firstTarget != h.gameObject)
                         {
                             if (firstTarget.GetComponent<RectTransform>())
                             {
-                                if (h.collider.gameObject.GetComponent<RectTransform>().localPosition.z > firstTarget.GetComponent<RectTransform>().localPosition.z)
+                                if (h.gameObject.GetComponent<RectTransform>().localPosition.z > firstTarget.GetComponent<RectTransform>().localPosition.z)
                                 {
-                                    hitTarget = h.collider.gameObject;
+                                    hitTarget = h.gameObject;
                                 }
                             }
                             else
                             {
-                                hitTarget = h.collider.gameObject;
+                                hitTarget = h.gameObject;
                             }
                         }
                     }

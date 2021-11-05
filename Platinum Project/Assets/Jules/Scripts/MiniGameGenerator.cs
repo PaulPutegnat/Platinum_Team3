@@ -33,7 +33,7 @@ public class MiniGameGenerator : MonoBehaviour
     }
 
     public List<GameObject> gameList = new List<GameObject>();
-    public Transform canvas;
+    private GameObject miniGameObject;
     public MINIGAME gameName = MINIGAME.NONE;
     public PLAYER_NAME playerType = PLAYER_NAME.NONE;
     public DIRECTION_NAME directionType = DIRECTION_NAME.NONE;
@@ -44,7 +44,43 @@ public class MiniGameGenerator : MonoBehaviour
 
     void Start()
     {
-        gameList.Add(FindObjectOfType<PongGame>().gameObject);
+        switch (gameName)
+        {
+            case MINIGAME.SLIDING_GAME:
+
+                break;
+
+            case MINIGAME.SPAM_QTE_GAME:
+
+                break;
+
+            case MINIGAME.SHOOTING_GAME:
+
+                break;
+
+            case MINIGAME.PONG_GAME:
+                miniGameObject = Instantiate(gameList[0], FindObjectOfType<Canvas>().transform); // dictionnaire avec joeur + gameObject
+                break;
+
+            case MINIGAME.PING_PONG_GAME:
+
+                break;
+
+            case MINIGAME.WATER_IS_COMING_GAME:
+
+                break;
+
+            case MINIGAME.BIRDS_COUNTING_GAME:
+
+                break;
+
+            case MINIGAME.GUITAR_HERO_GAME:
+
+                break;
+
+            default:
+                break;
+        }
     }
 
 
@@ -81,8 +117,7 @@ public class MiniGameGenerator : MonoBehaviour
                 break;
 
             case MINIGAME.PONG_GAME:
-                gameList[0].GetComponent<PongGame>().MovePongBar(valueInputJ1);
-                
+                miniGameObject.GetComponent<PongGame>().MovePongBar(valueInputJ1);
                 break;
 
             case MINIGAME.PING_PONG_GAME:
