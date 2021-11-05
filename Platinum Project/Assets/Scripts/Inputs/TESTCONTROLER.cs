@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -10,6 +11,9 @@ public class TESTCONTROLER : MonoBehaviour
     [Header("Movement")]
     public float movementSpeed = 6;
     public float jumpForce = 30;
+
+    [Range(0.2f, 1f)]
+    public float JumpCheckLength;
 
     [SerializeField]
     [Range(0.6f, 1f)]
@@ -21,7 +25,6 @@ public class TESTCONTROLER : MonoBehaviour
 
     [HideInInspector]
     public Vector2 _movementInput = Vector2.zero;
-
 
 
     private Rigidbody _rigidbody;
@@ -47,18 +50,33 @@ public class TESTCONTROLER : MonoBehaviour
     [Range(1f, 3f)]
     public float airControlDiviser;
 
+
+    [Header("Slide")]
     private bool Slide;
+
+    private bool ExitUnderObject = false;
+    private bool UnderObjectLastFrame = false;
+
+    [Range(1f,3f)]
+    public float SlidingUnderBoost;
+
+    [Range(25f, 75f)]
+    public float BrakeForceAfterSlidingUnder;
+
+
+
     private bool IsLocked = false;
     private float VelocityYLastFrame;
     private float VelocityXLastFrame;
-    [SerializeField]bool HasChangedDirection = false;
+    bool HasChangedDirection = false;
     private BoxCollider box;
     private Vector3 InitialSize;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        Console.Clear();
+        Console.Clear();  
+
     }
     private void Start()
     {
@@ -76,6 +94,7 @@ public class TESTCONTROLER : MonoBehaviour
         var movement = _movementInput.x;
 
         //JUMP
+
         if (IsGrounded())
         {
             CT = Initial_CT;
@@ -129,16 +148,32 @@ public class TESTCONTROLER : MonoBehaviour
 
         if (Slide)
         {
+            float InitialDeceleration = 1.025f;
+            float SlideDeceleration = 1f + BrakeForceAfterSlidingUnder/1000;
 
             if (Mathf.Abs(VelocityYLastFrame) > 4f)
             {
                 _rigidbody.velocity = new Vector3(VelocityYLastFrame, 0, 0);
-                box.size = new Vector3(box.size.x, box.size.y / 2, box.size.z);
+                box.size = new Vector3(InitialSize.x, InitialSize.y / 2, InitialSize.z);
 
                 if (!IsSlidingUnder())
                 {
-                    VelocityYLastFrame /= 1.02f;
+                    if (UnderObjectLastFrame)
+                    {
+                        VelocityYLastFrame /= SlideDeceleration;
+                    }
+                    else
+                    {
+                        VelocityYLastFrame /= InitialDeceleration;
+                    }
+
                 }
+                else
+                {
+                    _rigidbody.velocity = new Vector3(VelocityYLastFrame * SlidingUnderBoost, 0, 0);
+                    UnderObjectLastFrame = true;
+                }
+
 
             }
             else
@@ -147,6 +182,7 @@ public class TESTCONTROLER : MonoBehaviour
                 VelocityYLastFrame = 0f;
                 Slide = false;
                 IsLocked = false;
+                UnderObjectLastFrame = false;
                 box.size = InitialSize;
             }
 
@@ -170,7 +206,7 @@ public class TESTCONTROLER : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.Raycast(gameObject.transform.position - Vector3.up * (_distToGround + 0.1f), -Vector3.up, 0.1f);
+        return Physics.Raycast(gameObject.transform.position /*- (Vector3.up * _distToGround)*/, -Vector3.up, JumpCheckLength);
     }
 
     bool IsSlidingUnder()
@@ -182,7 +218,7 @@ public class TESTCONTROLER : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * (_distToGround + 0.1f)));
+        Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * (_distToGround + JumpCheckLength)));
 
         Gizmos.color = Color.blue;
         Gizmos.DrawLine( transform.position + Vector3.up * (GetComponent<BoxCollider>().bounds.extents.y), transform.position + Vector3.up * (GetComponent<BoxCollider>().bounds.extents.y) + Vector3.up * 3);
@@ -215,7 +251,7 @@ public class TESTCONTROLER : MonoBehaviour
 
     public void OnSlide(InputAction.CallbackContext context)
     {
-        if (!IsLocked)
+        if (!IsLocked && IsGrounded())
         {
         Slide = context.ReadValueAsButton();
         VelocityYLastFrame = _rigidbody.velocity.x;
