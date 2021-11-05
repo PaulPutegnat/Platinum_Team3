@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class SlidingBarGame : MonoBehaviour
 {
     // Inputs Action
-    private PlayerControls inputActions;
+    //private PlayerControls inputActions;
     private bool p1ButtonPressed = false;
     private bool p2ButtonPressed = false;
 
@@ -40,17 +41,17 @@ public class SlidingBarGame : MonoBehaviour
 
     private void Awake()
     {
-        inputActions = new PlayerControls();
+        //inputActions = new PlayerControls();
     }
 
     private void OnEnable()
     {
-        inputActions.Enable();
+        //inputActions.Enable();
     }
 
     private void OnDisable()
     {
-        inputActions.Disable();
+        //inputActions.Disable();
     }
     void Start()
     {
@@ -84,8 +85,11 @@ public class SlidingBarGame : MonoBehaviour
 
     void Update()
     {
-        p1ButtonPressed = inputActions.Trapper.SlidingBarP1.triggered;
-        p2ButtonPressed = inputActions.Trapper.SlidingBarP2.triggered;
+        //OLD
+        //p1ButtonPressed = inputActions.Trapper.SlidingBarP1.triggered;
+        p1ButtonPressed = GameManager.gameManager.players[2].GetComponent<PlayerInput>().actions.FindAction("SlidingBarP1").triggered;
+        //p2ButtonPressed = inputActions.Trapper.SlidingBarP2.triggered;
+        p2ButtonPressed = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("SlidingBarP2").triggered;
 
         if (p1ButtonPressed)
         {
@@ -124,21 +128,21 @@ public class SlidingBarGame : MonoBehaviour
             if (isP1Win && isP2Win)
             {
                 // Game finish Win
-                Debug.Log("GAME IS WIN");
+                //Debug.Log("GAME IS WIN");
                 Destroy(this.gameObject);
                 GameManager.gameManager.SpawnFortuneWheel();
             }
             else if ((isP1Win && !isP2Win) || (!isP1Win && isP2Win))
             {
                 // Game finish Semi-win
-                Debug.Log("GAME IS SEMI-WIN");
+                //Debug.Log("GAME IS SEMI-WIN");
                 Destroy(this.gameObject);
                 GameManager.gameManager.SpawnFortuneWheel();
             }
             else if (!isP1Win && !isP2Win)
             {
                 // Game finish lose
-                Debug.Log("GAME IS LOSE");
+                //Debug.Log("GAME IS LOSE");
                 Destroy(this.gameObject);
                 GameManager.gameManager.SpawnFortuneWheel();
             }
@@ -159,12 +163,12 @@ public class SlidingBarGame : MonoBehaviour
 
             if (handlePosP1.x < (intervalP1.transform.localPosition + ((Vector3)intervalP1Size / 2)).x && handlePosP1.x > (intervalP1.transform.localPosition - ((Vector3)intervalP1Size / 2)).x)
             {
-                Debug.Log("P1 a gagné!!!");
+                //Debug.Log("P1 a gagné!!!");
                 isP1Win = true;
             }
             else
             {
-                Debug.Log("P1 a perdu!!!");
+                //Debug.Log("P1 a perdu!!!");
                 isP1Win = false;
             }
         
@@ -178,12 +182,12 @@ public class SlidingBarGame : MonoBehaviour
         {
             if (handlePosP2.x < (intervalP1.transform.localPosition + ((Vector3)intervalP1Size / 2)).x && handlePosP2.x > (intervalP1.transform.localPosition - ((Vector3)intervalP1Size / 2)).x)
             {
-                Debug.Log("P2 a gagné!!!");
+                //Debug.Log("P2 a gagné!!!");
                 isP2Win = true;
             }
             else
             {
-                Debug.Log("P2 a perdu!!!");
+                //Debug.Log("P2 a perdu!!!");
                 isP2Win = false;
             }
         }
@@ -191,12 +195,12 @@ public class SlidingBarGame : MonoBehaviour
         {
             if (handlePosP2.x < (intervalP2.transform.localPosition + ((Vector3)intervalP2Size / 2)).x && handlePosP2.x > (intervalP2.transform.localPosition - ((Vector3)intervalP2Size / 2)).x)
             {
-                Debug.Log("P2 a gagné!!!");
+                //Debug.Log("P2 a gagné!!!");
                 isP2Win = true;
             }
             else
             {
-                Debug.Log("P2 a perdu!!!");
+                //Debug.Log("P2 a perdu!!!");
                 isP2Win = false;
             }
         }
