@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -26,7 +27,6 @@ public class TESTCONTROLER : MonoBehaviour
     public Vector2 _movementInput = Vector2.zero;
 
 
-
     private Rigidbody _rigidbody;
     private float _acceleration;
 
@@ -50,10 +50,20 @@ public class TESTCONTROLER : MonoBehaviour
     [Range(1f, 3f)]
     public float airControlDiviser;
 
+
+    [Header("Slide")]
     private bool Slide;
 
     private bool ExitUnderObject = false;
     private bool UnderObjectLastFrame = false;
+
+    [Range(1f,3f)]
+    public float SlidingUnderBoost;
+
+    [Range(25f, 75f)]
+    public float BrakeForceAfterSlidingUnder;
+
+
 
     private bool IsLocked = false;
     private float VelocityYLastFrame;
@@ -65,7 +75,8 @@ public class TESTCONTROLER : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        Console.Clear();
+        Console.Clear();  
+
     }
     private void Start()
     {
@@ -83,6 +94,7 @@ public class TESTCONTROLER : MonoBehaviour
         var movement = _movementInput.x;
 
         //JUMP
+
         if (IsGrounded())
         {
             CT = Initial_CT;
@@ -137,7 +149,7 @@ public class TESTCONTROLER : MonoBehaviour
         if (Slide)
         {
             float InitialDeceleration = 1.025f;
-            float SlideDeceleration = 1.04f;
+            float SlideDeceleration = 1f + BrakeForceAfterSlidingUnder/1000;
 
             if (Mathf.Abs(VelocityYLastFrame) > 4f)
             {
@@ -158,6 +170,7 @@ public class TESTCONTROLER : MonoBehaviour
                 }
                 else
                 {
+                    _rigidbody.velocity = new Vector3(VelocityYLastFrame * SlidingUnderBoost, 0, 0);
                     UnderObjectLastFrame = true;
                 }
 
@@ -193,7 +206,7 @@ public class TESTCONTROLER : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.Raycast(gameObject.transform.position - (Vector3.up * _distToGround), -Vector3.up, JumpCheckLength);
+        return Physics.Raycast(gameObject.transform.position /*- (Vector3.up * _distToGround)*/, -Vector3.up, JumpCheckLength);
     }
 
     bool IsSlidingUnder()
