@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class PointInfo
 {
-    public string Name = "Step ";
+    public string Step;
 
     public bool ChangeFov;
     public bool ChangePosition;
