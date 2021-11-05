@@ -12967,7 +12967,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799691768}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: fd29bc4a7e7c9b844bfac6a760e6d9d9, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -39539,7 +39539,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   fortuneWheel: {fileID: 0}
-  QTEGame: {fileID: 836991248607273005, guid: e7826b9cc4d1e064984ac016ef0382a8, type: 3}
+  QTEGame: {fileID: 0}
   QteGameScriptGame: {fileID: 0}
   spawn: {fileID: 1605209464}
   TrapperNumber: 0
@@ -45770,7 +45770,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596898760}
   m_LocalRotation: {x: -0, y: -0, z: 0.1028928, w: 0.9946925}
-  m_LocalPosition: {x: -13.24, y: 2.41, z: 13.94}
+  m_LocalPosition: {x: -20.52, y: 8.14, z: 13.94}
   m_LocalScale: {x: 21.868576, y: 1, z: 2.4491}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53364,8 +53364,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137209365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.64, y: 4.3, z: 13.94}
-  m_LocalScale: {x: 21.868576, y: 1, z: 2.4491}
+  m_LocalPosition: {x: -5.89, y: 2.66, z: 13.94}
+  m_LocalScale: {x: 8.040638, y: 1, z: 2.4491}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12

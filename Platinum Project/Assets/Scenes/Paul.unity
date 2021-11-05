@@ -5269,6 +5269,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1d0dcf97-da46-44d1-826d-c39ebf57f474
     m_ActionName: Neutral/PlayTest[/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 52842daa-391f-4b0e-866f-ea1b5b311a64
+    m_ActionName: Trapper/FortuneWheel[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
@@ -7215,6 +7219,10 @@ PrefabInstance:
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].Name
       value: Step 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
+      propertyPath: PointsInfos.Array.data[0].Step
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].Name
