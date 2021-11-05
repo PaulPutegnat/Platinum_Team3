@@ -102,7 +102,7 @@ MonoBehaviour:
   movementSpeed: 10
   jumpForce: 15
   JumpCheckLength: 0.3
-  neutralJumpForce: 0.9
+  neutralJumpForce: 1
   turnSmoothTime: 0.05
   _movementInput: {x: 0, y: 0}
   maxspeed: 1.3
