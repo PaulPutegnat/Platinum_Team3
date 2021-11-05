@@ -27,7 +27,7 @@ public class CollideTobogan : MonoBehaviour
     {
 
         
-        if (other.transform.tag == "tobogan")
+        if (other.transform.CompareTag("tobogan"))
         {
             Debug.Log("ouiiiiiii");
             GetComponent<TESTCONTROLER>().enabled = false;
