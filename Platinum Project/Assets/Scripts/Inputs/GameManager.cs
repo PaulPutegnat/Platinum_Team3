@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         canvas = GameObject.Find("Canvas").transform;
-        StartCoroutine(SpawnQTE());
+        StartCoroutine(spawnTrapEnumerator());
     }
 
     public void SpawnFortuneWheel()
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         GameObject fortuneWheelGameObject = Instantiate(fortuneWheel, Vector3.zero, Quaternion.identity, canvas);
         fortuneWheelGameObject.transform.localPosition = Vector3.zero;
     }
-    IEnumerator SpawnQTE()
+    IEnumerator spawnTrapEnumerator()
     {
         yield return new WaitForSeconds(5);
         QteGameRefGameObject = Instantiate(QTEGame, Vector3.zero, Quaternion.identity, canvas);
