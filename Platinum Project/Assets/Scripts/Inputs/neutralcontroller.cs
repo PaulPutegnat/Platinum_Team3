@@ -179,7 +179,6 @@ public class neutralcontroller : MonoBehaviour
                         Debug.LogError("IL Y A DEJA 2 TRAPPERS");
                     }
                     GetComponent<PlayerInput>().SwitchCurrentActionMap("Trapper");
-                    InitTrapper();
                     break;
 
                 default:
@@ -197,10 +196,4 @@ public class neutralcontroller : MonoBehaviour
         GetComponent<PlayerInput>().actions.FindAction("Jump").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnJump);
         GetComponent<PlayerInput>().actions.FindAction("Sliding").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnSlide);
     }
-
-    void InitTrapper()
-    {
-
-    }
-
 }
