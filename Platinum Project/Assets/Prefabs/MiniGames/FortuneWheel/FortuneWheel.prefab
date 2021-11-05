@@ -224,7 +224,6 @@ MonoBehaviour:
   timeRotate: 5
   nbCircleRotate: 4
   parent: {fileID: 2386901536737268972}
-  canvas: {fileID: 0}
   curve:
     serializedVersion: 2
     m_Curve:

@@ -1,7 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class ShootingGame : MonoBehaviour
 {
@@ -43,19 +49,18 @@ public class ShootingGame : MonoBehaviour
 
         if (IsP1Shooting)
         {
-            Debug.Log("Shoot");
-            RaycastHit2D[] hit = Physics2D.RaycastAll(padPos, Vector3.back);
+            Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().localPosition;
 
-            if (hit.Length == 0)
-            {
-                return;
-            }
+            RaycastHit[] hit = Physics.RaycastAll(sightPos, Vector3.forward);
+            Debug.Log("sightPos : " + sightPos);
 
             GameObject firstTarget = hit[0].collider?.gameObject;
             GameObject hitTarget = null;
 
+ 
             if (hit.Length == 1)
             {
+                Debug.Log("hit.Length = 1");
                 if (hit[0].collider.gameObject.CompareTag("Target"))
                 {
                     hitTarget = firstTarget;
@@ -64,7 +69,7 @@ public class ShootingGame : MonoBehaviour
             }
             else
             {
-                foreach (RaycastHit2D h in hit)
+                foreach (RaycastHit h in hit)
                 {
                     if (h.collider.gameObject.CompareTag("Target") && h.collider.gameObject.GetComponent<RectTransform>())
                     {
@@ -88,7 +93,7 @@ public class ShootingGame : MonoBehaviour
 
             if (hitTarget != null)
             {
-                if (hitTarget.CompareTag("Target"))
+                if (hitTarget.CompareTag("Target")) 
                 {
                     _points++;
                     Debug.Log("points : :" + _points);
@@ -157,7 +162,7 @@ public class ShootingGame : MonoBehaviour
     public void SpawnTarget()
     {
         Vector3 size = _spawnAreaRT.sizeDelta;
-        Vector3 pos = new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), transform.position.z);
+        Vector3 pos = new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), 0f);
         GameObject newTarget = Instantiate(_targetPrefab, _targetList);
         newTarget.transform.localPosition = pos;
         newTarget.transform.localScale = new Vector3(.5f, .5f, .5f);
