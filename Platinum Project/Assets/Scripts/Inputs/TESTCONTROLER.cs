@@ -68,7 +68,7 @@ public class TESTCONTROLER : MonoBehaviour
     private bool IsLocked = false;
     private float VelocityYLastFrame;
     private float VelocityXLastFrame;
-    [SerializeField]bool HasChangedDirection = false;
+    bool HasChangedDirection = false;
     private BoxCollider box;
     private Vector3 InitialSize;
 
