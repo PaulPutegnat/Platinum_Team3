@@ -51,6 +51,10 @@ public class TESTCONTROLER : MonoBehaviour
     public float airControlDiviser;
 
     private bool Slide;
+
+    private bool ExitUnderObject = false;
+    private bool UnderObjectLastFrame = false;
+
     private bool IsLocked = false;
     private float VelocityYLastFrame;
     private float VelocityXLastFrame;
@@ -132,6 +136,8 @@ public class TESTCONTROLER : MonoBehaviour
 
         if (Slide)
         {
+            float InitialDeceleration = 1.025f;
+            float SlideDeceleration = 1.04f;
 
             if (Mathf.Abs(VelocityYLastFrame) > 4f)
             {
@@ -140,8 +146,21 @@ public class TESTCONTROLER : MonoBehaviour
 
                 if (!IsSlidingUnder())
                 {
-                    VelocityYLastFrame /= 1.025f;
+                    if (UnderObjectLastFrame)
+                    {
+                        VelocityYLastFrame /= SlideDeceleration;
+                    }
+                    else
+                    {
+                        VelocityYLastFrame /= InitialDeceleration;
+                    }
+
                 }
+                else
+                {
+                    UnderObjectLastFrame = true;
+                }
+
 
             }
             else
@@ -150,6 +169,7 @@ public class TESTCONTROLER : MonoBehaviour
                 VelocityYLastFrame = 0f;
                 Slide = false;
                 IsLocked = false;
+                UnderObjectLastFrame = false;
                 box.size = InitialSize;
             }
 
