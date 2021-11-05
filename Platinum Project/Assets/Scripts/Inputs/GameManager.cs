@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
 
+    private int MaxPlayers;
+    public int ActivePlayer = 0;
+
     [Header("Prefab")]
     public TESTCONTROLER Runner;
     public TrapController Trapper;
@@ -18,7 +21,10 @@ public class GameManager : MonoBehaviour
     public GameObject QTEGame;
     private GameObject QteGameRefGameObject;
     public SpamQTEGame QteGameScriptGame;
-    
+
+    private GameObject RUNNERPANNEL;
+    private GameObject TRAPPERPANNEL;
+
 
     [Header("Spawn")]
     public Transform spawn;
@@ -32,12 +38,21 @@ public class GameManager : MonoBehaviour
         {
             gameManager = this;
         }
+
+        MaxPlayers = GetComponent<PlayerInputManager>().maxPlayerCount;
     }
 
     public void Start()
     {
+        RUNNERPANNEL = GameObject.Find("RUNNER");
+        TRAPPERPANNEL = GameObject.Find("TRAPPER");
         canvas = GameObject.Find("Canvas").transform;
-        StartCoroutine(SpawnQTE());
+        StartCoroutine(spawnTrapEnumerator());
+    }
+
+    private void Update()
+    {
+        Debug.Log(GetComponent<PlayerInputManager>().playerCount);
     }
 
     public void SpawnFortuneWheel()
@@ -45,12 +60,28 @@ public class GameManager : MonoBehaviour
         GameObject fortuneWheelGameObject = Instantiate(fortuneWheel, Vector3.zero, Quaternion.identity, canvas);
         fortuneWheelGameObject.transform.localPosition = Vector3.zero;
     }
-    IEnumerator SpawnQTE()
+    IEnumerator spawnTrapEnumerator()
     {
         yield return new WaitForSeconds(5);
-        QteGameRefGameObject = Instantiate(QTEGame, Vector3.zero, Quaternion.identity, canvas);
-        QteGameScriptGame = QteGameRefGameObject.GetComponent<SpamQTEGame>();
+       
+        Instantiate(QTEGame, Vector3.zero, Quaternion.identity, canvas);
+        //QteGameRefGameObject = Instantiate(QTEGame, Vector3.zero, Quaternion.identity, canvas);
+        //QteGameScriptGame = QteGameRefGameObject.GetComponent<SpamQTEGame>();
     }
-    
+
+    public void checkUI()
+    {
+        
+        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount)
+        {
+            RUNNERPANNEL.SetActive(false);
+            TRAPPERPANNEL.SetActive(false);
+        }
+        else
+        {
+            RUNNERPANNEL.SetActive(true);
+            TRAPPERPANNEL.SetActive(true);
+        }
+    }
 
 }
