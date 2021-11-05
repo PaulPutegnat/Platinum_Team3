@@ -11,6 +11,9 @@ public class TESTCONTROLER : MonoBehaviour
     public float movementSpeed = 6;
     public float jumpForce = 30;
 
+    [Range(0.2f, 1f)]
+    public float JumpCheckLength;
+
     [SerializeField]
     [Range(0.6f, 1f)]
     float neutralJumpForce;
@@ -170,7 +173,7 @@ public class TESTCONTROLER : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.Raycast(gameObject.transform.position - Vector3.up * (_distToGround + 0.1f), -Vector3.up, 0.1f);
+        return Physics.Raycast(gameObject.transform.position - (Vector3.up * _distToGround), -Vector3.up, JumpCheckLength);
     }
 
     bool IsSlidingUnder()
@@ -182,7 +185,7 @@ public class TESTCONTROLER : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * (_distToGround + 0.1f)));
+        Gizmos.DrawLine(transform.position, transform.position + (-Vector3.up * (_distToGround + JumpCheckLength)));
 
         Gizmos.color = Color.blue;
         Gizmos.DrawLine( transform.position + Vector3.up * (GetComponent<BoxCollider>().bounds.extents.y), transform.position + Vector3.up * (GetComponent<BoxCollider>().bounds.extents.y) + Vector3.up * 3);
