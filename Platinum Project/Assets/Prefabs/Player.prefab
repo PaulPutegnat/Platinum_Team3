@@ -112,8 +112,8 @@ MonoBehaviour:
   Initial_CT: 0.2
   GravMultiplier: 1.5
   airControlDiviser: 1.3
-  SlidingUnderBoost: 3
-  BrakeForceAfterSlidingUnder: 46.5
+  SlidingUnderBoost: 1.5
+  BrakeForceAfterSlidingUnder: 75
 --- !u!65 &8507846784637375017
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -125,8 +125,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.9099747, z: 1}
-  m_Center: {x: 0, y: 0.9423651, z: 0}
+  m_Size: {x: 1, y: 2.185089, z: 1}
+  m_Center: {x: 0, y: 1.0799222, z: 0}
 --- !u!54 &3381624550268567953
 Rigidbody:
   m_ObjectHideFlags: 0
