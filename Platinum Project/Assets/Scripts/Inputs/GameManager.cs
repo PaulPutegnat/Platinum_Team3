@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     {
         RUNNERPANNEL = GameObject.Find("RUNNER");
         TRAPPERPANNEL = GameObject.Find("TRAPPER");
+        checkUI();
         canvas = GameObject.Find("Canvas").transform;
     }
 
