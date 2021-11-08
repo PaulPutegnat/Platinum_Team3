@@ -253,9 +253,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Aiming",
+                    "name": "AimingP1",
                     "type": "Value",
                     "id": "387d9ee7-6dc4-4f8c-961f-fcc12c7c01d5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AimingP2",
+                    "type": "Value",
+                    "id": "006253db-2618-4b84-8678-9ce9ae21cb44",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
@@ -439,7 +447,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Aiming",
+                    "action": "AimingP1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -462,6 +470,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShootP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03a9f2a5-0771-4b09-a941-ea83f7e003e9",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "AimingP2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

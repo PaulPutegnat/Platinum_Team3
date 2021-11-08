@@ -22,14 +22,16 @@ public class MiniGameGenerator : MonoBehaviour
     {
         NONE,
         LEFT,
-        RIGHT,
+        RIGHT
     }
 
     public enum PLAYER_NAME
     {
         NONE,
         J1,
-        J2
+        J2,
+        J3,
+        J4
     }
 
     public List<GameObject> gameList = new List<GameObject>();
@@ -47,19 +49,19 @@ public class MiniGameGenerator : MonoBehaviour
         switch (gameName)
         {
             case MINIGAME.SLIDING_GAME:
-
+                miniGameObject = Instantiate(gameList[0], FindObjectOfType<Canvas>().transform);
                 break;
 
             case MINIGAME.SPAM_QTE_GAME:
-
+                miniGameObject = Instantiate(gameList[1], FindObjectOfType<Canvas>().transform);
                 break;
 
             case MINIGAME.SHOOTING_GAME:
-
+                miniGameObject = Instantiate(gameList[2], FindObjectOfType<Canvas>().transform);
                 break;
 
             case MINIGAME.PONG_GAME:
-                miniGameObject = Instantiate(gameList[0], FindObjectOfType<Canvas>().transform); // dictionnaire avec joeur + gameObject
+                miniGameObject = Instantiate(gameList[3], FindObjectOfType<Canvas>().transform); // dictionnaire avec joeur + gameObject
                 break;
 
             case MINIGAME.PING_PONG_GAME:

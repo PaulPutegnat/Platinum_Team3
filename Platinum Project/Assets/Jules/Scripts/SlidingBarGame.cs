@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class SlidingBarGame : MonoBehaviour
 {
     // Inputs Action
-    //private PlayerControls inputActions;
     private bool p1ButtonPressed = false;
     private bool p2ButtonPressed = false;
 
@@ -39,20 +38,6 @@ public class SlidingBarGame : MonoBehaviour
     private bool isP1Win = false;
     private bool isP2Win = false;
 
-    private void Awake()
-    {
-        //inputActions = new PlayerControls();
-    }
-
-    private void OnEnable()
-    {
-        //inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        //inputActions.Disable();
-    }
     void Start()
     {
         if (isDoubleInterval)
@@ -85,10 +70,8 @@ public class SlidingBarGame : MonoBehaviour
 
     void Update()
     {
-        //OLD
-        //p1ButtonPressed = inputActions.Trapper.SlidingBarP1.triggered;
+
         p1ButtonPressed = GameManager.gameManager.players[2].GetComponent<PlayerInput>().actions.FindAction("SlidingBarP1").triggered;
-        //p2ButtonPressed = inputActions.Trapper.SlidingBarP2.triggered;
         p2ButtonPressed = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("SlidingBarP2").triggered;
 
         if (p1ButtonPressed)

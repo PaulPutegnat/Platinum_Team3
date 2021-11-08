@@ -266,9 +266,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Aiming"",
+                    ""name"": ""AimingP1"",
                     ""type"": ""Value"",
                     ""id"": ""387d9ee7-6dc4-4f8c-961f-fcc12c7c01d5"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""AimingP2"",
+                    ""type"": ""Value"",
+                    ""id"": ""006253db-2618-4b84-8678-9ce9ae21cb44"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -452,7 +460,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Aiming"",
+                    ""action"": ""AimingP1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -475,6 +483,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ShootP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03a9f2a5-0771-4b09-a941-ea83f7e003e9"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""AimingP2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1183,7 +1202,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Trapper_SpamQTEP1 = m_Trapper.FindAction("SpamQTEP1", throwIfNotFound: true);
         m_Trapper_SpamQTEP2 = m_Trapper.FindAction("SpamQTEP2", throwIfNotFound: true);
         m_Trapper_FortuneWheel = m_Trapper.FindAction("FortuneWheel", throwIfNotFound: true);
-        m_Trapper_Aiming = m_Trapper.FindAction("Aiming", throwIfNotFound: true);
+        m_Trapper_AimingP1 = m_Trapper.FindAction("AimingP1", throwIfNotFound: true);
+        m_Trapper_AimingP2 = m_Trapper.FindAction("AimingP2", throwIfNotFound: true);
         m_Trapper_ShootP1 = m_Trapper.FindAction("ShootP1", throwIfNotFound: true);
         m_Trapper_ShootP2 = m_Trapper.FindAction("ShootP2", throwIfNotFound: true);
         // Neutral
@@ -1332,7 +1352,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Trapper_SpamQTEP1;
     private readonly InputAction m_Trapper_SpamQTEP2;
     private readonly InputAction m_Trapper_FortuneWheel;
-    private readonly InputAction m_Trapper_Aiming;
+    private readonly InputAction m_Trapper_AimingP1;
+    private readonly InputAction m_Trapper_AimingP2;
     private readonly InputAction m_Trapper_ShootP1;
     private readonly InputAction m_Trapper_ShootP2;
     public struct TrapperActions
@@ -1345,7 +1366,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @SpamQTEP1 => m_Wrapper.m_Trapper_SpamQTEP1;
         public InputAction @SpamQTEP2 => m_Wrapper.m_Trapper_SpamQTEP2;
         public InputAction @FortuneWheel => m_Wrapper.m_Trapper_FortuneWheel;
-        public InputAction @Aiming => m_Wrapper.m_Trapper_Aiming;
+        public InputAction @AimingP1 => m_Wrapper.m_Trapper_AimingP1;
+        public InputAction @AimingP2 => m_Wrapper.m_Trapper_AimingP2;
         public InputAction @ShootP1 => m_Wrapper.m_Trapper_ShootP1;
         public InputAction @ShootP2 => m_Wrapper.m_Trapper_ShootP2;
         public InputActionMap Get() { return m_Wrapper.m_Trapper; }
@@ -1375,9 +1397,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @FortuneWheel.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
                 @FortuneWheel.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
                 @FortuneWheel.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
-                @Aiming.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAiming;
-                @Aiming.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAiming;
-                @Aiming.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAiming;
+                @AimingP1.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP1;
+                @AimingP1.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP1;
+                @AimingP1.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP1;
+                @AimingP2.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP2;
+                @AimingP2.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP2;
+                @AimingP2.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP2;
                 @ShootP1.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP1;
                 @ShootP1.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP1;
                 @ShootP1.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP1;
@@ -1406,9 +1431,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @FortuneWheel.started += instance.OnFortuneWheel;
                 @FortuneWheel.performed += instance.OnFortuneWheel;
                 @FortuneWheel.canceled += instance.OnFortuneWheel;
-                @Aiming.started += instance.OnAiming;
-                @Aiming.performed += instance.OnAiming;
-                @Aiming.canceled += instance.OnAiming;
+                @AimingP1.started += instance.OnAimingP1;
+                @AimingP1.performed += instance.OnAimingP1;
+                @AimingP1.canceled += instance.OnAimingP1;
+                @AimingP2.started += instance.OnAimingP2;
+                @AimingP2.performed += instance.OnAimingP2;
+                @AimingP2.canceled += instance.OnAimingP2;
                 @ShootP1.started += instance.OnShootP1;
                 @ShootP1.performed += instance.OnShootP1;
                 @ShootP1.canceled += instance.OnShootP1;
@@ -1625,7 +1653,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnSpamQTEP1(InputAction.CallbackContext context);
         void OnSpamQTEP2(InputAction.CallbackContext context);
         void OnFortuneWheel(InputAction.CallbackContext context);
-        void OnAiming(InputAction.CallbackContext context);
+        void OnAimingP1(InputAction.CallbackContext context);
+        void OnAimingP2(InputAction.CallbackContext context);
         void OnShootP1(InputAction.CallbackContext context);
         void OnShootP2(InputAction.CallbackContext context);
     }
