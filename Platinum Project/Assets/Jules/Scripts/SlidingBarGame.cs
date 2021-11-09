@@ -38,6 +38,9 @@ public class SlidingBarGame : MonoBehaviour
     private bool isP1Win = false;
     private bool isP2Win = false;
 
+    private PlayerControls.TrapperActions trapperInput1;
+    private PlayerControls.TrapperActions trapperInput2;
+
     void Start()
     {
         if (isDoubleInterval)
@@ -66,13 +69,19 @@ public class SlidingBarGame : MonoBehaviour
         posPercentP2 = Random.Range(-1, 1.1f);
         handleP2.transform.localPosition = new Vector3(posPercentP2 * 600, 0f, 0f);
         Debug.Log(posPercentP2);
+
+        trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerControls.TrapperActions>();
+        trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerControls.TrapperActions>();
     }
 
     void Update()
     {
 
-        p1ButtonPressed = GameManager.gameManager.players[2].GetComponent<PlayerInput>().actions.FindAction("SlidingBarP1").triggered;
-        p2ButtonPressed = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("SlidingBarP2").triggered;
+        /*p1ButtonPressed = GameManager.gameManager.players[2].GetComponent<PlayerInput>().actions.FindAction("SlidingBarP1").triggered;
+        p2ButtonPressed = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("SlidingBarP2").triggered;*/
+
+        p1ButtonPressed = trapperInput1.SlidingBarP1.triggered;
+        p2ButtonPressed = trapperInput2.SlidingBarP2.triggered;
 
         if (p1ButtonPressed)
         {

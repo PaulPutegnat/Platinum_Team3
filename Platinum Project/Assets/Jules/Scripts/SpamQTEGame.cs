@@ -41,23 +41,11 @@ public class SpamQTEGame : MonoBehaviour
     public bool p1ButtonPressed;
     public bool p2ButtonPressed;
 
+    private PlayerControls.TrapperActions trapperInput1;
+    private PlayerControls.TrapperActions trapperInput2;
+
     private PlayerTurnState _state = PlayerTurnState.P1;
     
-
-    private void Awake()
-    {
-        inputActions = new PlayerControls();
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
-    }
 
     void Start()
     {
@@ -72,17 +60,22 @@ public class SpamQTEGame : MonoBehaviour
         buttonP2Sprite = buttonP2.GetComponent<Image>();
 
         timerFillArea.GetComponent<Image>().color = Color.green;
-        
+
+        trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerControls.TrapperActions>();
+        trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerControls.TrapperActions>();
+
+
 
     }
 
     void Update()
     {
-        
-        //p1ButtonPressed = inputActions.Trapper.SpamQTEP1.triggered;
-        p1ButtonPressed = GameManager.gameManager.players[2].GetComponent<PlayerInput>().actions.FindAction("SpamQTEP1").triggered;
-        //p2ButtonPressed = inputActions.Trapper.SpamQTEP2.triggered;
-        p2ButtonPressed = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("SpamQTEP2").triggered;
+
+        p1ButtonPressed = trapperInput1.SpamQTEP1.triggered;
+        //p2ButtonPressed = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("SpamQTEP2").triggered; au cas ou
+        p1ButtonPressed = trapperInput1.SpamQTEP1.triggered;
+
+
 
 
 
