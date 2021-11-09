@@ -330,6 +330,123 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftJoystick"",
+                    ""type"": ""Value"",
+                    ""id"": ""9e6ef1df-7bd7-436c-94b4-79465f096ec2"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RightJoystick"",
+                    ""type"": ""Value"",
+                    ""id"": ""a4c2bfd9-a97f-46f6-ad9f-a3ee5a3a8976"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LeftDirectionalButtons"",
+                    ""type"": ""Value"",
+                    ""id"": ""f6586a68-0ff3-4021-a3d5-fdc32ef16d71"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RightButtonEast"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c056982-e6ff-42d0-ae6b-ec6a4018dc96"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightButtonSouth"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a6e0882-c9e5-4120-ba02-1e4e7620cf9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightButtonNorth"",
+                    ""type"": ""Button"",
+                    ""id"": ""da72ebf2-0fbc-490e-99f9-bd783108190c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightButtonWest"",
+                    ""type"": ""Button"",
+                    ""id"": ""8b0d3141-6462-4eee-87b9-d54aefe84d1b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftShoulderButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""7ac412af-c537-4ce6-a4c4-665743942254"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightShoulderButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""0f50e744-7fcc-4404-912b-4e5f2aa12be9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftShoulderTrigger"",
+                    ""type"": ""Button"",
+                    ""id"": ""861a38ba-ddef-408b-a846-ef1eefae9cc1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightShoulderTrigger"",
+                    ""type"": ""Button"",
+                    ""id"": ""e681f6e2-0af4-4ef3-9477-a051397a3b7e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""0474c657-5cfe-43fc-9003-b35508b17c72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea581bd4-0e8b-4fed-a6bf-cfe889466f5f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -550,6 +667,149 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Echap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bec45e2-fa6c-403e-9dd8-e5d736421cf8"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LeftJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2278ebfa-cdf5-4f96-a4e3-5ed63bd9c269"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RightJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""762e2dcf-f62c-4c5f-95a5-15e318f16e1a"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LeftDirectionalButtons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""260e90ef-d81e-440c-a58e-2816de7a41a9"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RightButtonEast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b67b81a-8cb5-4c64-b931-bc0dd5dd2db4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RightButtonSouth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac93d634-2447-402f-9795-eb4489772639"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RightButtonNorth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""23e9bc9a-f983-4356-a7fa-6d72a32376ba"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RightButtonWest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85eab970-9da0-4260-9b51-37adf47e24ab"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LeftShoulderButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7be7c9ad-450f-4f01-b042-0a03b410deb1"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RightShoulderButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d1dc199-b0aa-45b6-8c88-87afc635f1c5"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""LeftShoulderTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c95c7e5-4601-4c6e-999e-3c7940d2f11f"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RightShoulderTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a233b70-8b86-4421-9d27-7bc825233e25"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4cad92c-1ccf-4353-81bc-a9c5f9d60a67"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1277,6 +1537,19 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Trapper_ShootP1 = m_Trapper.FindAction("ShootP1", throwIfNotFound: true);
         m_Trapper_ShootP2 = m_Trapper.FindAction("ShootP2", throwIfNotFound: true);
         m_Trapper_Echap = m_Trapper.FindAction("Echap", throwIfNotFound: true);
+        m_Trapper_LeftJoystick = m_Trapper.FindAction("LeftJoystick", throwIfNotFound: true);
+        m_Trapper_RightJoystick = m_Trapper.FindAction("RightJoystick", throwIfNotFound: true);
+        m_Trapper_LeftDirectionalButtons = m_Trapper.FindAction("LeftDirectionalButtons", throwIfNotFound: true);
+        m_Trapper_RightButtonEast = m_Trapper.FindAction("RightButtonEast", throwIfNotFound: true);
+        m_Trapper_RightButtonSouth = m_Trapper.FindAction("RightButtonSouth", throwIfNotFound: true);
+        m_Trapper_RightButtonNorth = m_Trapper.FindAction("RightButtonNorth", throwIfNotFound: true);
+        m_Trapper_RightButtonWest = m_Trapper.FindAction("RightButtonWest", throwIfNotFound: true);
+        m_Trapper_LeftShoulderButton = m_Trapper.FindAction("LeftShoulderButton", throwIfNotFound: true);
+        m_Trapper_RightShoulderButton = m_Trapper.FindAction("RightShoulderButton", throwIfNotFound: true);
+        m_Trapper_LeftShoulderTrigger = m_Trapper.FindAction("LeftShoulderTrigger", throwIfNotFound: true);
+        m_Trapper_RightShoulderTrigger = m_Trapper.FindAction("RightShoulderTrigger", throwIfNotFound: true);
+        m_Trapper_Start = m_Trapper.FindAction("Start", throwIfNotFound: true);
+        m_Trapper_Select = m_Trapper.FindAction("Select", throwIfNotFound: true);
         // Neutral
         m_Neutral = asset.FindActionMap("Neutral", throwIfNotFound: true);
         m_Neutral_MenuSelection = m_Neutral.FindAction("Menu Selection", throwIfNotFound: true);
@@ -1438,6 +1711,19 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Trapper_ShootP1;
     private readonly InputAction m_Trapper_ShootP2;
     private readonly InputAction m_Trapper_Echap;
+    private readonly InputAction m_Trapper_LeftJoystick;
+    private readonly InputAction m_Trapper_RightJoystick;
+    private readonly InputAction m_Trapper_LeftDirectionalButtons;
+    private readonly InputAction m_Trapper_RightButtonEast;
+    private readonly InputAction m_Trapper_RightButtonSouth;
+    private readonly InputAction m_Trapper_RightButtonNorth;
+    private readonly InputAction m_Trapper_RightButtonWest;
+    private readonly InputAction m_Trapper_LeftShoulderButton;
+    private readonly InputAction m_Trapper_RightShoulderButton;
+    private readonly InputAction m_Trapper_LeftShoulderTrigger;
+    private readonly InputAction m_Trapper_RightShoulderTrigger;
+    private readonly InputAction m_Trapper_Start;
+    private readonly InputAction m_Trapper_Select;
     public struct TrapperActions
     {
         private @PlayerControls m_Wrapper;
@@ -1453,6 +1739,19 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @ShootP1 => m_Wrapper.m_Trapper_ShootP1;
         public InputAction @ShootP2 => m_Wrapper.m_Trapper_ShootP2;
         public InputAction @Echap => m_Wrapper.m_Trapper_Echap;
+        public InputAction @LeftJoystick => m_Wrapper.m_Trapper_LeftJoystick;
+        public InputAction @RightJoystick => m_Wrapper.m_Trapper_RightJoystick;
+        public InputAction @LeftDirectionalButtons => m_Wrapper.m_Trapper_LeftDirectionalButtons;
+        public InputAction @RightButtonEast => m_Wrapper.m_Trapper_RightButtonEast;
+        public InputAction @RightButtonSouth => m_Wrapper.m_Trapper_RightButtonSouth;
+        public InputAction @RightButtonNorth => m_Wrapper.m_Trapper_RightButtonNorth;
+        public InputAction @RightButtonWest => m_Wrapper.m_Trapper_RightButtonWest;
+        public InputAction @LeftShoulderButton => m_Wrapper.m_Trapper_LeftShoulderButton;
+        public InputAction @RightShoulderButton => m_Wrapper.m_Trapper_RightShoulderButton;
+        public InputAction @LeftShoulderTrigger => m_Wrapper.m_Trapper_LeftShoulderTrigger;
+        public InputAction @RightShoulderTrigger => m_Wrapper.m_Trapper_RightShoulderTrigger;
+        public InputAction @Start => m_Wrapper.m_Trapper_Start;
+        public InputAction @Select => m_Wrapper.m_Trapper_Select;
         public InputActionMap Get() { return m_Wrapper.m_Trapper; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1495,6 +1794,45 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Echap.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
                 @Echap.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
                 @Echap.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
+                @LeftJoystick.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftJoystick;
+                @LeftJoystick.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftJoystick;
+                @LeftJoystick.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftJoystick;
+                @RightJoystick.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightJoystick;
+                @RightJoystick.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightJoystick;
+                @RightJoystick.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightJoystick;
+                @LeftDirectionalButtons.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftDirectionalButtons;
+                @LeftDirectionalButtons.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftDirectionalButtons;
+                @LeftDirectionalButtons.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftDirectionalButtons;
+                @RightButtonEast.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonEast;
+                @RightButtonEast.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonEast;
+                @RightButtonEast.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonEast;
+                @RightButtonSouth.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonSouth;
+                @RightButtonSouth.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonSouth;
+                @RightButtonSouth.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonSouth;
+                @RightButtonNorth.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonNorth;
+                @RightButtonNorth.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonNorth;
+                @RightButtonNorth.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonNorth;
+                @RightButtonWest.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonWest;
+                @RightButtonWest.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonWest;
+                @RightButtonWest.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightButtonWest;
+                @LeftShoulderButton.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftShoulderButton;
+                @LeftShoulderButton.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftShoulderButton;
+                @LeftShoulderButton.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftShoulderButton;
+                @RightShoulderButton.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightShoulderButton;
+                @RightShoulderButton.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightShoulderButton;
+                @RightShoulderButton.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightShoulderButton;
+                @LeftShoulderTrigger.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftShoulderTrigger;
+                @LeftShoulderTrigger.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftShoulderTrigger;
+                @LeftShoulderTrigger.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnLeftShoulderTrigger;
+                @RightShoulderTrigger.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightShoulderTrigger;
+                @RightShoulderTrigger.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightShoulderTrigger;
+                @RightShoulderTrigger.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnRightShoulderTrigger;
+                @Start.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnStart;
+                @Select.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSelect;
             }
             m_Wrapper.m_TrapperActionsCallbackInterface = instance;
             if (instance != null)
@@ -1532,6 +1870,45 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Echap.started += instance.OnEchap;
                 @Echap.performed += instance.OnEchap;
                 @Echap.canceled += instance.OnEchap;
+                @LeftJoystick.started += instance.OnLeftJoystick;
+                @LeftJoystick.performed += instance.OnLeftJoystick;
+                @LeftJoystick.canceled += instance.OnLeftJoystick;
+                @RightJoystick.started += instance.OnRightJoystick;
+                @RightJoystick.performed += instance.OnRightJoystick;
+                @RightJoystick.canceled += instance.OnRightJoystick;
+                @LeftDirectionalButtons.started += instance.OnLeftDirectionalButtons;
+                @LeftDirectionalButtons.performed += instance.OnLeftDirectionalButtons;
+                @LeftDirectionalButtons.canceled += instance.OnLeftDirectionalButtons;
+                @RightButtonEast.started += instance.OnRightButtonEast;
+                @RightButtonEast.performed += instance.OnRightButtonEast;
+                @RightButtonEast.canceled += instance.OnRightButtonEast;
+                @RightButtonSouth.started += instance.OnRightButtonSouth;
+                @RightButtonSouth.performed += instance.OnRightButtonSouth;
+                @RightButtonSouth.canceled += instance.OnRightButtonSouth;
+                @RightButtonNorth.started += instance.OnRightButtonNorth;
+                @RightButtonNorth.performed += instance.OnRightButtonNorth;
+                @RightButtonNorth.canceled += instance.OnRightButtonNorth;
+                @RightButtonWest.started += instance.OnRightButtonWest;
+                @RightButtonWest.performed += instance.OnRightButtonWest;
+                @RightButtonWest.canceled += instance.OnRightButtonWest;
+                @LeftShoulderButton.started += instance.OnLeftShoulderButton;
+                @LeftShoulderButton.performed += instance.OnLeftShoulderButton;
+                @LeftShoulderButton.canceled += instance.OnLeftShoulderButton;
+                @RightShoulderButton.started += instance.OnRightShoulderButton;
+                @RightShoulderButton.performed += instance.OnRightShoulderButton;
+                @RightShoulderButton.canceled += instance.OnRightShoulderButton;
+                @LeftShoulderTrigger.started += instance.OnLeftShoulderTrigger;
+                @LeftShoulderTrigger.performed += instance.OnLeftShoulderTrigger;
+                @LeftShoulderTrigger.canceled += instance.OnLeftShoulderTrigger;
+                @RightShoulderTrigger.started += instance.OnRightShoulderTrigger;
+                @RightShoulderTrigger.performed += instance.OnRightShoulderTrigger;
+                @RightShoulderTrigger.canceled += instance.OnRightShoulderTrigger;
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
             }
         }
     }
@@ -1747,6 +2124,19 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnShootP1(InputAction.CallbackContext context);
         void OnShootP2(InputAction.CallbackContext context);
         void OnEchap(InputAction.CallbackContext context);
+        void OnLeftJoystick(InputAction.CallbackContext context);
+        void OnRightJoystick(InputAction.CallbackContext context);
+        void OnLeftDirectionalButtons(InputAction.CallbackContext context);
+        void OnRightButtonEast(InputAction.CallbackContext context);
+        void OnRightButtonSouth(InputAction.CallbackContext context);
+        void OnRightButtonNorth(InputAction.CallbackContext context);
+        void OnRightButtonWest(InputAction.CallbackContext context);
+        void OnLeftShoulderButton(InputAction.CallbackContext context);
+        void OnRightShoulderButton(InputAction.CallbackContext context);
+        void OnLeftShoulderTrigger(InputAction.CallbackContext context);
+        void OnRightShoulderTrigger(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
     public interface INeutralActions
     {

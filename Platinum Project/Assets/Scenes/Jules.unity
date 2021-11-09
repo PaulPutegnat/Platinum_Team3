@@ -436,9 +436,8 @@ MonoBehaviour:
   GuitarHeroGameObject: 0
   playerType: 1
   keyType: 1
-  sideJey: 1
+  sideKey: 2
   valueInputJ1: {x: 0, y: 0}
-  valueInputJ2: {x: 0, y: 0}
 --- !u!4 &257901870
 Transform:
   m_ObjectHideFlags: 0
@@ -838,6 +837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActivePlayer: 0
+  IsGamePlaying: 0
   Runner: {fileID: -2511955363012547862, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
   Trapper: {fileID: -7291034527539299295, guid: 91d1c878edbc34e4e850c871be496d66, type: 3}
   players:
