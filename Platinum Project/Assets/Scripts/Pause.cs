@@ -9,7 +9,7 @@ public class Pause : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
-
+    public GameObject FirstSelectedInUI;
     public void PausePressed(InputAction.CallbackContext context)
     {
         if (GameIsPaused)

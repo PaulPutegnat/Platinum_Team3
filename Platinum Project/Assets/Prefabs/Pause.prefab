@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 7887477738787141450}
+  FirstSelectedInUI: {fileID: 7887477739445079759}
 --- !u!1 &7887477739222797879
 GameObject:
   m_ObjectHideFlags: 0
