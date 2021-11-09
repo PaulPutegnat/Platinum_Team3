@@ -19,7 +19,7 @@ public class TestCam : MonoBehaviour
     private Vector3 _currentPosition;
 
     private bool _rotationSettings = false;
-    private Quaternion _currentRotation;
+    private Vector3 _currentRotation;
 
     private bool _fovSettings = false;
     private float _currentFov;
@@ -45,7 +45,7 @@ public class TestCam : MonoBehaviour
             {
                 if (!_rotationSettings)
                 {
-                    _currentRotation = Camera.main.transform.rotation;
+                    _currentRotation = Camera.main.transform.eulerAngles;
                     _rotationSettings = true;
                 }
                 RotateCamera();
@@ -86,12 +86,13 @@ public class TestCam : MonoBehaviour
 
     public void RotateCamera()
     {
-        Quaternion currentRotation = _currentRotation;
-        Quaternion targetRotation = PointsInfos[i].TargetRotation.transform.rotation;
+        Vector3 currentRotation = _currentRotation;
+        Vector3 targetRotation = PointsInfos[i].TargetRotation.transform.eulerAngles;
+        Debug.Log(_currentRotation);
 
-        transform.rotation = Quaternion.Lerp(currentRotation, targetRotation, _percent);
+        transform.eulerAngles = Vector3.Lerp(currentRotation, targetRotation, _percent);
 
-        if (transform.rotation == targetRotation)
+        if (transform.eulerAngles == targetRotation)
         {
             _timer = 0;
             _canIncrement = true;

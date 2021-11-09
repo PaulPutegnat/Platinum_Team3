@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 //using TreeEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     private GameObject RUNNERPANNEL;
     private GameObject TRAPPERPANNEL;
+    private GameObject BeginButton;
 
 
     [Header("Spawn")]
@@ -44,13 +47,9 @@ public class GameManager : MonoBehaviour
     {
         RUNNERPANNEL = GameObject.Find("RUNNER");
         TRAPPERPANNEL = GameObject.Find("TRAPPER");
-        checkUI();
+        BeginButton = GameObject.Find("BeginButton");
+        
         canvas = GameObject.Find("Canvas").transform;
-    }
-
-    private void Update()
-    {
-        Debug.Log(GetComponent<PlayerInputManager>().playerCount);
     }
 
     public void SpawnFortuneWheel()
@@ -64,14 +63,35 @@ public class GameManager : MonoBehaviour
         
         if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount)
         {
+            StartCoroutine(WaitForBegin());
+
+        }
+
+    }
+
+    public void ButtonPressed()
+    {
+
             RUNNERPANNEL.SetActive(false);
             TRAPPERPANNEL.SetActive(false);
-        }
-        else
-        {
-            RUNNERPANNEL.SetActive(true);
-            TRAPPERPANNEL.SetActive(true);
-        }
+            BeginButton.SetActive(false);
+
+            for (int index = 0; index < MaxPlayers; index++)
+            {
+                if (players[index])
+                {
+                    players[index].SetActive(true);
+                }
+            }
+
+            GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
+            //SpawnFortuneWheel();
+    }
+
+    IEnumerator WaitForBegin()
+    {
+        yield return new WaitForSeconds(0.1f);
+        BeginButton.GetComponent<Button>().interactable = true;
     }
 
 }
