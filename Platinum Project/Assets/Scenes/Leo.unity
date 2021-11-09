@@ -5623,6 +5623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
@@ -5648,7 +5649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1006958128}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &192715680
@@ -24210,9 +24211,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_SelectedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_SelectedColor: {r: 0, g: 0.5566038, b: 0.039562054, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -40032,6 +40033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActivePlayer: 0
+  IsGamePlaying: 0
   Runner: {fileID: -2511955363012547862, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
   Trapper: {fileID: -7291034527539299295, guid: 91d1c878edbc34e4e850c871be496d66, type: 3}
   players:
@@ -40114,6 +40116,7 @@ MonoBehaviour:
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
+      m_Flags: 0
     m_Reference: {fileID: 0}
   m_PlayerPrefab: {fileID: 8990142025894160573, guid: baec128bdd4b06b468e4616dc2b6de85, type: 3}
   m_SplitScreen: 0

@@ -52,24 +52,6 @@ public class neutralcontroller : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-       // Debug.Log(GetComponent<PlayerInput>().currentActionMap.name);
-       if((GameManager.gameManager.players[0] != null) && (GameManager.gameManager.players[1] != null))
-        {
-            GameObject[]objetAEnlever = GameObject.FindGameObjectsWithTag("AEnlever");
-            for (int i = 0; i < objetAEnlever.Length; i++)
-            {
-                objetAEnlever[i].SetActive(false);
-                if(i == 1)
-                {
-                    cameraIsMoov = true;
-                    Debug.Log("gfjegfekezk");
-                }
-            }
-        }
-    }
-
     public void ChangeTeam(InputAction.CallbackContext context)
     {
         if (!Comfirmation)
