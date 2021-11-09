@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     public float TrapperNumber = 0;
     public float RunnererNumber = 0;
+
+    public bool IsBegin = false;
     private void Awake()
     {
         if (gameManager != null && gameManager != this)
@@ -101,6 +103,7 @@ public class GameManager : MonoBehaviour
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
             
             //SpawnFortuneWheel();
+            IsBegin = true;
     }
 
     IEnumerator WaitForBegin()

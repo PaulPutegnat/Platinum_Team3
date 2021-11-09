@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MiniGameGenerator : MonoBehaviour
 {
@@ -17,34 +18,30 @@ public class MiniGameGenerator : MonoBehaviour
         BIRDS_COUNTING_GAME,
         GUITAR_HERO_GAME
     }
-
     public enum SLIDING
     {
         NONE,
+        P1_BUTTON,
+        P2_BUTTON
     }
-
     public enum SPAM_QTE
     {
         NONE,
     }
-
     public enum SHOOTING
     {
         NONE,
     }
-
     public enum PONG
     {
         NONE,
         LEFT_BAR,
         RIGHT_BAR,
     }
-
     public enum PINGPONG
     {
         NONE,
     }
-
     public enum WATER
     {
         NONE,
@@ -64,7 +61,6 @@ public class MiniGameGenerator : MonoBehaviour
         J1,
         J2
     }
-
     public enum KEY
     {
         NONE,
@@ -82,7 +78,7 @@ public class MiniGameGenerator : MonoBehaviour
         RIGHT
     }
 
-
+    private PlayerControls playerControls;
     public List<GameObject> gameList = new List<GameObject>();
     private GameObject miniGameObject;
     [Header("MINIGAME")]
@@ -104,68 +100,95 @@ public class MiniGameGenerator : MonoBehaviour
     public Vector2 valueInputJ1 = Vector2.zero;
     public Vector2 valueInputJ2 = Vector2.zero;
 
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+    }
+
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
 
     void Start()
     {
-        switch (gameName)
-        {
-            case MINIGAME.SLIDING_GAME:
-                miniGameObject = Instantiate(gameList[0], FindObjectOfType<Canvas>().transform);
-                break;
-
-            case MINIGAME.SPAM_QTE_GAME:
-                miniGameObject = Instantiate(gameList[1], FindObjectOfType<Canvas>().transform);
-                break;
-
-            case MINIGAME.SHOOTING_GAME:
-                miniGameObject = Instantiate(gameList[2], FindObjectOfType<Canvas>().transform);
-                break;
-
-            case MINIGAME.PONG_GAME:
-                miniGameObject = Instantiate(gameList[3], FindObjectOfType<Canvas>().transform); // dictionnaire avec joeur + gameObject
-                break;
-
-            case MINIGAME.PING_PONG_GAME:
-                miniGameObject = Instantiate(gameList[4], FindObjectOfType<Canvas>().transform);
-                break;
-
-            case MINIGAME.WATER_IS_COMING_GAME:
-                miniGameObject = Instantiate(gameList[5], FindObjectOfType<Canvas>().transform);
-                break;
-
-            case MINIGAME.BIRDS_COUNTING_GAME:
-                miniGameObject = Instantiate(gameList[6], FindObjectOfType<Canvas>().transform);
-                break;
-
-            case MINIGAME.GUITAR_HERO_GAME:
-                miniGameObject = Instantiate(gameList[7], FindObjectOfType<Canvas>().transform);
-                break;
-
-            default:
-                break;
-        }
+        
     }
 
 
     void Update()
     {
+
+        if (GameManager.gameManager.IsBegin)
+        {
+            switch (gameName)
+            {
+                case MINIGAME.SLIDING_GAME:
+                    miniGameObject = Instantiate(gameList[0], FindObjectOfType<Canvas>().transform);
+                    break;
+
+                case MINIGAME.SPAM_QTE_GAME:
+                    miniGameObject = Instantiate(gameList[1], FindObjectOfType<Canvas>().transform);
+                    break;
+
+                case MINIGAME.SHOOTING_GAME:
+                    miniGameObject = Instantiate(gameList[2], FindObjectOfType<Canvas>().transform);
+                    break;
+
+                case MINIGAME.PONG_GAME:
+                    miniGameObject = Instantiate(gameList[3], GameObject.FindGameObjectWithTag("Canvas").transform); // dictionnaire avec joeur + gameObject
+                    break;
+
+                case MINIGAME.PING_PONG_GAME:
+                    miniGameObject = Instantiate(gameList[4], FindObjectOfType<Canvas>().transform);
+                    break;
+
+                case MINIGAME.WATER_IS_COMING_GAME:
+                    miniGameObject = Instantiate(gameList[5], FindObjectOfType<Canvas>().transform);
+                    break;
+
+                case MINIGAME.BIRDS_COUNTING_GAME:
+                    miniGameObject = Instantiate(gameList[6], FindObjectOfType<Canvas>().transform);
+                    break;
+
+                case MINIGAME.GUITAR_HERO_GAME:
+                    miniGameObject = Instantiate(gameList[7], FindObjectOfType<Canvas>().transform);
+                    break;
+
+                default:
+                    break;
+            }
+            GameManager.gameManager.IsBegin = false;
+        }
+        else
+        {
+            return;
+        }
+
         string inputNameX = string.Format("{0}_{1}_{2}", playerType.ToString(), "HORIZONTAL", sideJey.ToString());
         string inputNameY = string.Format("{0}_{1}_{2}", playerType.ToString(), "VERTICAL", sideJey.ToString());
 
         float jAxisXJ1 = Input.GetAxis(inputNameX);
         float jAxisYJ1 = Input.GetAxis(inputNameY);
-        Vector2 vectorInput = new Vector2(jAxisXJ1, jAxisYJ1);
+
+
+        Vector2 vectorInput = playerControls.GamepadControls.LeftJoystick.ReadValue<Vector2>();
 
         if (vectorInput != Vector2.zero)
         {
-            valueInputJ1 = new Vector2(jAxisXJ1, jAxisYJ1);
+            valueInputJ1 = vectorInput;
         }
         else
         {
             valueInputJ1 = Vector2.zero;
         }
 
-        switch (gameName)
+        /*switch (gameName)
         {
             case MINIGAME.SLIDING_GAME:
 
@@ -180,7 +203,7 @@ public class MiniGameGenerator : MonoBehaviour
                 break;
 
             case MINIGAME.PONG_GAME:
-                miniGameObject.GetComponent<PongGame>().MovePongBar(valueInputJ1);
+                //miniGameObject.GetComponent<PongGame>().MoveP1PongBar(valueInputJ1);
                 break;
 
             case MINIGAME.PING_PONG_GAME:
@@ -201,7 +224,7 @@ public class MiniGameGenerator : MonoBehaviour
 
             default:
                 break;
-        }
+        }*/
 
         if (playerType == PLAYER_NAME.J1)
         {
@@ -228,7 +251,16 @@ public class MiniGameGenerator : MonoBehaviour
                                     break;
 
                                 case MINIGAME.PONG_GAME:
-                                    
+                                    switch (pongGameObject)
+                                    {
+                                        case PONG.LEFT_BAR:
+                                            miniGameObject.GetComponent<PongGame>().MoveP1PongBar(valueInputJ1);
+                                            break;
+
+                                        case PONG.RIGHT_BAR:
+                                            miniGameObject.GetComponent<PongGame>().MoveP2PongBar(valueInputJ1);
+                                            break;
+                                    }
                                     break;
 
                                 case MINIGAME.PING_PONG_GAME:
@@ -268,7 +300,7 @@ public class MiniGameGenerator : MonoBehaviour
                                     break;
 
                                 case MINIGAME.PONG_GAME:
-                                    miniGameObject.GetComponent<PongGame>().MovePongBar(valueInputJ1);
+                                    
                                     break;
 
                                 case MINIGAME.PING_PONG_GAME:
