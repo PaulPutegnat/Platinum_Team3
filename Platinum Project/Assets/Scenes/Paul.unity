@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3660382, g: 0.40725085, b: 0.4499449, a: 1}
+  m_IndirectSpecularColor: {r: 0.10859447, g: 0.13556528, b: 0.16805677, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5278,6 +5278,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 52842daa-391f-4b0e-866f-ea1b5b311a64
     m_ActionName: Trapper/FortuneWheel[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 387d9ee7-6dc4-4f8c-961f-fcc12c7c01d5
+    m_ActionName: Trapper/Aiming
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 543e5385-85bf-4a03-a5ea-78f39fffd773
+    m_ActionName: Trapper/ShootP1
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 96aa8d67-6e52-474f-a963-2caed415f4af
+    m_ActionName: Trapper/ShootP2[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
@@ -7111,6 +7123,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5744438064797746622, guid: da4bfa2c91ed9a2458d65369637e2e8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744438064797746622, guid: da4bfa2c91ed9a2458d65369637e2e8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744438064797746622, guid: da4bfa2c91ed9a2458d65369637e2e8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 5744438065747714682, guid: da4bfa2c91ed9a2458d65369637e2e8b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.92387956
@@ -7122,6 +7146,18 @@ PrefabInstance:
     - target: {fileID: 5744438065747714682, guid: da4bfa2c91ed9a2458d65369637e2e8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744438066326853543, guid: da4bfa2c91ed9a2458d65369637e2e8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744438066326853543, guid: da4bfa2c91ed9a2458d65369637e2e8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744438066326853543, guid: da4bfa2c91ed9a2458d65369637e2e8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5744438066697014304, guid: da4bfa2c91ed9a2458d65369637e2e8b, type: 3}
       propertyPath: m_RootOrder
@@ -7206,15 +7242,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].Fov
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].Fov
-      value: 0
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].Fov
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[3].Fov
@@ -7250,7 +7286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].Step
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[3].Name
@@ -7314,7 +7350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].ChangeFov
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].TimeToFov
@@ -7322,7 +7358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].ChangeFov
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].TimeToFov
@@ -7330,7 +7366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].ChangeFov
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].TimeToFov
@@ -7394,7 +7430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].ChangeRotation
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].TargetPosition
@@ -7410,7 +7446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].ChangeRotation
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].TargetPosition
@@ -7426,7 +7462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].ChangeRotation
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].TargetPosition
