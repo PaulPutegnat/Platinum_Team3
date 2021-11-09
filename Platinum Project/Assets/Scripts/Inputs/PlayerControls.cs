@@ -321,6 +321,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Echap"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b1e344e-bf84-420f-ab59-dedc7ce457ce"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -519,6 +528,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""AimingP2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72a64dac-21ca-4c75-bef6-92e426e5253e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Echap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75e4b8cd-d22a-48ec-8360-002792bb9463"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Echap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1245,6 +1276,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Trapper_AimingP2 = m_Trapper.FindAction("AimingP2", throwIfNotFound: true);
         m_Trapper_ShootP1 = m_Trapper.FindAction("ShootP1", throwIfNotFound: true);
         m_Trapper_ShootP2 = m_Trapper.FindAction("ShootP2", throwIfNotFound: true);
+        m_Trapper_Echap = m_Trapper.FindAction("Echap", throwIfNotFound: true);
         // Neutral
         m_Neutral = asset.FindActionMap("Neutral", throwIfNotFound: true);
         m_Neutral_MenuSelection = m_Neutral.FindAction("Menu Selection", throwIfNotFound: true);
@@ -1405,6 +1437,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Trapper_AimingP2;
     private readonly InputAction m_Trapper_ShootP1;
     private readonly InputAction m_Trapper_ShootP2;
+    private readonly InputAction m_Trapper_Echap;
     public struct TrapperActions
     {
         private @PlayerControls m_Wrapper;
@@ -1419,6 +1452,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @AimingP2 => m_Wrapper.m_Trapper_AimingP2;
         public InputAction @ShootP1 => m_Wrapper.m_Trapper_ShootP1;
         public InputAction @ShootP2 => m_Wrapper.m_Trapper_ShootP2;
+        public InputAction @Echap => m_Wrapper.m_Trapper_Echap;
         public InputActionMap Get() { return m_Wrapper.m_Trapper; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1458,6 +1492,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ShootP2.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP2;
                 @ShootP2.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP2;
                 @ShootP2.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP2;
+                @Echap.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
+                @Echap.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
+                @Echap.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
             }
             m_Wrapper.m_TrapperActionsCallbackInterface = instance;
             if (instance != null)
@@ -1492,6 +1529,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ShootP2.started += instance.OnShootP2;
                 @ShootP2.performed += instance.OnShootP2;
                 @ShootP2.canceled += instance.OnShootP2;
+                @Echap.started += instance.OnEchap;
+                @Echap.performed += instance.OnEchap;
+                @Echap.canceled += instance.OnEchap;
             }
         }
     }
@@ -1706,6 +1746,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnAimingP2(InputAction.CallbackContext context);
         void OnShootP1(InputAction.CallbackContext context);
         void OnShootP2(InputAction.CallbackContext context);
+        void OnEchap(InputAction.CallbackContext context);
     }
     public interface INeutralActions
     {

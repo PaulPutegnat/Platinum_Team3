@@ -299,6 +299,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Echap",
+                    "type": "Button",
+                    "id": "2b1e344e-bf84-420f-ab59-dedc7ce457ce",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -497,6 +506,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "AimingP2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72a64dac-21ca-4c75-bef6-92e426e5253e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Echap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "75e4b8cd-d22a-48ec-8360-002792bb9463",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Echap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

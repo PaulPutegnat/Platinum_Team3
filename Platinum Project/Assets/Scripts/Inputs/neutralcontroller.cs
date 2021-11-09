@@ -186,8 +186,10 @@ public class neutralcontroller : MonoBehaviour
 
     void InitTrapper()
     {
+
         GameManager.gameManager.ActivePlayer++;
         GameManager.gameManager.checkUI();
+        GetComponent<PlayerInput>().actions.FindAction("Echap").performed += new Action<InputAction.CallbackContext>(GameObject.Find("Pause").GetComponent<Pause>().PausePressed);
         TrapperRef.SetActive(false);
     }
 }
