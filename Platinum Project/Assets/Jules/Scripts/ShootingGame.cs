@@ -37,23 +37,47 @@ public class ShootingGame : MonoBehaviour
     PointerEventData m_PointerEventData;
     EventSystem m_EventSystem;
 
+    private PlayerInput p1Input;
+    private PlayerInput p2Input;
+
     void Start()
     {
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
+        this.gameObject.transform.localPosition = new Vector3(0f, 0f, -10f);
 
         //Fetch the Raycaster from the GameObject (the Canvas)
         m_Raycaster = FindObjectOfType<GraphicRaycaster>();
         //Fetch the Event System from the Scene
         m_EventSystem = FindObjectOfType<EventSystem>();
+
+        if (GameManager.gameManager.players[3])
+        {
+            _aimSightP2.SetActive(true);
+            p2Input = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+        }
+        else
+        {
+            _aimSightP2.SetActive(false);
+        }
+
+        p1Input = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
+        
     }
 
     void Update()
     {
+        if (GameManager.gameManager.players[2])
+        {
+            IsP1Shooting = p1Input.actions.FindAction("ShootP1").triggered;
+            padPosP1 = p1Input.actions.FindAction("AimingP1").ReadValue<Vector2>();
+        }
 
-        IsP1Shooting = GameManager.gameManager.players[2].GetComponent<PlayerInput>().actions.FindAction("ShootP1").triggered;
-        IsP2Shooting = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("ShootP2").triggered;
-        padPosP1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>().actions.FindAction("AimingP1").ReadValue<Vector2>();
-        padPosP2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("AimingP2").ReadValue<Vector2>();
+        if (GameManager.gameManager.players[3])
+        {
+            IsP2Shooting = p2Input.actions.FindAction("ShootP2").triggered;
+            padPosP2 = p2Input.actions.FindAction("AimingP2").ReadValue<Vector2>();
+            
+        }
 
         if (Time.time > nextSpawnTime)
         {
@@ -65,6 +89,7 @@ public class ShootingGame : MonoBehaviour
 
         if (IsP1Shooting)
         {
+            Debug.Log("P1 is Shooting");
             Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().position;
 
             //Set up the new Pointer Event
@@ -77,15 +102,12 @@ public class ShootingGame : MonoBehaviour
 
             //Raycast using the Graphics Raycaster and mouse click position
             m_Raycaster.Raycast(m_PointerEventData, results);
-            Debug.Log(m_PointerEventData.position);
 
             if (results.Count == 0)
             {
                 Debug.Log("results.Count = 0");
                 return;
             }
-
-            Debug.Log("sightPos : " + sightPos);
 
             GameObject firstTarget = results[0].gameObject;
             GameObject hitTarget = null;
@@ -98,7 +120,6 @@ public class ShootingGame : MonoBehaviour
                 if (results[0].gameObject.CompareTag("Target"))
                 {
                     hitTarget = firstTarget;
-                    Debug.Log(hitTarget);
                 }
             }
             else
@@ -111,7 +132,7 @@ public class ShootingGame : MonoBehaviour
                         {
                             if (firstTarget.GetComponent<RectTransform>())
                             {
-                                if (h.gameObject.GetComponent<RectTransform>().localPosition.z > firstTarget.GetComponent<RectTransform>().localPosition.z)
+                                if (h.gameObject.GetComponent<RectTransform>().localPosition.z < firstTarget.GetComponent<RectTransform>().localPosition.z)
                                 {
                                     hitTarget = h.gameObject;
                                 }
@@ -138,6 +159,7 @@ public class ShootingGame : MonoBehaviour
 
         if (IsP2Shooting)
         {
+            Debug.Log("P2 is Shooting");
             Vector3 sightPos = _aimSightP2.GetComponent<RectTransform>().position;
 
             //Set up the new Pointer Event
@@ -150,15 +172,12 @@ public class ShootingGame : MonoBehaviour
 
             //Raycast using the Graphics Raycaster and mouse click position
             m_Raycaster.Raycast(m_PointerEventData, results);
-            Debug.Log(m_PointerEventData.position);
 
             if (results.Count == 0)
             {
                 Debug.Log("results.Count = 0");
                 return;
             }
-
-            Debug.Log("sightPos : " + sightPos);
 
             GameObject firstTarget = results[0].gameObject;
             GameObject hitTarget = null;
@@ -171,7 +190,6 @@ public class ShootingGame : MonoBehaviour
                 if (results[0].gameObject.CompareTag("Target"))
                 {
                     hitTarget = firstTarget;
-                    Debug.Log(hitTarget);
                 }
             }
             else
@@ -213,7 +231,7 @@ public class ShootingGame : MonoBehaviour
     public void SpawnTarget()
     {
         Vector3 size = _spawnAreaRT.sizeDelta;
-        Vector3 pos = new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), 0f);
+        Vector3 pos = new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-10f, -20f));
         GameObject newTarget = Instantiate(_targetPrefab, _targetList);
         newTarget.transform.localPosition = pos;
         newTarget.transform.localScale = new Vector3(.5f, .5f, .5f);
