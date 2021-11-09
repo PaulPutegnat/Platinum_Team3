@@ -39,10 +39,10 @@ public class GameManager : MonoBehaviour
     public float RunnererNumber = 0;
     private void Awake()
     {
-        if (gameManager == null)
-        {
-            gameManager = this;
-        }
+        if (gameManager != null && gameManager != this)
+            Destroy(gameObject);
+
+        gameManager = this;
 
         MaxPlayers = GetComponent<PlayerInputManager>().maxPlayerCount;
         pausegGameObject = GameObject.Find("Pause");
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     public void checkUI()
     {
         
-        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount)
+        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount) //Changer à ActivePlayer == GetComponent<PlayerInputManager>().maxPlayerCount pour le JEU FINAL
         {
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(BeginButton);
             StartCoroutine(WaitForBegin());
