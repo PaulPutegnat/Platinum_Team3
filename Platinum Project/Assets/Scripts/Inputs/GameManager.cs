@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private int MaxPlayers;
     public int ActivePlayer = 0;
 
+    public bool IsGamePlaying = false;
+
     [Header("Prefab")]
     public TESTCONTROLER Runner;
     public TrapController Trapper;
@@ -25,6 +27,8 @@ public class GameManager : MonoBehaviour
     private GameObject RUNNERPANNEL;
     private GameObject TRAPPERPANNEL;
     private GameObject BeginButton;
+
+    private GameObject pausegGameObject;
 
 
     [Header("Spawn")]
@@ -37,12 +41,13 @@ public class GameManager : MonoBehaviour
     public bool IsBegin = false;
     private void Awake()
     {
-        if (gameManager == null)
-        {
-            gameManager = this;
-        }
+        if (gameManager != null && gameManager != this)
+            Destroy(gameObject);
+
+        gameManager = this;
 
         MaxPlayers = GetComponent<PlayerInputManager>().maxPlayerCount;
+        pausegGameObject = GameObject.Find("Pause");
     }
 
     public void Start()
@@ -63,10 +68,15 @@ public class GameManager : MonoBehaviour
     public void checkUI()
     {
         
-        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount)
+        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount) //Changer à ActivePlayer == GetComponent<PlayerInputManager>().maxPlayerCount pour le JEU FINAL
         {
+            GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(BeginButton);
             StartCoroutine(WaitForBegin());
-
+        }
+        else
+        {
+            BeginButton.GetComponent<Button>().interactable = false;
+            GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(null);
         }
 
     }
@@ -74,9 +84,14 @@ public class GameManager : MonoBehaviour
     public void ButtonPressed()
     {
 
-            RUNNERPANNEL.SetActive(false);
-            TRAPPERPANNEL.SetActive(false);
-            BeginButton.SetActive(false);
+            IsGamePlaying = true;
+
+
+            GameObject[] objetAEnlever = GameObject.FindGameObjectsWithTag("AEnlever");
+            for (int i = 0; i < objetAEnlever.Length; i++)
+            {
+                objetAEnlever[i].SetActive(false);
+            }
 
             for (int index = 0; index < MaxPlayers; index++)
             {
@@ -85,8 +100,8 @@ public class GameManager : MonoBehaviour
                     players[index].SetActive(true);
                 }
             }
-
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
+            
             //SpawnFortuneWheel();
             IsBegin = true;
     }

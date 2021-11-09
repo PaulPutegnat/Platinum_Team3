@@ -12,14 +12,18 @@ public class Pause : MonoBehaviour
     public GameObject FirstSelectedInUI;
     public void PausePressed(InputAction.CallbackContext context)
     {
-        if (GameIsPaused)
-         {
+        if (GameManager.gameManager.IsGamePlaying)
+        {
+            if (GameIsPaused)
+            {
                 Resume();
-         }
-         else
+            }
+            else
             {
                 PauseTheGame();
             }
+        }
+
     }
     public void Resume()
     {
