@@ -81,6 +81,7 @@ public class MiniGameGenerator : MonoBehaviour
     private PlayerControls playerControls;
     public List<GameObject> gameList = new List<GameObject>();
     private GameObject miniGameObject;
+
     [Header("MINIGAME")]
     public MINIGAME gameName = MINIGAME.NONE;
     public SLIDING slidingGameObject = SLIDING.NONE;
@@ -92,13 +93,15 @@ public class MiniGameGenerator : MonoBehaviour
     public BIRDS birdsGameObject = BIRDS.NONE;
     public GUITAR_HERO GuitarHeroGameObject = GUITAR_HERO.NONE;
 
+    [Header("PLAYERS & KEYS")]
     public PLAYER_NAME playerType = PLAYER_NAME.NONE;
     public KEY keyType = KEY.NONE;
-    public SIDE_KEY sideJey = SIDE_KEY.NONE;
+    public SIDE_KEY sideKey = SIDE_KEY.NONE;
 
-
+    [Header("VALUE")]
     public Vector2 valueInputJ1 = Vector2.zero;
-    public Vector2 valueInputJ2 = Vector2.zero;
+
+    private bool IsInstantiate = false;
 
     private void Awake()
     {
@@ -161,27 +164,25 @@ public class MiniGameGenerator : MonoBehaviour
                     break;
 
                 default:
+                    return;
                     break;
             }
             GameManager.gameManager.IsBegin = false;
-        }
-        else
-        {
-            return;
+            IsInstantiate = true;
         }
 
-        string inputNameX = string.Format("{0}_{1}_{2}", playerType.ToString(), "HORIZONTAL", sideJey.ToString());
-        string inputNameY = string.Format("{0}_{1}_{2}", playerType.ToString(), "VERTICAL", sideJey.ToString());
+        //string inputNameX = string.Format("{0}_{1}_{2}", playerType.ToString(), "HORIZONTAL", sideJey.ToString());
+        //string inputNameY = string.Format("{0}_{1}_{2}", playerType.ToString(), "VERTICAL", sideJey.ToString());
 
-        float jAxisXJ1 = Input.GetAxis(inputNameX);
-        float jAxisYJ1 = Input.GetAxis(inputNameY);
+        //float jAxisXJ1 = Input.GetAxis(inputNameX);
+        //float jAxisYJ1 = Input.GetAxis(inputNameY);
 
 
-        Vector2 vectorInput = playerControls.GamepadControls.LeftJoystick.ReadValue<Vector2>();
+        Vector2 vectorInput = playerControls.Trapper.LeftJoystick.ReadValue<Vector2>();
 
         if (vectorInput != Vector2.zero)
         {
-            valueInputJ1 = vectorInput;
+            valueInputJ1 = playerControls.Trapper.LeftJoystick.ReadValue<Vector2>();
         }
         else
         {
@@ -226,134 +227,146 @@ public class MiniGameGenerator : MonoBehaviour
                 break;
         }*/
 
-        if (playerType == PLAYER_NAME.J1)
+        if (IsInstantiate && !GameManager.gameManager.IsBegin)
         {
-            switch (keyType)
+            if (playerType == PLAYER_NAME.J1)
+            {
+                switch (keyType)
+                {
+                    case KEY.JOYSTICK:
+
+                        switch (sideKey)
+                        {
+                            case SIDE_KEY.LEFT:
+                                switch (gameName)
+                                {
+                                    case MINIGAME.SLIDING_GAME:
+
+                                        break;
+
+                                    case MINIGAME.SPAM_QTE_GAME:
+
+                                        break;
+
+                                    case MINIGAME.SHOOTING_GAME:
+
+                                        break;
+
+                                    case MINIGAME.PONG_GAME:
+                                        switch (pongGameObject)
+                                        {
+                                            case PONG.LEFT_BAR:
+                                                miniGameObject.GetComponent<PongGame>().MoveP1PongBar(playerControls.Trapper.LeftJoystick.ReadValue<Vector2>());
+                                                break;
+
+                                            case PONG.RIGHT_BAR:
+                                                miniGameObject.GetComponent<PongGame>().MoveP2PongBar(playerControls.Trapper.LeftJoystick.ReadValue<Vector2>());
+                                                break;
+                                        }
+                                        break;
+
+                                    case MINIGAME.PING_PONG_GAME:
+
+                                        break;
+
+                                    case MINIGAME.WATER_IS_COMING_GAME:
+
+                                        break;
+
+                                    case MINIGAME.BIRDS_COUNTING_GAME:
+
+                                        break;
+
+                                    case MINIGAME.GUITAR_HERO_GAME:
+
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                                break;
+
+                            case SIDE_KEY.RIGHT:
+                                switch (gameName)
+                                {
+                                    case MINIGAME.SLIDING_GAME:
+
+                                        break;
+
+                                    case MINIGAME.SPAM_QTE_GAME:
+
+                                        break;
+
+                                    case MINIGAME.SHOOTING_GAME:
+
+                                        break;
+
+                                    case MINIGAME.PONG_GAME:
+                                        switch (pongGameObject)
+                                        {
+                                            case PONG.LEFT_BAR:
+                                                miniGameObject.GetComponent<PongGame>().MoveP1PongBar(playerControls.Trapper.RightJoystick.ReadValue<Vector2>());
+                                                break;
+
+                                            case PONG.RIGHT_BAR:
+                                                miniGameObject.GetComponent<PongGame>().MoveP2PongBar(playerControls.Trapper.RightJoystick.ReadValue<Vector2>());
+                                                break;
+                                        }
+                                        break;
+
+                                    case MINIGAME.PING_PONG_GAME:
+
+                                        break;
+
+                                    case MINIGAME.WATER_IS_COMING_GAME:
+
+                                        break;
+
+                                    case MINIGAME.BIRDS_COUNTING_GAME:
+
+                                        break;
+
+                                    case MINIGAME.GUITAR_HERO_GAME:
+
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                                break;
+                        }
+                        break;
+
+                    case KEY.DIRECTIONAL_BUTTON:
+
+                        break;
+
+                    case KEY.SHOULDER_BUTTON:
+
+                        break;
+
+                    case KEY.SHOULDER_TRIGGER:
+
+                        break;
+
+                    case KEY.START:
+
+                        break;
+
+                    case KEY.SELECT:
+
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            else
             {
 
-                case KEY.JOYSTICK:
-
-                    switch (sideJey)
-                    {
-                        case SIDE_KEY.LEFT:
-                            switch (gameName)
-                            {
-                                case MINIGAME.SLIDING_GAME:
-
-                                    break;
-
-                                case MINIGAME.SPAM_QTE_GAME:
-
-                                    break;
-
-                                case MINIGAME.SHOOTING_GAME:
-
-                                    break;
-
-                                case MINIGAME.PONG_GAME:
-                                    switch (pongGameObject)
-                                    {
-                                        case PONG.LEFT_BAR:
-                                            miniGameObject.GetComponent<PongGame>().MoveP1PongBar(valueInputJ1);
-                                            break;
-
-                                        case PONG.RIGHT_BAR:
-                                            miniGameObject.GetComponent<PongGame>().MoveP2PongBar(valueInputJ1);
-                                            break;
-                                    }
-                                    break;
-
-                                case MINIGAME.PING_PONG_GAME:
-
-                                    break;
-
-                                case MINIGAME.WATER_IS_COMING_GAME:
-
-                                    break;
-
-                                case MINIGAME.BIRDS_COUNTING_GAME:
-
-                                    break;
-
-                                case MINIGAME.GUITAR_HERO_GAME:
-
-                                    break;
-
-                                default:
-                                    break;
-                            }
-                            break;
-
-                        case SIDE_KEY.RIGHT:
-                            switch (gameName)
-                            {
-                                case MINIGAME.SLIDING_GAME:
-
-                                    break;
-
-                                case MINIGAME.SPAM_QTE_GAME:
-
-                                    break;
-
-                                case MINIGAME.SHOOTING_GAME:
-
-                                    break;
-
-                                case MINIGAME.PONG_GAME:
-                                    
-                                    break;
-
-                                case MINIGAME.PING_PONG_GAME:
-
-                                    break;
-
-                                case MINIGAME.WATER_IS_COMING_GAME:
-
-                                    break;
-
-                                case MINIGAME.BIRDS_COUNTING_GAME:
-
-                                    break;
-
-                                case MINIGAME.GUITAR_HERO_GAME:
-
-                                    break;
-
-                                default:
-                                    break;
-                            }
-                            break;
-                    }
-                    break;
-
-                case KEY.DIRECTIONAL_BUTTON:
-
-                    break;
-
-                case KEY.SHOULDER_BUTTON:
-
-                    break;
-
-                case KEY.SHOULDER_TRIGGER:
-
-                    break;
-
-                case KEY.START:
-
-                    break;
-
-                case KEY.SELECT:
-
-                    break;
-
-                default:
-                    break;
             }
         }
-        else
-        {
-            
-        }
+        
 
         
     }
