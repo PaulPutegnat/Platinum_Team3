@@ -6,6 +6,8 @@ TagManager:
   tags:
   - AEnlever
   - tobogan
+  - Target
+  - Canvas
   layers:
   - Default
   - TransparentFX
