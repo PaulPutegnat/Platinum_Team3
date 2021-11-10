@@ -16,7 +16,6 @@ public class ShootingGame : MonoBehaviour
     public GameObject _targetPrefab;
     public GameObject _aimSightP1;
     public GameObject _aimSightP2;
-    public GameObject _aimSightP3;
     public Transform _targetList;
 
     [Header("Tweakable")]
@@ -34,7 +33,9 @@ public class ShootingGame : MonoBehaviour
     private bool IsP2Shooting = false;
 
     GraphicRaycaster m_Raycaster;
-    PointerEventData m_PointerEventData;
+    PointerEventData m_PointerEventDataP1;
+    PointerEventData m_PointerEventDataP2;
+
     EventSystem m_EventSystem;
 
     private PlayerInput p1Input;
@@ -46,11 +47,11 @@ public class ShootingGame : MonoBehaviour
         this.gameObject.transform.localPosition = new Vector3(0f, 0f, -10f);
 
         //Fetch the Raycaster from the GameObject (the Canvas)
-        m_Raycaster = FindObjectOfType<GraphicRaycaster>();
+        m_Raycaster = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GraphicRaycaster>();
         //Fetch the Event System from the Scene
         m_EventSystem = FindObjectOfType<EventSystem>();
 
-        if (GameManager.gameManager.players[3])
+        if (GameManager.gameManager.players[3] != null)
         {
             _aimSightP2.SetActive(true);
             p2Input = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
@@ -92,15 +93,15 @@ public class ShootingGame : MonoBehaviour
             Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().position;
 
             //Set up the new Pointer Event
-            m_PointerEventData = new PointerEventData(m_EventSystem);
+            m_PointerEventDataP1 = new PointerEventData(m_EventSystem);
             //Set the Pointer Event Position to that of the mouse position
-            m_PointerEventData.position = Camera.main.WorldToScreenPoint(sightPos);
+            m_PointerEventDataP1.position = Camera.main.WorldToScreenPoint(sightPos);
 
             //Create a list of Raycast Results
             List<RaycastResult> results = new List<RaycastResult>();
 
             //Raycast using the Graphics Raycaster and mouse click position
-            m_Raycaster.Raycast(m_PointerEventData, results);
+            m_Raycaster.Raycast(m_PointerEventDataP1, results);
 
             if (results.Count == 0)
             {
@@ -162,15 +163,15 @@ public class ShootingGame : MonoBehaviour
             Vector3 sightPos = _aimSightP2.GetComponent<RectTransform>().position;
 
             //Set up the new Pointer Event
-            m_PointerEventData = new PointerEventData(m_EventSystem);
+            m_PointerEventDataP2 = new PointerEventData(m_EventSystem);
             //Set the Pointer Event Position to that of the mouse position
-            m_PointerEventData.position = Camera.main.WorldToScreenPoint(sightPos);
+            m_PointerEventDataP2.position = Camera.main.WorldToScreenPoint(sightPos);
 
             //Create a list of Raycast Results
             List<RaycastResult> results = new List<RaycastResult>();
 
             //Raycast using the Graphics Raycaster and mouse click position
-            m_Raycaster.Raycast(m_PointerEventData, results);
+            m_Raycaster.Raycast(m_PointerEventDataP2, results);
 
             if (results.Count == 0)
             {

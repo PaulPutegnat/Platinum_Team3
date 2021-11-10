@@ -8,6 +8,8 @@ TagManager:
   - tobogan
   - Target
   - Canvas
+  - PortalUI
+  - PauseCanvas
   layers:
   - Default
   - TransparentFX

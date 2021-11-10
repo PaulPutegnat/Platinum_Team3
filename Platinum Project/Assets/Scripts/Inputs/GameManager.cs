@@ -20,9 +20,15 @@ public class GameManager : MonoBehaviour
     [Header("Prefab")]
     public TESTCONTROLER Runner;
     public TrapController Trapper;
+    [HideInInspector]
     public GameObject[] players;
-    public GameObject fortuneWheel;
 
+    [HideInInspector]
+    public GameObject[] playersRefs;
+
+    public GameObject fortuneWheel;
+    public GameObject pauseCanvas;
+    public GameObject mainCanvas;
 
     private GameObject RUNNERPANNEL;
     private GameObject TRAPPERPANNEL;
@@ -46,8 +52,12 @@ public class GameManager : MonoBehaviour
 
         gameManager = this;
 
+        pauseCanvas.SetActive(true);
+        mainCanvas.SetActive(true);
+
         MaxPlayers = GetComponent<PlayerInputManager>().maxPlayerCount;
-        pausegGameObject = GameObject.Find("Pause");
+        playersRefs = new GameObject[GetComponent<PlayerInputManager>().maxPlayerCount];
+        pausegGameObject = pauseCanvas;
     }
 
     public void Start()
@@ -56,7 +66,7 @@ public class GameManager : MonoBehaviour
         TRAPPERPANNEL = GameObject.Find("TRAPPER");
         BeginButton = GameObject.Find("BeginButton");
         
-        canvas = GameObject.Find("Canvas").transform;
+        canvas = mainCanvas.transform;
     }
 
     public void SpawnFortuneWheel()
@@ -68,7 +78,7 @@ public class GameManager : MonoBehaviour
     public void checkUI()
     {
         
-        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount && ActivePlayer>0) //Changer à ActivePlayer == GetComponent<PlayerInputManager>().maxPlayerCount pour le JEU FINAL
+        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount && ActivePlayer > 0) //Changer à ActivePlayer == GetComponent<PlayerInputManager>().maxPlayerCount pour le JEU FINAL
         {
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(BeginButton);
             StartCoroutine(WaitForBegin());
@@ -95,9 +105,9 @@ public class GameManager : MonoBehaviour
 
             for (int index = 0; index < MaxPlayers; index++)
             {
-                if (players[index])
+                if (playersRefs[index])
                 {
-                    players[index].SetActive(true);
+                    playersRefs[index].SetActive(true);
                 }
             }
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);

@@ -124,11 +124,13 @@ public class neutralcontroller : MonoBehaviour
                     if (GameManager.gameManager.players[0] == null)
                     {
                         GameManager.gameManager.players[0] = gameObject;
-                        
+                        GameManager.gameManager.playersRefs[0] = runnerRef;
+
                     }
                     else if(GameManager.gameManager.players[1] == null)
                     {
                         GameManager.gameManager.players[1] = gameObject;
+                        GameManager.gameManager.playersRefs[1] = runnerRef;
                     }
                     else
                     {
@@ -150,11 +152,13 @@ public class neutralcontroller : MonoBehaviour
                     if (GameManager.gameManager.players[2] == null)
                     {
                         GameManager.gameManager.players[2] = gameObject;
+                        GameManager.gameManager.playersRefs[2] = TrapperRef;
                         TrapperRef.GetComponent<TrapController>().initTrapper(2);
                     }
                     else if(GameManager.gameManager.players[3] == null)
                     {
                         GameManager.gameManager.players[3] = gameObject;
+                        GameManager.gameManager.playersRefs[3] = TrapperRef;
                         TrapperRef.GetComponent<TrapController>().initTrapper(3);
                     }
                     else
