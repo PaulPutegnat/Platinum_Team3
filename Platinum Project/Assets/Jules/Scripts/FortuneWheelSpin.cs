@@ -5,8 +5,6 @@ using TMPro;
 
 public class FortuneWheelSpin : MonoBehaviour
 {
-    private PlayerControls inputActions;
-
     public int nbOfGames;
     public float timeRotate;
     public float nbCircleRotate;
@@ -16,42 +14,16 @@ public class FortuneWheelSpin : MonoBehaviour
 
     private Transform canvas;
     private float currentTime;
-    private bool isAlreadyRotate = false;
 
     public AnimationCurve curve;
 
     public List<GameObject> gameList = new List<GameObject>();
-
-    private void Awake()
-    {
-        inputActions = new PlayerControls();
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
-    }
 
     private void Start()
     {
         angleOfOneGame = CIRCLE / nbOfGames;
         canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
         RotateNow();
-    }
-
-    private void Update()
-    {
-        /*bool isButtonPressed = inputActions.Trapper.FortuneWheel.triggered;
-        if (isButtonPressed && !isAlreadyRotate)
-        {
-            RotateNow();
-            isAlreadyRotate = true;
-        }*/
     }
 
     IEnumerator RotateWheel()

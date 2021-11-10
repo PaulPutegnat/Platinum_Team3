@@ -69,15 +69,15 @@ public class ShootingGame : MonoBehaviour
     {
         if (GameManager.gameManager.players[2])
         {
-            IsP1Shooting = p1Input.actions.FindAction("ShootP1").triggered;
-            padPosP1 = p1Input.actions.FindAction("AimingP1").ReadValue<Vector2>();
+            IsP1Shooting = p1Input.actions.FindAction("Shoot").triggered;
+            padPosP1 = p1Input.actions.FindAction("Aiming").ReadValue<Vector2>();
             _aimSightP1.transform.Translate(padPosP1 * _aimSpeed * Time.deltaTime);
         }
 
         if (GameManager.gameManager.players[3])
         {
-            IsP2Shooting = p2Input.actions.FindAction("ShootP2").triggered;
-            padPosP2 = p2Input.actions.FindAction("AimingP2").ReadValue<Vector2>();
+            IsP2Shooting = p2Input.actions.FindAction("Shoot").triggered;
+            padPosP2 = p2Input.actions.FindAction("Aiming").ReadValue<Vector2>();
             _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
         }
 
