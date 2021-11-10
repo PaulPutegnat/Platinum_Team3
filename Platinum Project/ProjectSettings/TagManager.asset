@@ -6,6 +6,9 @@ TagManager:
   tags:
   - AEnlever
   - tobogan
+  - Target
+  - Canvas
+  - PortalUI
   layers:
   - Default
   - TransparentFX

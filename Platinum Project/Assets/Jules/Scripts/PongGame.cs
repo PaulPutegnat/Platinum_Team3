@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PongGame : MonoBehaviour
 {
-
-    public GameObject _PongBarGameObject;
+    public GameObject _PongBarP1GameObject;
+    public GameObject _PongBarP2GameObject;
     public float _PongBarSpeed;
 
     void Start()
@@ -19,8 +19,13 @@ public class PongGame : MonoBehaviour
         
     }
 
-    public void MovePongBar(Vector2 newPos)
+    public void MoveP1PongBar(Vector2 newPos)
     {
-        _PongBarGameObject.transform.Translate(new Vector3(0, newPos.y * _PongBarSpeed * Time.deltaTime, 0));
+        _PongBarP1GameObject.transform.Translate(new Vector3(0, newPos.y * _PongBarSpeed * Time.deltaTime, 0));
+    }
+    
+    public void MoveP2PongBar(Vector2 newPos)
+    {
+        _PongBarP2GameObject.transform.Translate(new Vector3(0, newPos.y * _PongBarSpeed * Time.deltaTime, 0));
     }
 }
