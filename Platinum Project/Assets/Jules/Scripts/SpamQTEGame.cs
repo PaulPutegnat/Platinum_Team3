@@ -45,6 +45,7 @@ public class SpamQTEGame : MonoBehaviour
     private PlayerInput trapperInput2;
 
     private PlayerTurnState _state = PlayerTurnState.P1;
+    private bool IsTwoPlayer = false;
     
 
     void Start()
@@ -61,18 +62,32 @@ public class SpamQTEGame : MonoBehaviour
         timerFillArea.GetComponent<Image>().color = Color.green;
 
         trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
-        trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+        if (GameManager.gameManager.players[3] != null)
+        {
+            IsTwoPlayer = true;
+            trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+        }
+        else
+        {
+            IsTwoPlayer = false;
+        }
+
+        
+        
     }
 
     void Update()
     {
-
-        p1ButtonPressed = trapperInput1.actions.FindAction("SpamQTEP1").triggered;
-        p2ButtonPressed = trapperInput2.actions.FindAction("SpamQTEP2").triggered;
-
-
-
-
+        if (IsTwoPlayer)
+        {
+            p1ButtonPressed = trapperInput1.actions.FindAction("SpamQTEP1").triggered;
+            p2ButtonPressed = trapperInput2.actions.FindAction("SpamQTEP1").triggered;
+        }
+        else
+        {
+            p1ButtonPressed = trapperInput1.actions.FindAction("SpamQTEP1").triggered;
+            p2ButtonPressed = trapperInput1.actions.FindAction("SpamQTEP2").triggered;
+        }
 
         switch (_state)
         {
@@ -92,20 +107,19 @@ public class SpamQTEGame : MonoBehaviour
             case PlayerTurnState.P2:
                 if (p2ButtonPressed)
                 {
-                    
+
                     sliderCurrentValue += 2f;
                     _state = PlayerTurnState.P1;
                     buttonP2Sprite.sprite = Resources.Load<Sprite>("Sprites/AButtonP2Smashed");
-                    
+
                 }
                 else
                 {
                     buttonP2Sprite.sprite = Resources.Load<Sprite>("Sprites/AButtonP2");
                 }
-                
+
                 break;
         }
-
 
 
         if (spamSlider.value > 0)
