@@ -20,7 +20,12 @@ public class GameManager : MonoBehaviour
     [Header("Prefab")]
     public TESTCONTROLER Runner;
     public TrapController Trapper;
+    [HideInInspector]
     public GameObject[] players;
+
+    [HideInInspector]
+    public GameObject[] playersRefs;
+
     public GameObject fortuneWheel;
 
 
@@ -47,6 +52,7 @@ public class GameManager : MonoBehaviour
         gameManager = this;
 
         MaxPlayers = GetComponent<PlayerInputManager>().maxPlayerCount;
+        playersRefs = new GameObject[GetComponent<PlayerInputManager>().maxPlayerCount];
         pausegGameObject = GameObject.Find("Pause");
     }
 
@@ -68,7 +74,7 @@ public class GameManager : MonoBehaviour
     public void checkUI()
     {
         
-        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount && ActivePlayer>0) //Changer à ActivePlayer == GetComponent<PlayerInputManager>().maxPlayerCount pour le JEU FINAL
+        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount && ActivePlayer > 0) //Changer à ActivePlayer == GetComponent<PlayerInputManager>().maxPlayerCount pour le JEU FINAL
         {
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(BeginButton);
             StartCoroutine(WaitForBegin());
@@ -95,9 +101,9 @@ public class GameManager : MonoBehaviour
 
             for (int index = 0; index < MaxPlayers; index++)
             {
-                if (players[index])
+                if (playersRefs[index])
                 {
-                    players[index].SetActive(true);
+                    playersRefs[index].SetActive(true);
                 }
             }
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
