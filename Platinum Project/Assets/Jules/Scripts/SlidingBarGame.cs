@@ -123,21 +123,21 @@ public class SlidingBarGame : MonoBehaviour
             {
                 // Game finish Win
                 //Debug.Log("GAME IS WIN");
-                Destroy(this.gameObject);
+                Destroy(this.transform.parent.gameObject);
                 GameManager.gameManager.SpawnFortuneWheel();
             }
             else if ((isP1Win && !isP2Win) || (!isP1Win && isP2Win))
             {
                 // Game finish Semi-win
                 //Debug.Log("GAME IS SEMI-WIN");
-                Destroy(this.gameObject);
+                Destroy(this.transform.parent.gameObject);
                 GameManager.gameManager.SpawnFortuneWheel();
             }
             else if (!isP1Win && !isP2Win)
             {
                 // Game finish lose
                 //Debug.Log("GAME IS LOSE");
-                Destroy(this.gameObject);
+                Destroy(this.transform.parent.gameObject);
                 GameManager.gameManager.SpawnFortuneWheel();
             }
         }
