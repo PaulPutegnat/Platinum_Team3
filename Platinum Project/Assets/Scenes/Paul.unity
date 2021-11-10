@@ -2011,6 +2011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
@@ -7330,7 +7331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].Step
-      value: 
+      value: "\xE9tape 1"
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].Name
@@ -7338,7 +7339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].Step
-      value: 
+      value: "\xE9tape 2"
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].Name
@@ -7346,7 +7347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].Step
-      value: 
+      value: "\xE9tape 3"
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[3].Name
@@ -7410,7 +7411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].ChangeFov
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].TimeToFov
@@ -7418,7 +7419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].ChangeFov
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].TimeToFov
@@ -7426,7 +7427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].ChangeFov
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].TimeToFov
@@ -7486,7 +7487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].ChangePosition
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].ChangeRotation
@@ -7502,11 +7503,11 @@ PrefabInstance:
       objectReference: {fileID: 115579931}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].ChangePosition
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].ChangeRotation
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].TargetPosition
@@ -7518,7 +7519,7 @@ PrefabInstance:
       objectReference: {fileID: 122179215}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].ChangePosition
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].ChangeRotation
@@ -7541,12 +7542,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
+      propertyPath: PointsInfos.Array.data[0].TargetRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].TimeToNextTarget
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
+      propertyPath: PointsInfos.Array.data[1].TargetRotation.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
+      propertyPath: PointsInfos.Array.data[1].TargetRotation.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].TimeToNextTarget
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
+      propertyPath: PointsInfos.Array.data[2].TargetRotation.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].TimeToNextTarget
