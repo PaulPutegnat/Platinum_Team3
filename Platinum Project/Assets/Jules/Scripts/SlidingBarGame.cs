@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class SlidingBarGame : MonoBehaviour
 {
     // Inputs Action
-    //private PlayerControls inputActions;
     private bool p1ButtonPressed = false;
     private bool p2ButtonPressed = false;
 
@@ -39,20 +38,15 @@ public class SlidingBarGame : MonoBehaviour
     private bool isP1Win = false;
     private bool isP2Win = false;
 
+    private PlayerInput trapperInput1;
+    private PlayerInput trapperInput2;
+
     private void Awake()
     {
-        //inputActions = new PlayerControls();
+        trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
+        trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
     }
 
-    private void OnEnable()
-    {
-        //inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        //inputActions.Disable();
-    }
     void Start()
     {
         if (isDoubleInterval)
@@ -81,15 +75,15 @@ public class SlidingBarGame : MonoBehaviour
         posPercentP2 = Random.Range(-1, 1.1f);
         handleP2.transform.localPosition = new Vector3(posPercentP2 * 600, 0f, 0f);
         Debug.Log(posPercentP2);
+
+        
     }
 
     void Update()
     {
-        //OLD
-        //p1ButtonPressed = inputActions.Trapper.SlidingBarP1.triggered;
-        p1ButtonPressed = GameManager.gameManager.players[2].GetComponent<PlayerInput>().actions.FindAction("SlidingBarP1").triggered;
-        //p2ButtonPressed = inputActions.Trapper.SlidingBarP2.triggered;
-        p2ButtonPressed = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("SlidingBarP2").triggered;
+
+        p1ButtonPressed = trapperInput1.actions.FindAction("SlidingBarP1").triggered;
+        p2ButtonPressed = trapperInput2.actions.FindAction("SlidingBarP2").triggered;
 
         if (p1ButtonPressed)
         {
