@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     public void checkUI()
     {
         
-        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount) //Changer à ActivePlayer == GetComponent<PlayerInputManager>().maxPlayerCount pour le JEU FINAL
+        if (ActivePlayer == GetComponent<PlayerInputManager>().playerCount && ActivePlayer>0) //Changer à ActivePlayer == GetComponent<PlayerInputManager>().maxPlayerCount pour le JEU FINAL
         {
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(BeginButton);
             StartCoroutine(WaitForBegin());
