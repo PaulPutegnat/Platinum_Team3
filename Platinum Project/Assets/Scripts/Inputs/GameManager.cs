@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] playersRefs;
 
     public GameObject fortuneWheel;
-
+    public GameObject pauseCanvas;
+    public GameObject mainCanvas;
 
     private GameObject RUNNERPANNEL;
     private GameObject TRAPPERPANNEL;
@@ -51,9 +52,12 @@ public class GameManager : MonoBehaviour
 
         gameManager = this;
 
+        pauseCanvas.SetActive(true);
+        mainCanvas.SetActive(true);
+
         MaxPlayers = GetComponent<PlayerInputManager>().maxPlayerCount;
         playersRefs = new GameObject[GetComponent<PlayerInputManager>().maxPlayerCount];
-        pausegGameObject = GameObject.Find("Pause");
+        pausegGameObject = pauseCanvas;
     }
 
     public void Start()
@@ -62,7 +66,7 @@ public class GameManager : MonoBehaviour
         TRAPPERPANNEL = GameObject.Find("TRAPPER");
         BeginButton = GameObject.Find("BeginButton");
         
-        canvas = GameObject.Find("Canvas").transform;
+        canvas = mainCanvas.transform;
     }
 
     public void SpawnFortuneWheel()
