@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7358166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5944,7 +5944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7887477738972433858, guid: c63d4a5c850d4814390e919545516e3f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7887477738972433870, guid: c63d4a5c850d4814390e919545516e3f, type: 3}
       propertyPath: m_Pivot.x
@@ -6483,7 +6483,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-101286
+  m_Name: pb_Mesh-124792
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19168,8 +19168,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   fortuneWheel: {fileID: 0}
-  QTEGame: {fileID: 0}
-  QteGameScriptGame: {fileID: 0}
   spawn: {fileID: 657918968}
   TrapperNumber: 0
   RunnererNumber: 0
@@ -46031,7 +46029,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-101862
+  m_Name: pb_Mesh-125202
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

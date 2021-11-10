@@ -425,7 +425,7 @@ MonoBehaviour:
   - {fileID: 836991248607273005, guid: e7826b9cc4d1e064984ac016ef0382a8, type: 3}
   - {fileID: 3636190369262651312, guid: aecd053d602d71a489fa931bb9c92896, type: 3}
   - {fileID: 5031847821413830893, guid: a0d4c4d7d013d2441808063f0297c512, type: 3}
-  gameName: 1
+  gameName: 3
   slidingGameObject: 0
   spamQTEGameObject: 0
   ShootingGameObject: 0
