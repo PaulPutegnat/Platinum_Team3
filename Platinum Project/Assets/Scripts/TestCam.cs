@@ -84,14 +84,16 @@ public class TestCam : MonoBehaviour
         }
     }
 
-    /*
+    
     public void RotateCamera()
     {
         Vector3 currentRotation = _currentRotation;
-        Vector3 targetRotation = PointsInfos[i].TargetRotation.transform.eulerAngles;
-        Debug.Log(_currentRotation);
+        Vector3 targetRotation = PointsInfos[i].TargetRotation;
 
         transform.eulerAngles = Vector3.Lerp(currentRotation, targetRotation, _percent);
+
+        Debug.Log(targetRotation);
+        Debug.Log(transform.eulerAngles);
 
         if (transform.eulerAngles == targetRotation)
         {
@@ -100,13 +102,6 @@ public class TestCam : MonoBehaviour
             _rotationSettings = false;
         }
     }
-    */
-
-    public void RotateCamera()
-    {
-
-    }
-
 
     public void ChangeFov()
     {
