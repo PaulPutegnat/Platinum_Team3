@@ -14,15 +14,13 @@ public class FortuneWheelSpin : MonoBehaviour
     private const float CIRCLE = 360.0f;
     private float angleOfOneGame;
 
-    public Transform parent;
     private Transform canvas;
     private float currentTime;
     private bool isAlreadyRotate = false;
 
     public AnimationCurve curve;
 
-    public GameObject SlidingBarGame;
-    public GameObject SpamQTEGame;
+    public List<GameObject> gameList = new List<GameObject>();
 
     private void Awake()
     {
@@ -42,18 +40,18 @@ public class FortuneWheelSpin : MonoBehaviour
     private void Start()
     {
         angleOfOneGame = CIRCLE / nbOfGames;
-        SetPositionData();
-        canvas = FindObjectOfType<Canvas>().transform;
+        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
+        RotateNow();
     }
 
     private void Update()
     {
-        bool isButtonPressed = inputActions.Trapper.FortuneWheel.triggered;
+        /*bool isButtonPressed = inputActions.Trapper.FortuneWheel.triggered;
         if (isButtonPressed && !isAlreadyRotate)
         {
             RotateNow();
             isAlreadyRotate = true;
-        }
+        }*/
     }
 
     IEnumerator RotateWheel()
@@ -76,34 +74,52 @@ public class FortuneWheelSpin : MonoBehaviour
             this.transform.eulerAngles = new Vector3(0, 0, angleCurrent + startAngle - angleOfOneGame);
         }
 
-
-
-        if (indexGameRandom % 2 == 0) //even
+        switch (indexGameRandom)
         {
-            GameObject spamFameGameObject = Instantiate(SpamQTEGame, Vector3.zero, Quaternion.identity, canvas);
-            spamFameGameObject.transform.localPosition = Vector3.zero;
-            Destroy(this.gameObject);
+            case 0:
+                InstantiateGame(indexGameRandom);
+                break;
+
+            case 1:
+                InstantiateGame(indexGameRandom);
+                break;
+
+            case 2:
+                InstantiateGame(indexGameRandom);
+                break;
+
+            case 3:
+                InstantiateGame(indexGameRandom);
+                break;
+
+            case 4:
+                InstantiateGame(indexGameRandom);
+                break;
+
+            case 5:
+                InstantiateGame(indexGameRandom);
+                break;
+
+            case 6:
+                InstantiateGame(indexGameRandom);
+                break;
+
+            case 7:
+                InstantiateGame(indexGameRandom);
+                break;
+
         }
-        else //odd
-        {
-            GameObject slidGameObject = Instantiate(SlidingBarGame, Vector3.zero, Quaternion.identity, canvas);
-            slidGameObject.transform.localPosition = Vector3.zero;
-            Destroy(this.gameObject);
-        }
+    }
+
+    public void InstantiateGame(int index)
+    {
+        Instantiate(gameList[index], canvas);
+        Destroy(this.transform.parent.gameObject);
     }
 
     [ContextMenu("Rotate")]
     void RotateNow()
     {
         StartCoroutine(RotateWheel());
-    }
-
-    void SetPositionData()
-    {
-        for (int i = 0; i < parent.childCount; i++)
-        {
-            parent.GetChild(i).eulerAngles = new Vector3(0, 0, -CIRCLE / nbOfGames * i);
-            parent.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = (i + 1).ToString();
-        }
     }
 }

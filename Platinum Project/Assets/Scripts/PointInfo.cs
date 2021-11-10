@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
+
 public class PointInfo
 {
     public string Step;
@@ -12,7 +13,10 @@ public class PointInfo
     public bool ChangeRotation;
 
     public GameObject TargetPosition;
-    public GameObject TargetRotation;
+    //public GameObject TargetRotation;
+
+    public Vector3 TargetRotation;
+
     public int Fov;
     public float StepDuration;
 }

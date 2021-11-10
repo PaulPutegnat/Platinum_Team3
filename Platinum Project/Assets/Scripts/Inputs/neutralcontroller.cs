@@ -52,24 +52,6 @@ public class neutralcontroller : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-       // Debug.Log(GetComponent<PlayerInput>().currentActionMap.name);
-       if((GameManager.gameManager.players[0] != null) && (GameManager.gameManager.players[1] != null))
-        {
-            GameObject[]objetAEnlever = GameObject.FindGameObjectsWithTag("AEnlever");
-            for (int i = 0; i < objetAEnlever.Length; i++)
-            {
-                objetAEnlever[i].SetActive(false);
-                if(i == 1)
-                {
-                    cameraIsMoov = true;
-                    Debug.Log("gfjegfekezk");
-                }
-            }
-        }
-    }
-
     public void ChangeTeam(InputAction.CallbackContext context)
     {
         if (!Comfirmation)
@@ -118,6 +100,7 @@ public class neutralcontroller : MonoBehaviour
     public void Confirmation(InputAction.CallbackContext context)
     {
         Comfirmation = true;
+
     }
     public void Back(InputAction.CallbackContext context)
     {
@@ -140,12 +123,14 @@ public class neutralcontroller : MonoBehaviour
                     runnerRef = Instantiate(GameManager.gameManager.Runner.gameObject, GameManager.gameManager.spawn.position, Quaternion.identity);
                     if (GameManager.gameManager.players[0] == null)
                     {
-                        GameManager.gameManager.players[0] = this.gameObject;
-                        
+                        GameManager.gameManager.players[0] = gameObject;
+                        GameManager.gameManager.playersRefs[0] = runnerRef;
+
                     }
                     else if(GameManager.gameManager.players[1] == null)
                     {
-                        GameManager.gameManager.players[1] = this.gameObject;
+                        GameManager.gameManager.players[1] = gameObject;
+                        GameManager.gameManager.playersRefs[1] = runnerRef;
                     }
                     else
                     {
@@ -166,12 +151,14 @@ public class neutralcontroller : MonoBehaviour
                     TrapperRef = Instantiate(GameManager.gameManager.Trapper.gameObject, new Vector3(0, 0, 0), Quaternion.identity);
                     if (GameManager.gameManager.players[2] == null)
                     {
-                        GameManager.gameManager.players[2] = this.gameObject;
+                        GameManager.gameManager.players[2] = gameObject;
+                        GameManager.gameManager.playersRefs[2] = TrapperRef;
                         TrapperRef.GetComponent<TrapController>().initTrapper(2);
                     }
                     else if(GameManager.gameManager.players[3] == null)
                     {
-                        GameManager.gameManager.players[3] = this.gameObject;
+                        GameManager.gameManager.players[3] = gameObject;
+                        GameManager.gameManager.playersRefs[3] = TrapperRef;
                         TrapperRef.GetComponent<TrapController>().initTrapper(3);
                     }
                     else
@@ -192,15 +179,21 @@ public class neutralcontroller : MonoBehaviour
 
     void InitRunner()
     {
+        GameManager.gameManager.ActivePlayer++;
+        GameManager.gameManager.checkUI();
         GetComponent<PlayerInput>().actions.FindAction("Echap").performed += new Action<InputAction.CallbackContext>(GameObject.Find("Pause").GetComponent<Pause>().PausePressed);
         GetComponent<PlayerInput>().actions.FindAction("Movement").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnMove);
         GetComponent<PlayerInput>().actions.FindAction("Jump").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnJump);
         GetComponent<PlayerInput>().actions.FindAction("Sliding").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnSlide);
+        runnerRef.SetActive(false);
     }
 
     void InitTrapper()
     {
 
+        GameManager.gameManager.ActivePlayer++;
+        GameManager.gameManager.checkUI();
+        GetComponent<PlayerInput>().actions.FindAction("Echap").performed += new Action<InputAction.CallbackContext>(GameObject.Find("Pause").GetComponent<Pause>().PausePressed);
+        TrapperRef.SetActive(false);
     }
-
 }
