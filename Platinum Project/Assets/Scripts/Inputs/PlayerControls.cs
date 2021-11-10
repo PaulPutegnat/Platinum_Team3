@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PortalSpam"",
+                    ""type"": ""Button"",
+                    ""id"": ""3999f2b1-0361-40bb-af4d-974358def165"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -223,6 +232,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Sliding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72cdec67-f5a0-468d-b427-ec9bfaba647d"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Sliding"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""97ce1396-f5f9-44d4-aea5-7074a3f9caed"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PortalSpam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11e59f0a-93c3-4a75-ae8d-ab7da3f26b00"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PortalSpam"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -629,7 +671,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""eead13e8-8023-46f5-bbd6-bb245acae1de"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -1524,6 +1566,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_PressH = m_Player.FindAction("PressH", throwIfNotFound: true);
         m_Player_Echap = m_Player.FindAction("Echap", throwIfNotFound: true);
         m_Player_Sliding = m_Player.FindAction("Sliding", throwIfNotFound: true);
+        m_Player_PortalSpam = m_Player.FindAction("PortalSpam", throwIfNotFound: true);
         // Trapper
         m_Trapper = asset.FindActionMap("Trapper", throwIfNotFound: true);
         m_Trapper_TrapSelection = m_Trapper.FindAction("Trap Selection", throwIfNotFound: true);
@@ -1633,6 +1676,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PressH;
     private readonly InputAction m_Player_Echap;
     private readonly InputAction m_Player_Sliding;
+    private readonly InputAction m_Player_PortalSpam;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1643,6 +1687,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @PressH => m_Wrapper.m_Player_PressH;
         public InputAction @Echap => m_Wrapper.m_Player_Echap;
         public InputAction @Sliding => m_Wrapper.m_Player_Sliding;
+        public InputAction @PortalSpam => m_Wrapper.m_Player_PortalSpam;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1670,6 +1715,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Sliding.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSliding;
                 @Sliding.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSliding;
                 @Sliding.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSliding;
+                @PortalSpam.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPortalSpam;
+                @PortalSpam.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPortalSpam;
+                @PortalSpam.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPortalSpam;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1692,6 +1740,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Sliding.started += instance.OnSliding;
                 @Sliding.performed += instance.OnSliding;
                 @Sliding.canceled += instance.OnSliding;
+                @PortalSpam.started += instance.OnPortalSpam;
+                @PortalSpam.performed += instance.OnPortalSpam;
+                @PortalSpam.canceled += instance.OnPortalSpam;
             }
         }
     }
@@ -2110,6 +2161,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnPressH(InputAction.CallbackContext context);
         void OnEchap(InputAction.CallbackContext context);
         void OnSliding(InputAction.CallbackContext context);
+        void OnPortalSpam(InputAction.CallbackContext context);
     }
     public interface ITrapperActions
     {

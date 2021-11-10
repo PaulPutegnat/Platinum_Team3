@@ -53,7 +53,6 @@ public class SpamQTEGame : MonoBehaviour
 
         spamSlider.maxValue = sliderMaxValue;
         spamSlider.value = 1f;
-        sliderCurrentValue = sliderMaxValue;
         timerText.text = gameDuration.ToString();
 
         buttonP1Sprite = buttonP1.GetComponent<Image>();
@@ -63,16 +62,12 @@ public class SpamQTEGame : MonoBehaviour
 
         trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
         trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
-
-
-
     }
 
     void Update()
     {
 
         p1ButtonPressed = trapperInput1.actions.FindAction("SpamQTEP1").triggered;
-        //p2ButtonPressed = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("SpamQTEP2").triggered; au cas ou
         p2ButtonPressed = trapperInput2.actions.FindAction("SpamQTEP2").triggered;
 
 

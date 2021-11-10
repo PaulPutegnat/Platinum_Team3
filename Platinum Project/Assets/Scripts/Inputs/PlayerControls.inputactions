@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PortalSpam",
+                    "type": "Button",
+                    "id": "3999f2b1-0361-40bb-af4d-974358def165",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -201,6 +210,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Sliding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72cdec67-f5a0-468d-b427-ec9bfaba647d",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Sliding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97ce1396-f5f9-44d4-aea5-7074a3f9caed",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PortalSpam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "11e59f0a-93c3-4a75-ae8d-ab7da3f26b00",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PortalSpam",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -607,7 +649,7 @@
                 {
                     "name": "",
                     "id": "eead13e8-8023-46f5-bbd6-bb245acae1de",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
