@@ -132,15 +132,15 @@ public class MiniGameGenerator : MonoBehaviour
             switch (gameName)
             {
                 case MINIGAME.SLIDING_GAME:
-                    miniGameObject = Instantiate(gameList[0], FindObjectOfType<Canvas>().transform);
+                    miniGameObject = Instantiate(gameList[0], GameObject.FindGameObjectWithTag("Canvas").transform);
                     break;
 
                 case MINIGAME.SPAM_QTE_GAME:
-                    miniGameObject = Instantiate(gameList[1], FindObjectOfType<Canvas>().transform);
+                    miniGameObject = Instantiate(gameList[1], GameObject.FindGameObjectWithTag("Canvas").transform);
                     break;
 
                 case MINIGAME.SHOOTING_GAME:
-                    miniGameObject = Instantiate(gameList[2], FindObjectOfType<Canvas>().transform);
+                    miniGameObject = Instantiate(gameList[2], GameObject.FindGameObjectWithTag("Canvas").transform);
                     break;
 
                 case MINIGAME.PONG_GAME:
