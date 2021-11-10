@@ -6015,6 +6015,48 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724390207}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1735835762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7781204667798728093, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
+  m_PrefabInstance: {fileID: 7781204667589354725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1735835764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735835762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88462093621db6f41b7eef0a530586f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointsInfos:
+  - Step: One
+    ChangeFov: 1
+    ChangePosition: 1
+    ChangeRotation: 1
+    TargetPosition: {fileID: 2100248188}
+    TargetRotation: {x: -45, y: -90, z: -35}
+    Fov: 90
+    StepDuration: 1
+  - Step: Two
+    ChangeFov: 1
+    ChangePosition: 1
+    ChangeRotation: 1
+    TargetPosition: {fileID: 738648905}
+    TargetRotation: {x: 45, y: 90, z: 35}
+    Fov: 60
+    StepDuration: 1
+  - Step: Three
+    ChangeFov: 1
+    ChangePosition: 1
+    ChangeRotation: 1
+    TargetPosition: {fileID: 71479121}
+    TargetRotation: {x: -45, y: -90, z: -35}
+    Fov: 90
+    StepDuration: 1
 --- !u!1 &1772946613
 GameObject:
   m_ObjectHideFlags: 0
@@ -7491,7 +7533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].ChangeRotation
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].TargetPosition
@@ -7507,7 +7549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].ChangeRotation
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].TargetPosition
@@ -7542,8 +7584,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
-      propertyPath: PointsInfos.Array.data[0].TargetRotation.y
+      propertyPath: PointsInfos.Array.data[0].TargetRotation.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
+      propertyPath: PointsInfos.Array.data[0].TargetRotation.y
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[0].TimeToNextTarget
@@ -7551,7 +7597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].TargetRotation.x
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[1].TargetRotation.y
@@ -7562,8 +7608,12 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
-      propertyPath: PointsInfos.Array.data[2].TargetRotation.y
+      propertyPath: PointsInfos.Array.data[2].TargetRotation.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
+      propertyPath: PointsInfos.Array.data[2].TargetRotation.y
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
       propertyPath: PointsInfos.Array.data[2].TimeToNextTarget
@@ -7681,5 +7731,6 @@ PrefabInstance:
       propertyPath: field of view
       value: 60
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7781204667798728089, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
