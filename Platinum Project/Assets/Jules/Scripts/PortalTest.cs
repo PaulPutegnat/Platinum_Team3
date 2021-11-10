@@ -34,7 +34,7 @@ public class PortalTest : MonoBehaviour
         {
             playerInputP1 = GameManager.gameManager.players[0].GetComponent<PlayerInput>();
 
-            if (GameManager.gameManager.players[1])
+            if (GameManager.gameManager.players[1] != null)
             {
                 playerInputP2 = GameManager.gameManager.players[1].GetComponent<PlayerInput>();
             }
@@ -47,7 +47,7 @@ public class PortalTest : MonoBehaviour
         {
             IsP1Pressing = playerInputP1.actions.FindAction("PortalSpam").triggered;
 
-            if (GameManager.gameManager.players[1])
+            if (GameManager.gameManager.players[1] != null)
             {
                 IsP2Pressing = playerInputP2.actions.FindAction("PortalSpam").triggered;
             }

@@ -92,10 +92,11 @@ public class FortuneWheelSpin : MonoBehaviour
         else //odd
         {
             GameObject slidGameObject = Instantiate(SlidingBarGame, Vector3.zero, Quaternion.identity, canvas);
+            slidGameObject.GetComponent<SlidingBarGame>().IsDoubleInterval =
+                global::SlidingBarGame.IS_DOUBLE_INTERVAL.NO;
             GameGenerator.gameList.Add(slidGameObject);
             slidGameObject.transform.localPosition = Vector3.zero;
             Destroy(this.transform.parent.gameObject);
-
         }
     }
 
