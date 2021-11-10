@@ -367,6 +367,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6244aa3959e60e347bc4a73f72217468, type: 3}
+--- !u!1 &257901868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257901870}
+  - component: {fileID: 257901869}
+  m_Layer: 0
+  m_Name: MiniGameGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &257901869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257901868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca8b5dd324b6d6d488060defc8861e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameList:
+  - {fileID: 842542038618950009, guid: 73e007c9aca9c5b40a6635c6173c159e, type: 3}
+  - {fileID: 836991248607273005, guid: e7826b9cc4d1e064984ac016ef0382a8, type: 3}
+  - {fileID: 3636190369262651312, guid: aecd053d602d71a489fa931bb9c92896, type: 3}
+  - {fileID: 5031847821413830893, guid: a0d4c4d7d013d2441808063f0297c512, type: 3}
+  gameName: 1
+  slidingGameObject: 0
+  spamQTEGameObject: 0
+  ShootingGameObject: 0
+  pongGameObject: 0
+  pingpongGameObject: 0
+  waterGameObject: 0
+  birdsGameObject: 0
+  GuitarHeroGameObject: 0
+  playerType: 1
+  keyType: 1
+  sideKey: 2
+  valueInputJ1: {x: 0, y: 0}
+--- !u!4 &257901870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257901868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288715635
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +842,7 @@ Transform:
   m_Children:
   - {fileID: 191945851}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1348568209
 GameObject:
@@ -1581,7 +1642,7 @@ RectTransform:
   - {fileID: 1047003207}
   - {fileID: 2022318762}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

@@ -79,7 +79,30 @@ public class FortuneWheelSpin : MonoBehaviour
             this.transform.eulerAngles = new Vector3(0, 0, angleCurrent + startAngle - angleOfOneGame);
         }
 
+        switch (indexGameRandom)
+        {
+            case 0:
+                break;
 
+            case 1:
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+
+            case 4:
+                break;
+
+            case 5:
+                break;
+
+            case 6:
+                break;
+
+        }
 
         if (indexGameRandom % 2 == 0) //even
         {
@@ -92,8 +115,6 @@ public class FortuneWheelSpin : MonoBehaviour
         else //odd
         {
             GameObject slidGameObject = Instantiate(SlidingBarGame, Vector3.zero, Quaternion.identity, canvas);
-            slidGameObject.GetComponent<SlidingBarGame>().IsDoubleInterval =
-                global::SlidingBarGame.IS_DOUBLE_INTERVAL.NO;
             GameGenerator.gameList.Add(slidGameObject);
             slidGameObject.transform.localPosition = Vector3.zero;
             Destroy(this.transform.parent.gameObject);
