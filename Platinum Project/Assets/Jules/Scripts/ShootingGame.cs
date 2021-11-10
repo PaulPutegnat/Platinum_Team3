@@ -51,7 +51,7 @@ public class ShootingGame : MonoBehaviour
         //Fetch the Event System from the Scene
         m_EventSystem = FindObjectOfType<EventSystem>();
 
-        if (GameManager.gameManager.players[3])
+        if (GameManager.gameManager.players[3] != null)
         {
             _aimSightP2.SetActive(true);
             p2Input = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
