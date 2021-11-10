@@ -21,8 +21,7 @@ public class FortuneWheelSpin : MonoBehaviour
 
     public AnimationCurve curve;
 
-    public GameObject SlidingBarGame;
-    public GameObject SpamQTEGame;
+    public List<GameObject> gameList = new List<GameObject>();
 
     private MiniGameGenerator GameGenerator;
 
@@ -104,7 +103,7 @@ public class FortuneWheelSpin : MonoBehaviour
 
         }
 
-        if (indexGameRandom % 2 == 0) //even
+        /*if (indexGameRandom % 2 == 0) //even
         {
             GameObject spamFameGameObject = Instantiate(SpamQTEGame, Vector3.zero, Quaternion.identity, canvas);
             GameGenerator.gameList.Add(spamFameGameObject);
@@ -118,7 +117,7 @@ public class FortuneWheelSpin : MonoBehaviour
             GameGenerator.gameList.Add(slidGameObject);
             slidGameObject.transform.localPosition = Vector3.zero;
             Destroy(this.transform.parent.gameObject);
-        }
+        }*/
     }
 
     [ContextMenu("Rotate")]
