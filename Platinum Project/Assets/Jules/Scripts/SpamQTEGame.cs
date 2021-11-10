@@ -41,8 +41,8 @@ public class SpamQTEGame : MonoBehaviour
     public bool p1ButtonPressed;
     public bool p2ButtonPressed;
 
-    private PlayerControls.TrapperActions trapperInput1;
-    private PlayerControls.TrapperActions trapperInput2;
+    private PlayerInput trapperInput1;
+    private PlayerInput trapperInput2;
 
     private PlayerTurnState _state = PlayerTurnState.P1;
     
@@ -61,8 +61,8 @@ public class SpamQTEGame : MonoBehaviour
 
         timerFillArea.GetComponent<Image>().color = Color.green;
 
-        trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerControls.TrapperActions>();
-        trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerControls.TrapperActions>();
+        trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
+        trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
 
 
 
@@ -71,9 +71,9 @@ public class SpamQTEGame : MonoBehaviour
     void Update()
     {
 
-        p1ButtonPressed = trapperInput1.SpamQTEP1.triggered;
+        p1ButtonPressed = trapperInput1.actions.FindAction("SpamQTEP1").triggered;
         //p2ButtonPressed = GameManager.gameManager.players[3].GetComponent<PlayerInput>().actions.FindAction("SpamQTEP2").triggered; au cas ou
-        p1ButtonPressed = trapperInput1.SpamQTEP1.triggered;
+        p2ButtonPressed = trapperInput2.actions.FindAction("SpamQTEP2").triggered;
 
 
 

@@ -85,8 +85,6 @@ public class SlidingBarGame : MonoBehaviour
         p1ButtonPressed = trapperInput1.actions.FindAction("SlidingBarP1").triggered;
         p2ButtonPressed = trapperInput2.actions.FindAction("SlidingBarP2").triggered;
 
-        
-
         if (p1ButtonPressed)
         {
             isP1Playing = false;
