@@ -84,6 +84,7 @@ public class TestCam : MonoBehaviour
         }
     }
 
+    /*
     public void RotateCamera()
     {
         Vector3 currentRotation = _currentRotation;
@@ -99,6 +100,13 @@ public class TestCam : MonoBehaviour
             _rotationSettings = false;
         }
     }
+    */
+
+    public void RotateCamera()
+    {
+
+    }
+
 
     public void ChangeFov()
     {
