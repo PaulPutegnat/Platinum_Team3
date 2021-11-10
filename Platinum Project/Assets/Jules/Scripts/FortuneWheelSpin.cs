@@ -14,7 +14,6 @@ public class FortuneWheelSpin : MonoBehaviour
     private const float CIRCLE = 360.0f;
     private float angleOfOneGame;
 
-    public Transform parent;
     private Transform canvas;
     private float currentTime;
     private bool isAlreadyRotate = false;
@@ -22,8 +21,6 @@ public class FortuneWheelSpin : MonoBehaviour
     public AnimationCurve curve;
 
     public List<GameObject> gameList = new List<GameObject>();
-
-    private MiniGameGenerator GameGenerator;
 
     private void Awake()
     {
@@ -43,19 +40,18 @@ public class FortuneWheelSpin : MonoBehaviour
     private void Start()
     {
         angleOfOneGame = CIRCLE / nbOfGames;
-        SetPositionData();
         canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
-        GameGenerator = FindObjectOfType<MiniGameGenerator>();
+        RotateNow();
     }
 
     private void Update()
     {
-        bool isButtonPressed = inputActions.Trapper.FortuneWheel.triggered;
+        /*bool isButtonPressed = inputActions.Trapper.FortuneWheel.triggered;
         if (isButtonPressed && !isAlreadyRotate)
         {
             RotateNow();
             isAlreadyRotate = true;
-        }
+        }*/
     }
 
     IEnumerator RotateWheel()
@@ -81,57 +77,49 @@ public class FortuneWheelSpin : MonoBehaviour
         switch (indexGameRandom)
         {
             case 0:
+                InstantiateGame(indexGameRandom);
                 break;
 
             case 1:
+                InstantiateGame(indexGameRandom);
                 break;
 
             case 2:
+                InstantiateGame(indexGameRandom);
                 break;
 
             case 3:
+                InstantiateGame(indexGameRandom);
                 break;
 
             case 4:
+                InstantiateGame(indexGameRandom);
                 break;
 
             case 5:
+                InstantiateGame(indexGameRandom);
                 break;
 
             case 6:
+                InstantiateGame(indexGameRandom);
+                break;
+
+            case 7:
+                InstantiateGame(indexGameRandom);
                 break;
 
         }
+    }
 
-        /*if (indexGameRandom % 2 == 0) //even
-        {
-            GameObject spamFameGameObject = Instantiate(SpamQTEGame, Vector3.zero, Quaternion.identity, canvas);
-            GameGenerator.gameList.Add(spamFameGameObject);
-            spamFameGameObject.transform.localPosition = Vector3.zero;
-            Destroy(this.transform.parent.gameObject);
-            
-        }
-        else //odd
-        {
-            GameObject slidGameObject = Instantiate(SlidingBarGame, Vector3.zero, Quaternion.identity, canvas);
-            GameGenerator.gameList.Add(slidGameObject);
-            slidGameObject.transform.localPosition = Vector3.zero;
-            Destroy(this.transform.parent.gameObject);
-        }*/
+    public void InstantiateGame(int index)
+    {
+        Instantiate(gameList[index], canvas);
+        Destroy(this.transform.parent.gameObject);
     }
 
     [ContextMenu("Rotate")]
     void RotateNow()
     {
         StartCoroutine(RotateWheel());
-    }
-
-    void SetPositionData()
-    {
-        for (int i = 0; i < parent.childCount; i++)
-        {
-            parent.GetChild(i).eulerAngles = new Vector3(0, 0, -CIRCLE / nbOfGames * i);
-            parent.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = (i + 1).ToString();
-        }
     }
 }

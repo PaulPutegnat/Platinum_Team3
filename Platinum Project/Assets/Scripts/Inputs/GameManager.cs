@@ -65,13 +65,11 @@ public class GameManager : MonoBehaviour
         RUNNERPANNEL = GameObject.Find("RUNNER");
         TRAPPERPANNEL = GameObject.Find("TRAPPER");
         BeginButton = GameObject.Find("BeginButton");
-        
-        
     }
 
     public void SpawnFortuneWheel()
     {
-        GameObject fortuneWheelGameObject = Instantiate(fortuneWheel, Vector3.zero, Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+        Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
     public void checkUI()

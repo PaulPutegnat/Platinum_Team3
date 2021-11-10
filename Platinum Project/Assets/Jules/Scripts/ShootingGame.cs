@@ -44,7 +44,6 @@ public class ShootingGame : MonoBehaviour
     void Start()
     {
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
-        this.gameObject.transform.localPosition = new Vector3(0f, 0f, -10f);
 
         //Fetch the Raycaster from the GameObject (the Canvas)
         m_Raycaster = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GraphicRaycaster>();

@@ -134,31 +134,53 @@ public class SlidingBarGame : MonoBehaviour
             StopP2SlidingBarGame();
         }
 
-        if (!isP1Playing && !isP2Playing)
+        if (GameManager.gameManager.players[3] != null)
         {
-            if (isP1Win && isP2Win)
+            if (!isP1Playing && !isP2Playing)
             {
-                // Game finish Win
-                //Debug.Log("GAME IS WIN");
-                GameManager.gameManager.SpawnFortuneWheel();
-                Destroy(this.transform.parent.gameObject);
-                
-            }
-            else if ((isP1Win && !isP2Win) || (!isP1Win && isP2Win))
-            {
-                // Game finish Semi-win
-                //Debug.Log("GAME IS SEMI-WIN");
-                GameManager.gameManager.SpawnFortuneWheel();
-                Destroy(this.transform.parent.gameObject);
-            }
-            else if (!isP1Win && !isP2Win)
-            {
-                // Game finish lose
-                //Debug.Log("GAME IS LOSE");
-                GameManager.gameManager.SpawnFortuneWheel();
-                Destroy(this.transform.parent.gameObject);
+                if (isP1Win && isP2Win)
+                {
+                    // Game finish Win
+                    //Debug.Log("GAME IS WIN");
+                    GameManager.gameManager.SpawnFortuneWheel();
+                    Destroy(this.transform.parent.gameObject);
+
+                }
+                else if ((isP1Win && !isP2Win) || (!isP1Win && isP2Win))
+                {
+                    // Game finish Semi-win
+                    //Debug.Log("GAME IS SEMI-WIN");
+                    GameManager.gameManager.SpawnFortuneWheel();
+                    Destroy(this.transform.parent.gameObject);
+                }
+                else if (!isP1Win && !isP2Win)
+                {
+                    // Game finish lose
+                    //Debug.Log("GAME IS LOSE");
+                    GameManager.gameManager.SpawnFortuneWheel();
+                    Destroy(this.transform.parent.gameObject);
+                }
             }
         }
+        else
+        {
+            if (!isP1Playing)
+            {
+                if (isP1Win)
+                {
+                    // Game finish Win
+                    GameManager.gameManager.SpawnFortuneWheel();
+                    Destroy(this.transform.parent.gameObject);
+                }
+                else
+                {
+                    // Game finish Lose
+                    GameManager.gameManager.SpawnFortuneWheel();
+                    Destroy(this.transform.parent.gameObject);
+                }
+            }
+        }
+        
         
     }
 
