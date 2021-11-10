@@ -112,7 +112,7 @@ public class GameManager : MonoBehaviour
             }
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
             
-            //SpawnFortuneWheel();
+            SpawnFortuneWheel();
             IsBegin = true;
     }
 
