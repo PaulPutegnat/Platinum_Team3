@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 public class SlidingBarGame : MonoBehaviour
 {
+    public enum IS_DOUBLE_INTERVAL
+    {
+        YES,
+        NO
+    }
+
     // Inputs Action
     private bool p1ButtonPressed = false;
     private bool p2ButtonPressed = false;
@@ -40,51 +46,62 @@ public class SlidingBarGame : MonoBehaviour
 
     private PlayerInput trapperInput1;
     private PlayerInput trapperInput2;
+    public IS_DOUBLE_INTERVAL IsDoubleInterval = IS_DOUBLE_INTERVAL.NO;
 
     private void Awake()
     {
-        trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
-        trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+        switch (IsDoubleInterval)
+        {
+            case IS_DOUBLE_INTERVAL.NO:
+                intervalP2.SetActive(false);
+                break;
+
+            case IS_DOUBLE_INTERVAL.YES:
+                intervalP2.SetActive(true);
+                break;
+        }
     }
 
     void Start()
     {
-        if (isDoubleInterval)
+        trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
+        if (GameManager.gameManager.players[3] != null)
         {
-            intervalP2.SetActive(true);
+            trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+            handleP2.SetActive(true);
         }
         else
         {
-            intervalP2.SetActive(false);
+            handleP2.SetActive(false);
         }
 
         intervalP1.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP1.transform.localPosition.y);
-        intervalP2.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP2.transform.localPosition.y);
         intervalP1.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 100f);
-        intervalP2.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 100f);
-
         intervalP1Size = intervalP1.GetComponent<RectTransform>().sizeDelta;
-        intervalP2Size = intervalP2.GetComponent<RectTransform>().sizeDelta;
-
-        StartSlidingBarGame(true);
-
         posPercentP1 = Random.Range(-1, 1.1f);
         handleP1.transform.localPosition = new Vector3(posPercentP1 * 600, 0f, 0f);
-        Debug.Log(posPercentP1);
 
-        posPercentP2 = Random.Range(-1, 1.1f);
-        handleP2.transform.localPosition = new Vector3(posPercentP2 * 600, 0f, 0f);
-        Debug.Log(posPercentP2);
+        if (GameManager.gameManager.players[3] != null)
+        {
+            intervalP2.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP2.transform.localPosition.y);
+            intervalP2.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 100f);
+            posPercentP2 = Random.Range(-1, 1.1f);
+            handleP2.transform.localPosition = new Vector3(posPercentP2 * 600, 0f, 0f);
+            intervalP2Size = intervalP2.GetComponent<RectTransform>().sizeDelta;
+        }
 
-        
+        StartSlidingBarGame(true);
     }
 
     void Update()
     {
 
         p1ButtonPressed = trapperInput1.actions.FindAction("SlidingBarP1").triggered;
-        p2ButtonPressed = trapperInput2.actions.FindAction("SlidingBarP2").triggered;
-
+        if (GameManager.gameManager.players[3] != null)
+        {
+            p2ButtonPressed = trapperInput2.actions.FindAction("SlidingBarP2").triggered;
+        }
+        
         if (p1ButtonPressed)
         {
             isP1Playing = false;
@@ -123,22 +140,23 @@ public class SlidingBarGame : MonoBehaviour
             {
                 // Game finish Win
                 //Debug.Log("GAME IS WIN");
-                Destroy(this.transform.parent.gameObject);
                 GameManager.gameManager.SpawnFortuneWheel();
+                Destroy(this.transform.parent.gameObject);
+                
             }
             else if ((isP1Win && !isP2Win) || (!isP1Win && isP2Win))
             {
                 // Game finish Semi-win
                 //Debug.Log("GAME IS SEMI-WIN");
-                Destroy(this.transform.parent.gameObject);
                 GameManager.gameManager.SpawnFortuneWheel();
+                Destroy(this.transform.parent.gameObject);
             }
             else if (!isP1Win && !isP2Win)
             {
                 // Game finish lose
                 //Debug.Log("GAME IS LOSE");
-                Destroy(this.transform.parent.gameObject);
                 GameManager.gameManager.SpawnFortuneWheel();
+                Destroy(this.transform.parent.gameObject);
             }
         }
         
