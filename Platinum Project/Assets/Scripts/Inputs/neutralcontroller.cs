@@ -123,12 +123,12 @@ public class neutralcontroller : MonoBehaviour
                     runnerRef = Instantiate(GameManager.gameManager.Runner.gameObject, GameManager.gameManager.spawn.position, Quaternion.identity);
                     if (GameManager.gameManager.players[0] == null)
                     {
-                        GameManager.gameManager.players[0] = runnerRef;
+                        GameManager.gameManager.players[0] = gameObject;
                         
                     }
                     else if(GameManager.gameManager.players[1] == null)
                     {
-                        GameManager.gameManager.players[1] = runnerRef;
+                        GameManager.gameManager.players[1] = gameObject;
                     }
                     else
                     {
@@ -149,12 +149,12 @@ public class neutralcontroller : MonoBehaviour
                     TrapperRef = Instantiate(GameManager.gameManager.Trapper.gameObject, new Vector3(0, 0, 0), Quaternion.identity);
                     if (GameManager.gameManager.players[2] == null)
                     {
-                        GameManager.gameManager.players[2] = TrapperRef;
+                        GameManager.gameManager.players[2] = gameObject;
                         TrapperRef.GetComponent<TrapController>().initTrapper(2);
                     }
                     else if(GameManager.gameManager.players[3] == null)
                     {
-                        GameManager.gameManager.players[3] = TrapperRef;
+                        GameManager.gameManager.players[3] = gameObject;
                         TrapperRef.GetComponent<TrapController>().initTrapper(3);
                     }
                     else
