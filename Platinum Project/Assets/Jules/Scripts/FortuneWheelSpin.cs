@@ -86,14 +86,16 @@ public class FortuneWheelSpin : MonoBehaviour
             GameObject spamFameGameObject = Instantiate(SpamQTEGame, Vector3.zero, Quaternion.identity, canvas);
             GameGenerator.gameList.Add(spamFameGameObject);
             spamFameGameObject.transform.localPosition = Vector3.zero;
-            Destroy(this.parent.gameObject);
+            Destroy(this.transform.parent.gameObject);
+            
         }
         else //odd
         {
             GameObject slidGameObject = Instantiate(SlidingBarGame, Vector3.zero, Quaternion.identity, canvas);
             GameGenerator.gameList.Add(slidGameObject);
             slidGameObject.transform.localPosition = Vector3.zero;
-            Destroy(this.parent.gameObject);
+            Destroy(this.transform.parent.gameObject);
+
         }
     }
 
