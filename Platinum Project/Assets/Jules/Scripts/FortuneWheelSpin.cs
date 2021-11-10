@@ -24,6 +24,8 @@ public class FortuneWheelSpin : MonoBehaviour
     public GameObject SlidingBarGame;
     public GameObject SpamQTEGame;
 
+    private MiniGameGenerator GameGenerator;
+
     private void Awake()
     {
         inputActions = new PlayerControls();
@@ -43,7 +45,8 @@ public class FortuneWheelSpin : MonoBehaviour
     {
         angleOfOneGame = CIRCLE / nbOfGames;
         SetPositionData();
-        canvas = FindObjectOfType<Canvas>().transform;
+        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
+        GameGenerator = FindObjectOfType<MiniGameGenerator>();
     }
 
     private void Update()
@@ -81,14 +84,16 @@ public class FortuneWheelSpin : MonoBehaviour
         if (indexGameRandom % 2 == 0) //even
         {
             GameObject spamFameGameObject = Instantiate(SpamQTEGame, Vector3.zero, Quaternion.identity, canvas);
+            GameGenerator.gameList.Add(spamFameGameObject);
             spamFameGameObject.transform.localPosition = Vector3.zero;
-            Destroy(this.gameObject);
+            Destroy(this.parent.gameObject);
         }
         else //odd
         {
             GameObject slidGameObject = Instantiate(SlidingBarGame, Vector3.zero, Quaternion.identity, canvas);
+            GameGenerator.gameList.Add(slidGameObject);
             slidGameObject.transform.localPosition = Vector3.zero;
-            Destroy(this.gameObject);
+            Destroy(this.parent.gameObject);
         }
     }
 

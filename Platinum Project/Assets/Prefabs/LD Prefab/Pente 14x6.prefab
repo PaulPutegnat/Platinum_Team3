@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 182642658951106213}
   m_Layer: 0
   m_Name: Pente 14x6
-  m_TagString: Untagged
+  m_TagString: tobogan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
