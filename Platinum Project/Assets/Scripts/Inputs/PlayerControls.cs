@@ -293,7 +293,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SpamQTEP1"",
+                    ""name"": ""SpamQTEDuo"",
                     ""type"": ""Button"",
                     ""id"": ""83a0a0a1-9a6c-4117-ac03-4f6b80349fd1"",
                     ""expectedControlType"": ""Button"",
@@ -302,7 +302,16 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SpamQTEP2"",
+                    ""name"": ""SpamQTESoloLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""e9e9e5ca-34c9-4c89-ad62-223c125958ad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpamQTESoloRight"",
                     ""type"": ""Button"",
                     ""id"": ""43ca17f9-9e23-44ab-b545-b5eab31a3cac"",
                     ""expectedControlType"": ""Button"",
@@ -336,6 +345,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pong"",
+                    ""type"": ""Value"",
+                    ""id"": ""0440658d-7e5c-43fc-b561-5fea816bfed3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PongSoloRight"",
+                    ""type"": ""Value"",
+                    ""id"": ""72a8c19d-e708-4278-8ab0-6f94f7ed5228"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Echap"",
@@ -511,28 +538,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3a9deea7-841d-4ab3-a3ec-48e807001d57"",
-                    ""path"": ""<Keyboard>/k"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""SpamQTEP2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ddc24656-7e91-4cc9-81b5-49c74a1e21ca"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""SpamQTEP2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""6979f2b1-4a2f-4bef-8cf9-7220e6835160"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
@@ -560,7 +565,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""SpamQTEP1"",
+                    ""action"": ""SpamQTEDuo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -571,7 +576,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""SpamQTEP1"",
+                    ""action"": ""SpamQTEDuo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -781,6 +786,72 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71cd562f-ae15-4781-87c4-7181fcb3a7af"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SpamQTESoloLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2a5edcd-0866-4f30-a862-1020d800f285"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SpamQTESoloLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a9deea7-841d-4ab3-a3ec-48e807001d57"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SpamQTESoloRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ddc24656-7e91-4cc9-81b5-49c74a1e21ca"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SpamQTESoloRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41d6104a-f29e-4cc3-a221-ec10002e7ff0"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pong"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d71e3756-5e12-457e-9045-956d41406d06"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PongSoloRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1500,11 +1571,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Trapper = asset.FindActionMap("Trapper", throwIfNotFound: true);
         m_Trapper_TrapSelection = m_Trapper.FindAction("Trap Selection", throwIfNotFound: true);
         m_Trapper_SlidingBar = m_Trapper.FindAction("SlidingBar", throwIfNotFound: true);
-        m_Trapper_SpamQTEP1 = m_Trapper.FindAction("SpamQTEP1", throwIfNotFound: true);
-        m_Trapper_SpamQTEP2 = m_Trapper.FindAction("SpamQTEP2", throwIfNotFound: true);
+        m_Trapper_SpamQTEDuo = m_Trapper.FindAction("SpamQTEDuo", throwIfNotFound: true);
+        m_Trapper_SpamQTESoloLeft = m_Trapper.FindAction("SpamQTESoloLeft", throwIfNotFound: true);
+        m_Trapper_SpamQTESoloRight = m_Trapper.FindAction("SpamQTESoloRight", throwIfNotFound: true);
         m_Trapper_FortuneWheel = m_Trapper.FindAction("FortuneWheel", throwIfNotFound: true);
         m_Trapper_Aiming = m_Trapper.FindAction("Aiming", throwIfNotFound: true);
         m_Trapper_Shoot = m_Trapper.FindAction("Shoot", throwIfNotFound: true);
+        m_Trapper_Pong = m_Trapper.FindAction("Pong", throwIfNotFound: true);
+        m_Trapper_PongSoloRight = m_Trapper.FindAction("PongSoloRight", throwIfNotFound: true);
         m_Trapper_Echap = m_Trapper.FindAction("Echap", throwIfNotFound: true);
         m_Trapper_LeftJoystick = m_Trapper.FindAction("LeftJoystick", throwIfNotFound: true);
         m_Trapper_RightJoystick = m_Trapper.FindAction("RightJoystick", throwIfNotFound: true);
@@ -1679,11 +1753,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private ITrapperActions m_TrapperActionsCallbackInterface;
     private readonly InputAction m_Trapper_TrapSelection;
     private readonly InputAction m_Trapper_SlidingBar;
-    private readonly InputAction m_Trapper_SpamQTEP1;
-    private readonly InputAction m_Trapper_SpamQTEP2;
+    private readonly InputAction m_Trapper_SpamQTEDuo;
+    private readonly InputAction m_Trapper_SpamQTESoloLeft;
+    private readonly InputAction m_Trapper_SpamQTESoloRight;
     private readonly InputAction m_Trapper_FortuneWheel;
     private readonly InputAction m_Trapper_Aiming;
     private readonly InputAction m_Trapper_Shoot;
+    private readonly InputAction m_Trapper_Pong;
+    private readonly InputAction m_Trapper_PongSoloRight;
     private readonly InputAction m_Trapper_Echap;
     private readonly InputAction m_Trapper_LeftJoystick;
     private readonly InputAction m_Trapper_RightJoystick;
@@ -1704,11 +1781,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public TrapperActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @TrapSelection => m_Wrapper.m_Trapper_TrapSelection;
         public InputAction @SlidingBar => m_Wrapper.m_Trapper_SlidingBar;
-        public InputAction @SpamQTEP1 => m_Wrapper.m_Trapper_SpamQTEP1;
-        public InputAction @SpamQTEP2 => m_Wrapper.m_Trapper_SpamQTEP2;
+        public InputAction @SpamQTEDuo => m_Wrapper.m_Trapper_SpamQTEDuo;
+        public InputAction @SpamQTESoloLeft => m_Wrapper.m_Trapper_SpamQTESoloLeft;
+        public InputAction @SpamQTESoloRight => m_Wrapper.m_Trapper_SpamQTESoloRight;
         public InputAction @FortuneWheel => m_Wrapper.m_Trapper_FortuneWheel;
         public InputAction @Aiming => m_Wrapper.m_Trapper_Aiming;
         public InputAction @Shoot => m_Wrapper.m_Trapper_Shoot;
+        public InputAction @Pong => m_Wrapper.m_Trapper_Pong;
+        public InputAction @PongSoloRight => m_Wrapper.m_Trapper_PongSoloRight;
         public InputAction @Echap => m_Wrapper.m_Trapper_Echap;
         public InputAction @LeftJoystick => m_Wrapper.m_Trapper_LeftJoystick;
         public InputAction @RightJoystick => m_Wrapper.m_Trapper_RightJoystick;
@@ -1738,12 +1818,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SlidingBar.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBar;
                 @SlidingBar.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBar;
                 @SlidingBar.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBar;
-                @SpamQTEP1.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP1;
-                @SpamQTEP1.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP1;
-                @SpamQTEP1.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP1;
-                @SpamQTEP2.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
-                @SpamQTEP2.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
-                @SpamQTEP2.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP2;
+                @SpamQTEDuo.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEDuo;
+                @SpamQTEDuo.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEDuo;
+                @SpamQTEDuo.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEDuo;
+                @SpamQTESoloLeft.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTESoloLeft;
+                @SpamQTESoloLeft.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTESoloLeft;
+                @SpamQTESoloLeft.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTESoloLeft;
+                @SpamQTESoloRight.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTESoloRight;
+                @SpamQTESoloRight.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTESoloRight;
+                @SpamQTESoloRight.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTESoloRight;
                 @FortuneWheel.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
                 @FortuneWheel.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
                 @FortuneWheel.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
@@ -1753,6 +1836,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShoot;
+                @Pong.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnPong;
+                @Pong.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnPong;
+                @Pong.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnPong;
+                @PongSoloRight.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnPongSoloRight;
+                @PongSoloRight.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnPongSoloRight;
+                @PongSoloRight.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnPongSoloRight;
                 @Echap.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
                 @Echap.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
                 @Echap.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
@@ -1805,12 +1894,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @SlidingBar.started += instance.OnSlidingBar;
                 @SlidingBar.performed += instance.OnSlidingBar;
                 @SlidingBar.canceled += instance.OnSlidingBar;
-                @SpamQTEP1.started += instance.OnSpamQTEP1;
-                @SpamQTEP1.performed += instance.OnSpamQTEP1;
-                @SpamQTEP1.canceled += instance.OnSpamQTEP1;
-                @SpamQTEP2.started += instance.OnSpamQTEP2;
-                @SpamQTEP2.performed += instance.OnSpamQTEP2;
-                @SpamQTEP2.canceled += instance.OnSpamQTEP2;
+                @SpamQTEDuo.started += instance.OnSpamQTEDuo;
+                @SpamQTEDuo.performed += instance.OnSpamQTEDuo;
+                @SpamQTEDuo.canceled += instance.OnSpamQTEDuo;
+                @SpamQTESoloLeft.started += instance.OnSpamQTESoloLeft;
+                @SpamQTESoloLeft.performed += instance.OnSpamQTESoloLeft;
+                @SpamQTESoloLeft.canceled += instance.OnSpamQTESoloLeft;
+                @SpamQTESoloRight.started += instance.OnSpamQTESoloRight;
+                @SpamQTESoloRight.performed += instance.OnSpamQTESoloRight;
+                @SpamQTESoloRight.canceled += instance.OnSpamQTESoloRight;
                 @FortuneWheel.started += instance.OnFortuneWheel;
                 @FortuneWheel.performed += instance.OnFortuneWheel;
                 @FortuneWheel.canceled += instance.OnFortuneWheel;
@@ -1820,6 +1912,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @Pong.started += instance.OnPong;
+                @Pong.performed += instance.OnPong;
+                @Pong.canceled += instance.OnPong;
+                @PongSoloRight.started += instance.OnPongSoloRight;
+                @PongSoloRight.performed += instance.OnPongSoloRight;
+                @PongSoloRight.canceled += instance.OnPongSoloRight;
                 @Echap.started += instance.OnEchap;
                 @Echap.performed += instance.OnEchap;
                 @Echap.canceled += instance.OnEchap;
@@ -2069,11 +2167,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnTrapSelection(InputAction.CallbackContext context);
         void OnSlidingBar(InputAction.CallbackContext context);
-        void OnSpamQTEP1(InputAction.CallbackContext context);
-        void OnSpamQTEP2(InputAction.CallbackContext context);
+        void OnSpamQTEDuo(InputAction.CallbackContext context);
+        void OnSpamQTESoloLeft(InputAction.CallbackContext context);
+        void OnSpamQTESoloRight(InputAction.CallbackContext context);
         void OnFortuneWheel(InputAction.CallbackContext context);
         void OnAiming(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnPong(InputAction.CallbackContext context);
+        void OnPongSoloRight(InputAction.CallbackContext context);
         void OnEchap(InputAction.CallbackContext context);
         void OnLeftJoystick(InputAction.CallbackContext context);
         void OnRightJoystick(InputAction.CallbackContext context);
