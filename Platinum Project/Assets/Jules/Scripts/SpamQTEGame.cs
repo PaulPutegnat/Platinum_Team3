@@ -45,6 +45,7 @@ public class SpamQTEGame : MonoBehaviour
     private PlayerInput trapperInput2;
 
     private PlayerTurnState _state = PlayerTurnState.P1;
+    private bool IsTwoPlayer = false;
     
 
     void Start()
@@ -61,51 +62,126 @@ public class SpamQTEGame : MonoBehaviour
         timerFillArea.GetComponent<Image>().color = Color.green;
 
         trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
-        trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+        if (GameManager.gameManager.players[3] != null)
+        {
+            IsTwoPlayer = true;
+            trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+        }
+        else
+        {
+            IsTwoPlayer = false;
+        }
+
+        if (IsTwoPlayer)
+        {
+            switch (_state)
+            {
+                case PlayerTurnState.P1:
+                    buttonP1Sprite.sprite = Resources.Load<Sprite>("AButtonP1Smashed");
+                    buttonP2Sprite.sprite = Resources.Load<Sprite>("AButtonP2");
+                    break;
+
+                case PlayerTurnState.P2:
+                    buttonP2Sprite.sprite = Resources.Load<Sprite>("AButtonP2Smashed");
+                    buttonP1Sprite.sprite = Resources.Load<Sprite>("AButtonP1");
+                    break;
+            }
+        }
+        else
+        {
+            switch (_state)
+            {
+                case PlayerTurnState.P1:
+                    buttonP1Sprite.sprite = Resources.Load<Sprite>("LButtonSmashed");
+                    buttonP2Sprite.sprite = Resources.Load<Sprite>("RButton");
+                    break;
+
+                case PlayerTurnState.P2:
+                    buttonP2Sprite.sprite = Resources.Load<Sprite>("RButtonSmashed");
+                    buttonP1Sprite.sprite = Resources.Load<Sprite>("LButton");
+                    break;
+            }
+        }
+        
+
     }
 
     void Update()
     {
-
-        p1ButtonPressed = trapperInput1.actions.FindAction("SpamQTEP1").triggered;
-        p2ButtonPressed = trapperInput2.actions.FindAction("SpamQTEP2").triggered;
-
-
-
-
-
-        switch (_state)
+        if (IsTwoPlayer)
         {
-            case PlayerTurnState.P1:
-                if (p1ButtonPressed)
-                {
-                    sliderCurrentValue += 2f;
-                    _state = PlayerTurnState.P2;
-                    buttonP1Sprite.sprite = Resources.Load<Sprite>("Sprites/AButtonP1Smashed");
-                }
-                else
-                {
-                    buttonP1Sprite.sprite = Resources.Load<Sprite>("Sprites/AButtonP1");
-                }
-                break;
+            p1ButtonPressed = trapperInput1.actions.FindAction("SpamQTEP1").triggered;
+            p2ButtonPressed = trapperInput2.actions.FindAction("SpamQTEP1").triggered;
 
-            case PlayerTurnState.P2:
-                if (p2ButtonPressed)
-                {
-                    
-                    sliderCurrentValue += 2f;
-                    _state = PlayerTurnState.P1;
-                    buttonP2Sprite.sprite = Resources.Load<Sprite>("Sprites/AButtonP2Smashed");
-                    
-                }
-                else
-                {
-                    buttonP2Sprite.sprite = Resources.Load<Sprite>("Sprites/AButtonP2");
-                }
-                
-                break;
+            switch (_state)
+            {
+                case PlayerTurnState.P1:
+                    if (p1ButtonPressed)
+                    {
+                        sliderCurrentValue += 2f;
+                        _state = PlayerTurnState.P2;
+                        buttonP1Sprite.sprite = Resources.Load<Sprite>("AButtonP1Smashed");
+                    }
+                    else
+                    {
+                        buttonP1Sprite.sprite = Resources.Load<Sprite>("AButtonP1");
+                    }
+                    break;
+
+                case PlayerTurnState.P2:
+                    if (p2ButtonPressed)
+                    {
+
+                        sliderCurrentValue += 2f;
+                        _state = PlayerTurnState.P1;
+                        buttonP2Sprite.sprite = Resources.Load<Sprite>("AButtonP2Smashed");
+
+                    }
+                    else
+                    {
+                        buttonP2Sprite.sprite = Resources.Load<Sprite>("AButtonP2");
+                    }
+
+                    break;
+            }
         }
+        else
+        {
+            p1ButtonPressed = trapperInput1.actions.FindAction("SpamQTEP1").triggered;
+            p2ButtonPressed = trapperInput1.actions.FindAction("SpamQTEP2").triggered;
 
+            switch (_state)
+            {
+                case PlayerTurnState.P1:
+                    if (p1ButtonPressed)
+                    {
+                        sliderCurrentValue += 2f;
+                        _state = PlayerTurnState.P2;
+                        buttonP1Sprite.sprite = Resources.Load<Sprite>("LButtonSmashed");
+                    }
+                    else
+                    {
+                        buttonP1Sprite.sprite = Resources.Load<Sprite>("LButton");
+                    }
+                    break;
+
+                case PlayerTurnState.P2:
+                    if (p2ButtonPressed)
+                    {
+
+                        sliderCurrentValue += 2f;
+                        _state = PlayerTurnState.P1;
+                        buttonP2Sprite.sprite = Resources.Load<Sprite>("RButtonSmashed");
+
+                    }
+                    else
+                    {
+                        buttonP2Sprite.sprite = Resources.Load<Sprite>("RButton");
+                    }
+
+                    break;
+            }
+        }
 
 
         if (spamSlider.value > 0)

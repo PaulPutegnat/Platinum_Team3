@@ -284,18 +284,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SlidingBarP1"",
+                    ""name"": ""SlidingBar"",
                     ""type"": ""Button"",
                     ""id"": ""027a09cc-7fc8-4d6f-91c6-050bc52e4f06"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""SlidingBarP2"",
-                    ""type"": ""Button"",
-                    ""id"": ""a56b8ce7-f54c-47c5-b55c-c45f509fff0b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -329,7 +320,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""AimingP1"",
+                    ""name"": ""Aiming"",
                     ""type"": ""Value"",
                     ""id"": ""387d9ee7-6dc4-4f8c-961f-fcc12c7c01d5"",
                     ""expectedControlType"": ""Vector2"",
@@ -338,30 +329,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""AimingP2"",
-                    ""type"": ""Value"",
-                    ""id"": ""006253db-2618-4b84-8678-9ce9ae21cb44"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""ShootP1"",
+                    ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""543e5385-85bf-4a03-a5ea-78f39fffd773"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ShootP2"",
-                    ""type"": ""Button"",
-                    ""id"": ""96aa8d67-6e52-474f-a963-2caed415f4af"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -550,7 +523,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ddc24656-7e91-4cc9-81b5-49c74a1e21ca"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -565,7 +538,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SlidingBarP1"",
+                    ""action"": ""SlidingBar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -576,29 +549,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SlidingBarP1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8791c1b2-7c0a-4d67-9447-ac81b1903551"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SlidingBarP2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""624fbdd0-29ba-420b-8ded-075f3cc97c8c"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SlidingBarP2"",
+                    ""action"": ""SlidingBar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -653,7 +604,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""AimingP1"",
+                    ""action"": ""Aiming"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -664,29 +615,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""ShootP1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""eead13e8-8023-46f5-bbd6-bb245acae1de"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShootP2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""03a9f2a5-0771-4b09-a941-ea83f7e003e9"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""AimingP2"",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1570,15 +1499,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // Trapper
         m_Trapper = asset.FindActionMap("Trapper", throwIfNotFound: true);
         m_Trapper_TrapSelection = m_Trapper.FindAction("Trap Selection", throwIfNotFound: true);
-        m_Trapper_SlidingBarP1 = m_Trapper.FindAction("SlidingBarP1", throwIfNotFound: true);
-        m_Trapper_SlidingBarP2 = m_Trapper.FindAction("SlidingBarP2", throwIfNotFound: true);
+        m_Trapper_SlidingBar = m_Trapper.FindAction("SlidingBar", throwIfNotFound: true);
         m_Trapper_SpamQTEP1 = m_Trapper.FindAction("SpamQTEP1", throwIfNotFound: true);
         m_Trapper_SpamQTEP2 = m_Trapper.FindAction("SpamQTEP2", throwIfNotFound: true);
         m_Trapper_FortuneWheel = m_Trapper.FindAction("FortuneWheel", throwIfNotFound: true);
-        m_Trapper_AimingP1 = m_Trapper.FindAction("AimingP1", throwIfNotFound: true);
-        m_Trapper_AimingP2 = m_Trapper.FindAction("AimingP2", throwIfNotFound: true);
-        m_Trapper_ShootP1 = m_Trapper.FindAction("ShootP1", throwIfNotFound: true);
-        m_Trapper_ShootP2 = m_Trapper.FindAction("ShootP2", throwIfNotFound: true);
+        m_Trapper_Aiming = m_Trapper.FindAction("Aiming", throwIfNotFound: true);
+        m_Trapper_Shoot = m_Trapper.FindAction("Shoot", throwIfNotFound: true);
         m_Trapper_Echap = m_Trapper.FindAction("Echap", throwIfNotFound: true);
         m_Trapper_LeftJoystick = m_Trapper.FindAction("LeftJoystick", throwIfNotFound: true);
         m_Trapper_RightJoystick = m_Trapper.FindAction("RightJoystick", throwIfNotFound: true);
@@ -1752,15 +1678,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Trapper;
     private ITrapperActions m_TrapperActionsCallbackInterface;
     private readonly InputAction m_Trapper_TrapSelection;
-    private readonly InputAction m_Trapper_SlidingBarP1;
-    private readonly InputAction m_Trapper_SlidingBarP2;
+    private readonly InputAction m_Trapper_SlidingBar;
     private readonly InputAction m_Trapper_SpamQTEP1;
     private readonly InputAction m_Trapper_SpamQTEP2;
     private readonly InputAction m_Trapper_FortuneWheel;
-    private readonly InputAction m_Trapper_AimingP1;
-    private readonly InputAction m_Trapper_AimingP2;
-    private readonly InputAction m_Trapper_ShootP1;
-    private readonly InputAction m_Trapper_ShootP2;
+    private readonly InputAction m_Trapper_Aiming;
+    private readonly InputAction m_Trapper_Shoot;
     private readonly InputAction m_Trapper_Echap;
     private readonly InputAction m_Trapper_LeftJoystick;
     private readonly InputAction m_Trapper_RightJoystick;
@@ -1780,15 +1703,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         private @PlayerControls m_Wrapper;
         public TrapperActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @TrapSelection => m_Wrapper.m_Trapper_TrapSelection;
-        public InputAction @SlidingBarP1 => m_Wrapper.m_Trapper_SlidingBarP1;
-        public InputAction @SlidingBarP2 => m_Wrapper.m_Trapper_SlidingBarP2;
+        public InputAction @SlidingBar => m_Wrapper.m_Trapper_SlidingBar;
         public InputAction @SpamQTEP1 => m_Wrapper.m_Trapper_SpamQTEP1;
         public InputAction @SpamQTEP2 => m_Wrapper.m_Trapper_SpamQTEP2;
         public InputAction @FortuneWheel => m_Wrapper.m_Trapper_FortuneWheel;
-        public InputAction @AimingP1 => m_Wrapper.m_Trapper_AimingP1;
-        public InputAction @AimingP2 => m_Wrapper.m_Trapper_AimingP2;
-        public InputAction @ShootP1 => m_Wrapper.m_Trapper_ShootP1;
-        public InputAction @ShootP2 => m_Wrapper.m_Trapper_ShootP2;
+        public InputAction @Aiming => m_Wrapper.m_Trapper_Aiming;
+        public InputAction @Shoot => m_Wrapper.m_Trapper_Shoot;
         public InputAction @Echap => m_Wrapper.m_Trapper_Echap;
         public InputAction @LeftJoystick => m_Wrapper.m_Trapper_LeftJoystick;
         public InputAction @RightJoystick => m_Wrapper.m_Trapper_RightJoystick;
@@ -1815,12 +1735,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @TrapSelection.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnTrapSelection;
                 @TrapSelection.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnTrapSelection;
                 @TrapSelection.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnTrapSelection;
-                @SlidingBarP1.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP1;
-                @SlidingBarP1.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP1;
-                @SlidingBarP1.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP1;
-                @SlidingBarP2.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP2;
-                @SlidingBarP2.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP2;
-                @SlidingBarP2.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBarP2;
+                @SlidingBar.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBar;
+                @SlidingBar.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBar;
+                @SlidingBar.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSlidingBar;
                 @SpamQTEP1.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP1;
                 @SpamQTEP1.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP1;
                 @SpamQTEP1.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnSpamQTEP1;
@@ -1830,18 +1747,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @FortuneWheel.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
                 @FortuneWheel.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
                 @FortuneWheel.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnFortuneWheel;
-                @AimingP1.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP1;
-                @AimingP1.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP1;
-                @AimingP1.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP1;
-                @AimingP2.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP2;
-                @AimingP2.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP2;
-                @AimingP2.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAimingP2;
-                @ShootP1.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP1;
-                @ShootP1.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP1;
-                @ShootP1.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP1;
-                @ShootP2.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP2;
-                @ShootP2.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP2;
-                @ShootP2.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShootP2;
+                @Aiming.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAiming;
+                @Aiming.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAiming;
+                @Aiming.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnAiming;
+                @Shoot.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnShoot;
                 @Echap.started -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
                 @Echap.performed -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
                 @Echap.canceled -= m_Wrapper.m_TrapperActionsCallbackInterface.OnEchap;
@@ -1891,12 +1802,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @TrapSelection.started += instance.OnTrapSelection;
                 @TrapSelection.performed += instance.OnTrapSelection;
                 @TrapSelection.canceled += instance.OnTrapSelection;
-                @SlidingBarP1.started += instance.OnSlidingBarP1;
-                @SlidingBarP1.performed += instance.OnSlidingBarP1;
-                @SlidingBarP1.canceled += instance.OnSlidingBarP1;
-                @SlidingBarP2.started += instance.OnSlidingBarP2;
-                @SlidingBarP2.performed += instance.OnSlidingBarP2;
-                @SlidingBarP2.canceled += instance.OnSlidingBarP2;
+                @SlidingBar.started += instance.OnSlidingBar;
+                @SlidingBar.performed += instance.OnSlidingBar;
+                @SlidingBar.canceled += instance.OnSlidingBar;
                 @SpamQTEP1.started += instance.OnSpamQTEP1;
                 @SpamQTEP1.performed += instance.OnSpamQTEP1;
                 @SpamQTEP1.canceled += instance.OnSpamQTEP1;
@@ -1906,18 +1814,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @FortuneWheel.started += instance.OnFortuneWheel;
                 @FortuneWheel.performed += instance.OnFortuneWheel;
                 @FortuneWheel.canceled += instance.OnFortuneWheel;
-                @AimingP1.started += instance.OnAimingP1;
-                @AimingP1.performed += instance.OnAimingP1;
-                @AimingP1.canceled += instance.OnAimingP1;
-                @AimingP2.started += instance.OnAimingP2;
-                @AimingP2.performed += instance.OnAimingP2;
-                @AimingP2.canceled += instance.OnAimingP2;
-                @ShootP1.started += instance.OnShootP1;
-                @ShootP1.performed += instance.OnShootP1;
-                @ShootP1.canceled += instance.OnShootP1;
-                @ShootP2.started += instance.OnShootP2;
-                @ShootP2.performed += instance.OnShootP2;
-                @ShootP2.canceled += instance.OnShootP2;
+                @Aiming.started += instance.OnAiming;
+                @Aiming.performed += instance.OnAiming;
+                @Aiming.canceled += instance.OnAiming;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
                 @Echap.started += instance.OnEchap;
                 @Echap.performed += instance.OnEchap;
                 @Echap.canceled += instance.OnEchap;
@@ -2166,15 +2068,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface ITrapperActions
     {
         void OnTrapSelection(InputAction.CallbackContext context);
-        void OnSlidingBarP1(InputAction.CallbackContext context);
-        void OnSlidingBarP2(InputAction.CallbackContext context);
+        void OnSlidingBar(InputAction.CallbackContext context);
         void OnSpamQTEP1(InputAction.CallbackContext context);
         void OnSpamQTEP2(InputAction.CallbackContext context);
         void OnFortuneWheel(InputAction.CallbackContext context);
-        void OnAimingP1(InputAction.CallbackContext context);
-        void OnAimingP2(InputAction.CallbackContext context);
-        void OnShootP1(InputAction.CallbackContext context);
-        void OnShootP2(InputAction.CallbackContext context);
+        void OnAiming(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
         void OnEchap(InputAction.CallbackContext context);
         void OnLeftJoystick(InputAction.CallbackContext context);
         void OnRightJoystick(InputAction.CallbackContext context);

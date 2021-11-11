@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine.InputSystem;
 using UnityEngine;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 public class TestCam : MonoBehaviour
 {
@@ -20,6 +17,7 @@ public class TestCam : MonoBehaviour
 
     private bool _rotationSettings = false;
     private Vector3 _currentRotation;
+    private Vector3 _currentEulerAngle;
 
     private bool _fovSettings = false;
     private float _currentFov;
@@ -45,7 +43,7 @@ public class TestCam : MonoBehaviour
             {
                 if (!_rotationSettings)
                 {
-                    _currentRotation = Camera.main.transform.eulerAngles;
+                    _currentRotation = _currentEulerAngle;
                     _rotationSettings = true;
                 }
                 RotateCamera();
@@ -61,6 +59,8 @@ public class TestCam : MonoBehaviour
                 ChangeFov();
             }
 
+            TimerOver();
+
             if (_canIncrement && i < PointsInfos.Length - 1)
             {
                 i++;
@@ -75,38 +75,16 @@ public class TestCam : MonoBehaviour
         Vector3 targetPosition = PointsInfos[i].TargetPosition.transform.position;
 
         transform.position = Vector3.Lerp(currentPosition, targetPosition, _percent);
-
-        if (transform.position == targetPosition)
-        {
-            _timer = 0;
-            _canIncrement = true;
-            _positionSettings = false;
-        }
     }
 
-    /*
     public void RotateCamera()
     {
         Vector3 currentRotation = _currentRotation;
-        Vector3 targetRotation = PointsInfos[i].TargetRotation.transform.eulerAngles;
-        Debug.Log(_currentRotation);
+        Vector3 targetRotation = PointsInfos[i].TargetRotation;
 
-        transform.eulerAngles = Vector3.Lerp(currentRotation, targetRotation, _percent);
-
-        if (transform.eulerAngles == targetRotation)
-        {
-            _timer = 0;
-            _canIncrement = true;
-            _rotationSettings = false;
-        }
+        _currentEulerAngle = Vector3.Lerp(currentRotation, targetRotation, _percent);
+        transform.eulerAngles = _currentEulerAngle;
     }
-    */
-
-    public void RotateCamera()
-    {
-
-    }
-
 
     public void ChangeFov()
     {
@@ -114,12 +92,17 @@ public class TestCam : MonoBehaviour
         float targetFov = PointsInfos[i].Fov;
 
         Camera.main.fieldOfView = Mathf.Lerp(currentFov, targetFov, _percent);
+    }
 
-        if (Camera.main.fieldOfView == targetFov)
+    public void TimerOver()
+    {
+        if (_timer >= PointsInfos[i].StepDuration)
         {
-            _timer = 0;
             _canIncrement = true;
+            _positionSettings = false;
+            _rotationSettings = false;
             _fovSettings = false;
+            _timer = 0;
         }
     }
 }
