@@ -271,7 +271,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SpamQTEP1",
+                    "name": "SpamQTEDuo",
                     "type": "Button",
                     "id": "83a0a0a1-9a6c-4117-ac03-4f6b80349fd1",
                     "expectedControlType": "Button",
@@ -280,7 +280,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SpamQTEP2",
+                    "name": "SpamQTESoloLeft",
+                    "type": "Button",
+                    "id": "e9e9e5ca-34c9-4c89-ad62-223c125958ad",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpamQTESoloRight",
                     "type": "Button",
                     "id": "43ca17f9-9e23-44ab-b545-b5eab31a3cac",
                     "expectedControlType": "Button",
@@ -314,6 +323,24 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pong",
+                    "type": "Value",
+                    "id": "0440658d-7e5c-43fc-b561-5fea816bfed3",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PongSoloRight",
+                    "type": "Value",
+                    "id": "72a8c19d-e708-4278-8ab0-6f94f7ed5228",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Echap",
@@ -489,28 +516,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3a9deea7-841d-4ab3-a3ec-48e807001d57",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "SpamQTEP2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ddc24656-7e91-4cc9-81b5-49c74a1e21ca",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "SpamQTEP2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6979f2b1-4a2f-4bef-8cf9-7220e6835160",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -538,7 +543,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "SpamQTEP1",
+                    "action": "SpamQTEDuo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -549,7 +554,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SpamQTEP1",
+                    "action": "SpamQTEDuo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -759,6 +764,72 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "71cd562f-ae15-4781-87c4-7181fcb3a7af",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SpamQTESoloLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2a5edcd-0866-4f30-a862-1020d800f285",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SpamQTESoloLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a9deea7-841d-4ab3-a3ec-48e807001d57",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SpamQTESoloRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ddc24656-7e91-4cc9-81b5-49c74a1e21ca",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SpamQTESoloRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41d6104a-f29e-4cc3-a221-ec10002e7ff0",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pong",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d71e3756-5e12-457e-9045-956d41406d06",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PongSoloRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -132,14 +132,11 @@ MonoBehaviour:
   timerFillArea: {fileID: 836991249524321651}
   buttonP1: {fileID: 836991249834702865}
   buttonP2: {fileID: 836991250111835694}
-  gameDuration: 30
+  gameDuration: 10
   intervalTime: 5
   timerText: {fileID: 836991248779785573}
   sliderMaxValue: 30
-  sliderCurrentValue: 0
   decreaseSpeed: 10
-  p1ButtonPressed: 0
-  p2ButtonPressed: 0
 --- !u!1 &836991248934432108
 GameObject:
   m_ObjectHideFlags: 0
