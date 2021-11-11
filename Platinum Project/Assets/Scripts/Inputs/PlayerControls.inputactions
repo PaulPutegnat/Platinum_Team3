@@ -262,18 +262,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SlidingBarP1",
+                    "name": "SlidingBar",
                     "type": "Button",
                     "id": "027a09cc-7fc8-4d6f-91c6-050bc52e4f06",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SlidingBarP2",
-                    "type": "Button",
-                    "id": "a56b8ce7-f54c-47c5-b55c-c45f509fff0b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -307,7 +298,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AimingP1",
+                    "name": "Aiming",
                     "type": "Value",
                     "id": "387d9ee7-6dc4-4f8c-961f-fcc12c7c01d5",
                     "expectedControlType": "Vector2",
@@ -316,30 +307,12 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "AimingP2",
-                    "type": "Value",
-                    "id": "006253db-2618-4b84-8678-9ce9ae21cb44",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "ShootP1",
+                    "name": "Shoot",
                     "type": "Button",
                     "id": "543e5385-85bf-4a03-a5ea-78f39fffd773",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ShootP2",
-                    "type": "Button",
-                    "id": "96aa8d67-6e52-474f-a963-2caed415f4af",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -528,7 +501,7 @@
                 {
                     "name": "",
                     "id": "ddc24656-7e91-4cc9-81b5-49c74a1e21ca",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -543,7 +516,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SlidingBarP1",
+                    "action": "SlidingBar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -554,29 +527,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SlidingBarP1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8791c1b2-7c0a-4d67-9447-ac81b1903551",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SlidingBarP2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "624fbdd0-29ba-420b-8ded-075f3cc97c8c",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SlidingBarP2",
+                    "action": "SlidingBar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -631,7 +582,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "AimingP1",
+                    "action": "Aiming",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -642,29 +593,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ShootP1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "eead13e8-8023-46f5-bbd6-bb245acae1de",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ShootP2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "03a9f2a5-0771-4b09-a941-ea83f7e003e9",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "AimingP2",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
