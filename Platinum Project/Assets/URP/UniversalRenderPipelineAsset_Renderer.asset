@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4022927625973767805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62c9c65cf3354c93be831c8bc075510, type: 3}
+  m_Name: Ambiant Occlusion
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  m_Shader: {fileID: 4800000, guid: 0849e84e3d62649e8882e9d6f056a017, type: 3}
+  m_Settings:
+    Downsample: 0
+    Source: 1
+    NormalSamples: 1
+    Intensity: 2.57
+    DirectLightingStrength: 0.514
+    Radius: 1.17
+    SampleCount: 6
 --- !u!114 &-1828262553557214932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10,19 +32,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a144b4e8918ea4449eabef033553473, type: 3}
-  m_Name: NewAtmosphericFogRenderFeature
+  m_Name: Atmospheric Fog
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    color: {r: 1, g: 0.029988142, b: 0, a: 1}
+    color: {r: 0.5019608, g: 0.8078432, b: 0.91372555, a: 1}
     sunColor: {r: 0.8773585, g: 0.8098478, b: 0.6911268, a: 1}
-    fogDensity: 0.002
-    fogDensityPower: 1.6
-    skyAlpha: 1
+    fogDensity: 0.01
+    fogDensityPower: 10
+    skyAlpha: 0.695
     useHeightFog: 1
     fogHeightStart: -80.6
     fogHeightEnd: 1988.8
-    fogHeightPower: 0.4
+    fogHeightPower: 2.7
     extraFogHeightEnd: 60.2
     extraFogHeightPower: 1
     directionalIntesity: 1
@@ -41,7 +63,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RendererFeatures:
   - {fileID: -1828262553557214932}
-  m_RendererFeatureMap: 2cd912e3e4b4a0e6
+  - {fileID: -4022927625973767805}
+  m_RendererFeatureMap: 2cd912e3e4b4a0e68361ba78a3b02bc8
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
