@@ -30,35 +30,20 @@ public class PortalTest : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.gameManager.IsBegin)
-        {
-            playerInputP1 = GameManager.gameManager.players[0].GetComponent<PlayerInput>();
-
-            if (GameManager.gameManager.players[1] != null)
-            {
-                playerInputP2 = GameManager.gameManager.players[1].GetComponent<PlayerInput>();
-            }
-
-            GameManager.gameManager.IsBegin = false;
-            IsRunning = true;
-        }
-
-        if (!GameManager.gameManager.IsBegin && IsRunning)
-        {
-            IsP1Pressing = playerInputP1.actions.FindAction("PortalSpam").triggered;
-
-            if (GameManager.gameManager.players[1] != null)
-            {
-                IsP2Pressing = playerInputP2.actions.FindAction("PortalSpam").triggered;
-            }
-        }
-        
-
         if (IsInTheZone)
         {
+
+            IsP1Pressing = InputManager.inputManager.P1RunnerInput.actions.FindAction("PortalSpam").triggered;
+
+            if (GameManager.gameManager.players[1] != null)
+            {
+                IsP2Pressing = InputManager.inputManager.P2RunnerInput.actions.FindAction("PortalSpam").triggered;
+            }
+            
+
             if (!IsAlreadyInstantiate)
             {
-                newGameObject = Instantiate(SliderPrefab, GameObject.FindGameObjectWithTag("PortalUI").transform);
+                newGameObject = Instantiate(SliderPrefab, this.gameObject.transform);
                 SliderGameObject = newGameObject.GetComponent<Slider>();
                 SliderGameObject.maxValue = sliderMaxValue;
                 IsAlreadyInstantiate = true;
@@ -66,6 +51,7 @@ public class PortalTest : MonoBehaviour
 
             Vector2 ThisPos = Camera.main.WorldToScreenPoint(this.gameObject.transform.position);
             newGameObject.transform.localPosition = (ThisPos / 2.25f) + SliderOffset;
+            //newGameObject.transform.localPosition = this.transform.position;
 
             if (IsP1Pressing && IsAlreadyInstantiate)
             {

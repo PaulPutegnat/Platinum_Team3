@@ -62,11 +62,11 @@ public class SpamQTEGame : MonoBehaviour
         timerColor = timerFillArea.GetComponent<Image>().color;
         timerColor = Color.green;
 
-        trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
+        //trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
         if (GameManager.gameManager.players[3] != null)
         {
             IsTwoPlayer = true;
-            trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+            //trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
         }
         else
         {
@@ -111,8 +111,8 @@ public class SpamQTEGame : MonoBehaviour
     {
         if (IsTwoPlayer)
         {
-            p1ButtonPressed = trapperInput1.actions.FindAction("SpamQTEDuo").triggered;
-            p2ButtonPressed = trapperInput2.actions.FindAction("SpamQTEDuo").triggered;
+            p1ButtonPressed = InputManager.inputManager.SpamQTEDuoP1();
+            p2ButtonPressed = InputManager.inputManager.SpamQTEDuoP2();
 
             switch (_state)
             {
@@ -148,8 +148,8 @@ public class SpamQTEGame : MonoBehaviour
         }
         else
         {
-            p1ButtonPressed = trapperInput1.actions.FindAction("SpamQTESoloLeft").triggered;
-            p2ButtonPressed = trapperInput1.actions.FindAction("SpamQTESoloRight").triggered;
+            p1ButtonPressed = InputManager.inputManager.SpamQTESoloLeft();
+            p2ButtonPressed = InputManager.inputManager.SpamQTESoloRight();
 
             switch (_state)
             {
