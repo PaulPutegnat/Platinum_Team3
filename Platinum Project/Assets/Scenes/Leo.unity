@@ -34483,6 +34483,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174974267}
   m_CullTransparentMesh: 1
+--- !u!1 &1189194835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7887477738972433858, guid: c63d4a5c850d4814390e919545516e3f, type: 3}
+  m_PrefabInstance: {fileID: 1952788771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1195901926
 GameObject:
   m_ObjectHideFlags: 0
@@ -40043,6 +40048,8 @@ MonoBehaviour:
   - {fileID: 0}
   playersRefs: []
   fortuneWheel: {fileID: 0}
+  pauseCanvas: {fileID: 1189194835}
+  mainCanvas: {fileID: 2024746127}
   spawn: {fileID: 1605209464}
   TrapperNumber: 0
   RunnererNumber: 0
