@@ -1,10 +1,21 @@
 using UnityEngine.Audio;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] Sounds;
+    public Sound[] FT_Runners_Rock_Land;
+    public Sound[] FT_Runners_Rock_Run;
+    public Sound[] FT_Runners_Rock_Slide;
+    public Sound[] FT_Runners_Rock_Walk;
+    public Sound[] SFX_MG1_Press_Bad;
+    public Sound[] SFX_MG1_Press_Good;
+    public Sound[] SFX_MG1_Press_Medium;
+    public Sound[] SFX_MG2_Shot;
+    public Sound[] SFX_MG2_Target_Appearance;
+    public Sound[] UI_Button_Selection;
+
     public static AudioManager Instance;
 
     void Awake()
@@ -21,20 +32,19 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        foreach (Sound s in Sounds)
+        foreach (Sound sound in FT_Runners_Rock_Walk)
         {
-            s.Source = gameObject.AddComponent<AudioSource>();
-            s.Source.clip = s.Clip;
+            sound.Source = gameObject.AddComponent<AudioSource>();
+            sound.Source.clip = sound.Clip;
 
-            s.Source.volume = s.Volume;
-            s.Source.pitch = s.Pitch;
-            s.Source.loop = s.Loop;
+            sound.Source.volume = sound.Volume;
+            sound.Source.pitch = sound.Pitch;
+            sound.Source.loop = sound.Loop;
         }
     }
-
-    public void Play(string name)
+    public void PlayRandomSound(string name)
     {
-        Sound s = Array.Find(Sounds, sound => sound.Name == name);
+        Sound s = Array.Find(FT_Runners_Rock_Walk, sound => sound.Name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound: " + name + " not found!");
