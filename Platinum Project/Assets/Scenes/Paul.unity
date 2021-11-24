@@ -7741,6 +7741,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1938247552077916614, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
+      propertyPath: list.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938247552077916614, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
+      propertyPath: Sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938247552077916614, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
+      propertyPath: UI_Button_Selection.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1938247552077916614, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
+      propertyPath: FT_Runner_Rock_Slide.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5158962037874113967, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
       propertyPath: m_RootOrder
       value: 0
