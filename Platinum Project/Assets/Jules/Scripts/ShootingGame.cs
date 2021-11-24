@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,6 +12,8 @@ using Vector3 = UnityEngine.Vector3;
 
 public class ShootingGame : MonoBehaviour
 {
+    [Header("GameObjects")]
+    public Slider TimerSlider;
     public GameObject _spawnArea;
     private RectTransform _spawnAreaRT;
     public GameObject _targetPrefab;
@@ -19,14 +22,19 @@ public class ShootingGame : MonoBehaviour
     public Transform _targetList;
 
     [Header("Tweakable")]
-    public float _aimSpeed = 2f;
+    public float _aimSpeed;
     public int _nbTarget;
     public float _shrinkingTimer;
     public float _disapearTimer;
     public int _points;
-    public float _cameraSpeedReward;
+
+    [Header("Timer Value")]
+    public float gameDuration;
+    public TextMeshProUGUI timerText;
+    private Color timerColor;
 
     private float nextSpawnTime;
+    private float intervalSpawnTime;
     private Vector2 padPosP1;
     private Vector2 padPosP2;
     private bool IsP1Shooting = false;
@@ -62,22 +70,36 @@ public class ShootingGame : MonoBehaviour
 
         p1Input = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
         Debug.Log(p1Input);
-        
+
+        //Timer
+        TimerSlider.maxValue = gameDuration;
+        timerText.text = gameDuration.ToString();
+        timerColor = TimerSlider.GetComponentInChildren<Image>().color;
+        timerColor = Color.green;
+
+        if (_nbTarget > gameDuration)
+        {
+            intervalSpawnTime = (_nbTarget / gameDuration) - ((10 / 100) * _nbTarget);
+        }
+        else
+        {
+            intervalSpawnTime = (gameDuration / _nbTarget) - ((10 / 100) * gameDuration);
+        }
     }
 
     void Update()
     {
         if (GameManager.gameManager.players[2])
         {
-            IsP1Shooting = p1Input.actions.FindAction("ShootP1").triggered;
-            padPosP1 = p1Input.actions.FindAction("AimingP1").ReadValue<Vector2>();
+            IsP1Shooting = p1Input.actions.FindAction("Shoot").triggered;
+            padPosP1 = p1Input.actions.FindAction("Aiming").ReadValue<Vector2>();
             _aimSightP1.transform.Translate(padPosP1 * _aimSpeed * Time.deltaTime);
         }
 
         if (GameManager.gameManager.players[3])
         {
-            IsP2Shooting = p2Input.actions.FindAction("ShootP2").triggered;
-            padPosP2 = p2Input.actions.FindAction("AimingP2").ReadValue<Vector2>();
+            IsP2Shooting = p2Input.actions.FindAction("Shoot").triggered;
+            padPosP2 = p2Input.actions.FindAction("Aiming").ReadValue<Vector2>();
             _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
         }
 
@@ -225,6 +247,37 @@ public class ShootingGame : MonoBehaviour
                 }
             }
         }
+
+        if (_points > _nbTarget)
+        {
+            // Game finish Win
+            // Win effect
+            GameManager.gameManager.SpawnFortuneWheel();
+            Destroy(this.gameObject);
+        }
+
+        if (gameDuration > 0)
+        {
+            if (gameDuration < 15f)
+            {
+                timerColor = new Color(1, .5f, 0);
+                if (gameDuration < 5)
+                {
+                    timerColor = Color.red;
+                }
+            }
+            TimerSlider.value = gameDuration;
+            gameDuration -= Time.deltaTime;
+        }
+        else
+        {
+            // Game finish Lose
+            // Lose effect
+            GameManager.gameManager.SpawnFortuneWheel();
+            Destroy(this.gameObject);
+        }
+
+        timerText.text = gameDuration.ToString("f2");
     }
 
     public void SpawnTarget()
@@ -233,7 +286,7 @@ public class ShootingGame : MonoBehaviour
         Vector3 pos = new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-10f, -20f));
         GameObject newTarget = Instantiate(_targetPrefab, _targetList);
         newTarget.transform.localPosition = pos;
-        newTarget.transform.localScale = new Vector3(.5f, .5f, .5f);
-        nextSpawnTime = Time.time + 1f;
+        newTarget.transform.localScale = new Vector3(.3f, .3f, .3f);
+        nextSpawnTime = Time.time + intervalSpawnTime;
     }
 }

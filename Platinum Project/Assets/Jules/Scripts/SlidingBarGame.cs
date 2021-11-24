@@ -96,10 +96,10 @@ public class SlidingBarGame : MonoBehaviour
     void Update()
     {
 
-        p1ButtonPressed = trapperInput1.actions.FindAction("SlidingBarP1").triggered;
+        p1ButtonPressed = trapperInput1.actions.FindAction("SlidingBar").triggered;
         if (GameManager.gameManager.players[3] != null)
         {
-            p2ButtonPressed = trapperInput2.actions.FindAction("SlidingBarP2").triggered;
+            p2ButtonPressed = trapperInput2.actions.FindAction("SlidingBar").triggered;
         }
         
         if (p1ButtonPressed)
