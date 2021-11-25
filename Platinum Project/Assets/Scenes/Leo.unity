@@ -4870,7 +4870,7 @@ GameObject:
   - component: {fileID: 1000709940}
   - component: {fileID: 1000709939}
   m_Layer: 0
-  m_Name: Fireflies (6)
+  m_Name: PP_Air
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22593,22 +22593,22 @@ ParticleSystem:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.5079319
+          time: 0.48809063
           value: 1
-          inSlope: 2
-          outSlope: -2.032239
-          tangentMode: 65
+          inSlope: -0.25798944
+          outSlope: -0.12383079
+          tangentMode: 1
           weightedMode: 0
-          inWeight: 0
-          outWeight: 0
+          inWeight: 0.5156206
+          outWeight: 0.4263617
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: 0
-          outSlope: 0
+          inSlope: -1.7923187
+          outSlope: -1.7923187
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0
+          inWeight: 0.44185644
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
