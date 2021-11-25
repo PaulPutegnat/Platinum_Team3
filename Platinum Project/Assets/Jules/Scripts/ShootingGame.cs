@@ -47,23 +47,17 @@ public class ShootingGame : MonoBehaviour
 
     EventSystem m_EventSystem;
 
-    private PlayerInput p1Input;
-    private PlayerInput p2Input;
-
     void Start()
     {
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
         thisRT = this.gameObject.GetComponent<RectTransform>();
 
-        //Fetch the Raycaster from the GameObject (the Canvas)
         m_Raycaster = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GraphicRaycaster>();
-        //Fetch the Event System from the Scene
         m_EventSystem = FindObjectOfType<EventSystem>();
 
         if (GameManager.gameManager.players[3] != null)
         {
             _aimSightP2.SetActive(true);
-            //p2Input = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
         }
         else
         {
@@ -71,8 +65,6 @@ public class ShootingGame : MonoBehaviour
         }
 
         _aimSightP1.SetActive(true);
-        //p1Input = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
-        Debug.Log(p1Input);
 
         //Timer
         TimerSlider.maxValue = gameDuration;
