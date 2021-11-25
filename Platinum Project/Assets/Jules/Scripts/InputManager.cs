@@ -125,7 +125,20 @@ public class InputManager : MonoBehaviour
     public Vector2 PongSoloRight()
     {
         return P1TrapperInput.actions.FindAction("PongSoloRight").ReadValue<Vector2>();
-    }   
+    }
+
+    #endregion
+
+    #region Portal
+
+    public bool PortalP1()
+    {
+        return P1RunnerInput.actions.FindAction("PortalSpam").triggered;
+    }
+    public bool PortalP2()
+    {
+        return P2RunnerInput.actions.FindAction("PortalSpam").triggered;
+    }
 
     #endregion
 }

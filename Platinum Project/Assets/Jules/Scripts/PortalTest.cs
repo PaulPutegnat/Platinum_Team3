@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -15,12 +16,13 @@ public class PortalTest : MonoBehaviour
     public float decreaseSpeed;
     public int UpValue;
     public float sliderMaxValue;
-    public Vector2 SliderOffset;
+    public Vector3 SliderOffset;
 
     private PlayerInput playerInputP1;
     private PlayerInput playerInputP2;
 
     private float sliderCurrentValue;
+    private Transform portalCanvas;
 
     private bool IsP1Pressing = false;
     private bool IsP2Pressing = false;
@@ -28,29 +30,34 @@ public class PortalTest : MonoBehaviour
     private bool IsAlreadyInstantiate = false;
     private bool IsRunning = false;
 
+    private void Start()
+    {
+        portalCanvas = GameObject.FindGameObjectWithTag("PortalUI").transform;
+    }
     void Update()
     {
         if (IsInTheZone)
         {
 
-            IsP1Pressing = InputManager.inputManager.P1RunnerInput.actions.FindAction("PortalSpam").triggered;
+            IsP1Pressing = InputManager.inputManager.PortalP1();
 
             if (GameManager.gameManager.players[1] != null)
             {
-                IsP2Pressing = InputManager.inputManager.P2RunnerInput.actions.FindAction("PortalSpam").triggered;
+                IsP2Pressing = InputManager.inputManager.PortalP2();
             }
             
 
             if (!IsAlreadyInstantiate)
             {
-                newGameObject = Instantiate(SliderPrefab, this.gameObject.transform);
+                newGameObject = Instantiate(SliderPrefab, portalCanvas);
                 SliderGameObject = newGameObject.GetComponent<Slider>();
                 SliderGameObject.maxValue = sliderMaxValue;
                 IsAlreadyInstantiate = true;
             }
 
-            Vector2 ThisPos = Camera.main.WorldToScreenPoint(this.gameObject.transform.position);
-            newGameObject.transform.localPosition = (ThisPos / 2.25f) + SliderOffset;
+            Vector3 ThisPos = this.gameObject.transform.parent.position;
+            newGameObject.transform.localPosition = Vector3.zero;
+            portalCanvas.position = ThisPos + SliderOffset;
             //newGameObject.transform.localPosition = this.transform.position;
 
             if (IsP1Pressing && IsAlreadyInstantiate)
@@ -91,6 +98,9 @@ public class PortalTest : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             IsInTheZone = false;
+            Destroy(newGameObject);
+            IsAlreadyInstantiate = false;
+            sliderCurrentValue = 0;
         }
     }
 }
