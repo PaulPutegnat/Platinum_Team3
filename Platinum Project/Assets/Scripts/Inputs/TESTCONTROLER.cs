@@ -72,9 +72,12 @@ public class TESTCONTROLER : MonoBehaviour
     private BoxCollider box;
     private Vector3 InitialSize;
 
+    private Animator animatotor;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        animatotor = GetComponentInChildren<Animator>();
         Console.Clear();  
 
     }
@@ -146,6 +149,7 @@ public class TESTCONTROLER : MonoBehaviour
 
         if (Slide)
         {
+            animatotor.SetBool("IsSliding", true);
             float InitialDeceleration = 1.025f;
             float SlideDeceleration = 1f + BrakeForceAfterSlidingUnder/1000;
 
@@ -176,6 +180,7 @@ public class TESTCONTROLER : MonoBehaviour
             }
             else
             {
+                animatotor.SetBool("IsSliding", false);
                 _rigidbody.velocity = new Vector3(0,0,0);
                 VelocityYLastFrame = 0f;
                 Slide = false;
@@ -200,6 +205,13 @@ public class TESTCONTROLER : MonoBehaviour
         }
         jump = false;
         VelocityXLastFrame = _rigidbody.velocity.x;
+
+        animatotor.SetFloat("Velocity",Mathf.Abs(_rigidbody.velocity.x));
+        animatotor.SetBool("IsGrounded", IsGrounded());
+
+        //C'est moche mais j'en ai rien à foutre
+        animatotor.gameObject.transform.rotation = new Quaternion(0,0,0,0);
+        animatotor.gameObject.transform.localPosition = new Vector3(0,0.5f,0);
     }
 
     bool IsGrounded()
