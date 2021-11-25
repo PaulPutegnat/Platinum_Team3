@@ -44,6 +44,8 @@ public class SlidingBarGame : MonoBehaviour
     private bool isP1Win = false;
     private bool isP2Win = false;
 
+    private bool isTwoPlayer = false;
+
     private PlayerInput trapperInput1;
     private PlayerInput trapperInput2;
     public IS_DOUBLE_INTERVAL IsDoubleInterval = IS_DOUBLE_INTERVAL.NO;
@@ -64,15 +66,17 @@ public class SlidingBarGame : MonoBehaviour
 
     void Start()
     {
-        trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
+        //trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
         if (GameManager.gameManager.players[3] != null)
         {
-            trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+            //trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
             handleP2.SetActive(true);
+            isTwoPlayer = true;
         }
         else
         {
             handleP2.SetActive(false);
+            isTwoPlayer = false;
         }
 
         intervalP1.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP1.transform.localPosition.y);
@@ -96,11 +100,12 @@ public class SlidingBarGame : MonoBehaviour
     void Update()
     {
 
-        p1ButtonPressed = trapperInput1.actions.FindAction("SlidingBar").triggered;
-        if (GameManager.gameManager.players[3] != null)
+        p1ButtonPressed = InputManager.inputManager.SlidingStopP1();
+        if (isTwoPlayer)
         {
-            p2ButtonPressed = trapperInput2.actions.FindAction("SlidingBar").triggered;
+            p2ButtonPressed = InputManager.inputManager.SlidingStopP2();
         }
+  
         
         if (p1ButtonPressed)
         {
@@ -134,7 +139,7 @@ public class SlidingBarGame : MonoBehaviour
             StopP2SlidingBarGame();
         }
 
-        if (GameManager.gameManager.players[3] != null)
+        if (isTwoPlayer)
         {
             if (!isP1Playing && !isP2Playing)
             {
