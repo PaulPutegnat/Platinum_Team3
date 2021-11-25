@@ -60,7 +60,7 @@ MonoBehaviour:
   _aimSightP2: {fileID: 8011027687917175719}
   _targetList: {fileID: 3636190369601158993}
   _aimSpeed: 150
-  _nbTarget: 20
+  _nbTarget: 10
   _shrinkingTimer: 0
   _disapearTimer: 0
   _points: 0
@@ -198,6 +198,10 @@ PrefabInstance:
     - target: {fileID: 6726887853380806726, guid: b975a06cb6cdb594f8ce6afc23b9e0e7, type: 3}
       propertyPath: m_Name
       value: SightP2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726887853380806726, guid: b975a06cb6cdb594f8ce6afc23b9e0e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6726887853380806727, guid: b975a06cb6cdb594f8ce6afc23b9e0e7, type: 3}
       propertyPath: m_Pivot.x
@@ -441,6 +445,10 @@ PrefabInstance:
     - target: {fileID: 6726887853380806726, guid: b975a06cb6cdb594f8ce6afc23b9e0e7, type: 3}
       propertyPath: m_Name
       value: SightP1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726887853380806726, guid: b975a06cb6cdb594f8ce6afc23b9e0e7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6726887853380806727, guid: b975a06cb6cdb594f8ce6afc23b9e0e7, type: 3}
       propertyPath: m_Pivot.x
