@@ -25,11 +25,11 @@ public class PongGame : MonoBehaviour
 
     void Start()
     {
-        pongInputP1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
+        //pongInputP1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
         if (GameManager.gameManager.players[3] != null)
         {
             IsTwoPlayer = true;
-            pongInputP2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+            //pongInputP2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
         }
         else
         {
@@ -46,15 +46,15 @@ public class PongGame : MonoBehaviour
     {
         if (IsTwoPlayer)
         {
-            inputValueP1 = pongInputP1.actions.FindAction("Pong").ReadValue<Vector2>();
-            inputValueP2 = pongInputP2.actions.FindAction("Pong").ReadValue<Vector2>();
+            inputValueP1 = InputManager.inputManager.PongDuoP1();
+            inputValueP2 = InputManager.inputManager.PongDuoP2();
             MoveP1PongBar(inputValueP1);
             MoveP2PongBar(inputValueP2);
         }
         else
         {
-            inputValueP1 = pongInputP1.actions.FindAction("Pong").ReadValue<Vector2>();
-            inputValueP2 = pongInputP1.actions.FindAction("PongSoloRight").ReadValue<Vector2>();
+            inputValueP1 = InputManager.inputManager.PongSoloLeft();
+            inputValueP2 = InputManager.inputManager.PongSoloRight();
             MoveP1PongBar(inputValueP1);
             MoveP2PongBar(inputValueP2);
         }
