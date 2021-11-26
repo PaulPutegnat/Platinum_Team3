@@ -42,13 +42,13 @@ public class CollideTobogan : MonoBehaviour
 
             
 
-            if (transform.position.x - other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position).x > 0 && rbRigidbody.velocity.magnitude <0.1f)
+            if ((transform.position.x + GetComponent<BoxCollider>().bounds.size.x) - other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position).x > 0 && rbRigidbody.velocity.magnitude <0.1f)
             {
-                rbRigidbody.velocity = new Vector3(10, 1, 0);
+                rbRigidbody.velocity = new Vector3(10, 5, 0);
             }
-            else if (transform.position.x - other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position).x < 0 && rbRigidbody.velocity.magnitude < 0.1f)
+            else if ((transform.position.x - GetComponent<BoxCollider>().bounds.size.x) - other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position).x < 0 && rbRigidbody.velocity.magnitude < 0.1f)
             {
-                rbRigidbody.velocity = new Vector3(-10, 1, 0);
+                rbRigidbody.velocity = new Vector3(-10, 5, 0);
             }
 
             velocityXLastFrame = rbRigidbody.velocity.x;
