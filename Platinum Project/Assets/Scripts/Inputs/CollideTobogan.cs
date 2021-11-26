@@ -40,10 +40,21 @@ public class CollideTobogan : MonoBehaviour
             if(rbRigidbody.velocity.magnitude < MaxSpeedTobogan || rbRigidbody.velocity.magnitude > -MaxSpeedTobogan)
                 rbRigidbody.velocity = new Vector3(VelX * (1 + AccelerationTobogan / 1000), VelY * (1 + AccelerationTobogan / 1000), 0);
 
+            
+
+            if ((transform.position.x + GetComponent<BoxCollider>().bounds.size.x) - other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position).x > 0 && rbRigidbody.velocity.magnitude <0.1f)
+            {
+                rbRigidbody.velocity = new Vector3(10, 5, 0);
+            }
+            else if ((transform.position.x - GetComponent<BoxCollider>().bounds.size.x) - other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position).x < 0 && rbRigidbody.velocity.magnitude < 0.1f)
+            {
+                rbRigidbody.velocity = new Vector3(-10, 5, 0);
+            }
+
             velocityXLastFrame = rbRigidbody.velocity.x;
 
-
         }
+        
 
     }
 
