@@ -392,7 +392,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1387431014404471480, guid: 30841c7178c26434985c34ee2f029488, type: 3}
       propertyPath: withWheel
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1387431014404471480, guid: 30841c7178c26434985c34ee2f029488, type: 3}
       propertyPath: mainCanvas
@@ -1416,7 +1416,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 181453031958853569, guid: c00079ec285f5df449cd854172399da3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4483902139007336759, guid: c00079ec285f5df449cd854172399da3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1429,10 +1429,14 @@ PrefabInstance:
     - target: {fileID: 4483902139066889176, guid: c00079ec285f5df449cd854172399da3, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 942950608}
+      objectReference: {fileID: 664241424}
     - target: {fileID: 4483902139066889176, guid: c00079ec285f5df449cd854172399da3, type: 3}
       propertyPath: m_RenderMode
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483902139066889176, guid: c00079ec285f5df449cd854172399da3, type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4483902139066889177, guid: c00079ec285f5df449cd854172399da3, type: 3}
       propertyPath: m_Pivot.x
@@ -1597,6 +1601,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 571166689670451772, guid: f15cceaf732c2174b9af07602fe27347, type: 3}
   m_PrefabInstance: {fileID: 622200487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &664241424 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7781204667798728095, guid: f94c9fc743e188247ae3fc579947aa1c, type: 3}
+  m_PrefabInstance: {fileID: 7781204667589354725}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &680003150
 PrefabInstance:
