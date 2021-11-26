@@ -50,7 +50,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    #region Shooter
+    #region Shooting
     public bool ShootP1()
     {
         return P1TrapperInput.actions.FindAction("Shoot").triggered;

@@ -41,29 +41,25 @@ public class ShootingGame : MonoBehaviour
     private bool IsP2Shooting = false;
     private RectTransform thisRT;
 
+    public GraphicRaycasterManager graphicRaycasterManager;
+
     GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventDataP1;
     PointerEventData m_PointerEventDataP2;
 
     EventSystem m_EventSystem;
 
-    private PlayerInput p1Input;
-    private PlayerInput p2Input;
-
     void Start()
     {
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
         thisRT = this.gameObject.GetComponent<RectTransform>();
 
-        //Fetch the Raycaster from the GameObject (the Canvas)
         m_Raycaster = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GraphicRaycaster>();
-        //Fetch the Event System from the Scene
         m_EventSystem = FindObjectOfType<EventSystem>();
 
         if (GameManager.gameManager.players[3] != null)
         {
             _aimSightP2.SetActive(true);
-            //p2Input = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
         }
         else
         {
@@ -71,8 +67,6 @@ public class ShootingGame : MonoBehaviour
         }
 
         _aimSightP1.SetActive(true);
-        //p1Input = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
-        Debug.Log(p1Input);
 
         //Timer
         TimerSlider.maxValue = gameDuration;
@@ -80,7 +74,8 @@ public class ShootingGame : MonoBehaviour
         timerColor = TimerSlider.GetComponentInChildren<Image>().color;
         timerColor = Color.green;
         intervalSpawnTime = (gameDuration / _nbTarget) - ((10 / 100) * gameDuration);
-        
+
+        graphicRaycasterManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GraphicRaycasterManager>();
     }
 
     void Update()
@@ -113,7 +108,7 @@ public class ShootingGame : MonoBehaviour
             Debug.Log("P1 is Shooting");
             Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().position;
 
-            //Set up the new Pointer Event
+            /*//Set up the new Pointer Event
             m_PointerEventDataP1 = new PointerEventData(m_EventSystem);
             //Set the Pointer Event Position to that of the mouse position
             m_PointerEventDataP1.position = Camera.main.WorldToScreenPoint(sightPos);
@@ -122,7 +117,11 @@ public class ShootingGame : MonoBehaviour
             List<RaycastResult> results = new List<RaycastResult>();
 
             //Raycast using the Graphics Raycaster and mouse click position
-            m_Raycaster.Raycast(m_PointerEventDataP1, results);
+            m_Raycaster.Raycast(m_PointerEventDataP1, results);*/
+
+
+            List<RaycastResult> results = new List<RaycastResult>();
+            results = graphicRaycasterManager.Shoot(sightPos);
 
             if (results.Count == 0)
             {
@@ -163,6 +162,10 @@ public class ShootingGame : MonoBehaviour
                                 hitTarget = h.gameObject;
                             }
                         }
+                        else
+                        {
+                            hitTarget = firstTarget;
+                        }
                     }
                 }
             }
@@ -183,7 +186,7 @@ public class ShootingGame : MonoBehaviour
             Debug.Log("P2 is Shooting");
             Vector3 sightPos = _aimSightP2.GetComponent<RectTransform>().position;
 
-            //Set up the new Pointer Event
+            /*//Set up the new Pointer Event
             m_PointerEventDataP2 = new PointerEventData(m_EventSystem);
             //Set the Pointer Event Position to that of the mouse position
             m_PointerEventDataP2.position = Camera.main.WorldToScreenPoint(sightPos);
@@ -192,7 +195,12 @@ public class ShootingGame : MonoBehaviour
             List<RaycastResult> results = new List<RaycastResult>();
 
             //Raycast using the Graphics Raycaster and mouse click position
-            m_Raycaster.Raycast(m_PointerEventDataP2, results);
+            m_Raycaster.Raycast(m_PointerEventDataP2, results);*/
+
+
+            List<RaycastResult> results = new List<RaycastResult>();
+            results = graphicRaycasterManager.Shoot(sightPos);
+
 
             if (results.Count == 0)
             {
