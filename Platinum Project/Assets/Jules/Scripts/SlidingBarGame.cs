@@ -96,7 +96,7 @@ public class SlidingBarGame : MonoBehaviour
         }
 
         StartSlidingBarGame(true);
-        testCamScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestCam>();
+        //testCamScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TestCam>();
     }
 
     void Update()
@@ -148,7 +148,7 @@ public class SlidingBarGame : MonoBehaviour
                 if (isP1Win && isP2Win)
                 {
                     // Game finish Win
-                    testCamScript.camSpeed = 2;
+                    //testCamScript.camSpeed = 2;
                     //Debug.Log("GAME IS WIN");
                     GameManager.gameManager.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
@@ -157,7 +157,7 @@ public class SlidingBarGame : MonoBehaviour
                 else if ((isP1Win && !isP2Win) || (!isP1Win && isP2Win))
                 {
                     // Game finish Semi-win
-                    testCamScript.camSpeed = 1.5f;
+                    //testCamScript.camSpeed = 1.5f;
                     //Debug.Log("GAME IS SEMI-WIN");
                     GameManager.gameManager.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
@@ -165,7 +165,7 @@ public class SlidingBarGame : MonoBehaviour
                 else if (!isP1Win && !isP2Win)
                 {
                     // Game finish lose
-                    testCamScript.camSpeed = 1;
+                    //testCamScript.camSpeed = 1;
                     //Debug.Log("GAME IS LOSE");
                     GameManager.gameManager.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
@@ -179,14 +179,14 @@ public class SlidingBarGame : MonoBehaviour
                 if (isP1Win)
                 {
                     // Game finish Win
-                    testCamScript.camSpeed = 2;
+                    //testCamScript.camSpeed = 2;
                     GameManager.gameManager.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
                 }
                 else
                 {
                     // Game finish Lose
-                    testCamScript.camSpeed = 1;
+                    //testCamScript.camSpeed = 1;
                     GameManager.gameManager.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
                 }
