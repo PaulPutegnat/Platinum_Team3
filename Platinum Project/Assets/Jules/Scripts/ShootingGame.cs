@@ -20,6 +20,7 @@ public class ShootingGame : MonoBehaviour
     public GameObject _aimSightP1;
     public GameObject _aimSightP2;
     public Transform _targetList;
+    public TextMeshProUGUI pointText;
 
     [Header("Tweakable")]
     public float _aimSpeed;
@@ -241,6 +242,10 @@ public class ShootingGame : MonoBehaviour
                                 hitTarget = h.gameObject;
                             }
                         }
+                        else
+                        {
+                            hitTarget = firstTarget;
+                        }
                     }
                 }
             }
@@ -286,6 +291,7 @@ public class ShootingGame : MonoBehaviour
         }
 
         timerText.text = gameDuration.ToString("f2");
+        pointText.text = "Points : " + _points.ToString();
     }
 
     public void SpawnTarget()
