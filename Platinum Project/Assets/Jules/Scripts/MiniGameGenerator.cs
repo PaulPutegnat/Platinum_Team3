@@ -167,7 +167,6 @@ public class MiniGameGenerator : MonoBehaviour
                     return;
                     break;
             }
-            GameManager.gameManager.IsBegin = false;
             IsInstantiate = true;
         }
 

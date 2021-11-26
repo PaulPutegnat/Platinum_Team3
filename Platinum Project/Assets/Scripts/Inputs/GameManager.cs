@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public float RunnererNumber = 0;
 
     public bool IsBegin = false;
+    public bool withWheel = false;
     private void Awake()
     {
         if (gameManager != null && gameManager != this)
@@ -108,8 +109,12 @@ public class GameManager : MonoBehaviour
                 }
             }
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
+
+            if (withWheel)
+            {
+                SpawnFortuneWheel();
+            }
             
-            SpawnFortuneWheel();
             IsBegin = true;
     }
 

@@ -52,7 +52,7 @@ public class TESTCONTROLER : MonoBehaviour
 
 
     [Header("Slide")]
-    private bool Slide;
+    public bool Slide;
 
     private bool ExitUnderObject = false;
     private bool UnderObjectLastFrame = false;
@@ -155,7 +155,7 @@ public class TESTCONTROLER : MonoBehaviour
 
             if (Mathf.Abs(VelocityYLastFrame) > 4f)
             {
-                _rigidbody.velocity = new Vector3(VelocityYLastFrame, 0, 0);
+                _rigidbody.velocity = new Vector3(VelocityYLastFrame, _rigidbody.velocity.y, 0);
                 box.size = new Vector3(InitialSize.x, InitialSize.y / 2, InitialSize.z);
 
                 if (!IsSlidingUnder())
@@ -180,16 +180,14 @@ public class TESTCONTROLER : MonoBehaviour
             }
             else
             {
-                animatotor.SetBool("IsSliding", false);
+                ResetSlide();
                 _rigidbody.velocity = new Vector3(0,0,0);
                 VelocityYLastFrame = 0f;
-                Slide = false;
-                IsLocked = false;
-                UnderObjectLastFrame = false;
-                box.size = InitialSize;
+
             }
 
         }
+        
 
         //Debug.DrawLine(transform.position, /*transform.position + */(-Vector3.up * _distToGround),Color.red);
 
@@ -214,6 +212,14 @@ public class TESTCONTROLER : MonoBehaviour
         animatotor.gameObject.transform.localPosition = new Vector3(0,0.5f,0);
     }
 
+    public void ResetSlide()
+    {
+        animatotor.SetBool("IsSliding", false);
+        Slide = false;
+        IsLocked = false;
+        UnderObjectLastFrame = false;
+        box.size = InitialSize;
+    }
     bool IsGrounded()
     {
         return Physics.Raycast(gameObject.transform.position /*- (Vector3.up * _distToGround)*/, -Vector3.up, JumpCheckLength);
