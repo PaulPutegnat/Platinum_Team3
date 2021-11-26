@@ -6,17 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class IsOffCamera : MonoBehaviour
 {
+    public GameObject TrappersWin;
     // Start is called before the first frame update
     public void OnBecameVisible()
     {
-        Console.Clear();
         Debug.Log("Player is Visible !");
     }
 
     public void OnBecameInvisible()
     {
-        Console.Clear();
         Debug.Log("Player is Invisible !");
-        SceneManager.LoadScene("Victoire");
+        TrappersWin.SetActive(true);
     }
 }

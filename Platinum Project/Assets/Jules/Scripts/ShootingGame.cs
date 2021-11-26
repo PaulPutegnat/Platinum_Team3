@@ -39,6 +39,7 @@ public class ShootingGame : MonoBehaviour
     private Vector2 padPosP2;
     private bool IsP1Shooting = false;
     private bool IsP2Shooting = false;
+    private RectTransform thisRT;
 
     GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventDataP1;
@@ -46,61 +47,52 @@ public class ShootingGame : MonoBehaviour
 
     EventSystem m_EventSystem;
 
-    private PlayerInput p1Input;
-    private PlayerInput p2Input;
-
     void Start()
     {
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
+        thisRT = this.gameObject.GetComponent<RectTransform>();
 
-        //Fetch the Raycaster from the GameObject (the Canvas)
         m_Raycaster = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GraphicRaycaster>();
-        //Fetch the Event System from the Scene
         m_EventSystem = FindObjectOfType<EventSystem>();
 
         if (GameManager.gameManager.players[3] != null)
         {
             _aimSightP2.SetActive(true);
-            p2Input = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
         }
         else
         {
             _aimSightP2.SetActive(false);
         }
 
-        p1Input = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
-        Debug.Log(p1Input);
+        _aimSightP1.SetActive(true);
 
         //Timer
         TimerSlider.maxValue = gameDuration;
         timerText.text = gameDuration.ToString();
         timerColor = TimerSlider.GetComponentInChildren<Image>().color;
         timerColor = Color.green;
-
-        if (_nbTarget > gameDuration)
-        {
-            intervalSpawnTime = (_nbTarget / gameDuration) - ((10 / 100) * _nbTarget);
-        }
-        else
-        {
-            intervalSpawnTime = (gameDuration / _nbTarget) - ((10 / 100) * gameDuration);
-        }
+        intervalSpawnTime = (gameDuration / _nbTarget) - ((10 / 100) * gameDuration);
+        
     }
 
     void Update()
     {
         if (GameManager.gameManager.players[2])
         {
-            IsP1Shooting = p1Input.actions.FindAction("Shoot").triggered;
-            padPosP1 = p1Input.actions.FindAction("Aiming").ReadValue<Vector2>();
+            IsP1Shooting = InputManager.inputManager.ShootP1();
+            padPosP1 = InputManager.inputManager.AimShooterP1();
+
             _aimSightP1.transform.Translate(padPosP1 * _aimSpeed * Time.deltaTime);
+            CheckLimit(_aimSightP1);
         }
 
         if (GameManager.gameManager.players[3])
         {
-            IsP2Shooting = p2Input.actions.FindAction("Shoot").triggered;
-            padPosP2 = p2Input.actions.FindAction("Aiming").ReadValue<Vector2>();
+            IsP2Shooting = InputManager.inputManager.ShootP2();
+            padPosP2 = InputManager.inputManager.AimShooterP2();
+
             _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
+            CheckLimit(_aimSightP2);
         }
 
         if (Time.time > nextSpawnTime)
@@ -288,5 +280,29 @@ public class ShootingGame : MonoBehaviour
         newTarget.transform.localPosition = pos;
         newTarget.transform.localScale = new Vector3(.3f, .3f, .3f);
         nextSpawnTime = Time.time + intervalSpawnTime;
+    }
+
+    public void CheckLimit(GameObject aimSight)
+    {
+        Vector2 aimSightPosP1 = aimSight.transform.localPosition;
+        if (aimSightPosP1.y > thisRT.sizeDelta.y)
+        {
+            aimSight.transform.localPosition = new Vector2(aimSight.transform.localPosition.x, thisRT.sizeDelta.y);
+        }
+
+        if (aimSightPosP1.y < 0)
+        {
+            aimSight.transform.localPosition = new Vector2(aimSight.transform.localPosition.x, 0);
+        }
+
+        if (aimSightPosP1.x > (thisRT.sizeDelta.x / 2))
+        {
+            aimSight.transform.localPosition = new Vector2((thisRT.sizeDelta.x / 2), aimSight.transform.localPosition.y);
+        }
+
+        if (aimSightPosP1.x < -(thisRT.sizeDelta.x / 2))
+        {
+            aimSight.transform.localPosition = new Vector2(-(thisRT.sizeDelta.x / 2), aimSight.transform.localPosition.y);
+        }
     }
 }

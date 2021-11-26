@@ -30,6 +30,8 @@ public class CollideTobogan : MonoBehaviour
         if (other.transform.CompareTag("tobogan"))
         {
             Debug.Log("ouiiiiiii");
+            GetComponent<TESTCONTROLER>().jump = false;
+            GetComponent<TESTCONTROLER>().ResetSlide();
             GetComponent<TESTCONTROLER>().enabled = false;
 
             VelY = rbRigidbody.velocity.y;
