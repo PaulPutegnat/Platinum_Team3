@@ -34,7 +34,7 @@ public class FortuneWheelSpin : MonoBehaviour
         float startAngle = transform.eulerAngles.z;
         currentTime = 0;
 
-        int indexGameRandom = Random.Range(1, nbOfGames);
+        int indexGameRandom = Random.Range(0, nbOfGames);
         Debug.Log(indexGameRandom);
 
         float angleWanted = (nbCircleRotate * CIRCLE) + angleOfOneGame * indexGameRandom - startAngle;
@@ -45,7 +45,7 @@ public class FortuneWheelSpin : MonoBehaviour
             currentTime += Time.deltaTime;
 
             float angleCurrent = angleWanted * curve.Evaluate(currentTime / timeRotate);
-            this.transform.eulerAngles = new Vector3(0, 0, angleCurrent + startAngle - angleOfOneGame);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, angleCurrent + startAngle - angleOfOneGame);
         }
 
         if (DevOneGame)
