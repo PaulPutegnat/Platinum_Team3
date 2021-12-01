@@ -253,6 +253,7 @@ public class ShootingGame : MonoBehaviour
             // Game finish Win
             // Win effect
             GameManager.gameManager.SpawnFortuneWheel();
+            TrapsEffects.instanceTrapsEffects.BrokenScreenEffect();
             Destroy(this.gameObject);
         }
 
