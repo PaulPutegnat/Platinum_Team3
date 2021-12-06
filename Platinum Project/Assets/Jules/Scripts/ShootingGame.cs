@@ -261,7 +261,7 @@ public class ShootingGame : MiniGame
         {
             // Game finish Win
             // Win effect
-            GameManager.gameManager.SpawnFortuneWheel();
+            GameManager.Instance.SpawnFortuneWheel();
             TrapsEffects.instanceTrapsEffects.BrokenScreenEffect();
             Destroy(this.gameObject);
         }
