@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 
-public class SpamQTEGame : MonoBehaviour
+public class SpamQTEGame : MiniGame
 {
     enum PlayerTurnState
     {
@@ -20,11 +20,13 @@ public class SpamQTEGame : MonoBehaviour
     public Slider spamSlider;
     public Slider timeSlider;
     public GameObject timerFillArea;
-    public GameObject buttonP1;
-    public GameObject buttonP2;
+    public GameObject P1Hammer;
+    public GameObject P2Hammer;
+    public GameObject button;
 
-    private Image buttonP1Sprite;
-    private Image buttonP2Sprite;
+    private Image P1HammerSprite;
+    private Image P2HammerSprite;
+    private Image ButtonSprite;
 
     [Header("Timer Value")]
     public float gameDuration;
@@ -48,25 +50,28 @@ public class SpamQTEGame : MonoBehaviour
     private bool IsTwoPlayer = false;
     
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return StartCoroutine(SpawnAnimation());
+
         timeSlider.maxValue = gameDuration;
         ShakeTimer = 0f;
         spamSlider.maxValue = sliderMaxValue;
         spamSlider.value = 1f;
         timerText.text = gameDuration.ToString();
 
-        buttonP1Sprite = buttonP1.GetComponent<Image>();
-        buttonP2Sprite = buttonP2.GetComponent<Image>();
+        P1HammerSprite = P1Hammer.GetComponent<Image>();
+        P2HammerSprite = P2Hammer.GetComponent<Image>();
+        ButtonSprite = button.GetComponent<Image>();
 
         timerColor = timerFillArea.GetComponent<Image>().color;
         timerColor = Color.green;
 
-        //trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
-        if (GameManager.gameManager.players[3] != null)
+        //trapperInput1 = GameManager.Instance.players[2].GetComponent<PlayerInput>();
+        if (GameManager.Instance.players[3] != null)
         {
             IsTwoPlayer = true;
-            //trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+            //trapperInput2 = GameManager.Instance.players[3].GetComponent<PlayerInput>();
         }
         else
         {
@@ -78,13 +83,13 @@ public class SpamQTEGame : MonoBehaviour
             switch (_state)
             {
                 case PlayerTurnState.P2:
-                    buttonP1Sprite.sprite = Resources.Load<Sprite>("AButtonP1Smashed");
-                    buttonP2Sprite.sprite = Resources.Load<Sprite>("AButtonP2");
+                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
+                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
                     break;
 
                 case PlayerTurnState.P1:
-                    buttonP2Sprite.sprite = Resources.Load<Sprite>("AButtonP2Smashed");
-                    buttonP1Sprite.sprite = Resources.Load<Sprite>("AButtonP1");
+                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
+                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
                     break;
             }
         }
@@ -93,13 +98,13 @@ public class SpamQTEGame : MonoBehaviour
             switch (_state)
             {
                 case PlayerTurnState.P2:
-                    buttonP1Sprite.sprite = Resources.Load<Sprite>("LButtonSmashed");
-                    buttonP2Sprite.sprite = Resources.Load<Sprite>("RButton");
+                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
+                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
                     break;
 
                 case PlayerTurnState.P1:
-                    buttonP2Sprite.sprite = Resources.Load<Sprite>("RButtonSmashed");
-                    buttonP1Sprite.sprite = Resources.Load<Sprite>("LButton");
+                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
+                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
                     break;
             }
         }
@@ -121,11 +126,11 @@ public class SpamQTEGame : MonoBehaviour
                     {
                         sliderCurrentValue += 2f;
                         _state = PlayerTurnState.P2;
-                        buttonP1Sprite.sprite = Resources.Load<Sprite>("AButtonP1Smashed");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
                     }
                     else
                     {
-                        buttonP1Sprite.sprite = Resources.Load<Sprite>("AButtonP1");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
                     }
                     break;
 
@@ -135,12 +140,12 @@ public class SpamQTEGame : MonoBehaviour
 
                         sliderCurrentValue += 2f;
                         _state = PlayerTurnState.P1;
-                        buttonP2Sprite.sprite = Resources.Load<Sprite>("AButtonP2Smashed");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
 
                     }
                     else
                     {
-                        buttonP2Sprite.sprite = Resources.Load<Sprite>("AButtonP2");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
                     }
 
                     break;
@@ -158,11 +163,11 @@ public class SpamQTEGame : MonoBehaviour
                     {
                         sliderCurrentValue += 2f;
                         _state = PlayerTurnState.P2;
-                        buttonP1Sprite.sprite = Resources.Load<Sprite>("LButtonSmashed");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
                     }
                     else
                     {
-                        buttonP1Sprite.sprite = Resources.Load<Sprite>("LButton");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
                     }
                     break;
 
@@ -172,12 +177,12 @@ public class SpamQTEGame : MonoBehaviour
 
                         sliderCurrentValue += 2f;
                         _state = PlayerTurnState.P1;
-                        buttonP2Sprite.sprite = Resources.Load<Sprite>("RButtonSmashed");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
 
                     }
                     else
                     {
-                        buttonP2Sprite.sprite = Resources.Load<Sprite>("RButton");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
                     }
 
                     break;
@@ -212,7 +217,7 @@ public class SpamQTEGame : MonoBehaviour
         {
             // Game Finish
             Debug.Log("Game Finish !");
-            GameManager.gameManager.SpawnFortuneWheel();
+            GameManager.Instance.SpawnFortuneWheel();
             Destroy(this.gameObject);
             
         }
