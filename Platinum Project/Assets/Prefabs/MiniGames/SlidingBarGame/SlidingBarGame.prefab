@@ -807,6 +807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681f67eca3964a741a02681689d385e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnWheelAnimations:
+  - {fileID: 7400000, guid: 5ea78373bfdd84543b20abf8573784e3, type: 2}
   handleP1: {fileID: 8769018616339458052}
   handleP2: {fileID: 8769018616593590408}
   intervalP1: {fileID: 8769018615756507813}
