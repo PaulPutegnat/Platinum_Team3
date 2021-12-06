@@ -33,7 +33,8 @@ namespace Assets.Editor
             //AnimatorController animController = (AnimatorController)AssetDatabase.LoadAssetAtPath(AssetDatabase.GetAssetPath(MyAnimator.runtimeAnimatorController), typeof(AnimatorController));
             AnimatorController animController = myAnimator.runtimeAnimatorController as AnimatorController;
 
-            for (int i = animCount - 1; i >= 0; i--)
+            
+            for (int i = animController.layers[0].stateMachine.states.Length - 1; i >= 0; i--)
             {
                 AnimatorState animatorState = animController.layers[0].stateMachine.states[i].state;
                 animController.layers[0].stateMachine.RemoveState(animatorState);
