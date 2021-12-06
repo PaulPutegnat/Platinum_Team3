@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
-public class ShootingGame : MonoBehaviour
+public class ShootingGame : MiniGame
 {
     [Header("GameObjects")]
     public Slider TimerSlider;
@@ -49,15 +49,16 @@ public class ShootingGame : MonoBehaviour
 
     EventSystem m_EventSystem;
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return StartCoroutine(SpawnAnimation());
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
         thisRT = this.gameObject.GetComponent<RectTransform>();
 
         m_Raycaster = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GraphicRaycaster>();
         m_EventSystem = FindObjectOfType<EventSystem>();
 
-        if (GameManager.gameManager.players[3] != null)
+        if (GameManager.Instance.players[3] != null)
         {
             _aimSightP2.SetActive(true);
         }
@@ -80,7 +81,7 @@ public class ShootingGame : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.gameManager.players[2])
+        if (GameManager.Instance.players[2])
         {
             IsP1Shooting = InputManager.inputManager.ShootP1();
             padPosP1 = InputManager.inputManager.AimShooterP1();
@@ -89,7 +90,7 @@ public class ShootingGame : MonoBehaviour
             CheckLimit(_aimSightP1);
         }
 
-        if (GameManager.gameManager.players[3])
+        if (GameManager.Instance.players[3])
         {
             IsP2Shooting = InputManager.inputManager.ShootP2();
             padPosP2 = InputManager.inputManager.AimShooterP2();
@@ -282,7 +283,7 @@ public class ShootingGame : MonoBehaviour
         {
             // Game finish Lose
             // Lose effect
-            GameManager.gameManager.SpawnFortuneWheel();
+            GameManager.Instance.SpawnFortuneWheel();
             Destroy(this.gameObject);
         }
 

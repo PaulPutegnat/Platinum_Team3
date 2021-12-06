@@ -57,6 +57,10 @@ MonoBehaviour:
   - {fileID: 0}
   playersRefs: []
   fortuneWheel: {fileID: 7080482512470778406, guid: 4a6f1241f8122284f9509f85a4944793, type: 3}
+  spawnWheelAnimations:
+  - {fileID: 7400000, guid: 00971eaecf6eebf449b4ccecc994d0f0, type: 2}
+  - {fileID: 7400000, guid: 4055b56d1baeb3c4a9f39125501be4e4, type: 2}
+  - {fileID: 7400000, guid: 7c0fc8dece932bc40884f9565011164a, type: 2}
   pauseCanvas: {fileID: 0}
   mainCanvas: {fileID: 0}
   spawn: {fileID: 1387431015334743809}

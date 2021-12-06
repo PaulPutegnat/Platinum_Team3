@@ -24,26 +24,26 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.gameManager.IsBegin && !isAlreadySet)
+        if (GameManager.Instance.IsBegin && !isAlreadySet)
         {
-            if (GameManager.gameManager.players[0])
+            if (GameManager.Instance.players[0])
             {
-                P1RunnerInput = GameManager.gameManager.players[0].GetComponent<PlayerInput>();
+                P1RunnerInput = GameManager.Instance.players[0].GetComponent<PlayerInput>();
             }
             
-            if (GameManager.gameManager.players[1])
+            if (GameManager.Instance.players[1])
             {
-                P2RunnerInput = GameManager.gameManager.players[1].GetComponent<PlayerInput>();
+                P2RunnerInput = GameManager.Instance.players[1].GetComponent<PlayerInput>();
             }
 
-            if (GameManager.gameManager.players[2])
+            if (GameManager.Instance.players[2])
             {
-                P1TrapperInput = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
+                P1TrapperInput = GameManager.Instance.players[2].GetComponent<PlayerInput>();
             }
 
-            if (GameManager.gameManager.players[3])
+            if (GameManager.Instance.players[3])
             {
-                P2TrapperInput = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+                P2TrapperInput = GameManager.Instance.players[3].GetComponent<PlayerInput>();
             }
 
             isAlreadySet = true;

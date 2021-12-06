@@ -12,7 +12,7 @@ public class Pause : MonoBehaviour
     public GameObject FirstSelectedInUI;
     public void PausePressed(InputAction.CallbackContext context)
     {
-        if (GameManager.gameManager.IsGamePlaying)
+        if (GameManager.Instance.IsGamePlaying)
         {
             if (GameIsPaused)
             {
@@ -42,6 +42,6 @@ public class Pause : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Main Menu");
     }
 }
