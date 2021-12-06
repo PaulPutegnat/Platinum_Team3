@@ -7,7 +7,7 @@ public class TestCam : MonoBehaviour
 {
     public PointInfo[] PointsInfos;
 
-    int i = 0;
+    [HideInInspector] public int i = 0;
     private float _timer = 0;
     private float _percent;
     private bool _canIncrement = false;
