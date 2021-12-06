@@ -9,13 +9,10 @@ public class TrapsEffects : MonoBehaviour
     public GameObject BrokenScreen;
     public GameObject Rock;
 
+    [Range(0f, 5f)] public float speedMultiplicator = 2;
+    [Range(0f, 10f)] public float speedTrapDuration = 2;
+
     private TestCam _testcam;
-    private float _duration = 1f;
-    private float _elapsedTime;
-    private float _percentageComplete;
-    private bool _testRock = false;
-    private Vector3 _rockStart;
-    private Vector3 _rockTarget = new Vector3(0,0,0);
 
     private void Awake()
     {
@@ -28,44 +25,26 @@ public class TrapsEffects : MonoBehaviour
     private void Start()
     {
         _testcam = FindObjectOfType<Camera>().GetComponent<TestCam>();
-        _rockStart = Rock.transform.position;
     }
 
     void Update()
     {
-        _percentageComplete = _elapsedTime / _duration;
-        Rock.SetActive(true);
-        Rock.transform.position = Vector3.Lerp(_rockStart, _rockTarget, _percentageComplete);
-        
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            _testRock = true;
-            CameraSpeed();
+            StartCoroutine(CameraSpeed());
         }
     }
     
     public void BrokenScreenEffect()
     {
-        if (_testRock)
-        {
-            _elapsedTime = Time.deltaTime;
-            _percentageComplete = _elapsedTime / _duration;
-            Rock.SetActive(true);
-            Rock.transform.position = Vector3.Lerp(_rockStart, _rockTarget, _percentageComplete);
 
-            if (_rockStart == _rockTarget)
-            {
-                BrokenScreen.SetActive(true);
-                Debug.Log("Broken!");
-                _testRock = false;
-            }
-        }
     }
 
-    public void CameraSpeed()
+    public IEnumerator CameraSpeed()
     {
-        int currentStep = _testcam.i;
-        float currentStepDuration = _testcam.PointsInfos[currentStep].StepDuration;
-        currentStepDuration = currentStepDuration / 2;
+        Debug.Log("Speed Up!");
+        _testcam.speedUp = speedMultiplicator;
+        yield return new WaitForSeconds(trapDuration);
+        _testcam.speedUp = 1;
     }
 }
