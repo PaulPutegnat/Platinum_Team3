@@ -98,8 +98,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PointsInfos:
-  - Target: {fileID: 0}
-    Duration: 1
+  - Step: 
+    ChangeFov: 0
+    ChangePosition: 0
+    ChangeRotation: 0
+    TargetPosition: {fileID: 0}
+    TargetRotation: {x: 0, y: 0, z: 0}
+    Fov: 0
+    StepDuration: 0
 --- !u!114 &7781204667798728088
 MonoBehaviour:
   m_ObjectHideFlags: 0

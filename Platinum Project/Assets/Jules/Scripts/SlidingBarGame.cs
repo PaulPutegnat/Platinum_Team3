@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class SlidingBarGame : MonoBehaviour
+public class SlidingBarGame : MiniGame
 {
     public enum IS_DOUBLE_INTERVAL
     {
@@ -64,12 +64,14 @@ public class SlidingBarGame : MonoBehaviour
         }
     }
 
-    void Start()
+    IEnumerator Start()
     {
-        //trapperInput1 = GameManager.gameManager.players[2].GetComponent<PlayerInput>();
-        if (GameManager.gameManager.players[3] != null)
+        yield return StartCoroutine(SpawnAnimation());
+
+        //trapperInput1 = GameManager.Instance.players[2].GetComponent<PlayerInput>();
+        if (GameManager.Instance.players[3] != null)
         {
-            //trapperInput2 = GameManager.gameManager.players[3].GetComponent<PlayerInput>();
+            //trapperInput2 = GameManager.Instance.players[3].GetComponent<PlayerInput>();
             handleP2.SetActive(true);
             isTwoPlayer = true;
         }
@@ -85,7 +87,7 @@ public class SlidingBarGame : MonoBehaviour
         posPercentP1 = Random.Range(-1, 1.1f);
         handleP1.transform.localPosition = new Vector3(posPercentP1 * 600, 0f, 0f);
 
-        if (GameManager.gameManager.players[3] != null)
+        if (GameManager.Instance.players[3] != null)
         {
             intervalP2.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP2.transform.localPosition.y);
             intervalP2.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 100f);
@@ -147,7 +149,7 @@ public class SlidingBarGame : MonoBehaviour
                 {
                     // Game finish Win
                     //Debug.Log("GAME IS WIN");
-                    GameManager.gameManager.SpawnFortuneWheel();
+                    GameManager.Instance.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
 
                 }
@@ -155,14 +157,14 @@ public class SlidingBarGame : MonoBehaviour
                 {
                     // Game finish Semi-win
                     //Debug.Log("GAME IS SEMI-WIN");
-                    GameManager.gameManager.SpawnFortuneWheel();
+                    GameManager.Instance.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
                 }
                 else if (!isP1Win && !isP2Win)
                 {
                     // Game finish lose
                     //Debug.Log("GAME IS LOSE");
-                    GameManager.gameManager.SpawnFortuneWheel();
+                    GameManager.Instance.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
                 }
             }
@@ -174,13 +176,13 @@ public class SlidingBarGame : MonoBehaviour
                 if (isP1Win)
                 {
                     // Game finish Win
-                    GameManager.gameManager.SpawnFortuneWheel();
+                    GameManager.Instance.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
                 }
                 else
                 {
                     // Game finish Lose
-                    GameManager.gameManager.SpawnFortuneWheel();
+                    GameManager.Instance.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
                 }
             }

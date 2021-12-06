@@ -1,7 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using UnityEditor;
+using UnityEditor.Animations;
 //using TreeEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +11,7 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager gameManager;
+    public static GameManager Instance;
 
     private int MaxPlayers;
     public int ActivePlayer = 0;
@@ -26,7 +27,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public GameObject[] playersRefs;
 
+    [Header("Fortune Wheel")]
     public GameObject fortuneWheel;
+
+    [Header("Canvas")]
     public GameObject pauseCanvas;
     public GameObject mainCanvas;
 
@@ -48,10 +52,10 @@ public class GameManager : MonoBehaviour
     public bool withWheel = false;
     private void Awake()
     {
-        if (gameManager != null && gameManager != this)
+        if (Instance != null && Instance != this)
             Destroy(gameObject);
 
-        gameManager = this;
+        Instance = this;
 
         pauseCanvas.SetActive(true);
         mainCanvas.SetActive(true);
@@ -67,11 +71,6 @@ public class GameManager : MonoBehaviour
         RUNNERPANNEL = GameObject.Find("RUNNER");
         TRAPPERPANNEL = GameObject.Find("TRAPPER");
         BeginButton = GameObject.Find("BeginButton");
-    }
-
-    public void SpawnFortuneWheel()
-    {
-        Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
     public void checkUI()
@@ -123,5 +122,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         BeginButton.GetComponent<Button>().interactable = true;
     }
+
+    public void SpawnFortuneWheel()
+    {
+        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("Canvas").transform);
+    }
+
+    
 
 }

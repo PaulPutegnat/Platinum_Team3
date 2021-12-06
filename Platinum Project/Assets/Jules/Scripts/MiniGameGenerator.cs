@@ -127,7 +127,7 @@ public class MiniGameGenerator : MonoBehaviour
     void Update()
     {
 
-        if (GameManager.gameManager.IsBegin)
+        if (GameManager.Instance.IsBegin)
         {
             switch (gameName)
             {
@@ -226,7 +226,7 @@ public class MiniGameGenerator : MonoBehaviour
                 break;
         }*/
 
-        if (IsInstantiate && !GameManager.gameManager.IsBegin)
+        if (IsInstantiate && !GameManager.Instance.IsBegin)
         {
             if (playerType == PLAYER_NAME.J1)
             {

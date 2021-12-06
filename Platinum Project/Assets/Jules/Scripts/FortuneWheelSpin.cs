@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor;
+using UnityEditor.Animations;
+using UnityEditorInternal;
+using AnimatorController = UnityEditor.Animations.AnimatorController;
 
-public class FortuneWheelSpin : MonoBehaviour
+public class FortuneWheelSpin : MiniGame
 {
     public int nbOfGames;
     public float timeRotate;
@@ -17,15 +21,22 @@ public class FortuneWheelSpin : MonoBehaviour
 
     public AnimationCurve curve;
 
-    public List<GameObject> gameList = new List<GameObject>();
+    [SerializeField] private List<GameObject> gameList = new List<GameObject>();
+    
 
     public bool DevOneGame = true;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        
+        yield return StartCoroutine(SpawnAnimation()); //executer en parallèle du reste de code
+
+        StartCoroutine(RotateWheel()); 
+
         angleOfOneGame = CIRCLE / nbOfGames;
         canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
-        RotateNow();
+        
+        
     }
 
     IEnumerator RotateWheel()
@@ -45,7 +56,7 @@ public class FortuneWheelSpin : MonoBehaviour
             currentTime += Time.deltaTime;
 
             float angleCurrent = angleWanted * curve.Evaluate(currentTime / timeRotate);
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, angleCurrent + startAngle - angleOfOneGame);
+            transform.localEulerAngles = new Vector3(0, 0, angleCurrent + startAngle - angleOfOneGame);
         }
 
         if (DevOneGame)
@@ -54,36 +65,7 @@ public class FortuneWheelSpin : MonoBehaviour
         }
         else
         {
-            switch (indexGameRandom)
-            {
-                case 0:
-                    InstantiateGame(indexGameRandom);
-                    break;
-
-                case 1:
-                    InstantiateGame(indexGameRandom);
-                    break;
-
-                case 2:
-                    InstantiateGame(indexGameRandom);
-                    break;
-
-                case 3:
-                    InstantiateGame(indexGameRandom);
-                    break;
-
-                case 4:
-                    InstantiateGame(indexGameRandom);
-                    break;
-
-                case 5:
-                    InstantiateGame(indexGameRandom);
-                    break;
-
-                case 6:
-                    InstantiateGame(indexGameRandom);
-                    break;
-            }
+            InstantiateGame(indexGameRandom);
         }
         
     }
@@ -92,10 +74,5 @@ public class FortuneWheelSpin : MonoBehaviour
     {
         Instantiate(gameList[index], canvas);
         Destroy(this.transform.parent.gameObject);
-    }
-
-    void RotateNow()
-    {
-        StartCoroutine(RotateWheel());
     }
 }
