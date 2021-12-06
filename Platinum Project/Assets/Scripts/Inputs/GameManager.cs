@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        Camera.main.GetComponent<TestCam>().enabled = false;
         RUNNERPANNEL = GameObject.Find("RUNNER");
         TRAPPERPANNEL = GameObject.Find("TRAPPER");
         BeginButton = GameObject.Find("BeginButton");
@@ -91,9 +92,8 @@ public class GameManager : MonoBehaviour
 
     public void ButtonPressed()
     {
-
+            Camera.main.GetComponent<TestCam>().enabled = true;
             IsGamePlaying = true;
-
 
             GameObject[] objetAEnlever = GameObject.FindGameObjectsWithTag("AEnlever");
             for (int i = 0; i < objetAEnlever.Length; i++)
