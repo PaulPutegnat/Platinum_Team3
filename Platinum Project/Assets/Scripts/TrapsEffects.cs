@@ -12,10 +12,10 @@ public class TrapsEffects : MonoBehaviour
     [Range(0f, 10f)] public float BrokenScreenDuration = 3;
     [Range(0f, 10f)] public float BrokenScreenFadeInSpeed = 4;
     [Range(0f, 10f)] public float BrokenScreenFadeOutSpeed = 1;
-    [Range(0f, 5f)] public float speedMultiplicator = 2;
-    [Range(0f, 5f)] public float speedTrapDuration = 2;
+    [Range(0f, 10f)] public float speedMultiplicator = 2;
+    [Range(0f, 10f)] public float speedTrapDuration = 2;
     [Range(0f, 5f)] public float shakeTrapDuration = 1.5f;
-    [Range(0f, 2f)] public float shakeTrapMagnitude = 0.4f;
+    [Range(0f, 3f)] public float shakeTrapMagnitude = 0.4f;
 
     private TestCam _testcam;
 
@@ -36,31 +36,35 @@ public class TrapsEffects : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            TrapSelector();
+            TrapSelector(1);
         }
     }
 
-    public void TrapSelector()
+    public void TrapSelector(float semiWinSplit)
     {
         if (trapNum == 1)
         {
-            StartCoroutine(CameraSpeedTrap());
+            StartCoroutine(CameraSpeedTrap(semiWinSplit));
         }
         if (trapNum == 2)
         {
-            StartCoroutine(BrokenScreenTrap());
+            StartCoroutine(BrokenScreenTrap(semiWinSplit));
+        }
+        if (trapNum == 3)
+        {
+            StartCoroutine(CameraShakeTrap(shakeTrapDuration, shakeTrapMagnitude));
         }
     }
 
-    public IEnumerator CameraSpeedTrap()
+    public IEnumerator CameraSpeedTrap(float semiWinSplitRef)
     {
         Debug.Log("Speed Up!");
-        _testcam.speedUp = speedMultiplicator;
-        yield return new WaitForSeconds(speedTrapDuration);
+        _testcam.speedUp = speedMultiplicator  / semiWinSplitRef;
+        yield return new WaitForSeconds(speedTrapDuration / semiWinSplitRef);
         _testcam.speedUp = 1;
     }
 
-    public IEnumerator BrokenScreenTrap()
+    public IEnumerator BrokenScreenTrap(float semiWinSplitRef)
     {
         Color objectColor = BrokenScreen.color;
         float fadeAmount = objectColor.a;
@@ -74,7 +78,7 @@ public class TrapsEffects : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(BrokenScreenDuration);
+        yield return new WaitForSeconds(BrokenScreenDuration / semiWinSplitRef);
 
         while (BrokenScreen.color.a > 0)
         {
