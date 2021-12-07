@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class TrapsEffects : MonoBehaviour
 {
     public static TrapsEffects instanceTrapsEffects;
-    public GameObject BrokenScreen;
-    public GameObject Rock;
+    public Image BrokenScreen;
 
+    [Range(0f, 10f)] public float BrokenScreenDuration = 3;
+    [Range(0f, 10f)] public float BrokenScreenFadeInSpeed = 4;
+    [Range(0f, 10f)] public float BrokenScreenFadeOutSpeed = 1;
     [Range(0f, 5f)] public float speedMultiplicator = 2;
     [Range(0f, 10f)] public float speedTrapDuration = 2;
-
+    
     private TestCam _testcam;
-    private Color _windowColor;
 
     private void Awake()
     {
@@ -26,7 +27,6 @@ public class TrapsEffects : MonoBehaviour
     private void Start()
     {
         _testcam = FindObjectOfType<Camera>().GetComponent<TestCam>();
-        _windowColor = BrokenScreen.GetComponent<Renderer>().material.color;
     }
 
     void Update()
@@ -35,11 +35,6 @@ public class TrapsEffects : MonoBehaviour
         {
             StartCoroutine(BrokenScreenFadeIn());
         }
-    }
-    
-    public void BrokenScreenEffect()
-    {
-        StartCoroutine(BrokenScreenFadeIn());
     }
 
     public IEnumerator CameraSpeed()
@@ -52,11 +47,26 @@ public class TrapsEffects : MonoBehaviour
 
     public IEnumerator BrokenScreenFadeIn()
     {
-        while (_windowColor.a > 0)
-        {
-            float fadeAmount = _windowColor.a + (0.5f * Time.deltaTime);
+        Color objectColor = BrokenScreen.color;
+        float fadeAmount = objectColor.a;
 
-            _windowColor = new Color(_windowColor.r, _windowColor.g, _windowColor.b, fadeAmount);
+        while (BrokenScreen.color.a < 1)
+        {
+            fadeAmount +=  BrokenScreenFadeInSpeed * Time.deltaTime;
+
+            objectColor = new Color(BrokenScreen.color.r, BrokenScreen.color.g, BrokenScreen.color.b, fadeAmount);
+            BrokenScreen.color = objectColor;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(BrokenScreenDuration);
+
+        while (BrokenScreen.color.a > 0)
+        {
+            fadeAmount -= BrokenScreenFadeOutSpeed * Time.deltaTime;
+
+            objectColor = new Color(BrokenScreen.color.r, BrokenScreen.color.g, BrokenScreen.color.b, fadeAmount);
+            BrokenScreen.color = objectColor;
             yield return null;
         }
     }
