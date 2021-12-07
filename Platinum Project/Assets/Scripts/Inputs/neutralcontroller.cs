@@ -17,6 +17,7 @@ public class neutralcontroller : MonoBehaviour
     private int limit = 1;
     private GameObject runnerRef;
     private GameObject TrapperRef;
+    private RectTransform thisRT;
 
     private bool cameraIsMoov = false;
     enum STATE
@@ -27,10 +28,13 @@ public class neutralcontroller : MonoBehaviour
 
     private void Awake()
     {
-        //Debug.Log(GameManager.gameManager.gameObject.GetComponent<PlayerInputManager>().playerCount);
+        //Debug.Log(GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount);
         transform.SetParent(GameObject.Find("Canvas").transform);
-        transform.localScale *= 0.5f;
-        switch (GameManager.gameManager.gameObject.GetComponent<PlayerInputManager>().playerCount)
+        thisRT = GetComponent<RectTransform>();
+        thisRT.localScale = Vector3.one;
+        thisRT.localPosition = new Vector3(0, 300, 0);
+        thisRT.localRotation = Quaternion.identity;
+        switch (GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount)
         {
             case 1:
                 GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 300, 0);
@@ -62,13 +66,13 @@ public class neutralcontroller : MonoBehaviour
             {
                 if (GetComponent<RectTransform>().anchoredPosition.x == 0)
                 {
-                    GameManager.gameManager.RunnererNumber++;
+                    GameManager.Instance.RunnererNumber++;
                     GetComponent<RectTransform>().anchoredPosition = new Vector3(posRunner, y, 0);
                 }
                 else
                 {
-                    GameManager.gameManager.TrapperNumber--;
-                    GameManager.gameManager.RunnererNumber++;
+                    GameManager.Instance.TrapperNumber--;
+                    GameManager.Instance.RunnererNumber++;
                     GetComponent<RectTransform>().anchoredPosition = new Vector3(posRunner, y, 0);
                 }
 
@@ -81,13 +85,13 @@ public class neutralcontroller : MonoBehaviour
             {
                 if (GetComponent<RectTransform>().anchoredPosition.x == 0)
                 {
-                    GameManager.gameManager.TrapperNumber++;
+                    GameManager.Instance.TrapperNumber++;
                     GetComponent<RectTransform>().anchoredPosition = new Vector3(posTrapper, y, 0);
                 }
                 else
                 {
-                    GameManager.gameManager.TrapperNumber++;
-                    GameManager.gameManager.RunnererNumber--;
+                    GameManager.Instance.TrapperNumber++;
+                    GameManager.Instance.RunnererNumber--;
                     GetComponent<RectTransform>().anchoredPosition = new Vector3(posTrapper, y, 0);
                 }
                 _state = STATE.TRAPPER;
@@ -120,17 +124,17 @@ public class neutralcontroller : MonoBehaviour
                     transform.SetParent(null);
                     /*transform.localScale = new Vector3(1, 1, 1);
                     transform.position = Vector3.zero;*/
-                    runnerRef = Instantiate(GameManager.gameManager.Runner.gameObject, GameManager.gameManager.spawn.position, Quaternion.identity);
-                    if (GameManager.gameManager.players[0] == null)
+                    runnerRef = Instantiate(GameManager.Instance.Runner.gameObject, GameManager.Instance.spawn.position, Quaternion.identity);
+                    if (GameManager.Instance.players[0] == null)
                     {
-                        GameManager.gameManager.players[0] = gameObject;
-                        GameManager.gameManager.playersRefs[0] = runnerRef;
+                        GameManager.Instance.players[0] = gameObject;
+                        GameManager.Instance.playersRefs[0] = runnerRef;
 
                     }
-                    else if(GameManager.gameManager.players[1] == null)
+                    else if(GameManager.Instance.players[1] == null)
                     {
-                        GameManager.gameManager.players[1] = gameObject;
-                        GameManager.gameManager.playersRefs[1] = runnerRef;
+                        GameManager.Instance.players[1] = gameObject;
+                        GameManager.Instance.playersRefs[1] = runnerRef;
                     }
                     else
                     {
@@ -148,17 +152,17 @@ public class neutralcontroller : MonoBehaviour
                     transform.SetParent(null);
                     /*transform.localScale = new Vector3(1, 1, 1);
                     transform.position = Vector3.zero;*/
-                    TrapperRef = Instantiate(GameManager.gameManager.Trapper.gameObject, new Vector3(0, 0, 0), Quaternion.identity);
-                    if (GameManager.gameManager.players[2] == null)
+                    TrapperRef = Instantiate(GameManager.Instance.Trapper.gameObject, new Vector3(0, 0, 0), Quaternion.identity);
+                    if (GameManager.Instance.players[2] == null)
                     {
-                        GameManager.gameManager.players[2] = gameObject;
-                        GameManager.gameManager.playersRefs[2] = TrapperRef;
+                        GameManager.Instance.players[2] = gameObject;
+                        GameManager.Instance.playersRefs[2] = TrapperRef;
                         TrapperRef.GetComponent<TrapController>().initTrapper(2);
                     }
-                    else if(GameManager.gameManager.players[3] == null)
+                    else if(GameManager.Instance.players[3] == null)
                     {
-                        GameManager.gameManager.players[3] = gameObject;
-                        GameManager.gameManager.playersRefs[3] = TrapperRef;
+                        GameManager.Instance.players[3] = gameObject;
+                        GameManager.Instance.playersRefs[3] = TrapperRef;
                         TrapperRef.GetComponent<TrapController>().initTrapper(3);
                     }
                     else
@@ -179,8 +183,8 @@ public class neutralcontroller : MonoBehaviour
 
     void InitRunner()
     {
-        GameManager.gameManager.ActivePlayer++;
-        GameManager.gameManager.checkUI();
+        GameManager.Instance.ActivePlayer++;
+        GameManager.Instance.checkUI();
         GetComponent<PlayerInput>().actions.FindAction("Echap").performed += new Action<InputAction.CallbackContext>(GameObject.Find("Pause").GetComponent<Pause>().PausePressed);
         GetComponent<PlayerInput>().actions.FindAction("Movement").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnMove);
         GetComponent<PlayerInput>().actions.FindAction("Jump").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnJump);
@@ -191,8 +195,8 @@ public class neutralcontroller : MonoBehaviour
     void InitTrapper()
     {
 
-        GameManager.gameManager.ActivePlayer++;
-        GameManager.gameManager.checkUI();
+        GameManager.Instance.ActivePlayer++;
+        GameManager.Instance.checkUI();
         GetComponent<PlayerInput>().actions.FindAction("Echap").performed += new Action<InputAction.CallbackContext>(GameObject.Find("Pause").GetComponent<Pause>().PausePressed);
         TrapperRef.SetActive(false);
     }

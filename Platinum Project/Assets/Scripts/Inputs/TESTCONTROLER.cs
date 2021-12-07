@@ -74,8 +74,12 @@ public class TESTCONTROLER : MonoBehaviour
 
     private Animator animatotor;
 
+    public ParticleSystem dustParticleSystem;
+    public ParticleSystem JumpParticleSystem;
+
     private void Awake()
     {
+        
         _rigidbody = GetComponent<Rigidbody>();
         animatotor = GetComponentInChildren<Animator>();
         Console.Clear();  
@@ -98,11 +102,13 @@ public class TESTCONTROLER : MonoBehaviour
 
         if (IsGrounded())
         {
+            dustParticleSystem.enableEmission = true;
             CT = Initial_CT;
             HasChangedDirection = false;
         }
         else
         {
+            dustParticleSystem.enableEmission = false;
             CT -= Time.deltaTime;
 
             if ((VelocityXLastFrame >= 0 && movement <= 0) || (VelocityXLastFrame <= 0 && movement >= 0))
@@ -136,6 +142,7 @@ public class TESTCONTROLER : MonoBehaviour
          { 
              //Vector2.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
              float InertyMultiplier = Mathf.Clamp(Mathf.Abs(_rigidbody.velocity.x) / maxspeed, neutralJumpForce, 1) ;
+             JumpParticleSystem.Play();
              _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce* InertyMultiplier, 0);
              CT = 0;
          }
@@ -156,7 +163,9 @@ public class TESTCONTROLER : MonoBehaviour
             if (Mathf.Abs(VelocityYLastFrame) > 4f)
             {
                 _rigidbody.velocity = new Vector3(VelocityYLastFrame, _rigidbody.velocity.y, 0);
+                box.center = new Vector3(0, 0.5f, 0);
                 box.size = new Vector3(InitialSize.x, InitialSize.y / 2, InitialSize.z);
+                
 
                 if (!IsSlidingUnder())
                 {
@@ -210,6 +219,8 @@ public class TESTCONTROLER : MonoBehaviour
         //C'est moche mais j'en ai rien à foutre
         animatotor.gameObject.transform.rotation = new Quaternion(0,0,0,0);
         animatotor.gameObject.transform.localPosition = new Vector3(0,0.5f,0);
+
+        
     }
 
     public void ResetSlide()
@@ -218,7 +229,9 @@ public class TESTCONTROLER : MonoBehaviour
         Slide = false;
         IsLocked = false;
         UnderObjectLastFrame = false;
+        box.center = new Vector3(0, 1, 0);
         box.size = InitialSize;
+        
     }
     bool IsGrounded()
     {
