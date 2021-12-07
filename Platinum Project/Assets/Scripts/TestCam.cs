@@ -9,6 +9,7 @@ public class TestCam : MonoBehaviour
 
     [HideInInspector] public int i = 0;
     [HideInInspector] public float speedUp = 1;
+
     private float _timer = 0;
     private float _percent;
     private bool _canIncrement = false;
@@ -23,6 +24,12 @@ public class TestCam : MonoBehaviour
     private bool _fovSettings = false;
     private float _currentFov;
 
+    private GameObject _cameraHolder;
+
+    void Start()
+    {
+        _cameraHolder = transform.parent.gameObject;
+    }
     void Update()
     {
         _timer += Time.deltaTime * speedUp;
@@ -34,7 +41,7 @@ public class TestCam : MonoBehaviour
             {
                 if (!_positionSettings)
                 {
-                    _currentPosition = Camera.main.transform.position;
+                    _currentPosition = _cameraHolder.transform.position;
                     _positionSettings = true;
                 }
                 MoveCamera();
@@ -75,7 +82,7 @@ public class TestCam : MonoBehaviour
         Vector3 currentPosition = _currentPosition;
         Vector3 targetPosition = PointsInfos[i].TargetPosition.transform.position;
 
-        transform.position = Vector3.Lerp(currentPosition, targetPosition, _percent);
+        _cameraHolder.transform.position = Vector3.Lerp(currentPosition, targetPosition, _percent);
     }
 
     public void RotateCamera()

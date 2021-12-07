@@ -39,7 +39,7 @@ public class TrapsEffects : MonoBehaviour
 
     public void TrapSelector()
     {
-        float trapNum = Random.Range(1, 4);
+        float trapNum = Random.Range(3, 4);
         if (trapNum == 1)
         {
             StartCoroutine(CameraSpeedTrap());
@@ -47,6 +47,10 @@ public class TrapsEffects : MonoBehaviour
         if (trapNum == 2)
         {
             StartCoroutine(BrokenScreenTrap());
+        }
+        if (trapNum == 3)
+        {
+            StartCoroutine(CameraShakeTrap(1f,0.4f));
         }
     }
 
@@ -82,5 +86,26 @@ public class TrapsEffects : MonoBehaviour
             BrokenScreen.color = objectColor;
             yield return null;
         }
+    }
+
+    public IEnumerator CameraShakeTrap(float duration, float magnitude)
+    {
+        Vector3 originalPos = Camera.main.transform.localPosition;
+
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            Camera.main.transform.localPosition = new Vector3(x, y, originalPos.z);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        Camera.main.transform.localPosition = originalPos;
     }
 }
