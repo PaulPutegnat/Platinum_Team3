@@ -8,6 +8,7 @@ public class TestCam : MonoBehaviour
     public PointInfo[] PointsInfos;
 
     [HideInInspector] public int i = 0;
+    [HideInInspector] public float speedUp = 1;
     private float _timer = 0;
     private float _percent;
     private bool _canIncrement = false;
@@ -24,7 +25,7 @@ public class TestCam : MonoBehaviour
 
     void Update()
     {
-        _timer += Time.deltaTime;
+        _timer += Time.deltaTime * speedUp;
         _percent = _timer / PointsInfos[i].StepDuration;
 
         if (i < PointsInfos.Length)
