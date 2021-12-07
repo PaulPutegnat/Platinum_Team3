@@ -7,13 +7,16 @@ public class TrapsEffects : MonoBehaviour
 {
     public static TrapsEffects instanceTrapsEffects;
     public Image BrokenScreen;
+    public int trapNum;
 
     [Range(0f, 10f)] public float BrokenScreenDuration = 3;
     [Range(0f, 10f)] public float BrokenScreenFadeInSpeed = 4;
     [Range(0f, 10f)] public float BrokenScreenFadeOutSpeed = 1;
     [Range(0f, 5f)] public float speedMultiplicator = 2;
-    [Range(0f, 10f)] public float speedTrapDuration = 2;
-    
+    [Range(0f, 5f)] public float speedTrapDuration = 2;
+    [Range(0f, 5f)] public float shakeTrapDuration = 1.5f;
+    [Range(0f, 2f)] public float shakeTrapMagnitude = 0.4f;
+
     private TestCam _testcam;
 
     private void Awake()
@@ -39,7 +42,6 @@ public class TrapsEffects : MonoBehaviour
 
     public void TrapSelector()
     {
-        float trapNum = Random.Range(3, 4);
         if (trapNum == 1)
         {
             StartCoroutine(CameraSpeedTrap());
@@ -47,10 +49,6 @@ public class TrapsEffects : MonoBehaviour
         if (trapNum == 2)
         {
             StartCoroutine(BrokenScreenTrap());
-        }
-        if (trapNum == 3)
-        {
-            StartCoroutine(CameraShakeTrap(1f,0.4f));
         }
     }
 
