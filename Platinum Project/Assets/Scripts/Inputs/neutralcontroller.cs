@@ -109,24 +109,24 @@ public class neutralcontroller : MonoBehaviour
                         break;
                     case STATE.TRAPPER:
                         GameManager.Instance.TrapperNumber--;
-                        switch (GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount)
+                        switch (GetComponent<PlayerInput>().playerIndex)
                         {
-                            case 1:
+                            case 0:
                                 transform.SetParent(J1, false);
                                 transform.localPosition = Vector3.zero;
                                 break;
 
-                            case 2:
+                            case 1:
                                 transform.SetParent(J2, false);
                                 transform.localPosition = Vector3.zero;
                                 break;
 
-                            case 3:
+                            case 2:
                                 transform.SetParent(J3, false);
                                 transform.localPosition = Vector3.zero;
                                 break;
 
-                            case 4:
+                            case 3:
                                 transform.SetParent(J4, false);
                                 transform.localPosition = Vector3.zero;
                                 break;
@@ -158,24 +158,24 @@ public class neutralcontroller : MonoBehaviour
                         break;
                     case STATE.RUNNER:
                         GameManager.Instance.TrapperNumber--;
-                        switch (GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount)
+                        switch (GetComponent<PlayerInput>().playerIndex)
                         {
-                            case 1:
+                            case 0:
                                 transform.SetParent(J1, false);
                                 transform.localPosition = Vector3.zero;
                                 break;
 
-                            case 2:
+                            case 1:
                                 transform.SetParent(J2, false);
                                 transform.localPosition = Vector3.zero;
                                 break;
 
-                            case 3:
+                            case 2:
                                 transform.SetParent(J3, false);
                                 transform.localPosition = Vector3.zero;
                                 break;
 
-                            case 4:
+                            case 3:
                                 transform.SetParent(J4, false);
                                 transform.localPosition = Vector3.zero;
                                 break;
