@@ -43,9 +43,6 @@ public class SpamQTEGame : MiniGame
     private bool p1ButtonPressed;
     private bool p2ButtonPressed;
 
-    private PlayerInput trapperInput1;
-    private PlayerInput trapperInput2;
-
     private PlayerTurnState _state = PlayerTurnState.P1;
     private bool IsTwoPlayer = false;
     
@@ -67,11 +64,9 @@ public class SpamQTEGame : MiniGame
         timerColor = timerFillArea.GetComponent<Image>().color;
         timerColor = Color.green;
 
-        //trapperInput1 = GameManager.Instance.players[2].GetComponent<PlayerInput>();
         if (GameManager.Instance.players[3] != null)
         {
             IsTwoPlayer = true;
-            //trapperInput2 = GameManager.Instance.players[3].GetComponent<PlayerInput>();
         }
         else
         {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Animations;
@@ -21,19 +22,24 @@ namespace Assets.Editor
 
             if (GUILayout.Button("Generate Animations"))
             {
-                GenerateAnimatorState(source.spawnWheelAnimations, source.gameObject);
+                GenerateAnimatorState(source.SpawnAnim, source.DespawnAnim, source.gameObject);
             }
         }
 
 
-        public void GenerateAnimatorState(List<AnimationClip> animationList, GameObject gameObjectRef)
+        public void GenerateAnimatorState(List<AnimationClip> spawnAnimList, List<AnimationClip> despawnAnimList, GameObject gameObjectRef)
         {
-            int animCount = animationList.Count;
+            int animCount = spawnAnimList.Count + despawnAnimList.Count;
             Animator myAnimator = gameObjectRef.GetComponentInParent<Animator>();
             //AnimatorController animController = (AnimatorController)AssetDatabase.LoadAssetAtPath(AssetDatabase.GetAssetPath(MyAnimator.runtimeAnimatorController), typeof(AnimatorController));
             AnimatorController animController = myAnimator.runtimeAnimatorController as AnimatorController;
+            List<AnimationClip> totalAnimClipList = new List<AnimationClip>();
+            for (int i = 0; i < animCount; i++)
+            {
+                totalAnimClipList.Add(spawnAnimList[i]);
+            }
+            totalAnimClipList.AddRange(despawnAnimList);
 
-            
             for (int i = animController.layers[0].stateMachine.states.Length - 1; i >= 0; i--)
             {
                 AnimatorState animatorState = animController.layers[0].stateMachine.states[i].state;
@@ -42,7 +48,7 @@ namespace Assets.Editor
 
             for (int i = 0; i < animCount; i++)
             {
-                animController.AddMotion(animationList[i]);
+                animController.AddMotion(totalAnimClipList[i]);
             }
         }
     }
