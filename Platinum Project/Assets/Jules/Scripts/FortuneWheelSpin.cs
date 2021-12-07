@@ -28,7 +28,6 @@ public class FortuneWheelSpin : MiniGame
 
     private IEnumerator Start()
     {
-        
         yield return StartCoroutine(SpawnAnimation()); //executer en parallèle du reste de code
 
         StartCoroutine(RotateWheel()); 

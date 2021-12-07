@@ -62,10 +62,8 @@ MonoBehaviour:
   _aimSightP1: {fileID: 3636190369886368366}
   _aimSightP2: {fileID: 8011027687917175719}
   _targetList: {fileID: 3636190369601158993}
-  _aimSpeed: 3
+  _aimSpeed: 1
   _nbTarget: 10
-  _shrinkingTimer: 0
-  _disapearTimer: 0
   _points: 0
   gameDuration: 20
   timerText: {fileID: 1514497717663599360}

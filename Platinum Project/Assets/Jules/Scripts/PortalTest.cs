@@ -28,7 +28,6 @@ public class PortalTest : MonoBehaviour
     private bool IsP2Pressing = false;
     private bool IsInTheZone = false;
     private bool IsAlreadyInstantiate = false;
-    private bool IsRunning = false;
 
     private void Start()
     {
