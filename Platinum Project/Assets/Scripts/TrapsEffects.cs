@@ -33,11 +33,19 @@ public class TrapsEffects : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            StartCoroutine(BrokenScreenFadeIn());
+            float trapNum = Random.Range(1 , 4);
+            if (trapNum == 1)
+            {
+                StartCoroutine(CameraSpeedTrap());
+            }
+            if (trapNum == 2)
+            {
+                StartCoroutine(BrokenScreenTrap());
+            }
         }
     }
 
-    public IEnumerator CameraSpeed()
+    public IEnumerator CameraSpeedTrap()
     {
         Debug.Log("Speed Up!");
         _testcam.speedUp = speedMultiplicator;
@@ -45,7 +53,7 @@ public class TrapsEffects : MonoBehaviour
         _testcam.speedUp = 1;
     }
 
-    public IEnumerator BrokenScreenFadeIn()
+    public IEnumerator BrokenScreenTrap()
     {
         Color objectColor = BrokenScreen.color;
         float fadeAmount = objectColor.a;
