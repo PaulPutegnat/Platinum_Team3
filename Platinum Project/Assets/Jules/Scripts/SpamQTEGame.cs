@@ -228,27 +228,37 @@ public class SpamQTEGame : MiniGame
             if (spamSlider.value > 25)
             {
                 //CameraShake Puissance 5
+                TrapsEffects.instanceTrapsEffects.StartCoroutine(TrapsEffects.instanceTrapsEffects.CameraShakeTrap(TrapsEffects.instanceTrapsEffects.shakeTrapDuration,
+                                                            TrapsEffects.instanceTrapsEffects.shakeTrapMagnitude * 5));
                 Debug.Log("CameraShake Puissance 5");
             }
             else if (spamSlider.value > 20)
             {
                 //CameraShake Puissance 4
+                TrapsEffects.instanceTrapsEffects.StartCoroutine(TrapsEffects.instanceTrapsEffects.CameraShakeTrap(TrapsEffects.instanceTrapsEffects.shakeTrapDuration,
+                                                            TrapsEffects.instanceTrapsEffects.shakeTrapMagnitude * 4));
                 Debug.Log("CameraShake Puissance 4");
             }
             else if (spamSlider.value > 15)
             {
                 //CameraShake Puissance 3
+                TrapsEffects.instanceTrapsEffects.StartCoroutine(TrapsEffects.instanceTrapsEffects.CameraShakeTrap(TrapsEffects.instanceTrapsEffects.shakeTrapDuration,
+                                                            TrapsEffects.instanceTrapsEffects.shakeTrapMagnitude * 3));
                 Debug.Log("CameraShake Puissance 3");
             }
             else if (spamSlider.value > 10)
             {
                 //CameraShake Puissance 2
+                TrapsEffects.instanceTrapsEffects.StartCoroutine(TrapsEffects.instanceTrapsEffects.CameraShakeTrap(TrapsEffects.instanceTrapsEffects.shakeTrapDuration,
+                                                            TrapsEffects.instanceTrapsEffects.shakeTrapMagnitude * 2));
                 Debug.Log("CameraShake Puissance 2");
             }
             else
             {
                 //CameraShake Puissance 1
-                Debug.Log("CameraShake Puissance 1");
+            TrapsEffects.instanceTrapsEffects.StartCoroutine(TrapsEffects.instanceTrapsEffects.CameraShakeTrap(TrapsEffects.instanceTrapsEffects.shakeTrapDuration, 
+                                                                TrapsEffects.instanceTrapsEffects.shakeTrapMagnitude));
+            Debug.Log("CameraShake Puissance 1");
             }
 
             ShakeTimer = 0;

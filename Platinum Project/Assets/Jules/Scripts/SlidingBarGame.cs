@@ -149,6 +149,7 @@ public class SlidingBarGame : MiniGame
                 {
                     // Game finish Win
                     //Debug.Log("GAME IS WIN");
+                    TrapsEffects.instanceTrapsEffects.TrapSelector();
                     GameManager.Instance.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
 
