@@ -22,7 +22,7 @@ public class IsOffCamera : MonoBehaviour
         if ((screenPosition.x < widthThresold.x || screenPosition.x > widthThresold.y ||
             screenPosition.y < heightThresold.x || screenPosition.y > heightThresold.y )&& times == 1)
         {
-            ParticleCopy = Instantiate(Particles, transform.position, Quaternion.identity,transform.parent);
+            ParticleCopy = Instantiate(Particles, transform.position,Quaternion.Euler(-90,0,0));
             ParticleCopy.GetComponent<ParticleSystem>().Play();
             TrappersWin.SetActive(true);
             times--;
