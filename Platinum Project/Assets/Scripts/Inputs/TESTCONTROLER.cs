@@ -74,11 +74,12 @@ public class TESTCONTROLER : MonoBehaviour
 
     private Animator animatotor;
 
-    private ParticleSystem dustParticleSystem;
+    public ParticleSystem dustParticleSystem;
+    public ParticleSystem JumpParticleSystem;
 
     private void Awake()
     {
-        dustParticleSystem = GetComponentInChildren<ParticleSystem>();
+        
         _rigidbody = GetComponent<Rigidbody>();
         animatotor = GetComponentInChildren<Animator>();
         Console.Clear();  
@@ -141,6 +142,7 @@ public class TESTCONTROLER : MonoBehaviour
          { 
              //Vector2.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
              float InertyMultiplier = Mathf.Clamp(Mathf.Abs(_rigidbody.velocity.x) / maxspeed, neutralJumpForce, 1) ;
+             JumpParticleSystem.Play();
              _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, jumpForce* InertyMultiplier, 0);
              CT = 0;
          }
