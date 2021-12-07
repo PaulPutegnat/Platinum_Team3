@@ -46,8 +46,6 @@ public class SlidingBarGame : MiniGame
 
     private bool isTwoPlayer = false;
 
-    private PlayerInput trapperInput1;
-    private PlayerInput trapperInput2;
     public IS_DOUBLE_INTERVAL IsDoubleInterval = IS_DOUBLE_INTERVAL.NO;
 
     private void Awake()
@@ -68,10 +66,8 @@ public class SlidingBarGame : MiniGame
     {
         yield return StartCoroutine(SpawnAnimation());
 
-        //trapperInput1 = GameManager.Instance.players[2].GetComponent<PlayerInput>();
         if (GameManager.Instance.players[3] != null)
         {
-            //trapperInput2 = GameManager.Instance.players[3].GetComponent<PlayerInput>();
             handleP2.SetActive(true);
             isTwoPlayer = true;
         }
@@ -149,6 +145,7 @@ public class SlidingBarGame : MiniGame
                 {
                     // Game finish Win
                     //Debug.Log("GAME IS WIN");
+                    TrapsEffects.instanceTrapsEffects.TrapSelector();
                     GameManager.Instance.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
 

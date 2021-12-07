@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         mainCanvas.SetActive(true);
 
         MaxPlayers = GetComponent<PlayerInputManager>().maxPlayerCount;
-        playersRefs = new GameObject[GetComponent<PlayerInputManager>().maxPlayerCount];
+        playersRefs = new GameObject[MaxPlayers];
         pausegGameObject = pauseCanvas;
     }
 

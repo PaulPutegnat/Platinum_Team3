@@ -34274,6 +34274,8 @@ MonoBehaviour:
   BrokenScreenFadeOutSpeed: 2
   speedMultiplicator: 2
   speedTrapDuration: 2
+  shakeTrapDuration: 2
+  shakeTrapMagnitude: 0.4
 --- !u!4 &1609218973
 Transform:
   m_ObjectHideFlags: 0
