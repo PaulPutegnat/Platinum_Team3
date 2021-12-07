@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8990142025894160572}
   - component: {fileID: 8990142025894160562}
-  - component: {fileID: 8990142025894160563}
+  - component: {fileID: 1963564044300819259}
   - component: {fileID: 8990142025894160561}
   - component: {fileID: 8990142025894160560}
   m_Layer: 5
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 220, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8990142025894160562
 CanvasRenderer:
@@ -47,7 +47,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8990142025894160573}
   m_CullTransparentMesh: 1
---- !u!114 &8990142025894160563
+--- !u!114 &1963564044300819259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8990142025894160573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -67,16 +67,78 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 13f382b6f30475a46afa816d3a668fa0, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_text: 'J1
+
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b0207a5f4c1de6740b307be711fdf2fd, type: 2}
+  m_sharedMaterial: {fileID: -1662926617308262278, guid: b0207a5f4c1de6740b307be711fdf2fd, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 240
+  m_fontSizeBase: 240
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 8192
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &8990142025894160561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,10 +333,6 @@ MonoBehaviour:
     m_ActionId: 027a09cc-7fc8-4d6f-91c6-050bc52e4f06
     m_ActionName: Trapper/SlidingBarP1[/Keyboard/1,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a56b8ce7-f54c-47c5-b55c-c45f509fff0b
-    m_ActionName: Trapper/SlidingBarP2[/Keyboard/2,/XInputControllerWindows/buttonSouth]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: 
@@ -320,14 +378,6 @@ MonoBehaviour:
     m_ActionName: Trapper/ShootP1[/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 96aa8d67-6e52-474f-a963-2caed415f4af
-    m_ActionName: Trapper/ShootP2[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 006253db-2618-4b84-8678-9ce9ae21cb44
-    m_ActionName: Trapper/AimingP2[/XInputControllerWindows/rightStick]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 4c34d77f-d081-4728-9f8f-8f3ce7d0df74
     m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -366,6 +416,78 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 13bfa6fd-58da-40a2-b4a1-7f4fdf70f5f0
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3999f2b1-0361-40bb-af4d-974358def165
+    m_ActionName: Player/PortalSpam[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e9e9e5ca-34c9-4c89-ad62-223c125958ad
+    m_ActionName: Trapper/SpamQTESoloLeft[/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0440658d-7e5c-43fc-b561-5fea816bfed3
+    m_ActionName: Trapper/Pong
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 72a8c19d-e708-4278-8ab0-6f94f7ed5228
+    m_ActionName: Trapper/PongSoloRight
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b1e344e-bf84-420f-ab59-dedc7ce457ce
+    m_ActionName: Trapper/Echap[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9e6ef1df-7bd7-436c-94b4-79465f096ec2
+    m_ActionName: Trapper/LeftJoystick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a4c2bfd9-a97f-46f6-ad9f-a3ee5a3a8976
+    m_ActionName: Trapper/RightJoystick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f6586a68-0ff3-4021-a3d5-fdc32ef16d71
+    m_ActionName: Trapper/LeftDirectionalButtons
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7c056982-e6ff-42d0-ae6b-ec6a4018dc96
+    m_ActionName: Trapper/RightButtonEast
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4a6e0882-c9e5-4120-ba02-1e4e7620cf9b
+    m_ActionName: Trapper/RightButtonSouth
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: da72ebf2-0fbc-490e-99f9-bd783108190c
+    m_ActionName: Trapper/RightButtonNorth
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8b0d3141-6462-4eee-87b9-d54aefe84d1b
+    m_ActionName: Trapper/RightButtonWest
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7ac412af-c537-4ce6-a4c4-665743942254
+    m_ActionName: Trapper/LeftShoulderButton
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0f50e744-7fcc-4404-912b-4e5f2aa12be9
+    m_ActionName: Trapper/RightShoulderButton
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 861a38ba-ddef-408b-a846-ef1eefae9cc1
+    m_ActionName: Trapper/LeftShoulderTrigger
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e681f6e2-0af4-4ef3-9477-a051397a3b7e
+    m_ActionName: Trapper/RightShoulderTrigger
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0474c657-5cfe-43fc-9003-b35508b17c72
+    m_ActionName: Trapper/Start
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ea581bd4-0e8b-4fed-a6bf-cfe889466f5f
+    m_ActionName: Trapper/Select
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Neutral

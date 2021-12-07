@@ -64,8 +64,6 @@ MonoBehaviour:
   _targetList: {fileID: 3636190369601158993}
   _aimSpeed: 1
   _nbTarget: 10
-  _shrinkingTimer: 0
-  _disapearTimer: 0
   _points: 0
   gameDuration: 20
   timerText: {fileID: 1514497717663599360}
