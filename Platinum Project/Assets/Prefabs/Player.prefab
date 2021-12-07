@@ -4980,8 +4980,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TrappersWin: {fileID: 1829849629390475107, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
-  widthThresold: {x: 0, y: 625}
-  heightThresold: {x: -50, y: 500}
+  widthThresold: {x: -50, y: 1970}
+  heightThresold: {x: -50, y: 1130}
   Particles: {fileID: 2301275867431158409, guid: b1938cefb48daa84db22d060f4841e4c, type: 3}
 --- !u!1 &8883647483235308560
 GameObject:

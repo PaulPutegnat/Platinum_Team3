@@ -33,7 +33,7 @@ public class IsOffCamera : MonoBehaviour
                 if(childTransform.GetComponent<SkinnedMeshRenderer>())
                     childTransform.GetComponent<SkinnedMeshRenderer>().enabled = false;
             }
-            Destroy(transform.parent.transform.parent.gameObject,4);
+            Destroy(gameObject,4);
         }
     }
 
