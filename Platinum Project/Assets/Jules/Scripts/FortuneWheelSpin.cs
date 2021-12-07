@@ -9,9 +9,9 @@ using AnimatorController = UnityEditor.Animations.AnimatorController;
 
 public class FortuneWheelSpin : MiniGame
 {
-    public int nbOfGames;
-    public float timeRotate;
-    public float nbCircleRotate;
+    [SerializeField] private int nbOfGames;
+    [SerializeField] private float timeRotate;
+    [SerializeField] private float nbCircleRotate;
 
     private const float CIRCLE = 360.0f;
     private float angleOfOneGame;
@@ -19,12 +19,13 @@ public class FortuneWheelSpin : MiniGame
     private Transform canvas;
     private float currentTime;
 
-    public AnimationCurve curve;
+    [SerializeField] private AnimationCurve curve;
 
     [SerializeField] private List<GameObject> gameList = new List<GameObject>();
-    
 
-    public bool DevOneGame = true;
+
+    [SerializeField] private bool DevOneGame = true;
+    [SerializeField] private bool EffectWheel = false;
 
     private IEnumerator Start()
     {
@@ -40,14 +41,13 @@ public class FortuneWheelSpin : MiniGame
 
     IEnumerator RotateWheel()
     {
-
         float startAngle = transform.eulerAngles.z;
         currentTime = 0;
 
-        int indexGameRandom = Random.Range(0, nbOfGames);
-        Debug.Log(indexGameRandom);
+        int indexRandom = Random.Range(0, nbOfGames);
+        Debug.Log(indexRandom);
 
-        float angleWanted = (nbCircleRotate * CIRCLE) + angleOfOneGame * indexGameRandom - startAngle;
+        float angleWanted = (nbCircleRotate * CIRCLE) + angleOfOneGame * indexRandom - startAngle;
 
         while (currentTime < timeRotate)
         {
@@ -58,15 +58,21 @@ public class FortuneWheelSpin : MiniGame
             transform.localEulerAngles = new Vector3(0, 0, angleCurrent + startAngle - angleOfOneGame);
         }
 
-        if (DevOneGame)
+        if (!EffectWheel)
         {
-            InstantiateGame(0);
+            if (DevOneGame)
+            {
+                InstantiateGame(0);
+            }
+            else
+            {
+                InstantiateGame(indexRandom);
+            }
         }
         else
         {
-            InstantiateGame(indexGameRandom);
+            // indexRandom
         }
-        
     }
 
     public void InstantiateGame(int index)
