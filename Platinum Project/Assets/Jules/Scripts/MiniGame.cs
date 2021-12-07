@@ -10,11 +10,8 @@ public class MiniGame : MonoBehaviour
     public IEnumerator SpawnAnimation()
     {
         Animator fwAnimation = GetComponentInParent<Animator>();
-        int RandomIndex = Random.Range(1, spawnWheelAnimations.Count);
+        int RandomIndex = Random.Range(0, spawnWheelAnimations.Count);
         fwAnimation.Play(spawnWheelAnimations[RandomIndex].name);
-
-
         yield return new WaitForSeconds(spawnWheelAnimations[RandomIndex].length);
     }
-
 }

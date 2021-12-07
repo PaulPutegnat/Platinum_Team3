@@ -24,8 +24,6 @@ public class ShootingGame : MiniGame
     [Header("Tweakable")]
     public float _aimSpeed;
     public int _nbTarget;
-    public float _shrinkingTimer;
-    public float _disapearTimer;
     public int _points;
 
     [Header("Timer Value")]
@@ -43,20 +41,11 @@ public class ShootingGame : MiniGame
 
     public GraphicRaycasterManager graphicRaycasterManager;
 
-    GraphicRaycaster m_Raycaster;
-    PointerEventData m_PointerEventDataP1;
-    PointerEventData m_PointerEventDataP2;
-
-    EventSystem m_EventSystem;
-
-    IEnumerator Start()
+    void Start()
     {
-        yield return StartCoroutine(SpawnAnimation());
+        StartCoroutine(SpawnAnimation());
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
         thisRT = this.gameObject.GetComponent<RectTransform>();
-
-        m_Raycaster = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GraphicRaycaster>();
-        m_EventSystem = FindObjectOfType<EventSystem>();
 
         if (GameManager.Instance.players[3] != null)
         {
