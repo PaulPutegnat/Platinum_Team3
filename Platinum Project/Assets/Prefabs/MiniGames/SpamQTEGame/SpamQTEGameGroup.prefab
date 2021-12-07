@@ -159,6 +159,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 836991248607273007, guid: e7826b9cc4d1e064984ac016ef0382a8, type: 3}
+      propertyPath: spawnWheelAnimations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 836991248607273007, guid: e7826b9cc4d1e064984ac016ef0382a8, type: 3}
+      propertyPath: spawnWheelAnimations.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: d7828bba0f0367044a02558ec171d191, type: 2}
+    - target: {fileID: 836991248607273007, guid: e7826b9cc4d1e064984ac016ef0382a8, type: 3}
+      propertyPath: spawnWheelAnimations.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: a4477623c5cc64f4db821e96e628e803, type: 2}
+    - target: {fileID: 836991248607273007, guid: e7826b9cc4d1e064984ac016ef0382a8, type: 3}
+      propertyPath: spawnWheelAnimations.Array.data[2]
+      value: 
+      objectReference: {fileID: 7400000, guid: bfb1efbe159560149818acf3b59d7837, type: 2}
     - target: {fileID: 836991249524321644, guid: e7826b9cc4d1e064984ac016ef0382a8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
