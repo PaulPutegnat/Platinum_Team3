@@ -7,15 +7,26 @@ using UnityEngine.SceneManagement;
 public class IsOffCamera : MonoBehaviour
 {
     public GameObject TrappersWin;
+    public Vector2 widthThresold;
+    public Vector2 heightThresold;
+
+    public GameObject Particles;
+
+    private GameObject ParticleCopy;
     // Start is called before the first frame update
-    public void OnBecameVisible()
+
+    private int times = 1;
+    private void Update()
     {
-        Debug.Log("Player is Visible !");
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        if ((screenPosition.x < widthThresold.x || screenPosition.x > widthThresold.y ||
+            screenPosition.y < heightThresold.x || screenPosition.y > heightThresold.y )&& times == 1)
+        {
+            ParticleCopy = Instantiate(Particles, transform.position, Quaternion.identity,transform.parent);
+            ParticleCopy.GetComponent<ParticleSystem>().Play();
+            TrappersWin.SetActive(true);
+            times--;
+        }
     }
 
-    public void OnBecameInvisible()
-    {
-        Debug.Log("Player is Invisible !");
-        TrappersWin.SetActive(true);
-    }
 }
