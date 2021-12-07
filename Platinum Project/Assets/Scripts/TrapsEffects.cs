@@ -33,15 +33,20 @@ public class TrapsEffects : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            float trapNum = Random.Range(1 , 4);
-            if (trapNum == 1)
-            {
-                StartCoroutine(CameraSpeedTrap());
-            }
-            if (trapNum == 2)
-            {
-                StartCoroutine(BrokenScreenTrap());
-            }
+            TrapSelector();
+        }
+    }
+
+    public void TrapSelector()
+    {
+        float trapNum = Random.Range(1, 4);
+        if (trapNum == 1)
+        {
+            StartCoroutine(CameraSpeedTrap());
+        }
+        if (trapNum == 2)
+        {
+            StartCoroutine(BrokenScreenTrap());
         }
     }
 
