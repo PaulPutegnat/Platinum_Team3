@@ -38840,10 +38840,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1829849630095890549, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
-      propertyPath: m_text
-      value: Runners won!
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
 --- !u!4 &2019396903 stripped
