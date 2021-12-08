@@ -25,7 +25,6 @@ public class IsOffCamera : MonoBehaviour
     {
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
         Console.Clear();
-        Debug.Log(screenPosition);
         if ((screenPosition.x < widthThresold.x || screenPosition.x > widthThresold.y ||
              screenPosition.y < heightThresold.x || screenPosition.y > heightThresold.y) && times == 1)
         {
