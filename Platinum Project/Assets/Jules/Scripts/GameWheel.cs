@@ -23,9 +23,9 @@ public class GameWheel : MiniGame
 
     [SerializeField] private bool DevOneGame = true;
 
-    private IEnumerator Start()
+    private void Start()
     {
-        yield return StartCoroutine(SpawnAnimation()); //executer en parallèle du reste de code
+        StartCoroutine(SpawnAnimation()); //executer en parallèle du reste de code
 
         StartCoroutine(RotateWheel()); 
 
@@ -46,6 +46,7 @@ public class GameWheel : MiniGame
 
         while (currentTime < timeRotate)
         {
+            yield return new WaitForEndOfFrame();
             currentTime += Time.deltaTime;
 
             float angleCurrent = angleWanted * curve.Evaluate(currentTime / timeRotate);
