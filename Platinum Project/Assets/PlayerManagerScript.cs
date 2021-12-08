@@ -9,6 +9,11 @@ public class PlayerManagerScript : MonoBehaviour
     public static PlayerManagerScript Instance;
     public GameObject[] players;
 
+    public const int RUNNER1 = 0;
+    public const int RUNNER2 = 1;
+    public const int TRAPPER1 = 2;
+    public const int TRAPPER2 = 3;
+
     private int RoundNumber = 1;
     // Start is called before the first frame update
     void Awake()

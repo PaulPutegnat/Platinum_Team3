@@ -26,7 +26,7 @@ public class PongGame : MonoBehaviour
     void Start()
     {
         //pongInputP1 = GameManager.Instance.players[2].GetComponent<PlayerInput>();
-        if (GameManager.Instance.players[3] != null)
+        if (PlayerManagerScript.Instance.players[3] != null)
         {
             IsTwoPlayer = true;
             //pongInputP2 = GameManager.Instance.players[3].GetComponent<PlayerInput>();
