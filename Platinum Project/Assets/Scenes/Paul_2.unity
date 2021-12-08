@@ -40584,6 +40584,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7089283586119701394, guid: f019ca9427f952946a08dedaa549606d, type: 3}
+      propertyPath: speedUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089283586119701394, guid: f019ca9427f952946a08dedaa549606d, type: 3}
       propertyPath: PointsInfos.Array.data[0].TargetPosition
       value: 
       objectReference: {fileID: 117700138}
