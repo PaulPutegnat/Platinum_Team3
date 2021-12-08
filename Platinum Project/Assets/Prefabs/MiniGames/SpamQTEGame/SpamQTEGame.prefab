@@ -128,6 +128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6198c3df63a72948a582f316bbfc4ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnAnim:
+  - {fileID: 7400000, guid: d7828bba0f0367044a02558ec171d191, type: 2}
+  - {fileID: 7400000, guid: a4477623c5cc64f4db821e96e628e803, type: 2}
+  - {fileID: 7400000, guid: bfb1efbe159560149818acf3b59d7837, type: 2}
+  DespawnAnim: []
   spamSlider: {fileID: 836991249266025417}
   timeSlider: {fileID: 836991249546233100}
   timerFillArea: {fileID: 836991249524321651}

@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor;
-using UnityEditor.Animations;
-using UnityEditorInternal;
-using AnimatorController = UnityEditor.Animations.AnimatorController;
 
-public class FortuneWheelSpin : MiniGame
+public class GameWheel : MiniGame
 {
     [SerializeField] private int nbOfGames;
     [SerializeField] private float timeRotate;
@@ -15,8 +11,9 @@ public class FortuneWheelSpin : MiniGame
 
     private const float CIRCLE = 360.0f;
     private float angleOfOneGame;
+    [HideInInspector]public int index;
 
-    private Transform canvas;
+    private Transform trapManager;
     private float currentTime;
 
     [SerializeField] private AnimationCurve curve;
@@ -25,7 +22,6 @@ public class FortuneWheelSpin : MiniGame
 
 
     [SerializeField] private bool DevOneGame = true;
-    [SerializeField] private bool EffectWheel = false;
 
     private IEnumerator Start()
     {
@@ -34,9 +30,7 @@ public class FortuneWheelSpin : MiniGame
         StartCoroutine(RotateWheel()); 
 
         angleOfOneGame = CIRCLE / nbOfGames;
-        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
-        
-        
+        trapManager = GameObject.FindGameObjectWithTag("TrapManager").transform;
     }
 
     IEnumerator RotateWheel()
@@ -46,38 +40,33 @@ public class FortuneWheelSpin : MiniGame
 
         int indexRandom = Random.Range(0, nbOfGames);
         Debug.Log(indexRandom);
+        index = indexRandom;
 
         float angleWanted = (nbCircleRotate * CIRCLE) + angleOfOneGame * indexRandom - startAngle;
 
         while (currentTime < timeRotate)
         {
-            yield return new WaitForEndOfFrame();
             currentTime += Time.deltaTime;
 
             float angleCurrent = angleWanted * curve.Evaluate(currentTime / timeRotate);
             transform.localEulerAngles = new Vector3(0, 0, angleCurrent + startAngle - angleOfOneGame);
         }
 
-        if (!EffectWheel)
+        yield return DespawnAnimation();
+
+        if (DevOneGame)
         {
-            if (DevOneGame)
-            {
-                InstantiateGame(0);
-            }
-            else
-            {
-                InstantiateGame(indexRandom);
-            }
+            InstantiateGame(0);
         }
         else
         {
-            // indexRandom
+            InstantiateGame(indexRandom);
         }
     }
 
     public void InstantiateGame(int index)
     {
-        Instantiate(gameList[index], canvas);
+        Instantiate(gameList[index], trapManager);
         Destroy(this.transform.parent.gameObject);
     }
 }
