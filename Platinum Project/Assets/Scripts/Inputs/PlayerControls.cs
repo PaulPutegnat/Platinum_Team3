@@ -978,12 +978,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d6d9777d-a9d8-4136-975c-de8651796733"",
+                    ""id"": ""2f8728fc-0583-48dd-9d8a-febbf190e5fb"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayTest"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Comfirmation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
