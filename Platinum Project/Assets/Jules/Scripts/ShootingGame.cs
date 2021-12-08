@@ -189,7 +189,7 @@ public class ShootingGame : MiniGame
                         {
                             if (firstTarget.GetComponent<RectTransform>())
                             {
-                                if (h.gameObject.GetComponent<RectTransform>().localPosition.z > firstTarget.GetComponent<RectTransform>().localPosition.z)
+                                if (h.gameObject.GetComponent<RectTransform>().localPosition.z >= firstTarget.GetComponent<RectTransform>().localPosition.z)
                                 {
                                     hitTarget = h.gameObject;
                                 }
@@ -198,6 +198,10 @@ public class ShootingGame : MiniGame
                             {
                                 hitTarget = h.gameObject;
                             }
+                        }
+                        else
+                        {
+                            hitTarget = firstTarget;
                         }
                     }
                 }
