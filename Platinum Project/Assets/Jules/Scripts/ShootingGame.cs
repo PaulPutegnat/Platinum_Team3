@@ -25,7 +25,8 @@ public class ShootingGame : MiniGame
     [Header("Tweakable")]
     [SerializeField] private float _aimSpeed;
     [SerializeField] private int _nbTarget;
-    [SerializeField] private int _points;
+    [SerializeField] private int _ObjectivesPoints;
+    [SerializeField] private TextMeshProUGUI _pointText;
 
     [Header("Timer Value")]
     [SerializeField] private float gameDuration;
@@ -39,6 +40,7 @@ public class ShootingGame : MiniGame
     private bool IsP1Shooting = false;
     private bool IsP2Shooting = false;
     private RectTransform thisRT;
+
 
     [SerializeField] private GraphicRaycasterManager graphicRaycasterManager;
 
@@ -77,14 +79,13 @@ public class ShootingGame : MiniGame
         _aimSightP1.transform.Translate(padPosP1 * _aimSpeed * Time.deltaTime);
         CheckLimit(_aimSightP1);
 
-        if (GameManager.Instance.players[3])
-        {
-            IsP2Shooting = InputManager.inputManager.ShootP2();
-            padPosP2 = InputManager.inputManager.AimShooterP2();
 
-            _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
-            CheckLimit(_aimSightP2);
-        }
+        IsP2Shooting = InputManager.inputManager.ShootP2();
+        padPosP2 = InputManager.inputManager.AimShooterP2();
+
+        _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
+        CheckLimit(_aimSightP2);
+
 
         if (Time.time > nextSpawnTime)
         {
@@ -147,7 +148,7 @@ public class ShootingGame : MiniGame
             {
                 if (hitTarget.CompareTag("Target")) 
                 {
-                    _points++;
+                    _ObjectivesPoints--;
                     Vector2 offset = new Vector2(1f, 1f);
                     StartCoroutine(SpawnEffect(_pointPrefab, hitTarget,offset));
                     Destroy(hitTarget.gameObject);
@@ -170,8 +171,6 @@ public class ShootingGame : MiniGame
 
             GameObject firstTarget = results[0].gameObject;
             GameObject hitTarget = null;
-
-
 
             if (results.Count == 1)
             {
@@ -208,7 +207,7 @@ public class ShootingGame : MiniGame
             {
                 if (hitTarget.CompareTag("Target"))
                 {
-                    _points++;
+                    _ObjectivesPoints--;
                     Vector2 offset = new Vector2(1f, 1f);
                     StartCoroutine(SpawnEffect(_pointPrefab, hitTarget, offset));
                     Destroy(hitTarget.gameObject);
@@ -216,7 +215,7 @@ public class ShootingGame : MiniGame
             }
         }
 
-        if (_points > _nbTarget)
+        if (_ObjectivesPoints <= 0)
         {
             // Game finish Win
             GameManager.Instance.SpawnFortuneWheel();
@@ -245,6 +244,7 @@ public class ShootingGame : MiniGame
         }
 
         timerText.text = gameDuration.ToString("f2");
+        _pointText.text = "Targets Left : " + _ObjectivesPoints.ToString();
     }
 
     public void SpawnTarget()
