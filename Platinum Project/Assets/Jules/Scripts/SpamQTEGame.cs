@@ -64,7 +64,7 @@ public class SpamQTEGame : MiniGame
         timerColor = timerFillArea.GetComponent<Image>().color;
         timerColor = Color.green;
 
-        if (GameManager.Instance.players[3] != null)
+        if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] != null)
         {
             IsTwoPlayer = true;
         }
