@@ -64,8 +64,9 @@ MonoBehaviour:
   _aimSightP2: {fileID: 2918650882975701973}
   _targetList: {fileID: 3636190369601158993}
   _pointPrefab: {fileID: 6997225227500809562, guid: f43693ace9b55e34a9dab239875d9ea4, type: 3}
-  _aimSpeed: 1
+  _aimSpeed: 150
   _nbTarget: 15
+  hitRange: 30
   _ObjectivesPoints: 10
   _pointText: {fileID: 4778349649981354083}
   gameDuration: 20

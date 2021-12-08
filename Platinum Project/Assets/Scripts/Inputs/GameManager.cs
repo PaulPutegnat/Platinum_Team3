@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour
     [Header("Prefab")]
     public TESTCONTROLER Runner;
     public TrapController Trapper;
-    [HideInInspector]
-    public GameObject[] players;
 
     [HideInInspector]
     public GameObject[] playersRefs;

@@ -40,7 +40,7 @@ public class PortalTest : MonoBehaviour
 
             IsP1Pressing = InputManager.inputManager.PortalP1();
 
-            if (GameManager.Instance.players[1] != null)
+            if (PlayerManagerScript.Instance.players[1] != null)
             {
                 IsP2Pressing = InputManager.inputManager.PortalP2();
             }

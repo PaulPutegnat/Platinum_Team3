@@ -25,6 +25,7 @@ public class ShootingGame : MiniGame
     [Header("Tweakable")]
     [SerializeField] private float _aimSpeed;
     [SerializeField] private int _nbTarget;
+    [SerializeField] private float hitRange;
     [SerializeField] private int _ObjectivesPoints;
     [SerializeField] private TextMeshProUGUI _pointText;
 
@@ -41,8 +42,7 @@ public class ShootingGame : MiniGame
     private bool IsP2Shooting = false;
     private RectTransform thisRT;
 
-
-    [SerializeField] private GraphicRaycasterManager graphicRaycasterManager;
+    private List<GameObject> InstTargets = new List<GameObject>();
 
     void Start()
     {
@@ -50,7 +50,7 @@ public class ShootingGame : MiniGame
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
         thisRT = this.gameObject.GetComponent<RectTransform>();
 
-        if (GameManager.Instance.players[3] != null)
+        if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] != null)
         {
             _aimSightP2.SetActive(true);
         }
@@ -67,8 +67,6 @@ public class ShootingGame : MiniGame
         timerColor = TimerSlider.GetComponentInChildren<Image>().color;
         timerColor = Color.green;
         intervalSpawnTime = (gameDuration / _nbTarget) - ((10 / 100) * gameDuration);
-
-        graphicRaycasterManager = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GraphicRaycasterManager>();
     }
 
     void Update()
@@ -79,13 +77,14 @@ public class ShootingGame : MiniGame
         _aimSightP1.transform.Translate(padPosP1 * _aimSpeed * Time.deltaTime);
         CheckLimit(_aimSightP1);
 
+        if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] != null)
+        {
+            IsP2Shooting = InputManager.inputManager.ShootP2();
+            padPosP2 = InputManager.inputManager.AimShooterP2();
 
-        IsP2Shooting = InputManager.inputManager.ShootP2();
-        padPosP2 = InputManager.inputManager.AimShooterP2();
-
-        _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
-        CheckLimit(_aimSightP2);
-
+            _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
+            CheckLimit(_aimSightP2);
+        }
 
         if (Time.time > nextSpawnTime)
         {
@@ -95,126 +94,42 @@ public class ShootingGame : MiniGame
         if (IsP1Shooting)
         {
             Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().position;
+            //Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().GetWorldCorners();
 
-            List<RaycastResult> results = new List<RaycastResult>();
-            results = graphicRaycasterManager.Shoot(sightPos);
 
-            if (results.Count == 0)
+            foreach (var target in InstTargets)
             {
-                return;
-            }
 
-            GameObject firstTarget = results[0].gameObject;
-            GameObject hitTarget = null;
-
-            
-
-            if (results.Count == 1)
-            {
-                if (results[0].gameObject.CompareTag("Target"))
+                float diffMag = (sightPos - target.transform.position).magnitude;
+                if (diffMag < hitRange)
                 {
-                    hitTarget = firstTarget;
-                }
-            }
-            else
-            {
-                foreach (RaycastResult h in results)
-                {
-                    if (h.gameObject.CompareTag("Target") && h.gameObject.GetComponent<RectTransform>())
-                    {
-                        if (firstTarget != h.gameObject)
-                        {
-                            if (firstTarget.GetComponent<RectTransform>())
-                            {
-                                if (h.gameObject.GetComponent<RectTransform>().localPosition.z < firstTarget.GetComponent<RectTransform>().localPosition.z)
-                                {
-                                    hitTarget = h.gameObject;
-                                }
-                            }
-                            else
-                            {
-                                hitTarget = h.gameObject;
-                            }
-                        }
-                        else
-                        {
-                            hitTarget = firstTarget;
-                        }
-                    }
-                }
-            }
 
-            if (hitTarget != null)
-            {
-                if (hitTarget.CompareTag("Target")) 
-                {
                     _ObjectivesPoints--;
                     Vector2 offset = new Vector2(1f, 1f);
-                    StartCoroutine(SpawnEffect(_pointPrefab, hitTarget,offset));
-                    Destroy(hitTarget.gameObject);
+                    StartCoroutine(SpawnEffect(_pointPrefab, target, offset));
+                    Destroy(target.gameObject);
+
                 }
             }
+
         }
 
         if (IsP2Shooting)
         {
             Vector3 sightPos = _aimSightP2.GetComponent<RectTransform>().position;
 
-            List<RaycastResult> results = new List<RaycastResult>();
-            results = graphicRaycasterManager.Shoot(sightPos);
-
-
-            if (results.Count == 0)
+            foreach (var target in InstTargets)
             {
-                return;
-            }
 
-            GameObject firstTarget = results[0].gameObject;
-            GameObject hitTarget = null;
-
-            if (results.Count == 1)
-            {
-                if (results[0].gameObject.CompareTag("Target"))
+                float diffMag = (sightPos - target.transform.position).magnitude;
+                if (diffMag < hitRange)
                 {
-                    hitTarget = firstTarget;
-                }
-            }
-            else
-            {
-                foreach (RaycastResult h in results)
-                {
-                    if (h.gameObject.CompareTag("Target") && h.gameObject.GetComponent<RectTransform>())
-                    {
-                        if (firstTarget != h.gameObject)
-                        {
-                            if (firstTarget.GetComponent<RectTransform>())
-                            {
-                                if (h.gameObject.GetComponent<RectTransform>().localPosition.z >= firstTarget.GetComponent<RectTransform>().localPosition.z)
-                                {
-                                    hitTarget = h.gameObject;
-                                }
-                            }
-                            else
-                            {
-                                hitTarget = h.gameObject;
-                            }
-                        }
-                        else
-                        {
-                            hitTarget = firstTarget;
-                        }
-                    }
-                }
-            }
 
-            if (hitTarget != null)
-            {
-                if (hitTarget.CompareTag("Target"))
-                {
                     _ObjectivesPoints--;
                     Vector2 offset = new Vector2(1f, 1f);
-                    StartCoroutine(SpawnEffect(_pointPrefab, hitTarget, offset));
-                    Destroy(hitTarget.gameObject);
+                    StartCoroutine(SpawnEffect(_pointPrefab, target, offset));
+                    Destroy(target.gameObject);
+
                 }
             }
         }
@@ -259,6 +174,7 @@ public class ShootingGame : MiniGame
         newTarget.transform.localPosition = pos;
         newTarget.transform.localScale = new Vector3(.3f, .3f, .3f);
         nextSpawnTime = Time.time + intervalSpawnTime;
+        InstTargets.Add(newTarget);
     }
 
     public void CheckLimit(GameObject aimSight)
@@ -283,5 +199,12 @@ public class ShootingGame : MiniGame
         {
             aimSight.transform.localPosition = new Vector2(-(thisRT.sizeDelta.x / 2), aimSight.transform.localPosition.y);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_aimSightP1.transform.position, hitRange);
+
     }
 }
