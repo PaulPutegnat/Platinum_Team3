@@ -25,7 +25,7 @@ public class ShootingGame : MiniGame
     [Header("Tweakable")]
     [SerializeField] private float _aimSpeed;
     [SerializeField] private int _nbTarget;
-    private int _points;
+    [SerializeField] private int _ObjectivesPoints;
     [SerializeField] private TextMeshProUGUI _pointText;
 
     [Header("Timer Value")]
@@ -148,7 +148,7 @@ public class ShootingGame : MiniGame
             {
                 if (hitTarget.CompareTag("Target")) 
                 {
-                    _points++;
+                    _ObjectivesPoints--;
                     Vector2 offset = new Vector2(1f, 1f);
                     StartCoroutine(SpawnEffect(_pointPrefab, hitTarget,offset));
                     Destroy(hitTarget.gameObject);
@@ -207,7 +207,7 @@ public class ShootingGame : MiniGame
             {
                 if (hitTarget.CompareTag("Target"))
                 {
-                    _points++;
+                    _ObjectivesPoints--;
                     Vector2 offset = new Vector2(1f, 1f);
                     StartCoroutine(SpawnEffect(_pointPrefab, hitTarget, offset));
                     Destroy(hitTarget.gameObject);
@@ -215,7 +215,7 @@ public class ShootingGame : MiniGame
             }
         }
 
-        if (_points >= _nbTarget)
+        if (_ObjectivesPoints <= 0)
         {
             // Game finish Win
             GameManager.Instance.SpawnFortuneWheel();
@@ -244,7 +244,7 @@ public class ShootingGame : MiniGame
         }
 
         timerText.text = gameDuration.ToString("f2");
-        _pointText.text = "Points : " + _points.ToString();
+        _pointText.text = "Targets Left : " + _ObjectivesPoints.ToString();
     }
 
     public void SpawnTarget()
