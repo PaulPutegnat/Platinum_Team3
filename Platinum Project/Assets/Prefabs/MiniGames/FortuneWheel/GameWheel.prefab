@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2386901536370315127}
-  - component: {fileID: 2386901536370315080}
+  - component: {fileID: -4542432840738193597}
   m_Layer: 5
   m_Name: GameWheel
   m_TagString: Untagged
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2386901536370315080
+--- !u!114 &-4542432840738193597
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,18 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394315488cff8dd48a27530580f916fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   SpawnAnim:
-  - {fileID: 7400000, guid: 7c0fc8dece932bc40884f9565011164a, type: 2}
-  - {fileID: 7400000, guid: 44b894911fca2074e9a77807fc8f7cb8, type: 2}
   - {fileID: 7400000, guid: 00971eaecf6eebf449b4ccecc994d0f0, type: 2}
+  - {fileID: 7400000, guid: 44b894911fca2074e9a77807fc8f7cb8, type: 2}
+  - {fileID: 7400000, guid: 7c0fc8dece932bc40884f9565011164a, type: 2}
   DespawnAnim:
   - {fileID: 7400000, guid: a32d772f8aa409f47aae3bf60dc5fdb6, type: 2}
   - {fileID: 7400000, guid: 1a65d4663402e4e4c807b978b4e82d54, type: 2}
-=======
-  SpawnAnim: []
-  DespawnAnim: []
->>>>>>> Stashed changes
   nbOfGames: 4
   timeRotate: 5
   nbCircleRotate: 4
@@ -103,8 +98,7 @@ MonoBehaviour:
   - {fileID: 8636577257879439774, guid: 9d9be6284e08933469a7778a6613602f, type: 3}
   - {fileID: 4699019529662937460, guid: 066c681843207eb4aa06d96bf49b8a0f, type: 3}
   - {fileID: 842542038618950009, guid: 73e007c9aca9c5b40a6635c6173c159e, type: 3}
-  DevOneGame: 0
-  EffectWheel: 0
+  DevOneGame: 1
 --- !u!1 &2386901537917435088
 GameObject:
   m_ObjectHideFlags: 0
