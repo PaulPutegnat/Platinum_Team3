@@ -26,14 +26,14 @@ public class IsOffCamera : MonoBehaviour
             ParticleCopy.GetComponent<ParticleSystem>().Play();
             TrappersWin.SetActive(true);
             times--;
-            transform.parent.transform.parent.gameObject.GetComponent<TESTCONTROLER>().enabled = false;
-            transform.parent.transform.parent.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            foreach (Transform childTransform in transform.parent)
+            GetComponent<TESTCONTROLER>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
+            foreach (Transform childTransform in transform.GetChild(0))
             {
                 if(childTransform.GetComponent<SkinnedMeshRenderer>())
                     childTransform.GetComponent<SkinnedMeshRenderer>().enabled = false;
             }
-            Destroy(transform.parent.transform.parent.gameObject,4);
+            Destroy(gameObject,4);
         }
     }
 
