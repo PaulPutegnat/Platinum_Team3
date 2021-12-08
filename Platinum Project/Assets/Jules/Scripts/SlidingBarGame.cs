@@ -23,7 +23,8 @@ public class SlidingBarGame : MiniGame
     public GameObject intervalP2;
 
     [Header("Settings")]
-    public bool isDoubleInterval = false;
+    private bool isDoubleInterval = false;
+    [SerializeField] private IS_DOUBLE_INTERVAL IsDoubleIntervalEnum = IS_DOUBLE_INTERVAL.NO;
 
     [Range(0, 1)]
     public float speed;
@@ -46,19 +47,19 @@ public class SlidingBarGame : MiniGame
 
     private bool isTwoPlayer = false;
 
-    private PlayerInput trapperInput1;
-    private PlayerInput trapperInput2;
-    public IS_DOUBLE_INTERVAL IsDoubleInterval = IS_DOUBLE_INTERVAL.NO;
+    
 
     private void Awake()
     {
-        switch (IsDoubleInterval)
+        switch (IsDoubleIntervalEnum)
         {
             case IS_DOUBLE_INTERVAL.NO:
+                isDoubleInterval = false;
                 intervalP2.SetActive(false);
                 break;
 
             case IS_DOUBLE_INTERVAL.YES:
+                isDoubleInterval = true;
                 intervalP2.SetActive(true);
                 break;
         }
@@ -66,21 +67,6 @@ public class SlidingBarGame : MiniGame
 
     IEnumerator Start()
     {
-        yield return StartCoroutine(SpawnAnimation());
-
-        //trapperInput1 = GameManager.Instance.players[2].GetComponent<PlayerInput>();
-        if (GameManager.Instance.players[3] != null)
-        {
-            //trapperInput2 = GameManager.Instance.players[3].GetComponent<PlayerInput>();
-            handleP2.SetActive(true);
-            isTwoPlayer = true;
-        }
-        else
-        {
-            handleP2.SetActive(false);
-            isTwoPlayer = false;
-        }
-
         intervalP1.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP1.transform.localPosition.y);
         intervalP1.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 100f);
         intervalP1Size = intervalP1.GetComponent<RectTransform>().sizeDelta;
@@ -94,6 +80,19 @@ public class SlidingBarGame : MiniGame
             posPercentP2 = Random.Range(-1, 1.1f);
             handleP2.transform.localPosition = new Vector3(posPercentP2 * 600, 0f, 0f);
             intervalP2Size = intervalP2.GetComponent<RectTransform>().sizeDelta;
+        }
+
+        yield return StartCoroutine(SpawnAnimation());
+
+        if (GameManager.Instance.players[3] != null)
+        {
+            handleP2.SetActive(true);
+            isTwoPlayer = true;
+        }
+        else
+        {
+            handleP2.SetActive(false);
+            isTwoPlayer = false;
         }
 
         StartSlidingBarGame(true);
@@ -149,6 +148,7 @@ public class SlidingBarGame : MiniGame
                 {
                     // Game finish Win
                     //Debug.Log("GAME IS WIN");
+                    TrapsEffects.instanceTrapsEffects.TrapSelector(1);
                     GameManager.Instance.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
 
@@ -157,6 +157,7 @@ public class SlidingBarGame : MiniGame
                 {
                     // Game finish Semi-win
                     //Debug.Log("GAME IS SEMI-WIN");
+                    TrapsEffects.instanceTrapsEffects.TrapSelector(2);
                     GameManager.Instance.SpawnFortuneWheel();
                     Destroy(this.transform.parent.gameObject);
                 }
@@ -169,26 +170,6 @@ public class SlidingBarGame : MiniGame
                 }
             }
         }
-        else
-        {
-            if (!isP1Playing)
-            {
-                if (isP1Win)
-                {
-                    // Game finish Win
-                    GameManager.Instance.SpawnFortuneWheel();
-                    Destroy(this.transform.parent.gameObject);
-                }
-                else
-                {
-                    // Game finish Lose
-                    GameManager.Instance.SpawnFortuneWheel();
-                    Destroy(this.transform.parent.gameObject);
-                }
-            }
-        }
-        
-        
     }
 
     public void StartSlidingBarGame(bool state)

@@ -13,24 +13,24 @@ using Vector3 = UnityEngine.Vector3;
 public class ShootingGame : MiniGame
 {
     [Header("GameObjects")]
-    public Slider TimerSlider;
-    public GameObject _spawnArea;
+    [SerializeField] private Slider TimerSlider;
+    [SerializeField] private GameObject _spawnArea;
     private RectTransform _spawnAreaRT;
-    public GameObject _targetPrefab;
-    public GameObject _aimSightP1;
-    public GameObject _aimSightP2;
-    public Transform _targetList;
+    [SerializeField] private GameObject _targetPrefab;
+    [SerializeField] private GameObject _aimSightP1;
+    [SerializeField] private GameObject _aimSightP2;
+    [SerializeField] private Transform _targetList;
+    [SerializeField] private GameObject _pointPrefab;
 
     [Header("Tweakable")]
-    public float _aimSpeed;
-    public int _nbTarget;
-    public float _shrinkingTimer;
-    public float _disapearTimer;
-    public int _points;
+    [SerializeField] private float _aimSpeed;
+    [SerializeField] private int _nbTarget;
+    [SerializeField] private int _ObjectivesPoints;
+    [SerializeField] private TextMeshProUGUI _pointText;
 
     [Header("Timer Value")]
-    public float gameDuration;
-    public TextMeshProUGUI timerText;
+    [SerializeField] private float gameDuration;
+    [SerializeField] private TextMeshProUGUI timerText;
     private Color timerColor;
 
     private float nextSpawnTime;
@@ -41,22 +41,14 @@ public class ShootingGame : MiniGame
     private bool IsP2Shooting = false;
     private RectTransform thisRT;
 
-    public GraphicRaycasterManager graphicRaycasterManager;
 
-    GraphicRaycaster m_Raycaster;
-    PointerEventData m_PointerEventDataP1;
-    PointerEventData m_PointerEventDataP2;
+    [SerializeField] private GraphicRaycasterManager graphicRaycasterManager;
 
-    EventSystem m_EventSystem;
-
-    IEnumerator Start()
+    void Start()
     {
-        yield return StartCoroutine(SpawnAnimation());
+        StartCoroutine(SpawnAnimation());
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
         thisRT = this.gameObject.GetComponent<RectTransform>();
-
-        m_Raycaster = GameObject.FindGameObjectWithTag("Canvas").GetComponent<GraphicRaycaster>();
-        m_EventSystem = FindObjectOfType<EventSystem>();
 
         if (GameManager.Instance.players[3] != null)
         {
@@ -81,23 +73,19 @@ public class ShootingGame : MiniGame
 
     void Update()
     {
-        if (GameManager.Instance.players[2])
-        {
-            IsP1Shooting = InputManager.inputManager.ShootP1();
-            padPosP1 = InputManager.inputManager.AimShooterP1();
+        IsP1Shooting = InputManager.inputManager.ShootP1();
+        padPosP1 = InputManager.inputManager.AimShooterP1();
 
-            _aimSightP1.transform.Translate(padPosP1 * _aimSpeed * Time.deltaTime);
-            CheckLimit(_aimSightP1);
-        }
+        _aimSightP1.transform.Translate(padPosP1 * _aimSpeed * Time.deltaTime);
+        CheckLimit(_aimSightP1);
 
-        if (GameManager.Instance.players[3])
-        {
-            IsP2Shooting = InputManager.inputManager.ShootP2();
-            padPosP2 = InputManager.inputManager.AimShooterP2();
 
-            _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
-            CheckLimit(_aimSightP2);
-        }
+        IsP2Shooting = InputManager.inputManager.ShootP2();
+        padPosP2 = InputManager.inputManager.AimShooterP2();
+
+        _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
+        CheckLimit(_aimSightP2);
+
 
         if (Time.time > nextSpawnTime)
         {
@@ -106,27 +94,13 @@ public class ShootingGame : MiniGame
 
         if (IsP1Shooting)
         {
-            Debug.Log("P1 is Shooting");
             Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().position;
-
-            /*//Set up the new Pointer Event
-            m_PointerEventDataP1 = new PointerEventData(m_EventSystem);
-            //Set the Pointer Event Position to that of the mouse position
-            m_PointerEventDataP1.position = Camera.main.WorldToScreenPoint(sightPos);
-
-            //Create a list of Raycast Results
-            List<RaycastResult> results = new List<RaycastResult>();
-
-            //Raycast using the Graphics Raycaster and mouse click position
-            m_Raycaster.Raycast(m_PointerEventDataP1, results);*/
-
 
             List<RaycastResult> results = new List<RaycastResult>();
             results = graphicRaycasterManager.Shoot(sightPos);
 
             if (results.Count == 0)
             {
-                Debug.Log("results.Count = 0");
                 return;
             }
 
@@ -137,7 +111,6 @@ public class ShootingGame : MiniGame
 
             if (results.Count == 1)
             {
-                Debug.Log("results.Count = 1");
                 if (results[0].gameObject.CompareTag("Target"))
                 {
                     hitTarget = firstTarget;
@@ -175,8 +148,9 @@ public class ShootingGame : MiniGame
             {
                 if (hitTarget.CompareTag("Target")) 
                 {
-                    _points++;
-                    Debug.Log("points : :" + _points);
+                    _ObjectivesPoints--;
+                    Vector2 offset = new Vector2(1f, 1f);
+                    StartCoroutine(SpawnEffect(_pointPrefab, hitTarget,offset));
                     Destroy(hitTarget.gameObject);
                 }
             }
@@ -184,20 +158,7 @@ public class ShootingGame : MiniGame
 
         if (IsP2Shooting)
         {
-            Debug.Log("P2 is Shooting");
             Vector3 sightPos = _aimSightP2.GetComponent<RectTransform>().position;
-
-            /*//Set up the new Pointer Event
-            m_PointerEventDataP2 = new PointerEventData(m_EventSystem);
-            //Set the Pointer Event Position to that of the mouse position
-            m_PointerEventDataP2.position = Camera.main.WorldToScreenPoint(sightPos);
-
-            //Create a list of Raycast Results
-            List<RaycastResult> results = new List<RaycastResult>();
-
-            //Raycast using the Graphics Raycaster and mouse click position
-            m_Raycaster.Raycast(m_PointerEventDataP2, results);*/
-
 
             List<RaycastResult> results = new List<RaycastResult>();
             results = graphicRaycasterManager.Shoot(sightPos);
@@ -205,18 +166,14 @@ public class ShootingGame : MiniGame
 
             if (results.Count == 0)
             {
-                Debug.Log("results.Count = 0");
                 return;
             }
 
             GameObject firstTarget = results[0].gameObject;
             GameObject hitTarget = null;
 
-
-
             if (results.Count == 1)
             {
-                Debug.Log("results.Count = 1");
                 if (results[0].gameObject.CompareTag("Target"))
                 {
                     hitTarget = firstTarget;
@@ -250,20 +207,20 @@ public class ShootingGame : MiniGame
             {
                 if (hitTarget.CompareTag("Target"))
                 {
-                    _points++;
-                    Debug.Log("points : :" + _points);
+                    _ObjectivesPoints--;
+                    Vector2 offset = new Vector2(1f, 1f);
+                    StartCoroutine(SpawnEffect(_pointPrefab, hitTarget, offset));
                     Destroy(hitTarget.gameObject);
                 }
             }
         }
 
-        if (_points > _nbTarget)
+        if (_ObjectivesPoints <= 0)
         {
             // Game finish Win
-            // Win effect
             GameManager.Instance.SpawnFortuneWheel();
-            //TrapsEffects.instanceTrapsEffects.BrokenScreenEffect();
-            Destroy(this.gameObject);
+            TrapsEffects.instanceTrapsEffects.TrapSelector(1);
+            Destroy(this.transform.parent.gameObject);
         }
 
         if (gameDuration > 0)
@@ -282,12 +239,12 @@ public class ShootingGame : MiniGame
         else
         {
             // Game finish Lose
-            // Lose effect
             GameManager.Instance.SpawnFortuneWheel();
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
         }
 
         timerText.text = gameDuration.ToString("f2");
+        _pointText.text = "Targets Left : " + _ObjectivesPoints.ToString();
     }
 
     public void SpawnTarget()

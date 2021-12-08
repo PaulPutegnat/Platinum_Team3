@@ -4819,6 +4819,7 @@ GameObject:
   - component: {fileID: 8507846784637375017}
   - component: {fileID: 3381624550268567953}
   - component: {fileID: 9203114728576726928}
+  - component: {fileID: 1825567045987229223}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -4966,19 +4967,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AccelerationTobogan: 50
   MaxSpeedTobogan: 50
---- !u!114 &6442065779280569500
+--- !u!114 &1825567045987229223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7506098067193267729}
+  m_GameObject: {fileID: 4544293951017371564}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed275bf2d7dfb8243ac5fb4e16957d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TrappersWin: {fileID: 1829849629390475107, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+  widthThresold: {x: -50, y: 1970}
+  heightThresold: {x: 300, y: 1130}
+  Particles: {fileID: 2301275867431158409, guid: b1938cefb48daa84db22d060f4841e4c, type: 3}
 --- !u!1 &8883647483235308560
 GameObject:
   m_ObjectHideFlags: 0
@@ -5478,11 +5482,6 @@ PrefabInstance:
 --- !u!4 &4978810970987335599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8c57bbfd5402244408e280e3f507bc4e, type: 3}
-  m_PrefabInstance: {fileID: 4797164071570499652}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7506098067193267729 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3078763546481585749, guid: 8c57bbfd5402244408e280e3f507bc4e, type: 3}
   m_PrefabInstance: {fileID: 4797164071570499652}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7536693953495014942

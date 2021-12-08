@@ -11,6 +11,15 @@ TagManager:
   - PortalUI
   - PauseCanvas
   - TrapManager
+  - R1
+  - R2
+  - T1
+  - T2
+  - J1
+  - J2
+  - J3
+  - J4
+  - TrapContainer
   layers:
   - Default
   - TransparentFX
