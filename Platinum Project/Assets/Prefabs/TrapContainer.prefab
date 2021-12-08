@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4377115861318015342}
   m_Layer: 5
   m_Name: TrapContainer
-  m_TagString: Untagged
+  m_TagString: TrapContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

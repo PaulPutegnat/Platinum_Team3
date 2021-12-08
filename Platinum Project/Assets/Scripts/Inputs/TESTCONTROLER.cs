@@ -53,8 +53,6 @@ public class TESTCONTROLER : MonoBehaviour
 
     [Header("Slide")]
     public bool Slide;
-
-    private bool ExitUnderObject = false;
     private bool UnderObjectLastFrame = false;
 
     [Range(1f,3f)]
@@ -103,6 +101,7 @@ public class TESTCONTROLER : MonoBehaviour
         if (IsGrounded())
         {
             dustParticleSystem.enableEmission = true;
+            
             CT = Initial_CT;
             HasChangedDirection = false;
         }

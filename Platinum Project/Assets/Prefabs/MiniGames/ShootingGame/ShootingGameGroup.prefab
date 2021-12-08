@@ -71,6 +71,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3341876388551123555, guid: aecd053d602d71a489fa931bb9c92896, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 311.1941
+      objectReference: {fileID: 0}
     - target: {fileID: 3636190369262651312, guid: aecd053d602d71a489fa931bb9c92896, type: 3}
       propertyPath: m_Name
       value: ShootingGame
@@ -158,6 +162,10 @@ PrefabInstance:
     - target: {fileID: 3636190369262651313, guid: aecd053d602d71a489fa931bb9c92896, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778349649981354083, guid: aecd053d602d71a489fa931bb9c92896, type: 3}
+      propertyPath: m_text
+      value: 'Targets Left : 0'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aecd053d602d71a489fa931bb9c92896, type: 3}
