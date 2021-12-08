@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     private int MaxPlayers;
     public int ActivePlayer = 0;
+    public int DeadPlayer = 0;
 
     public bool IsGamePlaying = false;
 
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     private GameObject BeginButton;
 
     private GameObject pausegGameObject;
-
+    public GameObject TrappersVictoryScreen;
 
     [Header("Spawn")]
     public Transform spawn;
@@ -128,6 +129,18 @@ public class GameManager : MonoBehaviour
         GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
 
-    
+    public void CheckRunnersDeath()
+    {
+        DeadPlayer++;
+        DeadPlayer++;
+        switch (DeadPlayer)
+        {
+            case 2:
+                TrappersVictoryScreen.SetActive(true);
+                GameObject.Find("TrapManager").SetActive(false);
+                Camera.main.GetComponent<TestCam>().enabled = false;
+                break;
+        }
+    }
 
 }
