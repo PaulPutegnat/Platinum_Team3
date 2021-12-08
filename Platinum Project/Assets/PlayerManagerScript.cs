@@ -57,4 +57,18 @@ public class PlayerManagerScript : MonoBehaviour
         }
 
     }
+
+    public void ResetPlayerArray()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (players[i])
+            {
+                players[i] = null;
+            }
+
+        }
+
+        RoundNumber = 1;
+    }
 }
