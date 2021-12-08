@@ -39,16 +39,20 @@ public class PlayerManagerScript : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-                players[i].GetComponent<neutralcontroller>().limit = 1;
-                if (i <= 1)
+                if (players[i])
                 {
-                    players[i].GetComponent<neutralcontroller>()._state = neutralcontroller.STATE.TRAPPER;
+                    players[i].GetComponent<neutralcontroller>().limit = 1;
+                    if (i <= 1)
+                    {
+                        players[i].GetComponent<neutralcontroller>()._state = neutralcontroller.STATE.TRAPPER;
+                    }
+                    else
+                    {
+                        players[i].GetComponent<neutralcontroller>()._state = neutralcontroller.STATE.RUNNER;
+                    }
+                    players[i].GetComponent<neutralcontroller>().InitPlayer();
                 }
-                else
-                {
-                    players[i].GetComponent<neutralcontroller>()._state = neutralcontroller.STATE.RUNNER;
-                }
-                players[i].GetComponent<neutralcontroller>().InitPlayer();
+
             }            
         }
 
