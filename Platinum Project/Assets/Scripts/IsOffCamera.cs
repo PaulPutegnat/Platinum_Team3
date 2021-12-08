@@ -18,11 +18,18 @@ public class IsOffCamera : MonoBehaviour
     private int times = 1;
     private void Update()
     {
+        Die();
+    }
+
+    void Die()
+    {
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Console.Clear();
+        Debug.Log(screenPosition);
         if ((screenPosition.x < widthThresold.x || screenPosition.x > widthThresold.y ||
-            screenPosition.y < heightThresold.x || screenPosition.y > heightThresold.y )&& times == 1)
+             screenPosition.y < heightThresold.x || screenPosition.y > heightThresold.y) && times == 1)
         {
-            ParticleCopy = Instantiate(Particles, transform.position,Quaternion.Euler(-90,0,0));
+            ParticleCopy = Instantiate(Particles, transform.position, Quaternion.Euler(-90, 0, 0));
             ParticleCopy.GetComponent<ParticleSystem>().Play();
             TrappersWin.SetActive(true);
             times--;
@@ -30,10 +37,10 @@ public class IsOffCamera : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = true;
             foreach (Transform childTransform in transform.GetChild(0))
             {
-                if(childTransform.GetComponent<SkinnedMeshRenderer>())
+                if (childTransform.GetComponent<SkinnedMeshRenderer>())
                     childTransform.GetComponent<SkinnedMeshRenderer>().enabled = false;
             }
-            Destroy(gameObject,4);
+            //Destroy(gameObject,4);
         }
     }
 
