@@ -162,10 +162,6 @@ public class MiniGameGenerator : MonoBehaviour
                 case MINIGAME.GUITAR_HERO_GAME:
                     miniGameObject = Instantiate(gameList[7], FindObjectOfType<Canvas>().transform);
                     break;
-
-                default:
-                    return;
-                    break;
             }
             IsInstantiate = true;
         }
