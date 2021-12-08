@@ -13,7 +13,7 @@ public class GameWheel : MiniGame
     private float angleOfOneGame;
     [HideInInspector]public int index;
 
-    private Transform canvas;
+    private Transform trapManager;
     private float currentTime;
 
     [SerializeField] private AnimationCurve curve;
@@ -30,7 +30,7 @@ public class GameWheel : MiniGame
         StartCoroutine(RotateWheel()); 
 
         angleOfOneGame = CIRCLE / nbOfGames;
-        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
+        trapManager = GameObject.FindGameObjectWithTag("TrapManager").transform;
     }
 
     IEnumerator RotateWheel()
@@ -46,7 +46,6 @@ public class GameWheel : MiniGame
 
         while (currentTime < timeRotate)
         {
-            yield return new WaitForEndOfFrame();
             currentTime += Time.deltaTime;
 
             float angleCurrent = angleWanted * curve.Evaluate(currentTime / timeRotate);
@@ -67,7 +66,7 @@ public class GameWheel : MiniGame
 
     public void InstantiateGame(int index)
     {
-        Instantiate(gameList[index], canvas);
+        Instantiate(gameList[index], trapManager);
         Destroy(this.transform.parent.gameObject);
     }
 }

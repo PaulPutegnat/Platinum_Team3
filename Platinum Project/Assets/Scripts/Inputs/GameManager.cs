@@ -35,8 +35,6 @@ public class GameManager : MonoBehaviour
     public GameObject pauseCanvas;
     public GameObject mainCanvas;
 
-    private GameObject RUNNERPANNEL;
-    private GameObject TRAPPERPANNEL;
     private GameObject BeginButton;
     private GameObject TrapContainer;
 
@@ -45,7 +43,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Spawn")]
     public Transform spawn;
-    private Transform canvas;
 
     public float TrapperNumber = 0;
     public float RunnererNumber = 0;
@@ -72,8 +69,6 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         Camera.main.GetComponent<TestCam>().enabled = false;
-        RUNNERPANNEL = GameObject.Find("RUNNER");
-        TRAPPERPANNEL = GameObject.Find("TRAPPER");
         BeginButton = GameObject.Find("BeginButton");
     }
 
@@ -128,7 +123,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnFortuneWheel()
     {
-        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("Canvas").transform);
+        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("TrapManager").transform);
     }
 
     public void CheckRunnersDeath()
