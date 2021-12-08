@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     private GameObject RUNNERPANNEL;
     private GameObject TRAPPERPANNEL;
     private GameObject BeginButton;
+    private GameObject TrapContainer;
 
     private GameObject pausegGameObject;
     public GameObject TrappersVictoryScreen;
@@ -64,6 +65,8 @@ public class GameManager : MonoBehaviour
         MaxPlayers = GetComponent<PlayerInputManager>().maxPlayerCount;
         playersRefs = new GameObject[MaxPlayers];
         pausegGameObject = pauseCanvas;
+        TrapContainer = GameObject.FindGameObjectWithTag("TrapContainer");
+        TrapContainer.SetActive(false);
     }
 
     public void Start()
@@ -93,13 +96,11 @@ public class GameManager : MonoBehaviour
     public void ButtonPressed()
     {
             Camera.main.GetComponent<TestCam>().enabled = true;
+            
             IsGamePlaying = true;
 
-            GameObject[] objetAEnlever = GameObject.FindGameObjectsWithTag("AEnlever");
-            for (int i = 0; i < objetAEnlever.Length; i++)
-            {
-                objetAEnlever[i].SetActive(false);
-            }
+            GameObject objetAEnlever = GameObject.FindGameObjectWithTag("AEnlever");
+            objetAEnlever.SetActive(false);
 
             for (int index = 0; index < MaxPlayers; index++)
             {
@@ -109,7 +110,8 @@ public class GameManager : MonoBehaviour
                 }
             }
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
-
+            TrapContainer.SetActive(true);
+            
             if (withWheel)
             {
                 SpawnFortuneWheel();

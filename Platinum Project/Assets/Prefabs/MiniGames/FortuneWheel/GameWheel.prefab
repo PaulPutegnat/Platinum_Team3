@@ -49,13 +49,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394315488cff8dd48a27530580f916fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnWheelAnimations:
-  - {fileID: 7400000, guid: 00971eaecf6eebf449b4ccecc994d0f0, type: 2}
-  - {fileID: 7400000, guid: 44b894911fca2074e9a77807fc8f7cb8, type: 2}
+  SpawnAnim:
   - {fileID: 7400000, guid: 7c0fc8dece932bc40884f9565011164a, type: 2}
+  - {fileID: 7400000, guid: 44b894911fca2074e9a77807fc8f7cb8, type: 2}
+  - {fileID: 7400000, guid: 00971eaecf6eebf449b4ccecc994d0f0, type: 2}
+  DespawnAnim:
+  - {fileID: 7400000, guid: a32d772f8aa409f47aae3bf60dc5fdb6, type: 2}
+  - {fileID: 7400000, guid: 1a65d4663402e4e4c807b978b4e82d54, type: 2}
   nbOfGames: 4
   timeRotate: 5
   nbCircleRotate: 4
+  index: 0
   curve:
     serializedVersion: 2
     m_Curve:

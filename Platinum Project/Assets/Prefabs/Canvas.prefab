@@ -855,10 +855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrapContainer
       objectReference: {fileID: 0}
-    - target: {fileID: 4377115861318015328, guid: 6244aa3959e60e347bc4a73f72217468, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 4377115861318015342, guid: 6244aa3959e60e347bc4a73f72217468, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 78af7f347461b964b95c6a827369b9b2, type: 3}
     - target: {fileID: 4377115861318015342, guid: 6244aa3959e60e347bc4a73f72217468, type: 3}
       propertyPath: m_Color.b
       value: 1

@@ -34,7 +34,7 @@ namespace Assets.Editor
             //AnimatorController animController = (AnimatorController)AssetDatabase.LoadAssetAtPath(AssetDatabase.GetAssetPath(MyAnimator.runtimeAnimatorController), typeof(AnimatorController));
             AnimatorController animController = myAnimator.runtimeAnimatorController as AnimatorController;
             List<AnimationClip> totalAnimClipList = new List<AnimationClip>();
-            for (int i = 0; i < animCount; i++)
+            for (int i = 0; i < spawnAnimList.Count; i++)
             {
                 totalAnimClipList.Add(spawnAnimList[i]);
             }

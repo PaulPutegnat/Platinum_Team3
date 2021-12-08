@@ -19,6 +19,7 @@ TagManager:
   - J2
   - J3
   - J4
+  - TrapContainer
   layers:
   - Default
   - TransparentFX

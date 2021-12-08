@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2386901536370315127}
-  - component: {fileID: 2386901536370315080}
+  - component: {fileID: 703383357034137941}
   m_Layer: 5
   m_Name: EffectWheel
   m_TagString: Untagged
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2386901536370315080
+--- !u!114 &703383357034137941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,17 +46,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2386901536370315126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 394315488cff8dd48a27530580f916fc, type: 3}
+  m_Script: {fileID: 11500000, guid: dfa4f4c9130ce4748a2d3b178e77745a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnWheelAnimations:
-  - {fileID: 7400000, guid: 00971eaecf6eebf449b4ccecc994d0f0, type: 2}
-  - {fileID: 7400000, guid: 44b894911fca2074e9a77807fc8f7cb8, type: 2}
-  - {fileID: 7400000, guid: 7c0fc8dece932bc40884f9565011164a, type: 2}
-  nbOfGames: 3
+  nbOfEffects: 2
   timeRotate: 3
   nbCircleRotate: 3
-  waitTimer: 0.4
   curve:
     serializedVersion: 2
     m_Curve:
@@ -90,9 +85,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  gameList: []
-  DevOneGame: 0
-  EffectWheel: 1
 --- !u!1 &2386901537917435088
 GameObject:
   m_ObjectHideFlags: 0
