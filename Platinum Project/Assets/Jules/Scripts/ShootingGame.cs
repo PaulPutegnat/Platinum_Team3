@@ -253,7 +253,6 @@ public class ShootingGame : MiniGame
         Vector3 pos = new Vector3(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.y / 2, size.y / 2), Random.Range(-10f, -20f));
         GameObject newTarget = Instantiate(_targetPrefab, _targetList);
         newTarget.transform.localPosition = pos;
-        newTarget.transform.localScale = new Vector3(.3f, .3f, .3f);
         nextSpawnTime = Time.time + intervalSpawnTime;
     }
 
