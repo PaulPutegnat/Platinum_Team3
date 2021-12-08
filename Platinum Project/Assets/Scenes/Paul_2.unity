@@ -25656,6 +25656,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1171383742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1829849629390475107, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+  m_PrefabInstance: {fileID: 2019396902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1174823695
 GameObject:
   m_ObjectHideFlags: 0
@@ -35003,6 +35008,7 @@ RectTransform:
   - {fileID: 1817888624}
   - {fileID: 100886808}
   - {fileID: 1673803517}
+  - {fileID: 2019396903}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38775,6 +38781,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7708523544308572348, guid: 9e17a8fdbfd724e4d8b9fa8c6ca37d84, type: 3}
   m_PrefabInstance: {fileID: 2015431358}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2019396902
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1672689374}
+    m_Modifications:
+    - target: {fileID: 1829849629390475107, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_Name
+      value: RunnersVictoryScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475107, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829849630095890549, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+      propertyPath: m_text
+      value: Runners won!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+--- !u!4 &2019396903 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1829849629390475108, guid: 2dfefbca668d4784bbca5dcdd639fc0b, type: 3}
+  m_PrefabInstance: {fileID: 2019396902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2025744018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40877,6 +40953,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4be318899c01c2498947e9c7ff3a683, type: 3}
+--- !u!1001 &8427637448713949606
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833554, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427637449039833556, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: RunnersVictoryScreen
+      value: 
+      objectReference: {fileID: 1171383742}
+    - target: {fileID: 8427637449039833559, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
+      propertyPath: m_Name
+      value: RunnersVictoryBox
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fa794c4fc95c8ac4e8a87dc96fe928f7, type: 3}
 --- !u!1001 &9140659713446226372
 PrefabInstance:
   m_ObjectHideFlags: 0
