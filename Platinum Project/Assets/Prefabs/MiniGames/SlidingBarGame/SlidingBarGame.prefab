@@ -807,8 +807,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 681f67eca3964a741a02681689d385e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnWheelAnimations:
+  SpawnAnim:
   - {fileID: 7400000, guid: 5ea78373bfdd84543b20abf8573784e3, type: 2}
+  DespawnAnim: []
   handleP1: {fileID: 8769018616339458052}
   handleP2: {fileID: 8769018616593590408}
   intervalP1: {fileID: 8769018615756507813}
@@ -817,7 +818,7 @@ MonoBehaviour:
   speed: 0.6
   minIntervalSize: 50
   maxIntervalSize: 100
-  IsDoubleInterval: 1
+  IsDoubleInterval: 0
 --- !u!1 &8769018617800033482
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,6 @@ public class Target : MonoBehaviour
     {
         xtargetScale = GetComponent<RectTransform>().localScale.x;
         targetScale = GetComponent<RectTransform>().localScale;
-        Debug.Log(targetScale);
         StartCoroutine(Shrinking());
     }
 

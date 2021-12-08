@@ -9,7 +9,6 @@ using UnityEngine;
 //Change serializable class visual
 public class PointInfoEditor : PropertyDrawer
 {
-    private int index = 0;
     //Display PointInfo in Editor
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     private int MaxPlayers;
     public int ActivePlayer = 0;
+    public int DeadPlayer = 0;
 
     public bool IsGamePlaying = false;
 
@@ -34,16 +35,14 @@ public class GameManager : MonoBehaviour
     public GameObject pauseCanvas;
     public GameObject mainCanvas;
 
-    private GameObject RUNNERPANNEL;
-    private GameObject TRAPPERPANNEL;
     private GameObject BeginButton;
+    private GameObject TrapContainer;
 
     private GameObject pausegGameObject;
-
+    public GameObject TrappersVictoryScreen;
 
     [Header("Spawn")]
     public Transform spawn;
-    private Transform canvas;
 
     public float TrapperNumber = 0;
     public float RunnererNumber = 0;
@@ -63,13 +62,13 @@ public class GameManager : MonoBehaviour
         MaxPlayers = GetComponent<PlayerInputManager>().maxPlayerCount;
         playersRefs = new GameObject[MaxPlayers];
         pausegGameObject = pauseCanvas;
+        TrapContainer = GameObject.FindGameObjectWithTag("TrapContainer");
+        TrapContainer.SetActive(false);
     }
 
     public void Start()
     {
         Camera.main.GetComponent<TestCam>().enabled = false;
-        RUNNERPANNEL = GameObject.Find("RUNNER");
-        TRAPPERPANNEL = GameObject.Find("TRAPPER");
         BeginButton = GameObject.Find("BeginButton");
     }
 
@@ -92,13 +91,11 @@ public class GameManager : MonoBehaviour
     public void ButtonPressed()
     {
             Camera.main.GetComponent<TestCam>().enabled = true;
+            
             IsGamePlaying = true;
 
-            GameObject[] objetAEnlever = GameObject.FindGameObjectsWithTag("AEnlever");
-            for (int i = 0; i < objetAEnlever.Length; i++)
-            {
-                objetAEnlever[i].SetActive(false);
-            }
+            GameObject objetAEnlever = GameObject.FindGameObjectWithTag("AEnlever");
+            objetAEnlever.SetActive(false);
 
             for (int index = 0; index < MaxPlayers; index++)
             {
@@ -108,7 +105,8 @@ public class GameManager : MonoBehaviour
                 }
             }
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
-
+            TrapContainer.SetActive(true);
+            
             if (withWheel)
             {
                 SpawnFortuneWheel();
@@ -125,9 +123,21 @@ public class GameManager : MonoBehaviour
 
     public void SpawnFortuneWheel()
     {
-        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("Canvas").transform);
+        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("TrapManager").transform);
     }
 
-    
+    public void CheckRunnersDeath()
+    {
+        DeadPlayer++;
+        DeadPlayer++;
+        switch (DeadPlayer)
+        {
+            case 2:
+                TrappersVictoryScreen.SetActive(true);
+                GameObject.Find("TrapManager").SetActive(false);
+                Camera.main.GetComponent<TestCam>().enabled = false;
+                break;
+        }
+    }
 
 }

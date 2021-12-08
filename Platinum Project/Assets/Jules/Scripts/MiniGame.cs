@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEngine;
 
 
@@ -22,5 +23,13 @@ public class MiniGame : MonoBehaviour
         int RandomIndex = Random.Range(0, DespawnAnim.Count);
         fwAnimation.Play(DespawnAnim[RandomIndex].name);
         yield return new WaitForSeconds(DespawnAnim[RandomIndex].length);
+    }
+
+    public IEnumerator SpawnEffect(GameObject prefab, GameObject target, Vector2 offset)
+    {
+        GameObject instGameObject = Instantiate(prefab, (Vector2)target.transform.localPosition + offset, Quaternion.identity, this.transform);
+        Animator instAnimator = instGameObject.GetComponent<Animator>();
+        yield return new WaitForSeconds(instAnimator.GetCurrentAnimatorClipInfo(0).Length);
+        Destroy(instGameObject);
     }
 }
