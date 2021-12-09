@@ -36,24 +36,28 @@ public class neutralcontroller : MonoBehaviour
     private void Awake()
     {
         //Debug.Log(GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount);
-        
     }
 
     private void Start()
     {
+        
         transform.SetParent(GameObject.Find("Canvas").transform);
         thisRT = GetComponent<RectTransform>();
         thisRT.localScale = Vector3.one;
         thisRT.localPosition = new Vector3(0, 300, 0);
         thisRT.localRotation = Quaternion.identity;
-        R1 = GameObject.FindGameObjectWithTag("R1").transform;
-        R2 = GameObject.FindGameObjectWithTag("R2").transform;
-        T1 = GameObject.FindGameObjectWithTag("T1").transform;
-        T2 = GameObject.FindGameObjectWithTag("T2").transform;
-        J1 = GameObject.FindGameObjectWithTag("J1").transform;
-        J2 = GameObject.FindGameObjectWithTag("J2").transform;
-        J3 = GameObject.FindGameObjectWithTag("J3").transform;
-        J4 = GameObject.FindGameObjectWithTag("J4").transform;
+        if (GameObject.FindGameObjectWithTag("AEnlever") != null)
+        {
+            R1 = GameObject.FindGameObjectWithTag("R1").transform;
+            R2 = GameObject.FindGameObjectWithTag("R2").transform;
+            T1 = GameObject.FindGameObjectWithTag("T1").transform;
+            T2 = GameObject.FindGameObjectWithTag("T2").transform;
+            J1 = GameObject.FindGameObjectWithTag("J1").transform;
+            J2 = GameObject.FindGameObjectWithTag("J2").transform;
+            J3 = GameObject.FindGameObjectWithTag("J3").transform;
+            J4 = GameObject.FindGameObjectWithTag("J4").transform;
+        }
+
         TextMeshProUGUI playerText = GetComponent<TextMeshProUGUI>();
         switch (GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount)
         {
@@ -262,7 +266,8 @@ public class neutralcontroller : MonoBehaviour
                     Debug.LogError("ERREUR");
                     break;
             }
-        
+            DontDestroyOnLoad(gameObject);
+
 
     }
 
