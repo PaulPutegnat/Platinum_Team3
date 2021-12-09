@@ -27,8 +27,9 @@ public class MiniGame : MonoBehaviour
 
     public IEnumerator SpawnEffect(GameObject prefab, GameObject target, Vector2 offset)
     {
-        GameObject instGameObject = Instantiate(prefab, (Vector2)target.transform.localPosition + offset, Quaternion.identity, this.transform);
-        Animator instAnimator = instGameObject.GetComponent<Animator>();
+        Vector3 targetPos = target.transform.position;
+        GameObject instGameObject = Instantiate(prefab, (Vector2)targetPos + offset, Quaternion.identity, this.transform);
+        Animator instAnimator = instGameObject.GetComponentInChildren<Animator>();
         yield return new WaitForSeconds(instAnimator.GetCurrentAnimatorClipInfo(0).Length);
         Destroy(instGameObject);
     }
