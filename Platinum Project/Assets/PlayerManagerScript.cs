@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManagerScript : MonoBehaviour
 {
@@ -24,6 +26,18 @@ public class PlayerManagerScript : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             players = new GameObject[4];
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetRound();
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            StartCoroutine(NextRound());
+        }
     }
 
     public void InitPlayerGame()
@@ -63,17 +77,39 @@ public class PlayerManagerScript : MonoBehaviour
 
     }
 
-    public void ResetPlayerArray()
+    public void ResetRound()
     {
         for (int i = 0; i < 4; i++)
         {
             if (players[i])
             {
-                players[i] = null;
+                Destroy(players[i]);
             }
 
+            
         }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        RoundNumber=1;
+    }
 
-        RoundNumber = 1;
+    IEnumerator NextRound()
+    {
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+        asyncLoad.allowSceneActivation = false;
+        yield return (asyncLoad.progress > 0.9f);
+        StartCoroutine(loaded(asyncLoad));
+
+
+
+    }
+    IEnumerator loaded(AsyncOperation sync)
+    {
+        sync.allowSceneActivation = true;
+        yield return new WaitForSeconds(0.1f);
+        
+        GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
+        RoundNumber++;
+        InitPlayerGame();
     }
 }
