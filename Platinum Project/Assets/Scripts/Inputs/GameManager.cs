@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour
     [Header("Prefab")]
     public TESTCONTROLER Runner;
     public TrapController Trapper;
-    [HideInInspector]
-    public GameObject[] players;
 
     [HideInInspector]
     public GameObject[] playersRefs;
@@ -90,24 +88,26 @@ public class GameManager : MonoBehaviour
 
     public void ButtonPressed()
     {
-            Camera.main.GetComponent<TestCam>().enabled = true;
+        PlayerManagerScript.Instance.InitPlayerGame();
+        Camera.main.GetComponent<TestCam>().enabled = true;
             
             IsGamePlaying = true;
 
-            GameObject objetAEnlever = GameObject.FindGameObjectWithTag("AEnlever");
-            objetAEnlever.SetActive(false);
+            /*GameObject objetAEnlever = */GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
+            //objetAEnlever.SetActive(false);
+            
 
-            for (int index = 0; index < MaxPlayers; index++)
+            /*for (int index = 0; index < MaxPlayers; index++)
             {
                 if (playersRefs[index])
                 {
                     playersRefs[index].SetActive(true);
                 }
-            }
+            }*/
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
             TrapContainer.SetActive(true);
             
-            if (withWheel)
+        if (withWheel)
             {
                 SpawnFortuneWheel();
             }
@@ -128,7 +128,6 @@ public class GameManager : MonoBehaviour
 
     public void CheckRunnersDeath()
     {
-        DeadPlayer++;
         DeadPlayer++;
         switch (DeadPlayer)
         {
