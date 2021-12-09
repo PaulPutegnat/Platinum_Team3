@@ -34,17 +34,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a144b4e8918ea4449eabef033553473, type: 3}
   m_Name: Atmospheric Fog
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
-    color: {r: 0.5019608, g: 0.8078432, b: 0.91372555, a: 1}
-    sunColor: {r: 0.8773585, g: 0.8098478, b: 0.6911268, a: 1}
+    color: {r: 0.5566038, g: 0.54810274, b: 0.53822535, a: 1}
+    sunColor: {r: 0.3726415, g: 0.8797922, b: 1, a: 1}
     fogDensity: 0.01
-    fogDensityPower: 10
-    skyAlpha: 0.721
+    fogDensityPower: 9.7
+    skyAlpha: 0.59
     useHeightFog: 1
     fogHeightStart: -80.6
     fogHeightEnd: 1988.8
-    fogHeightPower: 2.7
+    fogHeightPower: 0.4
     extraFogHeightEnd: 60.2
     extraFogHeightPower: 1
     directionalIntesity: 1

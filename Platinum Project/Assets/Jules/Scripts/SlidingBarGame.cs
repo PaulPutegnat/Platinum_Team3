@@ -73,7 +73,7 @@ public class SlidingBarGame : MiniGame
         posPercentP1 = Random.Range(-1, 1.1f);
         handleP1.transform.localPosition = new Vector3(posPercentP1 * 600, 0f, 0f);
 
-        if (GameManager.Instance.players[3] != null)
+        if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] != null)
         {
             intervalP2.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP2.transform.localPosition.y);
             intervalP2.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 100f);
@@ -84,7 +84,7 @@ public class SlidingBarGame : MiniGame
 
         yield return StartCoroutine(SpawnAnimation());
 
-        if (GameManager.Instance.players[3] != null)
+        if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] != null)
         {
             handleP2.SetActive(true);
             isTwoPlayer = true;

@@ -200,23 +200,23 @@ public class neutralcontroller : MonoBehaviour
             switch (_state)
             {
                 case STATE.RUNNER:
-                    if (PlayerManagerScript.Instance.players[0] == null)
+                    if (PlayerManagerScript.Instance.players[PlayerManagerScript.RUNNER1] == null)
                     {
-                        PlayerManagerScript.Instance.players[0] = gameObject;
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.RUNNER1] = gameObject;
                     }
                     else
                     {
-                        PlayerManagerScript.Instance.players[1] = gameObject;
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.RUNNER2] = gameObject;
                     }
                     break;
                 case STATE.TRAPPER:
-                    if (PlayerManagerScript.Instance.players[2] == null)
+                    if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER1] == null)
                     {
-                        PlayerManagerScript.Instance.players[2] = gameObject;
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER1] = gameObject;
                     }
                     else
                     {
-                        PlayerManagerScript.Instance.players[3] = gameObject;
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] = gameObject;
                     }
                     break;
             }
@@ -242,21 +242,6 @@ public class neutralcontroller : MonoBehaviour
                     /*transform.localScale = new Vector3(1, 1, 1);
                     transform.position = Vector3.zero;*/
                     runnerRef = Instantiate(GameManager.Instance.Runner.gameObject, GameManager.Instance.spawn.position, Quaternion.identity);
-                    if (GameManager.Instance.players[0] == null)
-                    {
-
-                        GameManager.Instance.playersRefs[0] = runnerRef;
-
-                    }
-                    else if(GameManager.Instance.players[1] == null)
-                    {
-                        
-                        GameManager.Instance.playersRefs[1] = runnerRef;
-                    }
-                    else
-                    {
-                        Debug.LogError("IL Y A DEJA 2 RUNNERS");
-                    }
                     GetComponent<PlayerInput>().SwitchCurrentActionMap("Player");
                     InitRunner();
 
@@ -269,20 +254,6 @@ public class neutralcontroller : MonoBehaviour
                     /*transform.localScale = new Vector3(1, 1, 1);
                     transform.position = Vector3.zero;*/
                     TrapperRef = Instantiate(GameManager.Instance.Trapper.gameObject, new Vector3(0, 0, 0), Quaternion.identity);
-                    if (GameManager.Instance.players[2] == null)
-                    {
-                        GameManager.Instance.playersRefs[2] = TrapperRef;
-                        TrapperRef.GetComponent<TrapController>().initTrapper(2);
-                    }
-                    else if(GameManager.Instance.players[3] == null)
-                    {
-                        GameManager.Instance.playersRefs[3] = TrapperRef;
-                        TrapperRef.GetComponent<TrapController>().initTrapper(3);
-                    }
-                    else
-                    {
-                        Debug.LogError("IL Y A DEJA 2 TRAPPERS");
-                    }
                     GetComponent<PlayerInput>().SwitchCurrentActionMap("Trapper");
                     InitTrapper();
                     break;
