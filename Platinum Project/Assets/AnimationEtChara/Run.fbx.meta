@@ -59,14 +59,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.4227053
+      - time: 0.35080117
         functionName: PlayWalkSoundRef
         data: 
         objectReferenceParameter: {fileID: 4544293951017371564, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.8614752
+      - time: 0.80421823
         functionName: PlayWalkSoundRef
         data: 
         objectReferenceParameter: {fileID: 4544293951017371564, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
