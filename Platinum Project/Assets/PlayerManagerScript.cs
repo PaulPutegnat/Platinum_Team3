@@ -56,6 +56,7 @@ public class PlayerManagerScript : MonoBehaviour
         }
         else
         {
+            ReversePlayerArray();
             for (int i = 0; i < 4; i++)
             {
                 if (players[i])
@@ -111,5 +112,38 @@ public class PlayerManagerScript : MonoBehaviour
         GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
         RoundNumber++;
         InitPlayerGame();
+    }
+
+    void ReversePlayerArray()
+    {
+        GameObject[] temp = players;
+        players = new GameObject[4];
+        for (int i = 0; i < 4; i++)
+        {
+            if (temp[i])
+            {
+                switch (i)
+                {
+                    case 0:
+                        players[TRAPPER1] = temp[0];
+                        players[TRAPPER1].GetComponent<neutralcontroller>()._state = neutralcontroller.STATE.TRAPPER;
+                        break;
+                    case 1:
+                        players[TRAPPER2] = temp[1];
+                        players[TRAPPER2].GetComponent<neutralcontroller>()._state = neutralcontroller.STATE.TRAPPER;
+                        break;
+                    case 2:
+                        players[RUNNER1] = temp[2];
+                        players[RUNNER1].GetComponent<neutralcontroller>()._state = neutralcontroller.STATE.RUNNER;
+                        break;
+                    case 3:
+                        players[RUNNER2] = temp[3];
+                        players[RUNNER2].GetComponent<neutralcontroller>()._state = neutralcontroller.STATE.RUNNER;
+                        break;
+                }
+            }
+
+
+        }
     }
 }
