@@ -20,6 +20,7 @@ TagManager:
   - J3
   - J4
   - TrapContainer
+  - Liane
   layers:
   - Default
   - TransparentFX
@@ -35,7 +36,7 @@ TagManager:
   - Frontground
   - Grass
   - FG_Leaves
-  - 
+  - Liane
   - 
   - 
   - 
