@@ -93,22 +93,20 @@ public class ShootingGame : MiniGame
 
         if (IsP1Shooting)
         {
-            Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().position;
+            RectTransform sightPos = _aimSightP1.GetComponent<RectTransform>();
             //Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().GetWorldCorners();
 
-
-            foreach (var target in InstTargets)
+            for (int i = InstTargets.Count - 1; i >= 0; i--)
             {
-
-                float diffMag = (sightPos - target.transform.position).magnitude;
+                GameObject target = InstTargets[i];
+                float diffMag = (sightPos.position - target.transform.position).magnitude;
                 if (diffMag < hitRange)
                 {
-
                     _ObjectivesPoints--;
                     Vector2 offset = new Vector2(1f, 1f);
                     StartCoroutine(SpawnEffect(_pointPrefab, target, offset));
+                    InstTargets.Remove(target);
                     Destroy(target.gameObject);
-
                 }
             }
 
@@ -116,20 +114,18 @@ public class ShootingGame : MiniGame
 
         if (IsP2Shooting)
         {
-            Vector3 sightPos = _aimSightP2.GetComponent<RectTransform>().position;
+            RectTransform sightPos = _aimSightP2.GetComponent<RectTransform>();
 
             foreach (var target in InstTargets)
             {
-
-                float diffMag = (sightPos - target.transform.position).magnitude;
+                float diffMag = (sightPos.position - target.transform.position).magnitude;
                 if (diffMag < hitRange)
                 {
-
                     _ObjectivesPoints--;
                     Vector2 offset = new Vector2(1f, 1f);
                     StartCoroutine(SpawnEffect(_pointPrefab, target, offset));
+                    InstTargets.Remove(target);
                     Destroy(target.gameObject);
-
                 }
             }
         }
