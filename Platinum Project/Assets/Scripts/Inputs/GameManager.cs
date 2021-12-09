@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void ButtonPressed()
     {
+        Debug.Log("debut");
         PlayerManagerScript.Instance.InitPlayerGame();
         Camera.main.GetComponent<TestCam>().enabled = true;
             
