@@ -60872,7 +60872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4592396683936353887, guid: 4f8b6c68376d3744a9b1aad1490ff859, type: 3}
       propertyPath: trapNum
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4592396683936353887, guid: 4f8b6c68376d3744a9b1aad1490ff859, type: 3}
       propertyPath: BrokenScreen
