@@ -65,11 +65,11 @@ MonoBehaviour:
   _targetList: {fileID: 3636190369601158993}
   _pointPrefab: {fileID: 733869603254909710, guid: f83fa2506983eeb4c91088ea37bd17a1, type: 3}
   _aimSpeed: 600
-  _nbTarget: 15
+  _nbTarget: 12
   hitRange: 30
-  _ObjectivesPoints: 10
+  _ObjectivesPoints: 8
   _pointText: {fileID: 4778349649981354083}
-  gameDuration: 20
+  gameDuration: 10
   timerText: {fileID: 1514497717663599360}
 --- !u!1 &3636190369601158992
 GameObject:

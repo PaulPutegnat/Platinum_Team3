@@ -814,11 +814,10 @@ MonoBehaviour:
   handleP2: {fileID: 8769018616593590408}
   intervalP1: {fileID: 8769018615756507813}
   intervalP2: {fileID: 8769018617800033482}
-  isDoubleInterval: 0
+  IsDoubleIntervalEnum: 1
   speed: 0.6
-  minIntervalSize: 50
-  maxIntervalSize: 100
-  IsDoubleInterval: 0
+  minIntervalSize: 100
+  maxIntervalSize: 140
 --- !u!1 &8769018617800033482
 GameObject:
   m_ObjectHideFlags: 0
