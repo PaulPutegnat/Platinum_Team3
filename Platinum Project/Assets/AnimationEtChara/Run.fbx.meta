@@ -69,7 +69,7 @@ ModelImporter:
       - time: 0.38445437
         functionName: PlayWalkSound
         data: 
-        objectReferenceParameter: {fileID: 5391293436552700967, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: 87506a26b685b52478b1f630e79bc7ef, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
