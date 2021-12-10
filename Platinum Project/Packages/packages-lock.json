@@ -8,11 +8,10 @@
       "url": "https://packages.unity.com"
     },
     "com.coffee.ui-particle": {
-      "version": "https://github.com/mob-sakai/ParticleEffectForUGUI.git",
+      "version": "file:D:/ParticleEffectForUGUI",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "2e4d80bc1cbbfe5400fb052778c65bcccc505abd"
+      "source": "local",
+      "dependencies": {}
     },
     "com.unity.cinemachine": {
       "version": "2.6.10",
