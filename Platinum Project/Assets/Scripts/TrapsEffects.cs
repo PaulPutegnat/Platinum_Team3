@@ -7,7 +7,7 @@ public class TrapsEffects : MonoBehaviour
 {
     public static TrapsEffects instanceTrapsEffects;
     public Image BrokenScreen;
-    public int trapNum;
+    [HideInInspector] public int trapNum;
 
     [Range(0f, 10f)] public float BrokenScreenDuration = 3;
     [Range(0f, 10f)] public float BrokenScreenFadeInSpeed = 4;
@@ -17,7 +17,7 @@ public class TrapsEffects : MonoBehaviour
     [Range(0f, 5f)] public float shakeTrapDuration = 1.5f;
     [Range(0f, 3f)] public float shakeTrapMagnitude = 0.4f;
 
-    private TestCam _testcam;
+    public TestCam _testcam;
 
     private void Awake()
     {
