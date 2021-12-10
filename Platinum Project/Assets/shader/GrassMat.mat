@@ -25,7 +25,7 @@ Material:
     - _BladeForward: 0.38
     - _GrassHeight: 0.75
     - _GrassWidth: 0.09
-    - _MaxDist: 60
+    - _MaxDist: 100
     - _MinDist: 40
     - _Rad: 1
     - _Radius: 0.3
