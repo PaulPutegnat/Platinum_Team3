@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnFortuneWheel()
     {
-        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("TrapManager").transform);
+        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("GameContainer").transform);
     }
 
     public void CheckRunnersDeath()

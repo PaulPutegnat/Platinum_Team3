@@ -10,7 +10,6 @@ TagManager:
   - Canvas
   - PortalUI
   - PauseCanvas
-  - TrapManager
   - R1
   - R2
   - T1
@@ -21,6 +20,7 @@ TagManager:
   - J4
   - TrapContainer
   - Liane
+  - GameContainer
   layers:
   - Default
   - TransparentFX
