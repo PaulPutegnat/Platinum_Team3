@@ -132,13 +132,13 @@ MonoBehaviour:
   - {fileID: 7400000, guid: d7828bba0f0367044a02558ec171d191, type: 2}
   - {fileID: 7400000, guid: a4477623c5cc64f4db821e96e628e803, type: 2}
   - {fileID: 7400000, guid: bfb1efbe159560149818acf3b59d7837, type: 2}
-  DespawnAnim: []
+  DespawnAnim:
+  - {fileID: 7400000, guid: 73133102f1a48c8448ed9beb328c4ef8, type: 2}
   spamSlider: {fileID: 836991249266025417}
   timeSlider: {fileID: 836991249546233100}
   timerFillArea: {fileID: 836991249524321651}
   P1Hammer: {fileID: 836991249834702865}
   P2Hammer: {fileID: 836991250111835694}
-  button: {fileID: 882830798701891136}
   gameDuration: 10
   intervalTime: 5
   timerText: {fileID: 836991248779785573}
