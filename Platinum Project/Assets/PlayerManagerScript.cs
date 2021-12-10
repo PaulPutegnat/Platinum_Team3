@@ -16,7 +16,7 @@ public class PlayerManagerScript : MonoBehaviour
     public const int TRAPPER1 = 2;
     public const int TRAPPER2 = 3;
 
-    public int RoundNumber = 1;
+    public int RoundNumber = 5;
     // Start is called before the first frame update
     void Awake()
     {
@@ -46,7 +46,6 @@ public class PlayerManagerScript : MonoBehaviour
     public void InitPlayerGame()
     {
         
-       
             for(int i = 0; i<4; i++)
             {
                 if (players[i])
@@ -55,7 +54,7 @@ public class PlayerManagerScript : MonoBehaviour
                 }
 
             }
-        
+            
         
 
     }
@@ -77,14 +76,18 @@ public class PlayerManagerScript : MonoBehaviour
 
     IEnumerator NextRound()
     {
-        RoundNumber++;
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-        asyncLoad.allowSceneActivation = false;
-        yield return (asyncLoad.progress > 0.9f);
-        StartCoroutine(loaded(asyncLoad));
-
-
-
+        if (RoundNumber > 0)
+        {
+            RoundNumber--;
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+            asyncLoad.allowSceneActivation = false;
+            yield return (asyncLoad.progress > 0.9f);
+            StartCoroutine(loaded(asyncLoad));
+        }
+        else
+        {
+            //FIN DU JEU
+        }
     }
     IEnumerator loaded(AsyncOperation sync)
     {
