@@ -66,6 +66,7 @@ public class TrapsEffects : MonoBehaviour
 
     public IEnumerator BrokenScreenTrap(float semiWinSplitRef)
     {
+        Debug.Log("BrokenScreenTrap");
         Color objectColor = BrokenScreen.color;
         float fadeAmount = objectColor.a;
 
@@ -92,6 +93,7 @@ public class TrapsEffects : MonoBehaviour
 
     public IEnumerator CameraShakeTrap(float duration, float magnitude)
     {
+        Debug.Log("CameraShakeTrap");
         Vector3 originalPos = Camera.main.transform.localPosition;
 
         float elapsed = 0.0f;

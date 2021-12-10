@@ -24,10 +24,7 @@ public class EffectWheel : MonoBehaviour
         else
         {
             indexRandom = Random.Range(0, nbOfEffects);
-        }
-
-        if (fwScript.index != 1)
-        {
+            Debug.Log("index trap effect : " + indexRandom);
             TrapsEffects.instanceTrapsEffects.trapNum = indexRandom;
         }
     }
