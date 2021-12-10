@@ -13,7 +13,7 @@ public class GameWheel : MiniGame
     private float angleOfOneGame;
     [HideInInspector]public int index;
 
-    private Transform trapManager;
+    private Transform gameContainer;
     private float currentTime;
 
     [SerializeField] private AnimationCurve curve;
@@ -30,7 +30,7 @@ public class GameWheel : MiniGame
         StartCoroutine(RotateWheel()); 
 
         angleOfOneGame = CIRCLE / nbOfGames;
-        trapManager = GameObject.FindGameObjectWithTag("TrapManager").transform;
+        gameContainer = GameObject.FindGameObjectWithTag("GameContainer").transform;
     }
 
     IEnumerator RotateWheel()
@@ -42,7 +42,7 @@ public class GameWheel : MiniGame
         Debug.Log(indexRandom);
         index = indexRandom;
 
-        float angleWanted = (nbCircleRotate * CIRCLE) + angleOfOneGame * indexRandom - startAngle;
+        float angleWanted = (nbCircleRotate * CIRCLE) + angleOfOneGame * indexRandom;
 
         while (currentTime < timeRotate)
         {
@@ -50,7 +50,7 @@ public class GameWheel : MiniGame
             currentTime += Time.deltaTime;
 
             float angleCurrent = angleWanted * curve.Evaluate(currentTime / timeRotate);
-            transform.localEulerAngles = new Vector3(0, 0, angleCurrent + startAngle - angleOfOneGame);
+            transform.localEulerAngles = new Vector3(0, 0, angleCurrent + startAngle - (angleOfOneGame * indexRandom));
         }
 
         yield return DespawnAnimation();
@@ -67,7 +67,7 @@ public class GameWheel : MiniGame
 
     public void InstantiateGame(int index)
     {
-        Instantiate(gameList[index], trapManager);
+        Instantiate(gameList[index], gameContainer);
         Destroy(this.transform.parent.gameObject);
     }
 }

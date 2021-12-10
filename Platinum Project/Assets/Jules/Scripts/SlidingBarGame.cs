@@ -170,6 +170,18 @@ public class SlidingBarGame : MiniGame
                 }
             }
         }
+        else
+        {
+            if (isP1Playing)
+            {
+                if (isP1Win)
+                {
+                    TrapsEffects.instanceTrapsEffects.TrapSelector(1);
+                    GameManager.Instance.SpawnFortuneWheel();
+                    Destroy(this.transform.parent.gameObject);
+                }
+            }
+        }
     }
 
     public void StartSlidingBarGame(bool state)
