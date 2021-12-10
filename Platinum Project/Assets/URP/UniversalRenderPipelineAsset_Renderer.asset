@@ -37,7 +37,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     color: {r: 0.5566038, g: 0.54810274, b: 0.53822535, a: 1}
-    sunColor: {r: 0, g: 0.4361693, b: 0.6226415, a: 1}
+    sunColor: {r: 0.30936277, g: 0.7242836, b: 0.8301887, a: 1}
     fogDensity: 0.01
     fogDensityPower: 9.7
     skyAlpha: 0.59
