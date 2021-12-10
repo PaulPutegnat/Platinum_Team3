@@ -696,7 +696,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Runners won!
+  m_text: Trappers won!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 471261aa0fb86714e8771da0a28bf6a4, type: 2}
   m_sharedMaterial: {fileID: -4892706220419067213, guid: 471261aa0fb86714e8771da0a28bf6a4, type: 2}

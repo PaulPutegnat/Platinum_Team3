@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseCanvas;
     public GameObject mainCanvas;
 
-    private GameObject BeginButton;
+    [HideInInspector]public GameObject BeginButton;
     private GameObject TrapContainer;
 
     private GameObject pausegGameObject;
@@ -67,9 +67,14 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         Camera.main.GetComponent<TestCam>().enabled = false;
-        BeginButton = GameObject.Find("BeginButton");
+        TryGetButton();
     }
 
+    public void TryGetButton()
+    {
+        if(GameObject.Find("BeginButton")!= null)
+            BeginButton = GameObject.Find("BeginButton");
+    }
     public void checkUI()
     {
         
@@ -80,7 +85,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            BeginButton.GetComponent<Button>().interactable = false;
+            if(BeginButton != null)
+                BeginButton.GetComponent<Button>().interactable = false;
+
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(null);
         }
 
@@ -88,6 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void ButtonPressed()
     {
+        Debug.Log("debut");
         PlayerManagerScript.Instance.InitPlayerGame();
         Camera.main.GetComponent<TestCam>().enabled = true;
             
