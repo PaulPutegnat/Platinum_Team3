@@ -21,7 +21,10 @@ public class PlayerManagerScript : MonoBehaviour
     void Awake()
     {
         if (Instance != null && Instance != this)
+        {
             Destroy(gameObject);
+            return;
+        }
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -108,10 +111,8 @@ public class PlayerManagerScript : MonoBehaviour
     {
         sync.allowSceneActivation = true;
         yield return new WaitForSeconds(0.1f);
-        
-        GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
         RoundNumber++;
-        InitPlayerGame();
+        GameManager.Instance.ButtonPressed();
     }
 
     void ReversePlayerArray()

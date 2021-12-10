@@ -59,24 +59,17 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.384087
-        functionName: PlayWalkSound
+      - time: 0.35080117
+        functionName: PlayWalkSoundRef
         data: 
-        objectReferenceParameter: {fileID: 5391293436552700967, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
+        objectReferenceParameter: {fileID: 4544293951017371564, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.38445437
-        functionName: PlayWalkSound
+      - time: 0.80421823
+        functionName: PlayWalkSoundRef
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 87506a26b685b52478b1f630e79bc7ef, type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.8584097
-        functionName: PlayWalkSound
-        data: 
-        objectReferenceParameter: {fileID: 5391293436552700967, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
+        objectReferenceParameter: {fileID: 4544293951017371564, guid: f77d16b4677fe1c41a8328e27cdce3fd, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
