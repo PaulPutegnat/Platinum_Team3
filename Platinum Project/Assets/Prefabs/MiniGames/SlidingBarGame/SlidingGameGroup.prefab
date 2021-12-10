@@ -135,6 +135,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8769018617266322657, guid: de0cf1a8a6383994f8aa1cae0ce3a221, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 99.9999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769018617266322657, guid: de0cf1a8a6383994f8aa1cae0ce3a221, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1282.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769018617266322670, guid: de0cf1a8a6383994f8aa1cae0ce3a221, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc801bc982bf9144d9ae8e7e95fd85b6, type: 3}
     - target: {fileID: 8769018617797269324, guid: de0cf1a8a6383994f8aa1cae0ce3a221, type: 3}
       propertyPath: m_Name
       value: SlidingBarGame
