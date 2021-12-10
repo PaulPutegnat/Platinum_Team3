@@ -39,7 +39,7 @@ public class GameWheel : MiniGame
         currentTime = 0;
 
         int indexRandom = Random.Range(0, nbOfGames);
-        Debug.Log(indexRandom);
+        Debug.Log(gameList[indexRandom]);
         index = indexRandom;
 
         float angleWanted = (nbCircleRotate * CIRCLE) + angleOfOneGame * indexRandom;

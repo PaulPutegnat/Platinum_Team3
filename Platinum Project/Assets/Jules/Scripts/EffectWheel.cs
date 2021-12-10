@@ -23,7 +23,7 @@ public class EffectWheel : MonoBehaviour
         }
         else
         {
-            indexRandom = Random.Range(0, nbOfEffects);
+            indexRandom = Random.Range(1, nbOfEffects);
             Debug.Log("index trap effect : " + indexRandom);
             TrapsEffects.instanceTrapsEffects.trapNum = indexRandom;
         }

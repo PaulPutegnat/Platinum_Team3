@@ -45,10 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BrokenScreen: {fileID: 0}
   trapNum: 3
-  BrokenScreenDuration: 3
+  BrokenScreenDuration: 5
   BrokenScreenFadeInSpeed: 4
   BrokenScreenFadeOutSpeed: 1
-  speedMultiplicator: 2
-  speedTrapDuration: 2
-  shakeTrapDuration: 1.5
-  shakeTrapMagnitude: 2
+  speedMultiplicator: 1.8
+  speedTrapDuration: 5
+  shakeTrapDuration: 3
+  shakeTrapMagnitude: 0.4
