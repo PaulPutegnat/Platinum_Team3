@@ -815,7 +815,7 @@ MonoBehaviour:
   handleP2: {fileID: 8769018616593590408}
   intervalP1: {fileID: 8769018615756507813}
   intervalP2: {fileID: 8769018617800033482}
-  IsDoubleIntervalEnum: 1
+  IsDoubleIntervalEnum: 0
   speed: 0.6
   minIntervalSize: 100
   maxIntervalSize: 140
