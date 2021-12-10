@@ -134,6 +134,7 @@ public class ShootingGame : MiniGame
         {
             // Game finish Win
             GameManager.Instance.SpawnFortuneWheel();
+            StartCoroutine(DespawnAnimation());
             TrapsEffects.instanceTrapsEffects.TrapSelector(1);
             Destroy(this.transform.parent.gameObject);
         }
@@ -155,6 +156,7 @@ public class ShootingGame : MiniGame
         {
             // Game finish Lose
             GameManager.Instance.SpawnFortuneWheel();
+            StartCoroutine(DespawnAnimation());
             Destroy(this.transform.parent.gameObject);
         }
 

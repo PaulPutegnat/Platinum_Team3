@@ -45,33 +45,39 @@ public class PlayerManagerScript : MonoBehaviour
 
     public void InitPlayerGame()
     {
-        
-            for(int i = 0; i<4; i++)
-            {
-                if (players[i])
+       
+                for(int i = 0; i<4; i++)
                 {
-                    players[i].GetComponent<neutralcontroller>().InitPlayer();
-                }
+                    if (players[i])
+                    {
+                        players[i].GetComponent<neutralcontroller>().InitPlayer();
+                    }
 
-            }
-            
-        
+                }
 
     }
 
     public void ResetRound()
     {
-        for (int i = 0; i < 4; i++)
+        if (RoundNumber > 0)
         {
-            if (players[i])
+            for (int i = 0; i < 4; i++)
             {
-                Destroy(players[i]);
-            }
+                if (players[i])
+                {
+                    Destroy(players[i]);
+                }
 
-            
+                
+            }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+            RoundNumber--;
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-        RoundNumber=1;
+        else
+        {
+            //FIN DU JEU
+        }
+
     }
 
     IEnumerator NextRound()
