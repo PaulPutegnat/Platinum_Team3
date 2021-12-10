@@ -16,7 +16,7 @@ public class PlayerManagerScript : MonoBehaviour
     public const int TRAPPER1 = 2;
     public const int TRAPPER2 = 3;
 
-    private int RoundNumber = 1;
+    public int RoundNumber = 1;
     // Start is called before the first frame update
     void Awake()
     {
@@ -46,8 +46,7 @@ public class PlayerManagerScript : MonoBehaviour
     public void InitPlayerGame()
     {
         
-        if (RoundNumber == 1)
-        {
+       
             for(int i = 0; i<4; i++)
             {
                 if (players[i])
@@ -56,28 +55,8 @@ public class PlayerManagerScript : MonoBehaviour
                 }
 
             }
-        }
-        else
-        {
-            ReversePlayerArray();
-            for (int i = 0; i < 4; i++)
-            {
-                if (players[i])
-                {
-                    players[i].GetComponent<neutralcontroller>().limit = 1;
-                    if (i <= 1)
-                    {
-                        players[i].GetComponent<neutralcontroller>()._state = neutralcontroller.STATE.TRAPPER;
-                    }
-                    else
-                    {
-                        players[i].GetComponent<neutralcontroller>()._state = neutralcontroller.STATE.RUNNER;
-                    }
-                    players[i].GetComponent<neutralcontroller>().InitPlayer();
-                }
-
-            }            
-        }
+        
+        
 
     }
 
@@ -98,7 +77,7 @@ public class PlayerManagerScript : MonoBehaviour
 
     IEnumerator NextRound()
     {
-
+        RoundNumber++;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
         asyncLoad.allowSceneActivation = false;
         yield return (asyncLoad.progress > 0.9f);
@@ -109,9 +88,10 @@ public class PlayerManagerScript : MonoBehaviour
     }
     IEnumerator loaded(AsyncOperation sync)
     {
+        
         sync.allowSceneActivation = true;
+        ReversePlayerArray();
         yield return new WaitForSeconds(0.1f);
-        RoundNumber++;
         GameManager.Instance.ButtonPressed();
     }
 
@@ -121,7 +101,7 @@ public class PlayerManagerScript : MonoBehaviour
         players = new GameObject[4];
         for (int i = 0; i < 4; i++)
         {
-            if (temp[i])
+            if (temp[i] != null)
             {
                 switch (i)
                 {
