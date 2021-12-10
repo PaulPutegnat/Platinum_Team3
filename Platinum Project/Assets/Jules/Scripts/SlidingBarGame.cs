@@ -150,6 +150,7 @@ public class SlidingBarGame : MiniGame
                     //Debug.Log("GAME IS WIN");
                     TrapsEffects.instanceTrapsEffects.TrapSelector(1);
                     GameManager.Instance.SpawnFortuneWheel();
+                    StartCoroutine(DespawnAnimation());
                     Destroy(this.transform.parent.gameObject);
 
                 }
@@ -159,6 +160,7 @@ public class SlidingBarGame : MiniGame
                     //Debug.Log("GAME IS SEMI-WIN");
                     TrapsEffects.instanceTrapsEffects.TrapSelector(2);
                     GameManager.Instance.SpawnFortuneWheel();
+                    StartCoroutine(DespawnAnimation());
                     Destroy(this.transform.parent.gameObject);
                 }
                 else if (!isP1Win && !isP2Win)
@@ -166,18 +168,20 @@ public class SlidingBarGame : MiniGame
                     // Game finish lose
                     //Debug.Log("GAME IS LOSE");
                     GameManager.Instance.SpawnFortuneWheel();
+                    StartCoroutine(DespawnAnimation());
                     Destroy(this.transform.parent.gameObject);
                 }
             }
         }
         else
         {
-            if (isP1Playing)
+            if (!isP1Playing)
             {
                 if (isP1Win)
                 {
                     TrapsEffects.instanceTrapsEffects.TrapSelector(1);
                     GameManager.Instance.SpawnFortuneWheel();
+                    StartCoroutine(DespawnAnimation());
                     Destroy(this.transform.parent.gameObject);
                 }
             }

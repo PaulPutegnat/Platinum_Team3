@@ -809,7 +809,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnAnim:
   - {fileID: 7400000, guid: 5ea78373bfdd84543b20abf8573784e3, type: 2}
-  DespawnAnim: []
+  DespawnAnim:
+  - {fileID: 7400000, guid: f211eff6ca046b945abecf3588820b49, type: 2}
   handleP1: {fileID: 8769018616339458052}
   handleP2: {fileID: 8769018616593590408}
   intervalP1: {fileID: 8769018615756507813}
