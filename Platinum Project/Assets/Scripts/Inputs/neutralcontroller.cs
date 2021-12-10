@@ -43,7 +43,6 @@ public class neutralcontroller : MonoBehaviour
         
         transform.SetParent(GameObject.Find("Canvas").transform);
         thisRT = GetComponent<RectTransform>();
-        thisRT.localScale = Vector3.one;
         thisRT.localPosition = new Vector3(0, 300, 0);
         thisRT.localRotation = Quaternion.identity;
         if (GameObject.FindGameObjectWithTag("AEnlever") != null)
@@ -58,31 +57,31 @@ public class neutralcontroller : MonoBehaviour
             J4 = GameObject.FindGameObjectWithTag("J4").transform;
         }
 
-        TextMeshProUGUI playerText = GetComponent<TextMeshProUGUI>();
+        Image controllerImage = GetComponent<Image>();
         switch (GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount)
         {
             case 1:
                 transform.SetParent(J1, false);
                 transform.localPosition = Vector3.zero;
-                playerText.text = "J1";
+                controllerImage.color = new Color((58f / 255f), (72f / 255f), 1f);
                 break;
 
             case 2:
                 transform.SetParent(J2, false);
                 transform.localPosition = Vector3.zero;
-                playerText.text = "J2";
+                controllerImage.color = new Color(1f, (109f / 255f), (64f / 255f));
                 break;
 
             case 3:
                 transform.SetParent(J3, false);
                 transform.localPosition = Vector3.zero;
-                playerText.text = "J3";
+                controllerImage.color = new Color(1f, (64f / 255f), (118f / 255f));
                 break;
 
             case 4:
                 transform.SetParent(J4, false);
                 transform.localPosition = Vector3.zero;
-                playerText.text = "J4";
+                controllerImage.color = new Color(1f, (222f / 255f), (92f / 255f));
                 break;
         }
 
