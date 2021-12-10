@@ -222,6 +222,8 @@ public class neutralcontroller : MonoBehaviour
                         PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] = gameObject;
                     }
                     break;
+                case STATE.MIDDLE:
+                    return;
             }
         }
 

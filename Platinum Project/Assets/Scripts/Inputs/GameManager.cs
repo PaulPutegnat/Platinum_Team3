@@ -96,28 +96,19 @@ public class GameManager : MonoBehaviour
         PlayerManagerScript.Instance.InitPlayerGame();
         Camera.main.GetComponent<TestCam>().enabled = true;
             
-            IsGamePlaying = true;
+        IsGamePlaying = true;
 
-            /*GameObject objetAEnlever = */GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
-            //objetAEnlever.SetActive(false);
-            
+        GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
 
-            /*for (int index = 0; index < MaxPlayers; index++)
-            {
-                if (playersRefs[index])
-                {
-                    playersRefs[index].SetActive(true);
-                }
-            }*/
-            GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
-            TrapContainer.SetActive(true);
+        GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
+        TrapContainer.SetActive(true);
             
         if (withWheel)
-            {
-                SpawnFortuneWheel();
-            }
+        {
+            SpawnFortuneWheel();
+        }
             
-            IsBegin = true;
+        IsBegin = true;
     }
 
     IEnumerator WaitForBegin()
