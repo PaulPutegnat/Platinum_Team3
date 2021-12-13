@@ -103,14 +103,16 @@ public class neutralcontroller : MonoBehaviour
                             GameManager.Instance.RunnererNumber++;
                             transform.SetParent(R1, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.RUNNER;
                         }
                         else if(GetComponent<RectTransform>().anchoredPosition.x == 0 && R2.transform.childCount == 0)
                         {
                             GameManager.Instance.RunnererNumber++;
                             transform.SetParent(R2, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.RUNNER;
                         }
-                        _state = STATE.RUNNER;
+                        
                         break;
                     case STATE.TRAPPER:
                         GameManager.Instance.TrapperNumber--;
@@ -152,14 +154,16 @@ public class neutralcontroller : MonoBehaviour
                             GameManager.Instance.TrapperNumber++;
                             transform.SetParent(T1, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.TRAPPER;
                         }
                         else if(GetComponent<RectTransform>().anchoredPosition.x == 0 && T2.transform.childCount == 0)
                         {
                             GameManager.Instance.TrapperNumber++;
                             transform.SetParent(T2, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.TRAPPER;
                         }
-                        _state = STATE.TRAPPER;
+                        
                         break;
                     case STATE.RUNNER:
                         GameManager.Instance.TrapperNumber--;
