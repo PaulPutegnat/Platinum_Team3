@@ -15,6 +15,10 @@ public class IsOffCamera : MonoBehaviour
     private GameObject ParticleCopy;
     private WarningScript Warning_S;
 
+    [Range(0.0f, 300f)]
+    [SerializeField]
+    private int WarningOffest = 300;
+
     // Start is called before the first frame update
 
     private int times = 1;
@@ -50,11 +54,11 @@ public class IsOffCamera : MonoBehaviour
             GameManager.Instance.CheckRunnersDeath();
         }
 
-        if (screenPosition.x < 300)
+        if (screenPosition.x < WarningOffest)
         {
             Warning_S.PlayLeft();
         }
-        else if (screenPosition.x > 1620)
+        else if (screenPosition.x > 1920 - WarningOffest)
         {
             Warning_S.PlayRight();
         }
