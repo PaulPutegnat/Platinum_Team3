@@ -21,6 +21,7 @@ TagManager:
   - TrapContainer
   - Liane
   - GameContainer
+  - WarningPanel
   layers:
   - Default
   - TransparentFX

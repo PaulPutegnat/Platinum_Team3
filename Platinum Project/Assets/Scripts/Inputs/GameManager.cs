@@ -131,6 +131,15 @@ public class GameManager : MonoBehaviour
                 TrappersVictoryScreen.SetActive(true);
                 GameObject.Find("TrapManager").SetActive(false);
                 Camera.main.GetComponent<TestCam>().enabled = false;
+                if (PlayerManagerScript.Instance.RoundNumber % 2 != 0)
+                {
+                    PlayerManagerScript.Instance.Team2Score++;
+                }
+                else
+                {
+                    PlayerManagerScript.Instance.Team1Score++;
+                }
+                PlayerManagerScript.Instance.UpdateScore();
                 break;
         }
     }
