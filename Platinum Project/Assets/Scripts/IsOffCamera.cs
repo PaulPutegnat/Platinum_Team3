@@ -21,7 +21,7 @@ public class IsOffCamera : MonoBehaviour
 
     private void Start()
     {
-        Warning_S = GameObject.Find("WarningPanel").GetComponent<WarningScript>();
+        Warning_S = GameObject.Find("WarningHolder").GetComponent<WarningScript>();
     }
 
     private void Update()

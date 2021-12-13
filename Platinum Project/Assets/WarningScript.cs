@@ -5,26 +5,19 @@ using UnityEngine;
 
 public class WarningScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public bool Right;
-    public bool Left;
 
-    private Animator Warning;
-    // Update is called once per frame
-    private void Start()
-    {
-        Warning = GetComponent<Animator>();
-    }
+    [SerializeField]private Animator WarningRight;
+    [SerializeField] private Animator WarningLeft;
 
 
     public void PlayLeft()
     {
-        Warning.Play("Warning_Left");
+        WarningLeft.Play("WarningLeft_Active");
     }
 
     public void PlayRight()
     {
-        Warning.Play("Warning_Right");
+        WarningRight.Play("WarningRight_Active");
     }
 
 
