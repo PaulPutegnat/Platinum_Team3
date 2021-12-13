@@ -809,16 +809,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnAnim:
   - {fileID: 7400000, guid: 5ea78373bfdd84543b20abf8573784e3, type: 2}
-  DespawnAnim: []
+  DespawnAnim:
+  - {fileID: 7400000, guid: f211eff6ca046b945abecf3588820b49, type: 2}
+  LosePrefab: {fileID: 5007733829958029869, guid: 27fc428e2b62b47458ae740d5ed6b6a8, type: 3}
+  GameFinishList: {fileID: 7400000, guid: d57ed1e2b46a40c48a4e1ad9381345ed, type: 2}
   handleP1: {fileID: 8769018616339458052}
   handleP2: {fileID: 8769018616593590408}
   intervalP1: {fileID: 8769018615756507813}
   intervalP2: {fileID: 8769018617800033482}
-  isDoubleInterval: 0
+  IsDoubleIntervalEnum: 0
   speed: 0.6
-  minIntervalSize: 50
-  maxIntervalSize: 100
-  IsDoubleInterval: 0
+  minIntervalSize: 100
+  maxIntervalSize: 140
 --- !u!1 &8769018617800033482
 GameObject:
   m_ObjectHideFlags: 0

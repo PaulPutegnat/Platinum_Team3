@@ -36,49 +36,52 @@ public class neutralcontroller : MonoBehaviour
     private void Awake()
     {
         //Debug.Log(GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount);
-        
     }
 
     private void Start()
     {
+        
         transform.SetParent(GameObject.Find("Canvas").transform);
         thisRT = GetComponent<RectTransform>();
-        thisRT.localScale = Vector3.one;
         thisRT.localPosition = new Vector3(0, 300, 0);
         thisRT.localRotation = Quaternion.identity;
-        R1 = GameObject.FindGameObjectWithTag("R1").transform;
-        R2 = GameObject.FindGameObjectWithTag("R2").transform;
-        T1 = GameObject.FindGameObjectWithTag("T1").transform;
-        T2 = GameObject.FindGameObjectWithTag("T2").transform;
-        J1 = GameObject.FindGameObjectWithTag("J1").transform;
-        J2 = GameObject.FindGameObjectWithTag("J2").transform;
-        J3 = GameObject.FindGameObjectWithTag("J3").transform;
-        J4 = GameObject.FindGameObjectWithTag("J4").transform;
-        TextMeshProUGUI playerText = GetComponent<TextMeshProUGUI>();
+        if (GameObject.FindGameObjectWithTag("AEnlever") != null)
+        {
+            R1 = GameObject.FindGameObjectWithTag("R1").transform;
+            R2 = GameObject.FindGameObjectWithTag("R2").transform;
+            T1 = GameObject.FindGameObjectWithTag("T1").transform;
+            T2 = GameObject.FindGameObjectWithTag("T2").transform;
+            J1 = GameObject.FindGameObjectWithTag("J1").transform;
+            J2 = GameObject.FindGameObjectWithTag("J2").transform;
+            J3 = GameObject.FindGameObjectWithTag("J3").transform;
+            J4 = GameObject.FindGameObjectWithTag("J4").transform;
+        }
+
+        Image controllerImage = GetComponent<Image>();
         switch (GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount)
         {
             case 1:
                 transform.SetParent(J1, false);
                 transform.localPosition = Vector3.zero;
-                playerText.text = "J1";
+                controllerImage.color = new Color((58f / 255f), (72f / 255f), 1f);
                 break;
 
             case 2:
                 transform.SetParent(J2, false);
                 transform.localPosition = Vector3.zero;
-                playerText.text = "J2";
+                controllerImage.color = new Color(1f, (109f / 255f), (64f / 255f));
                 break;
 
             case 3:
                 transform.SetParent(J3, false);
                 transform.localPosition = Vector3.zero;
-                playerText.text = "J3";
+                controllerImage.color = new Color(1f, (64f / 255f), (118f / 255f));
                 break;
 
             case 4:
                 transform.SetParent(J4, false);
                 transform.localPosition = Vector3.zero;
-                playerText.text = "J4";
+                controllerImage.color = new Color(1f, (222f / 255f), (92f / 255f));
                 break;
         }
 
@@ -100,14 +103,16 @@ public class neutralcontroller : MonoBehaviour
                             GameManager.Instance.RunnererNumber++;
                             transform.SetParent(R1, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.RUNNER;
                         }
-                        else
+                        else if(GetComponent<RectTransform>().anchoredPosition.x == 0 && R2.transform.childCount == 0)
                         {
                             GameManager.Instance.RunnererNumber++;
                             transform.SetParent(R2, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.RUNNER;
                         }
-                        _state = STATE.RUNNER;
+                        
                         break;
                     case STATE.TRAPPER:
                         GameManager.Instance.TrapperNumber--;
@@ -149,14 +154,16 @@ public class neutralcontroller : MonoBehaviour
                             GameManager.Instance.TrapperNumber++;
                             transform.SetParent(T1, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.TRAPPER;
                         }
-                        else
+                        else if(GetComponent<RectTransform>().anchoredPosition.x == 0 && T2.transform.childCount == 0)
                         {
                             GameManager.Instance.TrapperNumber++;
                             transform.SetParent(T2, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.TRAPPER;
                         }
-                        _state = STATE.TRAPPER;
+                        
                         break;
                     case STATE.RUNNER:
                         GameManager.Instance.TrapperNumber--;
@@ -192,7 +199,7 @@ public class neutralcontroller : MonoBehaviour
 
     public void Confirmation(InputAction.CallbackContext context)
     {
-        if (Comfirmation == false)
+        if (Comfirmation == false && _state != STATE.MIDDLE)
         {
             Comfirmation = true;
             GameManager.Instance.ActivePlayer++;
@@ -219,17 +226,46 @@ public class neutralcontroller : MonoBehaviour
                         PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] = gameObject;
                     }
                     break;
+
             }
         }
-
 
 
     }
     public void Back(InputAction.CallbackContext context)
     {
-        Comfirmation = false;
-        GameManager.Instance.ActivePlayer--;
-        GameManager.Instance.checkUI();
+        if (Comfirmation == true)
+        {
+            Comfirmation = false;
+            GameManager.Instance.ActivePlayer--;
+            GameManager.Instance.checkUI();
+            switch (_state)
+            {
+                case STATE.RUNNER:
+                    if (PlayerManagerScript.Instance.players[PlayerManagerScript.RUNNER1] == gameObject)
+                    {
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.RUNNER1] = null;
+                    }
+                    else
+                    {
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.RUNNER2] = null;
+                    }
+                    break;
+                case STATE.TRAPPER:
+                    if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER1] == gameObject)
+                    {
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER1] = null;
+                    }
+                    else
+                    {
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] = null;
+                    }
+                    break;
+                case STATE.MIDDLE:
+                    return;
+            }
+        }
+
     }
 
     public void InitPlayer()
@@ -262,7 +298,8 @@ public class neutralcontroller : MonoBehaviour
                     Debug.LogError("ERREUR");
                     break;
             }
-        
+            DontDestroyOnLoad(gameObject);
+
 
     }
 

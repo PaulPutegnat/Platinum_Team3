@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using UnityEditor;
-using UnityEditor.Animations;
-//using TreeEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -33,7 +30,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseCanvas;
     public GameObject mainCanvas;
 
-    private GameObject BeginButton;
+    [HideInInspector]public GameObject BeginButton;
     private GameObject TrapContainer;
 
     private GameObject pausegGameObject;
@@ -67,9 +64,14 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         Camera.main.GetComponent<TestCam>().enabled = false;
-        BeginButton = GameObject.Find("BeginButton");
+        TryGetButton();
     }
 
+    public void TryGetButton()
+    {
+        if(GameObject.Find("BeginButton")!= null)
+            BeginButton = GameObject.Find("BeginButton");
+    }
     public void checkUI()
     {
         
@@ -80,7 +82,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            BeginButton.GetComponent<Button>().interactable = false;
+            if(BeginButton != null)
+                BeginButton.GetComponent<Button>().interactable = false;
+
             GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(null);
         }
 
@@ -88,31 +92,23 @@ public class GameManager : MonoBehaviour
 
     public void ButtonPressed()
     {
+        Debug.Log("debut");
         PlayerManagerScript.Instance.InitPlayerGame();
         Camera.main.GetComponent<TestCam>().enabled = true;
             
-            IsGamePlaying = true;
+        IsGamePlaying = true;
 
-            /*GameObject objetAEnlever = */GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
-            //objetAEnlever.SetActive(false);
-            
+        GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
 
-            /*for (int index = 0; index < MaxPlayers; index++)
-            {
-                if (playersRefs[index])
-                {
-                    playersRefs[index].SetActive(true);
-                }
-            }*/
-            GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
-            TrapContainer.SetActive(true);
+        GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
+        TrapContainer.SetActive(true);
             
         if (withWheel)
-            {
-                SpawnFortuneWheel();
-            }
+        {
+            SpawnFortuneWheel();
+        }
             
-            IsBegin = true;
+        IsBegin = true;
     }
 
     IEnumerator WaitForBegin()
@@ -123,7 +119,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnFortuneWheel()
     {
-        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("TrapManager").transform);
+        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("GameContainer").transform);
     }
 
     public void CheckRunnersDeath()

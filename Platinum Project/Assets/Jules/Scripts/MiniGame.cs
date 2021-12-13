@@ -9,6 +9,10 @@ public class MiniGame : MonoBehaviour
     public List<AnimationClip> SpawnAnim = new List<AnimationClip>();
     public List<AnimationClip> DespawnAnim = new List<AnimationClip>();
 
+    [SerializeField] private GameObject LosePrefab;
+    public AnimationClip GameFinishList;
+
+
     public IEnumerator SpawnAnimation()
     {
         Animator fwAnimation = GetComponentInParent<Animator>();
@@ -27,9 +31,23 @@ public class MiniGame : MonoBehaviour
 
     public IEnumerator SpawnEffect(GameObject prefab, GameObject target, Vector2 offset)
     {
-        GameObject instGameObject = Instantiate(prefab, (Vector2)target.transform.localPosition + offset, Quaternion.identity, this.transform);
-        Animator instAnimator = instGameObject.GetComponent<Animator>();
+        Vector3 targetPos = target.transform.position;
+        GameObject instGameObject = Instantiate(prefab, (Vector2)targetPos + offset, Quaternion.identity, this.transform);
+        Animator instAnimator = instGameObject.GetComponentInChildren<Animator>();
         yield return new WaitForSeconds(instAnimator.GetCurrentAnimatorClipInfo(0).Length);
         Destroy(instGameObject);
+    }
+
+    public IEnumerator GameFinishLose()
+    {
+        GameObject instGameObject = Instantiate(LosePrefab, this.transform);
+        Animator fwAnimation = instGameObject.GetComponentInParent<Animator>();
+        fwAnimation.Play(GameFinishList.name);
+        yield return new WaitForSeconds(GameFinishList.length);
+
+
+        GameManager.Instance.SpawnFortuneWheel();
+        StartCoroutine(DespawnAnimation());
+        Destroy(this.transform.parent.gameObject);
     }
 }

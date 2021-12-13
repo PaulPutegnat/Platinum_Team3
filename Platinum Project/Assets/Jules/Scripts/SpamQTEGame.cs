@@ -14,19 +14,15 @@ public class SpamQTEGame : MiniGame
         P2
     }
 
-    private PlayerControls inputActions;
-
     [Header("GameObjects")]
     public Slider spamSlider;
     public Slider timeSlider;
     public GameObject timerFillArea;
     public GameObject P1Hammer;
     public GameObject P2Hammer;
-    public GameObject button;
 
     private Image P1HammerSprite;
     private Image P2HammerSprite;
-    private Image ButtonSprite;
 
     [Header("Timer Value")]
     public float gameDuration;
@@ -47,9 +43,9 @@ public class SpamQTEGame : MiniGame
     private bool IsTwoPlayer = false;
     
 
-    IEnumerator Start()
+    void Start()
     {
-        yield return StartCoroutine(SpawnAnimation());
+        StartCoroutine(SpawnAnimation());
 
         timeSlider.maxValue = gameDuration;
         ShakeTimer = 0f;
@@ -59,7 +55,6 @@ public class SpamQTEGame : MiniGame
 
         P1HammerSprite = P1Hammer.GetComponent<Image>();
         P2HammerSprite = P2Hammer.GetComponent<Image>();
-        ButtonSprite = button.GetComponent<Image>();
 
         timerColor = timerFillArea.GetComponent<Image>().color;
         timerColor = Color.green;
@@ -78,13 +73,13 @@ public class SpamQTEGame : MiniGame
             switch (_state)
             {
                 case PlayerTurnState.P2:
-                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
-                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
+                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
+                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
                     break;
 
                 case PlayerTurnState.P1:
-                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
-                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
+                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
+                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
                     break;
             }
         }
@@ -93,13 +88,13 @@ public class SpamQTEGame : MiniGame
             switch (_state)
             {
                 case PlayerTurnState.P2:
-                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
-                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
+                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
+                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
                     break;
 
                 case PlayerTurnState.P1:
-                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
-                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
+                    P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
+                    P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
                     break;
             }
         }
@@ -121,11 +116,13 @@ public class SpamQTEGame : MiniGame
                     {
                         sliderCurrentValue += 2f;
                         _state = PlayerTurnState.P2;
-                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
                     }
                     else
                     {
-                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
                     }
                     break;
 
@@ -135,12 +132,14 @@ public class SpamQTEGame : MiniGame
 
                         sliderCurrentValue += 2f;
                         _state = PlayerTurnState.P1;
-                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
 
                     }
                     else
                     {
-                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
                     }
 
                     break;
@@ -158,11 +157,13 @@ public class SpamQTEGame : MiniGame
                     {
                         sliderCurrentValue += 2f;
                         _state = PlayerTurnState.P2;
-                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
                     }
                     else
                     {
-                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
                     }
                     break;
 
@@ -172,12 +173,14 @@ public class SpamQTEGame : MiniGame
 
                         sliderCurrentValue += 2f;
                         _state = PlayerTurnState.P1;
-                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeStopMiniJeu");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
 
                     }
                     else
                     {
-                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/HammerIconeGoMiniJeu");
+                        P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauDown");
+                        P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/MarteauUp");
                     }
 
                     break;
@@ -212,6 +215,7 @@ public class SpamQTEGame : MiniGame
         {
             // Game Finish
             GameManager.Instance.SpawnFortuneWheel();
+            StartCoroutine(DespawnAnimation());
             Destroy(this.gameObject);
             
         }

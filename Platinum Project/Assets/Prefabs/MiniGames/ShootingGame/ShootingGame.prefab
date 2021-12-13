@@ -56,22 +56,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnAnim:
   - {fileID: 7400000, guid: f1d378457dbfe2e439d0b38afc5188b0, type: 2}
-  DespawnAnim: []
+  DespawnAnim:
+  - {fileID: 7400000, guid: d90bc479b589f7c40a979516ea15bf8a, type: 2}
+  LosePrefab: {fileID: 5007733829958029869, guid: 27fc428e2b62b47458ae740d5ed6b6a8, type: 3}
+  GameFinishList: {fileID: 7400000, guid: d57ed1e2b46a40c48a4e1ad9381345ed, type: 2}
   TimerSlider: {fileID: 1514497716289010537}
   _spawnArea: {fileID: 3636190370726257820}
-  _targetPrefab: {fileID: 986879817575485082, guid: dc6b57b0cbb2a18449fed22b16e5d500, type: 3}
+  _targetPrefab: {fileID: 9030037093502666965, guid: 821559e41026e1c468ae2f812a5b76f7, type: 3}
   _aimSightP1: {fileID: 7404272435532032386}
   _aimSightP2: {fileID: 2918650882975701973}
   _targetList: {fileID: 3636190369601158993}
-  _pointPrefab: {fileID: 6997225227500809562, guid: f43693ace9b55e34a9dab239875d9ea4, type: 3}
-  _aimSpeed: 150
-  _nbTarget: 15
+  _pointPrefab: {fileID: 733869603254909710, guid: f83fa2506983eeb4c91088ea37bd17a1, type: 3}
+  _aimSpeed: 600
+  _nbTarget: 12
   hitRange: 30
-  _ObjectivesPoints: 10
+  _ObjectivesPoints: 8
   _pointText: {fileID: 4778349649981354083}
-  gameDuration: 20
+  gameDuration: 10
   timerText: {fileID: 1514497717663599360}
-  graphicRaycasterManager: {fileID: 0}
 --- !u!1 &3636190369601158992
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,11 +339,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6726887853380806724, guid: b975a06cb6cdb594f8ce6afc23b9e0e7, type: 3}
       propertyPath: m_Color.b
-      value: 0.062781096
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6726887853380806724, guid: b975a06cb6cdb594f8ce6afc23b9e0e7, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.0075297356
       objectReference: {fileID: 0}
     - target: {fileID: 6726887853380806724, guid: b975a06cb6cdb594f8ce6afc23b9e0e7, type: 3}
       propertyPath: m_Color.r

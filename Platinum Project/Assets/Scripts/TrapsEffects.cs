@@ -7,7 +7,7 @@ public class TrapsEffects : MonoBehaviour
 {
     public static TrapsEffects instanceTrapsEffects;
     public Image BrokenScreen;
-    public int trapNum;
+    [HideInInspector] public int trapNum;
 
     [Range(0f, 10f)] public float BrokenScreenDuration = 3;
     [Range(0f, 10f)] public float BrokenScreenFadeInSpeed = 4;
@@ -17,7 +17,7 @@ public class TrapsEffects : MonoBehaviour
     [Range(0f, 5f)] public float shakeTrapDuration = 1.5f;
     [Range(0f, 3f)] public float shakeTrapMagnitude = 0.4f;
 
-    private TestCam _testcam;
+    public TestCam _testcam;
 
     private void Awake()
     {
@@ -66,6 +66,7 @@ public class TrapsEffects : MonoBehaviour
 
     public IEnumerator BrokenScreenTrap(float semiWinSplitRef)
     {
+        Debug.Log("BrokenScreenTrap");
         Color objectColor = BrokenScreen.color;
         float fadeAmount = objectColor.a;
 
@@ -92,6 +93,7 @@ public class TrapsEffects : MonoBehaviour
 
     public IEnumerator CameraShakeTrap(float duration, float magnitude)
     {
+        Debug.Log("CameraShakeTrap");
         Vector3 originalPos = Camera.main.transform.localPosition;
 
         float elapsed = 0.0f;

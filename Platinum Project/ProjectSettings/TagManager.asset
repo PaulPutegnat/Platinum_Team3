@@ -10,7 +10,6 @@ TagManager:
   - Canvas
   - PortalUI
   - PauseCanvas
-  - TrapManager
   - R1
   - R2
   - T1
@@ -20,6 +19,8 @@ TagManager:
   - J3
   - J4
   - TrapContainer
+  - Liane
+  - GameContainer
   layers:
   - Default
   - TransparentFX
@@ -33,10 +34,10 @@ TagManager:
   - Trees
   - Leaves
   - Frontground
-  - 
-  - 
-  - 
-  - 
+  - Grass
+  - FG_Leaves
+  - Liane
+  - Perso
   - 
   - 
   - 
