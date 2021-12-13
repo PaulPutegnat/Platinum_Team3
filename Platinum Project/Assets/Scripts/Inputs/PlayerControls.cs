@@ -967,6 +967,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e5d9937a-9b1a-4873-b3d8-faa0fd275cb8"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3152a024-0ade-47b7-9864-4bf416d01a3c"",
                     ""path"": ""<Keyboard>/leftCtrl"",
                     ""interactions"": ""Press(behavior=1)"",

@@ -47,13 +47,13 @@ MonoBehaviour:
   Sounds:
   - Name: Music
     Clip: {fileID: 8300000, guid: 5c774a67c26f06349bf3b80756fdcd82, type: 3}
-    Volume: 0.1
+    Volume: 0.04
     Pitch: 1
     Loop: 1
     Source: {fileID: 0}
   - Name: Particules_Sound
     Clip: {fileID: 8300000, guid: 8598527ac1859e84ba12796d34b7a217, type: 3}
-    Volume: 0.15
+    Volume: 0.04
     Pitch: 1
     Loop: 1
     Source: {fileID: 0}

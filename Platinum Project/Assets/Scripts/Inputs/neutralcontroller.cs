@@ -103,14 +103,16 @@ public class neutralcontroller : MonoBehaviour
                             GameManager.Instance.RunnererNumber++;
                             transform.SetParent(R1, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.RUNNER;
                         }
-                        else
+                        else if(GetComponent<RectTransform>().anchoredPosition.x == 0 && R2.transform.childCount == 0)
                         {
                             GameManager.Instance.RunnererNumber++;
                             transform.SetParent(R2, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.RUNNER;
                         }
-                        _state = STATE.RUNNER;
+                        
                         break;
                     case STATE.TRAPPER:
                         GameManager.Instance.TrapperNumber--;
@@ -152,14 +154,16 @@ public class neutralcontroller : MonoBehaviour
                             GameManager.Instance.TrapperNumber++;
                             transform.SetParent(T1, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.TRAPPER;
                         }
-                        else
+                        else if(GetComponent<RectTransform>().anchoredPosition.x == 0 && T2.transform.childCount == 0)
                         {
                             GameManager.Instance.TrapperNumber++;
                             transform.SetParent(T2, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
+                            _state = STATE.TRAPPER;
                         }
-                        _state = STATE.TRAPPER;
+                        
                         break;
                     case STATE.RUNNER:
                         GameManager.Instance.TrapperNumber--;
@@ -195,7 +199,7 @@ public class neutralcontroller : MonoBehaviour
 
     public void Confirmation(InputAction.CallbackContext context)
     {
-        if (Comfirmation == false)
+        if (Comfirmation == false && _state != STATE.MIDDLE)
         {
             Comfirmation = true;
             GameManager.Instance.ActivePlayer++;
@@ -222,17 +226,46 @@ public class neutralcontroller : MonoBehaviour
                         PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] = gameObject;
                     }
                     break;
+
             }
         }
-
 
 
     }
     public void Back(InputAction.CallbackContext context)
     {
-        Comfirmation = false;
-        GameManager.Instance.ActivePlayer--;
-        GameManager.Instance.checkUI();
+        if (Comfirmation == true)
+        {
+            Comfirmation = false;
+            GameManager.Instance.ActivePlayer--;
+            GameManager.Instance.checkUI();
+            switch (_state)
+            {
+                case STATE.RUNNER:
+                    if (PlayerManagerScript.Instance.players[PlayerManagerScript.RUNNER1] == gameObject)
+                    {
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.RUNNER1] = null;
+                    }
+                    else
+                    {
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.RUNNER2] = null;
+                    }
+                    break;
+                case STATE.TRAPPER:
+                    if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER1] == gameObject)
+                    {
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER1] = null;
+                    }
+                    else
+                    {
+                        PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] = null;
+                    }
+                    break;
+                case STATE.MIDDLE:
+                    return;
+            }
+        }
+
     }
 
     public void InitPlayer()

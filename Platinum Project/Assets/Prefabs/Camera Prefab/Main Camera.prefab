@@ -106,6 +106,8 @@ MonoBehaviour:
     TargetRotation: {x: 0, y: 0, z: 0}
     Fov: 0
     StepDuration: 0
+  i: 0
+  speedUp: 1
 --- !u!114 &7781204667798728088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,12 +125,12 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
