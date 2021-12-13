@@ -104,7 +104,7 @@ public class neutralcontroller : MonoBehaviour
                             transform.SetParent(R1, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
                         }
-                        else
+                        else if(GetComponent<RectTransform>().anchoredPosition.x == 0 && R2.transform.childCount == 0)
                         {
                             GameManager.Instance.RunnererNumber++;
                             transform.SetParent(R2, false);
@@ -153,7 +153,7 @@ public class neutralcontroller : MonoBehaviour
                             transform.SetParent(T1, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
                         }
-                        else
+                        else if(GetComponent<RectTransform>().anchoredPosition.x == 0 && T2.transform.childCount == 0)
                         {
                             GameManager.Instance.TrapperNumber++;
                             transform.SetParent(T2, false);
