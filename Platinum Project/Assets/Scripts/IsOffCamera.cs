@@ -13,15 +13,15 @@ public class IsOffCamera : MonoBehaviour
     public GameObject Particles;
 
     private GameObject ParticleCopy;
+    private WarningScript Warning_S;
 
-    private Animator Warning;
     // Start is called before the first frame update
 
     private int times = 1;
 
     private void Start()
     {
-        Warning = GameObject.Find("WarningPanel").GetComponent<Animator>();
+        Warning_S = GameObject.Find("WarningPanel").GetComponent<WarningScript>();
     }
 
     private void Update()
@@ -41,6 +41,7 @@ public class IsOffCamera : MonoBehaviour
             times--;
             GetComponent<TESTCONTROLER>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<IsOffCamera>().enabled = false;
             foreach (Transform childTransform in transform.GetChild(0))
             {
                 if (childTransform.GetComponent<SkinnedMeshRenderer>())
@@ -49,18 +50,15 @@ public class IsOffCamera : MonoBehaviour
             GameManager.Instance.CheckRunnersDeath();
         }
 
-        if(screenPosition.x<300)
+        if (screenPosition.x < 300)
         {
-            Warning.Play("Warning_Left");
+            Warning_S.PlayLeft();
         }
-        else if(screenPosition.x > 1620)
+        else if (screenPosition.x > 1620)
         {
-            Warning.Play("Warning_Right");
+            Warning_S.PlayRight();
         }
-        else
-        {
-            Warning.Play("Idle_Warning");
-        }
+
     }
 
 }
