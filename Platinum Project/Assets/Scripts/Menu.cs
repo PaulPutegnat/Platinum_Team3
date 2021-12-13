@@ -20,4 +20,9 @@ public class Menu : MonoBehaviour
         Debug.Log("Quit the game");
         Application.Quit();
     }
+
+    public void Retry()
+    {
+        PlayerManagerScript.Instance.ResetRound();
+    }
 }
