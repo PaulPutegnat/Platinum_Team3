@@ -80,14 +80,14 @@ public class SpamQTEGame : MiniGame
             case PlayerTurnState.P2:
                 P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer");
                 P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer_Burst");
-                P1ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Lock");
+                P1ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Burst");
                 P2ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A");
                 break;
 
             case PlayerTurnState.P1:
                 P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer");
                 P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer_Burst");
-                P2ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Lock");
+                P2ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Burst");
                 P1ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A");
                 break;
         }
@@ -109,7 +109,7 @@ public class SpamQTEGame : MiniGame
                         _state = PlayerTurnState.P2;
                         P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer");
                         P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer_Burst");
-                        P1ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Lock");
+                        P1ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Burst");
                         P2ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A");
                     }
                     break;
@@ -122,7 +122,7 @@ public class SpamQTEGame : MiniGame
                         _state = PlayerTurnState.P1;
                         P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer");
                         P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer_Burst");
-                        P2ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Lock");
+                        P2ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Burst");
                         P1ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A");
                     }
                     break;
@@ -142,7 +142,7 @@ public class SpamQTEGame : MiniGame
                         _state = PlayerTurnState.P2;
                         P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer");
                         P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer_Burst");
-                        P1ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Lock");
+                        P1ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Burst");
                         P2ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A");
                     }
                     break;
@@ -155,7 +155,7 @@ public class SpamQTEGame : MiniGame
                         _state = PlayerTurnState.P1;
                         P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer");
                         P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer_Burst");
-                        P2ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Lock");
+                        P2ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A_Burst");
                         P1ButtonSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Button_A");
                     }
                     break;
@@ -189,9 +189,13 @@ public class SpamQTEGame : MiniGame
         else
         {
             // Game Finish
-            GameManager.Instance.SpawnFortuneWheel();
+            /*GameManager.Instance.SpawnFortuneWheel();
             StartCoroutine(DespawnAnimation());
-            Destroy(this.transform.parent.gameObject);
+            Destroy(this.transform.parent.gameObject);*/
+            if (!IsHammerCoroutineStarted)
+            {
+                StartCoroutine(HammerShake());
+            }
         }
 
         if (ShakeTimer > intervalTime)

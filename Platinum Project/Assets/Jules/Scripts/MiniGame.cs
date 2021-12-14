@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 
 public class MiniGame : MonoBehaviour
@@ -11,8 +13,10 @@ public class MiniGame : MonoBehaviour
 
     [SerializeField] private GameObject LosePrefab;
     [SerializeField] private GameObject WinPrefab;
+    [SerializeField] private GameObject HammerPrefab;
     protected bool IsGameFinishLoseCoroutineStarted = false;
     protected bool IsGameFinishWinCoroutineStarted = false;
+    protected bool IsHammerCoroutineStarted = false;
 
     public IEnumerator SpawnAnimation()
     {
@@ -42,10 +46,10 @@ public class MiniGame : MonoBehaviour
     public IEnumerator GameFinishLose()
     {
         IsGameFinishLoseCoroutineStarted = true;
+        yield return StartCoroutine(DespawnAnimation());
         GameObject instGameObject = Instantiate(LosePrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
         Animator myAnimator = instGameObject.GetComponent<Animator>();
         //fwAnimation.Play(GameFinishList.name);
-        yield return StartCoroutine(DespawnAnimation());
         yield return new WaitForSeconds(myAnimator.GetCurrentAnimatorClipInfo(0).Length);
         Destroy(instGameObject);
 
@@ -55,19 +59,48 @@ public class MiniGame : MonoBehaviour
         
     }
 
-    public IEnumerator GameFinishWin()
+    public IEnumerator GameFinishWin(int trapIndex)
     {
         IsGameFinishWinCoroutineStarted = true;
+        yield return StartCoroutine(DespawnAnimation());
         GameObject instGameObject = Instantiate(WinPrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
+        TextMeshProUGUI myText = instGameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        switch (TrapsEffects.instanceTrapsEffects.trapNum)
+        {
+            case 1:
+                myText.text = "SCHNELL !";
+                break;
+            case 2:
+                myText.text = "WATCH OUT ! A ROCK !";
+                break;
+            case 3:
+                myText.text = "SHAKE YOUR BOOTY !";
+                break;
+        }
         Animator myAnimator = instGameObject.GetComponent<Animator>();
         //fwAnimation.Play(GameFinishList.name);
+        yield return new WaitForSeconds(myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+
+        Destroy(instGameObject);
+
+        TrapsEffects.instanceTrapsEffects.TrapSelector(trapIndex);
+        GameManager.Instance.SpawnFortuneWheel();
+        IsGameFinishWinCoroutineStarted = false;
+        Destroy(this.transform.parent.gameObject);
+    }
+
+    public IEnumerator HammerShake()
+    {
+        IsHammerCoroutineStarted = true;
         yield return StartCoroutine(DespawnAnimation());
+        GameObject instGameObject = Instantiate(HammerPrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
+        Animator myAnimator = instGameObject.GetComponent<Animator>();
+        //fwAnimation.Play(GameFinishList.name);
         yield return new WaitForSeconds(myAnimator.GetCurrentAnimatorClipInfo(0).Length);
         Destroy(instGameObject);
 
-
         GameManager.Instance.SpawnFortuneWheel();
-        IsGameFinishWinCoroutineStarted = false;
+        IsHammerCoroutineStarted = false;
         Destroy(this.transform.parent.gameObject);
     }
 }
