@@ -13,9 +13,21 @@ public class IsOffCamera : MonoBehaviour
     public GameObject Particles;
 
     private GameObject ParticleCopy;
+    private WarningScript Warning_S;
+
+    [Range(0.0f, 300f)]
+    [SerializeField]
+    private int WarningOffest = 300;
+
     // Start is called before the first frame update
 
     private int times = 1;
+
+    private void Start()
+    {
+        Warning_S = GameObject.Find("WarningHolder").GetComponent<WarningScript>();
+    }
+
     private void Update()
     {
         Die();
@@ -33,6 +45,7 @@ public class IsOffCamera : MonoBehaviour
             times--;
             GetComponent<TESTCONTROLER>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<IsOffCamera>().enabled = false;
             foreach (Transform childTransform in transform.GetChild(0))
             {
                 if (childTransform.GetComponent<SkinnedMeshRenderer>())
@@ -40,6 +53,16 @@ public class IsOffCamera : MonoBehaviour
             }
             GameManager.Instance.CheckRunnersDeath();
         }
+
+        if (screenPosition.x < WarningOffest)
+        {
+            Warning_S.PlayLeft();
+        }
+        else if (screenPosition.x > 1920 - WarningOffest)
+        {
+            Warning_S.PlayRight();
+        }
+
     }
 
 }

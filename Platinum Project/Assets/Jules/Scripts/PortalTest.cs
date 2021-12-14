@@ -75,6 +75,7 @@ public class PortalTest : MonoBehaviour
 
                 if (sliderCurrentValue >= sliderMaxValue)
                 {
+                    transform.parent.transform.parent.GetChild(0).GetComponent<ParticleSystem>().Play();
                     Destroy(this.transform.parent.gameObject);
                     Destroy(newGameObject);
                 }
