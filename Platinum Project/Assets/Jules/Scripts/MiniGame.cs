@@ -40,7 +40,7 @@ public class MiniGame : MonoBehaviour
     public IEnumerator GameFinishLose()
     {
         IsGameFinishCoroutineStarted = true;
-        GameObject instGameObject = Instantiate(LosePrefab, this.transform);
+        GameObject instGameObject = Instantiate(LosePrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
         Animator myAnimator = instGameObject.GetComponent<Animator>();
         //fwAnimation.Play(GameFinishList.name);
         yield return StartCoroutine(DespawnAnimation());
