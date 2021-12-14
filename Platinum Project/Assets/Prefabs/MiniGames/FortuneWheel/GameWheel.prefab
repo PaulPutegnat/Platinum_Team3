@@ -60,8 +60,8 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 1a65d4663402e4e4c807b978b4e82d54, type: 2}
   LosePrefab: {fileID: 0}
   nbOfGames: 3
-  timeRotate: 5
-  nbCircleRotate: 4
+  timeRotate: 3.5
+  nbCircleRotate: 6
   index: 0
   curve:
     serializedVersion: 2
@@ -75,15 +75,6 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 0.59148175
-      value: 0.99462366
-      inSlope: 0.18883139
-      outSlope: 0.18883139
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.26580292
-      outWeight: 0.2727172
     - serializedVersion: 3
       time: 1
       value: 1

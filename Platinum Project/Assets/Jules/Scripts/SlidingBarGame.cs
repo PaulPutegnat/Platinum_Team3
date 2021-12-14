@@ -207,13 +207,15 @@ public class SlidingBarGame : MiniGame
             {
                 //Debug.Log("P1 a gagné!!!");
                 isP1Win = true;
+                AudioManager.Instance.PlayGoodSliderSound();
             }
             else
             {
                 //Debug.Log("P1 a perdu!!!");
                 isP1Win = false;
+                AudioManager.Instance.PlayBadSliderSound();
             }
-        
+
     }
     public void StopP2SlidingBarGame()
     {
@@ -226,11 +228,13 @@ public class SlidingBarGame : MiniGame
             {
                 //Debug.Log("P2 a gagné!!!");
                 isP2Win = true;
+                AudioManager.Instance.PlayGoodSliderSound();
             }
             else
             {
                 //Debug.Log("P2 a perdu!!!");
                 isP2Win = false;
+                AudioManager.Instance.PlayBadSliderSound();
             }
         }
         else
@@ -239,11 +243,13 @@ public class SlidingBarGame : MiniGame
             {
                 //Debug.Log("P2 a gagné!!!");
                 isP2Win = true;
+                AudioManager.Instance.PlayGoodSliderSound();
             }
             else
             {
                 //Debug.Log("P2 a perdu!!!");
                 isP2Win = false;
+                AudioManager.Instance.PlayBadSliderSound();
             }
         }
 

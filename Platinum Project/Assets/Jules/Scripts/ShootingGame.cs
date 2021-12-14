@@ -94,6 +94,7 @@ public class ShootingGame : MiniGame
         if (IsP1Shooting)
         {
             RectTransform sightPos = _aimSightP1.GetComponent<RectTransform>();
+            AudioManager.Instance.PlayShotSound();
             //Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().GetWorldCorners();
 
             for (int i = InstTargets.Count - 1; i >= 0; i--)
@@ -115,6 +116,7 @@ public class ShootingGame : MiniGame
         if (IsP2Shooting)
         {
             RectTransform sightPos = _aimSightP2.GetComponent<RectTransform>();
+            AudioManager.Instance.PlayMediumSliderSound();
 
             foreach (var target in InstTargets)
             {
@@ -176,6 +178,8 @@ public class ShootingGame : MiniGame
         newTarget.transform.localPosition = pos;
         nextSpawnTime = Time.time + intervalSpawnTime;
         InstTargets.Add(newTarget);
+        AudioManager.Instance.PlayTargetSound();
+
     }
 
     public void CheckLimit(GameObject aimSight)
