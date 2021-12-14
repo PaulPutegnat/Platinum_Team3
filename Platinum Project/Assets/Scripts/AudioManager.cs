@@ -113,7 +113,7 @@ public class AudioManager : MonoBehaviour
         }
         s.Source.Play();
         //How to play sound in scripts:
-        //FindObjectofType<AudioManager>().Play("name of the sound");
+        //FindObjectOfType<AudioManager>().PlaySingleSound("name of the sound");
     }
 
     public void PlayWalkSound()
@@ -138,12 +138,6 @@ public class AudioManager : MonoBehaviour
     {
         _randomSoundNum = Random.Range(0, 4);
         _audioSource.PlayOneShot(_mgBadSliderSounds[_randomSoundNum]);
-    }
-
-    public void PlayMediumSliderSound()
-    {
-        _randomSoundNum = Random.Range(0, 4);
-        _audioSource.PlayOneShot(_mgMediumSliderSounds[_randomSoundNum]);
     }
 
     public void PlayGoodSliderSound()

@@ -94,6 +94,7 @@ public class ShootingGame : MiniGame
         if (IsP1Shooting)
         {
             RectTransform sightPos = _aimSightP1.GetComponent<RectTransform>();
+            AudioManager.Instance.PlayShotSound();
             //Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().GetWorldCorners();
 
             for (int i = InstTargets.Count - 1; i >= 0; i--)
@@ -115,9 +116,11 @@ public class ShootingGame : MiniGame
         if (IsP2Shooting)
         {
             RectTransform sightPos = _aimSightP2.GetComponent<RectTransform>();
+            AudioManager.Instance.PlayShotSound();
 
-            foreach (var target in InstTargets)
+            for (int i = InstTargets.Count - 1; i >= 0; i--)
             {
+                GameObject target = InstTargets[i];
                 float diffMag = (sightPos.position - target.transform.position).magnitude;
                 if (diffMag < hitRange)
                 {
@@ -155,7 +158,10 @@ public class ShootingGame : MiniGame
         else
         {
             // Game finish Lose
-            StartCoroutine(GameFinishLose());
+            if (!IsGameFinishCoroutineStarted)
+            {
+                StartCoroutine(GameFinishLose());
+            }
             /*GameManager.Instance.SpawnFortuneWheel();
             StartCoroutine(DespawnAnimation());
             Destroy(this.transform.parent.gameObject);*/
@@ -173,6 +179,8 @@ public class ShootingGame : MiniGame
         newTarget.transform.localPosition = pos;
         nextSpawnTime = Time.time + intervalSpawnTime;
         InstTargets.Add(newTarget);
+        AudioManager.Instance.PlayTargetSound();
+
     }
 
     public void CheckLimit(GameObject aimSight)
