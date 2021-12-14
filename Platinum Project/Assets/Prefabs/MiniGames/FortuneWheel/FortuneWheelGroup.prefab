@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -548, y: 0}
+  m_AnchoredPosition: {x: -400, y: -35}
   m_SizeDelta: {x: 491.7927, y: 81.9655}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7926096915752669001
@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Game Wheel
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b0207a5f4c1de6740b307be711fdf2fd, type: 2}
-  m_sharedMaterial: {fileID: -1662926617308262278, guid: b0207a5f4c1de6740b307be711fdf2fd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d6e4579ade876044a78ab92f6bd098d, type: 2}
+  m_sharedMaterial: {fileID: 2194832045691481837, guid: 2d6e4579ade876044a78ab92f6bd098d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -168,7 +168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -11.5, y: -33.199997}
   m_SizeDelta: {x: 598, y: 271}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5932581445511398951
@@ -348,11 +348,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2386901536370315127, guid: fe7f659c047a6b841ae80bac1a363dfc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -13.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2386901536370315127, guid: fe7f659c047a6b841ae80bac1a363dfc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.800003
+      value: -36
       objectReference: {fileID: 0}
     - target: {fileID: 2386901536370315127, guid: fe7f659c047a6b841ae80bac1a363dfc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

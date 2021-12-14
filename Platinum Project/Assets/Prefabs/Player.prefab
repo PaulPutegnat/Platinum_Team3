@@ -4920,8 +4920,9 @@ MonoBehaviour:
   GravMultiplier: 1.5
   airControlDiviser: 1.1
   Slide: 0
-  SlidingUnderBoost: 1.5
-  BrakeForceAfterSlidingUnder: 75
+  SlideSpeed: 10
+  SlidingUnderBoost: 1.2
+  BrakeForceAfterSlidingUnder: 200
   dustParticleSystem: {fileID: 4905126378715438513}
   JumpParticleSystem: {fileID: 7621164273451053473}
 --- !u!65 &8507846784637375017

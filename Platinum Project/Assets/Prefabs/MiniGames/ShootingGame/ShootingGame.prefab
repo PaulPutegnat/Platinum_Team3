@@ -59,6 +59,7 @@ MonoBehaviour:
   DespawnAnim:
   - {fileID: 7400000, guid: d90bc479b589f7c40a979516ea15bf8a, type: 2}
   LosePrefab: {fileID: 2934588146529014267, guid: 27fc428e2b62b47458ae740d5ed6b6a8, type: 3}
+  WinPrefab: {fileID: 4439272299899973804, guid: baba9535e565d09469b8618811ddf02d, type: 3}
   TimerSlider: {fileID: 1514497716289010537}
   _spawnArea: {fileID: 3636190370726257820}
   _targetPrefab: {fileID: 9030037093502666965, guid: 821559e41026e1c468ae2f812a5b76f7, type: 3}
@@ -67,9 +68,9 @@ MonoBehaviour:
   _targetList: {fileID: 3636190369601158993}
   _pointPrefab: {fileID: 733869603254909710, guid: f83fa2506983eeb4c91088ea37bd17a1, type: 3}
   _aimSpeed: 600
-  _nbTarget: 16
+  _nbTarget: 20
   hitRange: 30
-  _ObjectivesPoints: 10
+  _ObjectivesPoints: 16
   _pointText: {fileID: 4778349649981354083}
   gameDuration: 10
   timerText: {fileID: 1514497717663599360}
@@ -262,8 +263,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Points : 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b0207a5f4c1de6740b307be711fdf2fd, type: 2}
-  m_sharedMaterial: {fileID: -1662926617308262278, guid: b0207a5f4c1de6740b307be711fdf2fd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2d6e4579ade876044a78ab92f6bd098d, type: 2}
+  m_sharedMaterial: {fileID: 2194832045691481837, guid: 2d6e4579ade876044a78ab92f6bd098d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

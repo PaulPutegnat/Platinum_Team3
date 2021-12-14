@@ -28,10 +28,10 @@ public class SlidingBarGame : MiniGame
 
     [Range(0, 1)]
     public float speed;
+
     public float minIntervalSize, maxIntervalSize;
 
-
-    private float minIntervalPos = -550f, maxIntervalPos = 550f;
+    private float minIntervalPos = -530f, maxIntervalPos = 520f;
     private Vector2 intervalP1Size;
     private Vector2 intervalP2Size;
     private Vector3 lastPosP1;
@@ -51,51 +51,54 @@ public class SlidingBarGame : MiniGame
 
     private void Awake()
     {
-        switch (IsDoubleIntervalEnum)
-        {
-            case IS_DOUBLE_INTERVAL.NO:
-                isDoubleInterval = false;
-                intervalP2.SetActive(false);
-                break;
-
-            case IS_DOUBLE_INTERVAL.YES:
-                isDoubleInterval = true;
-                intervalP2.SetActive(true);
-                break;
-        }
+        
     }
 
     IEnumerator Start()
     {
         intervalP1.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP1.transform.localPosition.y);
-        intervalP1.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 100f);
+        intervalP1.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 53f);
         intervalP1Size = intervalP1.GetComponent<RectTransform>().sizeDelta;
         posPercentP1 = Random.Range(-1, 1.1f);
-        handleP1.transform.localPosition = new Vector3(posPercentP1 * 600, 0f, 0f);
+        handleP1.transform.localPosition = new Vector3(posPercentP1 * 600, handleP1.transform.localPosition.y, 0f);
 
         if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] != null)
         {
             intervalP2.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP2.transform.localPosition.y);
-            intervalP2.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 100f);
+            intervalP2.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 53f);
             posPercentP2 = Random.Range(-1, 1.1f);
-            handleP2.transform.localPosition = new Vector3(posPercentP2 * 600, 0f, 0f);
+            handleP2.transform.localPosition = new Vector3(posPercentP2 * 600, handleP2.transform.localPosition.y, 0f);
             intervalP2Size = intervalP2.GetComponent<RectTransform>().sizeDelta;
         }
 
-        yield return StartCoroutine(SpawnAnimation());
+        
 
         if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] != null)
         {
-            handleP2.SetActive(true);
-            isTwoPlayer = true;
+            IsDoubleIntervalEnum = IS_DOUBLE_INTERVAL.YES;
         }
         else
         {
-            handleP2.SetActive(false);
-            isTwoPlayer = false;
+            IsDoubleIntervalEnum = IS_DOUBLE_INTERVAL.NO;
+        }
+
+        switch (IsDoubleIntervalEnum)
+        {
+            case IS_DOUBLE_INTERVAL.NO:
+                isDoubleInterval = false;
+                intervalP2.SetActive(false);
+                handleP2.SetActive(false);
+                break;
+
+            case IS_DOUBLE_INTERVAL.YES:
+                isDoubleInterval = true;
+                intervalP2.SetActive(true);
+                handleP2.SetActive(true);
+                break;
         }
 
         StartSlidingBarGame(true);
+        yield return StartCoroutine(SpawnAnimation());
     }
 
     void Update()
@@ -120,7 +123,7 @@ public class SlidingBarGame : MiniGame
 
         if (isP1Playing)
         {
-            handleP1.transform.localPosition = Vector3.Lerp(new Vector3(-590f, 0, 0), new Vector3(590f, 0, 0), posPercentP1);
+            handleP1.transform.localPosition = Vector3.Lerp(new Vector3(-530f, handleP1.transform.localPosition.y, 0), new Vector3(520f, handleP1.transform.localPosition.y, 0), posPercentP1);
             posPercentP1 = Mathf.PingPong(Time.time * speed, 1f);
             lastPosP1 = handleP1.transform.localPosition;
         }
@@ -131,7 +134,7 @@ public class SlidingBarGame : MiniGame
 
         if (isP2Playing)
         {
-            handleP2.transform.localPosition = Vector3.Lerp(new Vector3(590f, 0, 0), new Vector3(-590f, 0, 0), posPercentP2);
+            handleP2.transform.localPosition = Vector3.Lerp(new Vector3(520f, handleP2.transform.localPosition.y, 0), new Vector3(-530f, handleP2.transform.localPosition.y, 0), posPercentP2);
             posPercentP2 = Mathf.PingPong(Time.time * speed, 1f);
             lastPosP2 = handleP2.transform.localPosition;
         }
@@ -148,26 +151,34 @@ public class SlidingBarGame : MiniGame
                 {
                     // Game finish Win
                     //Debug.Log("GAME IS WIN");
-                    TrapsEffects.instanceTrapsEffects.TrapSelector(1);
+                    /*TrapsEffects.instanceTrapsEffects.TrapSelector(1);
                     GameManager.Instance.SpawnFortuneWheel();
                     StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);
+                    Destroy(this.transform.parent.gameObject);*/
+                    if (!IsGameFinishWinCoroutineStarted)
+                    {
+                        StartCoroutine(GameFinishWin(1));
+                    }
 
                 }
                 else if ((isP1Win && !isP2Win) || (!isP1Win && isP2Win))
                 {
                     // Game finish Semi-win
                     //Debug.Log("GAME IS SEMI-WIN");
-                    TrapsEffects.instanceTrapsEffects.TrapSelector(2);
+                    /*TrapsEffects.instanceTrapsEffects.TrapSelector(2);
                     GameManager.Instance.SpawnFortuneWheel();
                     StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);
+                    Destroy(this.transform.parent.gameObject);*/
+                    if (!IsGameFinishWinCoroutineStarted)
+                    {
+                        StartCoroutine(GameFinishWin(2));
+                    }
                 }
                 else if (!isP1Win && !isP2Win)
                 {
                     // Game finish lose
                     //Debug.Log("GAME IS LOSE");
-                    if (!IsGameFinishCoroutineStarted)
+                    if (!IsGameFinishLoseCoroutineStarted)
                     {
                         StartCoroutine(GameFinishLose());
                     }
@@ -183,10 +194,21 @@ public class SlidingBarGame : MiniGame
             {
                 if (isP1Win)
                 {
-                    TrapsEffects.instanceTrapsEffects.TrapSelector(1);
+                    /*TrapsEffects.instanceTrapsEffects.TrapSelector(1);
                     GameManager.Instance.SpawnFortuneWheel();
                     StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);
+                    Destroy(this.transform.parent.gameObject);*/
+                    if (!IsGameFinishWinCoroutineStarted)
+                    {
+                        StartCoroutine(GameFinishWin(1));
+                    }
+                }
+                else
+                {
+                    if (!IsGameFinishLoseCoroutineStarted)
+                    {
+                        StartCoroutine(GameFinishLose());
+                    }
                 }
             }
         }

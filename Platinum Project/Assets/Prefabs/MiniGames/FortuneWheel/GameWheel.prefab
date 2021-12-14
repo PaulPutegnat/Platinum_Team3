@@ -58,6 +58,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: a32d772f8aa409f47aae3bf60dc5fdb6, type: 2}
   - {fileID: 7400000, guid: 1a65d4663402e4e4c807b978b4e82d54, type: 2}
   LosePrefab: {fileID: 0}
+  WinPrefab: {fileID: 0}
   nbOfGames: 3
   timeRotate: 3.5
   nbCircleRotate: 6
@@ -129,17 +130,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2386901537917435088}
-  m_LocalRotation: {x: -0, y: -0, z: 0.09140489, w: 0.99581385}
+  m_LocalRotation: {x: 0, y: 0, z: -0.5, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2386901536370315127}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10.489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -60}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0, y: 0}
-  m_SizeDelta: {x: 598, y: 271}
+  m_SizeDelta: {x: 233, y: 245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2386901537917435091
 CanvasRenderer:
