@@ -167,8 +167,10 @@ public class SlidingBarGame : MiniGame
                 {
                     // Game finish lose
                     //Debug.Log("GAME IS LOSE");
-                    StartCoroutine(GameFinishLose());
-                    
+                    if (!IsGameFinishCoroutineStarted)
+                    {
+                        StartCoroutine(GameFinishLose());
+                    }
                     /*GameManager.Instance.SpawnFortuneWheel();
                     StartCoroutine(DespawnAnimation());
                     Destroy(this.transform.parent.gameObject);*/
