@@ -62,11 +62,13 @@ public class PortalTest : MonoBehaviour
             if (IsP1Pressing && IsAlreadyInstantiate)
             {
                 sliderCurrentValue += UpValue;
+                PlayerManagerScript.Instance.players[0].GetComponent<neutralcontroller>().runnerRef.transform.GetChild(0).GetComponent<Animator>().Play("Guitar/Portal");
             }
 
             if (IsP2Pressing && IsAlreadyInstantiate)
             {
                 sliderCurrentValue += UpValue;
+                PlayerManagerScript.Instance.players[1].GetComponent<neutralcontroller>().runnerRef.transform.GetChild(0).GetComponent<Animator>().Play("Guitar/Portal");
             }
 
             if (SliderGameObject.value > 0)

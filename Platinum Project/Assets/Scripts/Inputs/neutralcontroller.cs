@@ -13,8 +13,8 @@ public class neutralcontroller : MonoBehaviour
     private bool Comfirmation = false;
     [HideInInspector]public STATE _state;
     [HideInInspector]public int limit = 1;
-    private GameObject runnerRef;
-    private GameObject TrapperRef;
+    [HideInInspector] public GameObject runnerRef;
+    [HideInInspector] public GameObject TrapperRef;
     private RectTransform thisRT;
     private Transform R1;
     private Transform R2;
