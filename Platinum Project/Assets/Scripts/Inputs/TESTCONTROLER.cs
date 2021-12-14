@@ -53,7 +53,11 @@ public class TESTCONTROLER : MonoBehaviour
 
     [Header("Slide")]
     public bool Slide;
+
+    [Range(0f, 50f)]
+    public float SlideSpeed;
     private bool UnderObjectLastFrame = false;
+    private int SlidingDirection = 1;
 
     [Range(1f,3f)]
     public float SlidingUnderBoost;
@@ -96,6 +100,14 @@ public class TESTCONTROLER : MonoBehaviour
         //Mouvements du personnage
 
         var movement = _movementInput.x;
+        if (_movementInput.x > 0)
+        {
+            SlidingDirection = 1;
+        }
+        else if (_movementInput.x < 0)
+        {
+            SlidingDirection = -1;
+        }
 
         //JUMP
 
@@ -258,6 +270,7 @@ public class TESTCONTROLER : MonoBehaviour
     {
         
         _movementInput = Vector2.zero;
+
         if (!IsLocked)
         {
             if (!HasChangedDirection)
@@ -284,7 +297,7 @@ public class TESTCONTROLER : MonoBehaviour
         if (!IsLocked && IsGrounded())
         {
         Slide = context.ReadValueAsButton();
-        SlideVelocityLastFrame = _rigidbody.velocity.x;
+        SlideVelocityLastFrame = 20 * SlidingDirection;
         IsLocked = true;
         }
 
