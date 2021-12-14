@@ -136,10 +136,15 @@ public class ShootingGame : MiniGame
         if (_ObjectivesPoints <= 0)
         {
             // Game finish Win
-            GameManager.Instance.SpawnFortuneWheel();
+            /*GameManager.Instance.SpawnFortuneWheel();
             StartCoroutine(DespawnAnimation());
             TrapsEffects.instanceTrapsEffects.TrapSelector(1);
-            Destroy(this.transform.parent.gameObject);
+            Destroy(this.transform.parent.gameObject);*/
+            if (!IsGameFinishWinCoroutineStarted)
+            {
+                StartCoroutine(GameFinishWin(1));
+                gameDuration = 1;
+            }
         }
 
         if (gameDuration > 0)
@@ -158,7 +163,7 @@ public class ShootingGame : MiniGame
         else
         {
             // Game finish Lose
-            if (!IsGameFinishCoroutineStarted)
+            if (!IsGameFinishLoseCoroutineStarted)
             {
                 StartCoroutine(GameFinishLose());
             }
