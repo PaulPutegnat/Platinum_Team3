@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public bool IsBegin = false;
     public bool withWheel = false;
+    private bool IsFWAlreadyInstantiate = false;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -119,7 +120,12 @@ public class GameManager : MonoBehaviour
 
     public void SpawnFortuneWheel()
     {
-        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("GameContainer").transform);
+        if (!IsFWAlreadyInstantiate)
+        {
+            GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("GameContainer").transform);
+            IsFWAlreadyInstantiate = true;
+        }
+        
     }
 
     public void CheckRunnersDeath()
