@@ -10,7 +10,9 @@ public class MiniGame : MonoBehaviour
     public List<AnimationClip> DespawnAnim = new List<AnimationClip>();
 
     [SerializeField] private GameObject LosePrefab;
-    protected bool IsGameFinishCoroutineStarted = false;
+    [SerializeField] private GameObject WinPrefab;
+    protected bool IsGameFinishLoseCoroutineStarted = false;
+    protected bool IsGameFinishWinCoroutineStarted = false;
 
     public IEnumerator SpawnAnimation()
     {
@@ -39,7 +41,7 @@ public class MiniGame : MonoBehaviour
 
     public IEnumerator GameFinishLose()
     {
-        IsGameFinishCoroutineStarted = true;
+        IsGameFinishLoseCoroutineStarted = true;
         GameObject instGameObject = Instantiate(LosePrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
         Animator myAnimator = instGameObject.GetComponent<Animator>();
         //fwAnimation.Play(GameFinishList.name);
@@ -48,8 +50,24 @@ public class MiniGame : MonoBehaviour
         Destroy(instGameObject);
 
         GameManager.Instance.SpawnFortuneWheel();
-        IsGameFinishCoroutineStarted = false;
+        IsGameFinishLoseCoroutineStarted = false;
         Destroy(this.transform.parent.gameObject);
         
+    }
+
+    public IEnumerator GameFinishWin()
+    {
+        IsGameFinishWinCoroutineStarted = true;
+        GameObject instGameObject = Instantiate(WinPrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
+        Animator myAnimator = instGameObject.GetComponent<Animator>();
+        //fwAnimation.Play(GameFinishList.name);
+        yield return StartCoroutine(DespawnAnimation());
+        yield return new WaitForSeconds(myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+        Destroy(instGameObject);
+
+
+        GameManager.Instance.SpawnFortuneWheel();
+        IsGameFinishWinCoroutineStarted = false;
+        Destroy(this.transform.parent.gameObject);
     }
 }

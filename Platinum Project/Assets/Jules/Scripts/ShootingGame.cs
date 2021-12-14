@@ -158,7 +158,7 @@ public class ShootingGame : MiniGame
         else
         {
             // Game finish Lose
-            if (!IsGameFinishCoroutineStarted)
+            if (!IsGameFinishLoseCoroutineStarted)
             {
                 StartCoroutine(GameFinishLose());
             }

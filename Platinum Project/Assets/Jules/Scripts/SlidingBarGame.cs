@@ -167,7 +167,7 @@ public class SlidingBarGame : MiniGame
                 {
                     // Game finish lose
                     //Debug.Log("GAME IS LOSE");
-                    if (!IsGameFinishCoroutineStarted)
+                    if (!IsGameFinishLoseCoroutineStarted)
                     {
                         StartCoroutine(GameFinishLose());
                     }
