@@ -90,7 +90,7 @@ MonoBehaviour:
   - {fileID: 4699019529662937460, guid: 066c681843207eb4aa06d96bf49b8a0f, type: 3}
   - {fileID: 842542038618950009, guid: 73e007c9aca9c5b40a6635c6173c159e, type: 3}
   - {fileID: 8636577257879439774, guid: 9d9be6284e08933469a7778a6613602f, type: 3}
-  DevOneGame: 1
+  DevOneGame: 0
 --- !u!114 &8138579466771855542
 MonoBehaviour:
   m_ObjectHideFlags: 0
