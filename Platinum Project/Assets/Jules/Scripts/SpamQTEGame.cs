@@ -216,8 +216,7 @@ public class SpamQTEGame : MiniGame
             // Game Finish
             GameManager.Instance.SpawnFortuneWheel();
             StartCoroutine(DespawnAnimation());
-            Destroy(this.gameObject);
-            
+            Destroy(this.transform.parent.gameObject);
         }
 
         if (ShakeTimer > intervalTime)
