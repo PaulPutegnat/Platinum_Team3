@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public bool IsBegin = false;
     public bool withWheel = false;
+    private bool IsFWAlreadyInstantiate = false;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -119,7 +120,12 @@ public class GameManager : MonoBehaviour
 
     public void SpawnFortuneWheel()
     {
-        GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("GameContainer").transform);
+        if (!IsFWAlreadyInstantiate)
+        {
+            GameObject newFortuneWheel = Instantiate(fortuneWheel, GameObject.FindGameObjectWithTag("GameContainer").transform);
+            IsFWAlreadyInstantiate = true;
+        }
+        
     }
 
     public void CheckRunnersDeath()
@@ -128,10 +134,7 @@ public class GameManager : MonoBehaviour
         switch (DeadPlayer)
         {
             case 2:
-                TrappersVictoryScreen.SetActive(true);
-                GameObject.Find("TrapManager").SetActive(false);
-                Camera.main.GetComponent<TestCam>().enabled = false;
-                if (PlayerManagerScript.Instance.RoundNumber % 2 != 0)
+                if (PlayerManagerScript.Instance.RoundNumberDone % 2 != 0)
                 {
                     PlayerManagerScript.Instance.Team2Score++;
                 }
@@ -140,6 +143,11 @@ public class GameManager : MonoBehaviour
                     PlayerManagerScript.Instance.Team1Score++;
                 }
                 PlayerManagerScript.Instance.UpdateScore();
+                TrappersVictoryScreen.SetActive(true);
+                GameObject.Find("TrapManager").SetActive(false);
+                Camera.main.GetComponent<TestCam>().enabled = false;
+                GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.Find("NextGameButtonContainer").GetComponentInChildren<Button>().gameObject);
+
                 break;
         }
     }

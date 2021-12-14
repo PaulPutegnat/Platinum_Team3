@@ -134,8 +134,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: bfb1efbe159560149818acf3b59d7837, type: 2}
   DespawnAnim:
   - {fileID: 7400000, guid: 73133102f1a48c8448ed9beb328c4ef8, type: 2}
-  LosePrefab: {fileID: 5007733829958029869, guid: 27fc428e2b62b47458ae740d5ed6b6a8, type: 3}
-  GameFinishList: {fileID: 7400000, guid: d57ed1e2b46a40c48a4e1ad9381345ed, type: 2}
+  LosePrefab: {fileID: 2934588146529014267, guid: 27fc428e2b62b47458ae740d5ed6b6a8, type: 3}
   spamSlider: {fileID: 836991249266025417}
   timeSlider: {fileID: 836991249546233100}
   timerFillArea: {fileID: 836991249524321651}
@@ -486,7 +485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d27ff50a12881d46a46104f88c349c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e65f52d146cfc184aacfc0b239f27da4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
