@@ -292,9 +292,12 @@ public class TESTCONTROLER : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (IsGrounded() && VelocityYLastFrame < -30)
+        if (IsGrounded() && VelocityYLastFrame < -10)
         {
             //PLAY SOUND
+            AudioManager.Instance.PlayLandSound();
+            JumpParticleSystem.Play();
+            Debug.Log("play sound");
         }
     }
 }

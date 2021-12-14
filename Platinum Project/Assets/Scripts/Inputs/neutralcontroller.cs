@@ -59,8 +59,8 @@ public class neutralcontroller : MonoBehaviour
             J4 = GameObject.FindGameObjectWithTag("J4").transform;
         }
 
-        controllerImage = transform.GetChild(0).GetComponent<Image>();
-        opaqueFilter = transform.GetChild(1).GetComponent<Image>();
+        controllerImage = GameObject.FindGameObjectWithTag("RendererNeutralPlayer").GetComponent<Image>();
+        opaqueFilter = GameObject.FindGameObjectWithTag("OpaqueFilterNeutralPlayer").GetComponent<Image>();
         opaqueFilter.color = new Color(0f, 0f, 0f, 0f);
         switch (GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount)
         {
