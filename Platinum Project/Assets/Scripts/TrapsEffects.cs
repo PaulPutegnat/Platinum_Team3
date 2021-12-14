@@ -32,14 +32,6 @@ public class TrapsEffects : MonoBehaviour
         _testcam = FindObjectOfType<Camera>().GetComponent<TestCam>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            TrapSelector(1);
-        }
-    }
-
     public void TrapSelector(float semiWinSplit)
     {
         if (trapNum == 1)
