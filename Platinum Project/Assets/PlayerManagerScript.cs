@@ -106,10 +106,10 @@ public class PlayerManagerScript : MonoBehaviour
     {
         
         sync.allowSceneActivation = true;
-        SH = GameObject.Find("ScoreHolder");
         ReversePlayerArray();
-        UpdateScore();
         yield return new WaitForSeconds(0.1f);
+        SH = GameObject.Find("ScoreHolder");
+        UpdateScore();
         GameManager.Instance.ButtonPressed();
     }
 
