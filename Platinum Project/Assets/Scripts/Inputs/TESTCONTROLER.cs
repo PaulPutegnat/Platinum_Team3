@@ -295,6 +295,8 @@ public class TESTCONTROLER : MonoBehaviour
         if (IsGrounded() && VelocityYLastFrame < -30)
         {
             //PLAY SOUND
+            JumpParticleSystem.Play();
+            Debug.Log("play sound");
         }
     }
 }

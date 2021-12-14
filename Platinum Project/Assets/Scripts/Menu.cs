@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public void PlayGame()
-    {
-        SceneManager.LoadScene("07_Scene_Pres");
-    }
 
     public void BackToMenu()
     {
@@ -24,5 +20,9 @@ public class Menu : MonoBehaviour
     public void Retry()
     {
         PlayerManagerScript.Instance.ResetRound();
+    }
+    public void NextGame()
+    {
+        PlayerManagerScript.Instance.StartCoroutine(PlayerManagerScript.Instance.NextRound());
     }
 }
