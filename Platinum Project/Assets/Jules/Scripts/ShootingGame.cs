@@ -116,7 +116,7 @@ public class ShootingGame : MiniGame
         if (IsP2Shooting)
         {
             RectTransform sightPos = _aimSightP2.GetComponent<RectTransform>();
-            AudioManager.Instance.PlayMediumSliderSound();
+            AudioManager.Instance.PlayShotSound();
 
             foreach (var target in InstTargets)
             {
