@@ -62,7 +62,7 @@ public class TESTCONTROLER : MonoBehaviour
     [Range(1f,3f)]
     public float SlidingUnderBoost;
 
-    [Range(25f, 75f)]
+    [Range(25f, 200f)]
     public float BrakeForceAfterSlidingUnder;
 
 
@@ -169,7 +169,7 @@ public class TESTCONTROLER : MonoBehaviour
         if (Slide)
         {
             animatotor.SetBool("IsSliding", true);
-            float InitialDeceleration = 1.025f;
+            float InitialDeceleration = 1.03f;
             float SlideDeceleration = 1f + BrakeForceAfterSlidingUnder/1000;
 
             if (Mathf.Abs(SlideVelocityLastFrame) > 4f)
