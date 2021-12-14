@@ -156,9 +156,9 @@ public class ShootingGame : MiniGame
         {
             // Game finish Lose
             StartCoroutine(GameFinishLose());
-            GameManager.Instance.SpawnFortuneWheel();
+            /*GameManager.Instance.SpawnFortuneWheel();
             StartCoroutine(DespawnAnimation());
-            Destroy(this.transform.parent.gameObject);
+            Destroy(this.transform.parent.gameObject);*/
         }
 
         timerText.text = gameDuration.ToString("f2");

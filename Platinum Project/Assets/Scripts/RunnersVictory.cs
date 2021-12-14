@@ -6,13 +6,8 @@ using UnityEngine;
 public class RunnersVictory : MonoBehaviour
 {
     public GameObject RunnersVictoryScreen;
-
-    public GameObject P_Force;
     public ParticleSystem PS;
-    private void Start()
-    {
-        P_Force.SetActive(true);
-    }
+   
 
     void OnTriggerEnter(Collider col)
     {
@@ -36,6 +31,16 @@ public class RunnersVictory : MonoBehaviour
         yield return new WaitForSeconds(1);
         var emission = PS.emission;
         emission.enabled = false;
+        
+        if (PlayerManagerScript.Instance.RoundNumberDone % 2 != 0)
+        {
+            PlayerManagerScript.Instance.Team1Score++;
+        }
+        else
+        {
+            PlayerManagerScript.Instance.Team2Score++;
+        }
+        PlayerManagerScript.Instance.UpdateScore();
         RunnersVictoryScreen.SetActive(true);
     }
 }

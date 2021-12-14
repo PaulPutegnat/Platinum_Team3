@@ -2,10 +2,13 @@ using UnityEngine.Audio;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] Slider _volumeSlider;
+
     public Sound[] Sounds;
 
     public static AudioManager Instance;
@@ -51,6 +54,16 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        if (!PlayerPrefs.HasKey("volume"))
+        {
+            PlayerPrefs.SetFloat("volume", 1);
+            Load();
+        }
+        else
+        {
+            Load();
+        }
+
         _audioSource = GetComponent<AudioSource>();
         _walkSounds = Resources.LoadAll<AudioClip>("FT_Runners_Rock_Walk");
         _slideSounds = Resources.LoadAll<AudioClip>("FT_Runners_Rock_Slide");
@@ -72,6 +85,22 @@ public class AudioManager : MonoBehaviour
         {
             PlayUiSound();
         }
+    }
+
+    public void ChangeVolume()
+    {
+        AudioListener.volume = _volumeSlider.value;
+        Save();
+    }
+
+    private void Load()
+    {
+        _volumeSlider.value = PlayerPrefs.GetFloat("volume");
+    }
+
+    private void Save()
+    {
+        PlayerPrefs.SetFloat("volume", _volumeSlider.value);
     }
 
     public void PlaySingleSound(string name)

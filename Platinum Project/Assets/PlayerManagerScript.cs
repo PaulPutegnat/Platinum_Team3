@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -11,12 +12,17 @@ public class PlayerManagerScript : MonoBehaviour
     public static PlayerManagerScript Instance;
     public GameObject[] players;
 
+    public int Team1Score = 0;
+    public int Team2Score = 0;
+
     public const int RUNNER1 = 0;
     public const int RUNNER2 = 1;
     public const int TRAPPER1 = 2;
     public const int TRAPPER2 = 3;
 
     public int RoundNumber = 5;
+    public int RoundNumberDone = 1;
+    [SerializeField]GameObject SH;
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,6 +35,7 @@ public class PlayerManagerScript : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             players = new GameObject[4];
+            SH = GameObject.Find("ScoreHolder");
     }
 
     private void Update()
@@ -59,8 +66,7 @@ public class PlayerManagerScript : MonoBehaviour
 
     public void ResetRound()
     {
-        if (RoundNumber > 0)
-        {
+       
             for (int i = 0; i < 4; i++)
             {
                 if (players[i])
@@ -71,19 +77,20 @@ public class PlayerManagerScript : MonoBehaviour
                 
             }
             SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-            RoundNumber--;
-        }
-        else
-        {
-            //FIN DU JEU
-        }
+            
+            RoundNumberDone = 1;
+            Team1Score = 0;
+            Team2Score = 0;
+            UpdateScore();
 
-    }
 
-    IEnumerator NextRound()
+}
+
+    public IEnumerator NextRound()
     {
-        if (RoundNumber > 0)
+        if (RoundNumber > 1)
         {
+            RoundNumberDone++;
             RoundNumber--;
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
             asyncLoad.allowSceneActivation = false;
@@ -101,6 +108,7 @@ public class PlayerManagerScript : MonoBehaviour
         sync.allowSceneActivation = true;
         ReversePlayerArray();
         yield return new WaitForSeconds(0.1f);
+        UpdateScore();
         GameManager.Instance.ButtonPressed();
     }
 
@@ -135,5 +143,12 @@ public class PlayerManagerScript : MonoBehaviour
 
 
         }
+    }
+
+    public void UpdateScore()
+    {
+        SH = GameObject.Find("ScoreHolder");
+        SH.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Team1Score.ToString();
+        SH.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Team2Score.ToString();
     }
 }

@@ -64,8 +64,9 @@ public class TESTCONTROLER : MonoBehaviour
 
 
     private bool IsLocked = false;
-    private float VelocityYLastFrame;
+    private float SlideVelocityLastFrame;
     private float VelocityXLastFrame;
+    private float VelocityYLastFrame;
     bool HasChangedDirection = false;
     private BoxCollider box;
     private Vector3 InitialSize;
@@ -159,9 +160,9 @@ public class TESTCONTROLER : MonoBehaviour
             float InitialDeceleration = 1.025f;
             float SlideDeceleration = 1f + BrakeForceAfterSlidingUnder/1000;
 
-            if (Mathf.Abs(VelocityYLastFrame) > 4f)
+            if (Mathf.Abs(SlideVelocityLastFrame) > 4f)
             {
-                _rigidbody.velocity = new Vector3(VelocityYLastFrame, _rigidbody.velocity.y, 0);
+                _rigidbody.velocity = new Vector3(SlideVelocityLastFrame, _rigidbody.velocity.y, 0);
                 box.center = new Vector3(0, 0.5f, 0);
                 box.size = new Vector3(InitialSize.x, InitialSize.y / 2, InitialSize.z);
                 
@@ -170,17 +171,17 @@ public class TESTCONTROLER : MonoBehaviour
                 {
                     if (UnderObjectLastFrame)
                     {
-                        VelocityYLastFrame /= SlideDeceleration;
+                        SlideVelocityLastFrame /= SlideDeceleration;
                     }
                     else
                     {
-                        VelocityYLastFrame /= InitialDeceleration;
+                        SlideVelocityLastFrame /= InitialDeceleration;
                     }
 
                 }
                 else
                 {
-                    _rigidbody.velocity = new Vector3(VelocityYLastFrame * SlidingUnderBoost, 0, 0);
+                    _rigidbody.velocity = new Vector3(SlideVelocityLastFrame * SlidingUnderBoost, 0, 0);
                     UnderObjectLastFrame = true;
                 }
 
@@ -190,7 +191,7 @@ public class TESTCONTROLER : MonoBehaviour
             {
                 ResetSlide();
                 _rigidbody.velocity = new Vector3(0,0,0);
-                VelocityYLastFrame = 0f;
+                SlideVelocityLastFrame = 0f;
 
             }
 
@@ -218,8 +219,9 @@ public class TESTCONTROLER : MonoBehaviour
         //C'est moche mais j'en ai rien à foutre
         animatotor.gameObject.transform.rotation = new Quaternion(0,0,0,0);
         animatotor.gameObject.transform.localPosition = new Vector3(0,0.5f,0);
+        VelocityYLastFrame = _rigidbody.velocity.y;
 
-        
+
     }
 
     public void ResetSlide()
@@ -282,12 +284,20 @@ public class TESTCONTROLER : MonoBehaviour
         if (!IsLocked && IsGrounded())
         {
         Slide = context.ReadValueAsButton();
-        VelocityYLastFrame = _rigidbody.velocity.x;
+        SlideVelocityLastFrame = _rigidbody.velocity.x;
         IsLocked = true;
         }
 
     }
 
-
+    private void OnCollisionEnter(Collision other)
+    {
+        if (IsGrounded() && VelocityYLastFrame < -30)
+        {
+            //PLAY SOUND
+            JumpParticleSystem.Play();
+            Debug.Log("play sound");
+        }
+    }
 }
 

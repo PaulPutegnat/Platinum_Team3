@@ -4983,6 +4983,7 @@ MonoBehaviour:
   widthThresold: {x: -50, y: 1970}
   heightThresold: {x: 200, y: 1130}
   Particles: {fileID: 2301275867431158409, guid: b1938cefb48daa84db22d060f4841e4c, type: 3}
+  WarningOffest: 150
 --- !u!114 &6696570780802702323
 MonoBehaviour:
   m_ObjectHideFlags: 0

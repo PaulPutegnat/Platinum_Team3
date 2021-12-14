@@ -24,6 +24,8 @@ public class neutralcontroller : MonoBehaviour
     private Transform J2;
     private Transform J3;
     private Transform J4;
+    private Image controllerImage;
+    private Image opaqueFilter;
 
     [HideInInspector]
     public enum STATE
@@ -57,7 +59,9 @@ public class neutralcontroller : MonoBehaviour
             J4 = GameObject.FindGameObjectWithTag("J4").transform;
         }
 
-        Image controllerImage = GetComponent<Image>();
+        controllerImage = GameObject.FindGameObjectWithTag("RendererNeutralPlayer").GetComponent<Image>();
+        opaqueFilter = GameObject.FindGameObjectWithTag("OpaqueFilterNeutralPlayer").GetComponent<Image>();
+        opaqueFilter.color = new Color(0f, 0f, 0f, 0f);
         switch (GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount)
         {
             case 1:
@@ -204,6 +208,8 @@ public class neutralcontroller : MonoBehaviour
             Comfirmation = true;
             GameManager.Instance.ActivePlayer++;
             GameManager.Instance.checkUI();
+            controllerImage.sprite = Resources.Load<Sprite>("UI_PROJECT/Lock_Controller");
+            opaqueFilter.color = new Color(0f, 0f, 0f, 0.8f);
             switch (_state)
             {
                 case STATE.RUNNER:
@@ -239,6 +245,8 @@ public class neutralcontroller : MonoBehaviour
             Comfirmation = false;
             GameManager.Instance.ActivePlayer--;
             GameManager.Instance.checkUI();
+            controllerImage.sprite = Resources.Load<Sprite>("UI_PROJECT/White_Controller");
+            opaqueFilter.color = new Color(0f, 0f, 0f, 0f);
             switch (_state)
             {
                 case STATE.RUNNER:
