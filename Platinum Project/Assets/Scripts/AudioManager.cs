@@ -113,7 +113,7 @@ public class AudioManager : MonoBehaviour
         }
         s.Source.Play();
         //How to play sound in scripts:
-        //FindObjectofType<AudioManager>().Play("name of the sound");
+        //FindObjectOfType<AudioManager>().PlaySingleSound("name of the sound");
     }
 
     public void PlayWalkSound()

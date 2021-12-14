@@ -22,6 +22,8 @@ TagManager:
   - Liane
   - GameContainer
   - WarningPanel
+  - RendererNeutralPlayer
+  - OpaqueFilterNeutralPlayer
   layers:
   - Default
   - TransparentFX

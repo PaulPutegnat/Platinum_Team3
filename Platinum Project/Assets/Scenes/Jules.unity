@@ -314,6 +314,8 @@ MonoBehaviour:
   Team1Score: 0
   Team2Score: 0
   RoundNumber: 5
+  RoundNumberDone: 1
+  SH: {fileID: 0}
 --- !u!4 &650291245
 Transform:
   m_ObjectHideFlags: 0
@@ -731,6 +733,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4483902139007336757, guid: c00079ec285f5df449cd854172399da3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4483902139007336759, guid: c00079ec285f5df449cd854172399da3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

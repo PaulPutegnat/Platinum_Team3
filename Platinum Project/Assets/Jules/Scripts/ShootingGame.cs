@@ -155,7 +155,10 @@ public class ShootingGame : MiniGame
         else
         {
             // Game finish Lose
-            StartCoroutine(GameFinishLose());
+            if (!IsGameFinishCoroutineStarted)
+            {
+                StartCoroutine(GameFinishLose());
+            }
             /*GameManager.Instance.SpawnFortuneWheel();
             StartCoroutine(DespawnAnimation());
             Destroy(this.transform.parent.gameObject);*/
