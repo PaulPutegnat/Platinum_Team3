@@ -43,6 +43,7 @@ public class GameWheel : MiniGame
         index = indexRandom;
 
         float angleWanted = (nbCircleRotate * CIRCLE) + angleOfOneGame * indexRandom;
+        FindObjectOfType<AudioManager>().PlaySingleSound("Wheel_Sound");
 
         while (currentTime < timeRotate)
         {
@@ -52,6 +53,8 @@ public class GameWheel : MiniGame
             float angleCurrent = angleWanted * curve.Evaluate(currentTime / timeRotate);
             transform.localEulerAngles = new Vector3(0, 0, angleCurrent + startAngle - (angleOfOneGame * indexRandom));
         }
+
+        FindObjectOfType<AudioManager>().PlaySingleSound("Wheel_Finish_Sound");
 
         yield return DespawnAnimation();
 
