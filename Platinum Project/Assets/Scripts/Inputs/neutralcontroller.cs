@@ -108,6 +108,7 @@ public class neutralcontroller : MonoBehaviour
                             transform.SetParent(R1, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
                             _state = STATE.RUNNER;
+                            AudioManager.Instance.PlayUiSound();
                         }
                         else if(GetComponent<RectTransform>().anchoredPosition.x == 0 && R2.transform.childCount == 0)
                         {
@@ -115,8 +116,9 @@ public class neutralcontroller : MonoBehaviour
                             transform.SetParent(R2, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
                             _state = STATE.RUNNER;
+                            AudioManager.Instance.PlayUiSound();
                         }
-                        
+
                         break;
                     case STATE.TRAPPER:
                         GameManager.Instance.TrapperNumber--;
@@ -143,6 +145,7 @@ public class neutralcontroller : MonoBehaviour
                                 break;
                         }
                         _state = STATE.MIDDLE;
+                        AudioManager.Instance.PlayUiSound();
                         break;
                 }
             }
@@ -159,6 +162,7 @@ public class neutralcontroller : MonoBehaviour
                             transform.SetParent(T1, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
                             _state = STATE.TRAPPER;
+                            AudioManager.Instance.PlayUiSound();
                         }
                         else if(GetComponent<RectTransform>().anchoredPosition.x == 0 && T2.transform.childCount == 0)
                         {
@@ -166,8 +170,9 @@ public class neutralcontroller : MonoBehaviour
                             transform.SetParent(T2, false);
                             GetComponent<RectTransform>().localPosition = Vector3.zero;
                             _state = STATE.TRAPPER;
+                            AudioManager.Instance.PlayUiSound();
                         }
-                        
+
                         break;
                     case STATE.RUNNER:
                         GameManager.Instance.TrapperNumber--;
@@ -194,6 +199,7 @@ public class neutralcontroller : MonoBehaviour
                                 break;
                         }
                         _state = STATE.MIDDLE;
+                        AudioManager.Instance.PlayUiSound();
                         break;
                 }
             }
@@ -209,6 +215,7 @@ public class neutralcontroller : MonoBehaviour
             GameManager.Instance.ActivePlayer++;
             GameManager.Instance.checkUI();
             controllerImage.sprite = Resources.Load<Sprite>("UI_PROJECT/Lock_Controller");
+            FindObjectOfType<AudioManager>().PlaySingleSound("Button_Click_Sound");
             opaqueFilter.color = new Color(0f, 0f, 0f, 0.8f);
             switch (_state)
             {
@@ -246,6 +253,7 @@ public class neutralcontroller : MonoBehaviour
             GameManager.Instance.ActivePlayer--;
             GameManager.Instance.checkUI();
             controllerImage.sprite = Resources.Load<Sprite>("UI_PROJECT/White_Controller");
+            FindObjectOfType<AudioManager>().PlaySingleSound("Button_Click_Sound");
             opaqueFilter.color = new Color(0f, 0f, 0f, 0f);
             switch (_state)
             {
