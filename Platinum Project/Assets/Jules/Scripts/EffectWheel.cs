@@ -19,7 +19,7 @@ public class EffectWheel : MonoBehaviour
         GameWheel fwScript = transform.parent.GetComponentInChildren<GameWheel>();
         if (fwScript.index == 1)
         {
-            indexRandom = nbOfEffects + 1;
+            indexRandom = nbOfEffects;
         }
         else
         {
