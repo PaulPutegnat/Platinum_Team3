@@ -32,7 +32,7 @@ public class RunnersVictory : MonoBehaviour
         var emission = PS.emission;
         emission.enabled = false;
         
-        if (PlayerManagerScript.Instance.RoundNumber % 2 != 0)
+        if (PlayerManagerScript.Instance.RoundNumberDone % 2 != 0)
         {
             PlayerManagerScript.Instance.Team1Score++;
         }

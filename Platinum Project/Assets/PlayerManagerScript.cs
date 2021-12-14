@@ -21,6 +21,8 @@ public class PlayerManagerScript : MonoBehaviour
     public const int TRAPPER2 = 3;
 
     public int RoundNumber = 5;
+    public int RoundNumberDone = 1;
+    [SerializeField]GameObject SH;
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,6 +35,7 @@ public class PlayerManagerScript : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             players = new GameObject[4];
+            SH = GameObject.Find("ScoreHolder");
     }
 
     private void Update()
@@ -63,8 +66,7 @@ public class PlayerManagerScript : MonoBehaviour
 
     public void ResetRound()
     {
-        if (RoundNumber > 0)
-        {
+       
             for (int i = 0; i < 4; i++)
             {
                 if (players[i])
@@ -75,19 +77,20 @@ public class PlayerManagerScript : MonoBehaviour
                 
             }
             SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
-            RoundNumber--;
-        }
-        else
-        {
-            //FIN DU JEU
-        }
+            
+            RoundNumberDone = 1;
+            Team1Score = 0;
+            Team2Score = 0;
+            UpdateScore();
 
-    }
 
-    IEnumerator NextRound()
+}
+
+    public IEnumerator NextRound()
     {
-        if (RoundNumber > 0)
+        if (RoundNumber > 1)
         {
+            RoundNumberDone++;
             RoundNumber--;
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
             asyncLoad.allowSceneActivation = false;
@@ -103,7 +106,9 @@ public class PlayerManagerScript : MonoBehaviour
     {
         
         sync.allowSceneActivation = true;
+        SH = GameObject.Find("ScoreHolder");
         ReversePlayerArray();
+        UpdateScore();
         yield return new WaitForSeconds(0.1f);
         GameManager.Instance.ButtonPressed();
     }
@@ -143,8 +148,7 @@ public class PlayerManagerScript : MonoBehaviour
 
     public void UpdateScore()
     {
-        GameObject SH = GameObject.Find("ScoreHolder");
-        SH.transform.GetChild(0).GetComponent<TextMeshPro>().text = Team1Score.ToString();
-        SH.transform.GetChild(1).GetComponent<TextMeshPro>().text = Team2Score.ToString();
+        SH.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Team1Score.ToString();
+        SH.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Team2Score.ToString();
     }
 }
