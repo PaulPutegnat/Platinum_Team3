@@ -7,7 +7,7 @@ public class Menu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("06_Scene_Pres");
+        SceneManager.LoadScene("07_Scene_Pres");
     }
 
     public void BackToMenu()
@@ -19,5 +19,10 @@ public class Menu : MonoBehaviour
     {
         Debug.Log("Quit the game");
         Application.Quit();
+    }
+
+    public void Retry()
+    {
+        PlayerManagerScript.Instance.ResetRound();
     }
 }

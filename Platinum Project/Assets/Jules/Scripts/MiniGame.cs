@@ -9,6 +9,8 @@ public class MiniGame : MonoBehaviour
     public List<AnimationClip> SpawnAnim = new List<AnimationClip>();
     public List<AnimationClip> DespawnAnim = new List<AnimationClip>();
 
+    [SerializeField] private GameObject LosePrefab;
+
     public IEnumerator SpawnAnimation()
     {
         Animator fwAnimation = GetComponentInParent<Animator>();
@@ -32,5 +34,18 @@ public class MiniGame : MonoBehaviour
         Animator instAnimator = instGameObject.GetComponentInChildren<Animator>();
         yield return new WaitForSeconds(instAnimator.GetCurrentAnimatorClipInfo(0).Length);
         Destroy(instGameObject);
+    }
+
+    public IEnumerator GameFinishLose()
+    {
+        GameObject instGameObject = Instantiate(LosePrefab, this.transform);
+        Animator myAnimator = instGameObject.GetComponent<Animator>();
+        //fwAnimation.Play(GameFinishList.name);
+        yield return new WaitForSeconds(myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+        Destroy(instGameObject);
+
+        GameManager.Instance.SpawnFortuneWheel();
+        yield return StartCoroutine(DespawnAnimation());
+        Destroy(this.transform.parent.gameObject);
     }
 }

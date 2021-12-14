@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,9 @@ public class PlayerManagerScript : MonoBehaviour
 {
     public static PlayerManagerScript Instance;
     public GameObject[] players;
+
+    public int Team1Score = 0;
+    public int Team2Score = 0;
 
     public const int RUNNER1 = 0;
     public const int RUNNER2 = 1;
@@ -135,5 +139,12 @@ public class PlayerManagerScript : MonoBehaviour
 
 
         }
+    }
+
+    public void UpdateScore()
+    {
+        GameObject SH = GameObject.Find("ScoreHolder");
+        SH.transform.GetChild(0).GetComponent<TextMeshPro>().text = Team1Score.ToString();
+        SH.transform.GetChild(1).GetComponent<TextMeshPro>().text = Team2Score.ToString();
     }
 }
