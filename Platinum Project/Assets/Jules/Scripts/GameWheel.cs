@@ -69,5 +69,6 @@ public class GameWheel : MiniGame
     {
         Instantiate(gameList[index], gameContainer);
         Destroy(this.transform.parent.gameObject);
+        GameManager.Instance.IsFWAlreadyInstantiate = false;
     }
 }
