@@ -108,7 +108,6 @@ public class PlayerManagerScript : MonoBehaviour
         sync.allowSceneActivation = true;
         ReversePlayerArray();
         yield return new WaitForSeconds(0.1f);
-        SH = GameObject.Find("ScoreHolder");
         UpdateScore();
         GameManager.Instance.ButtonPressed();
     }
@@ -148,6 +147,7 @@ public class PlayerManagerScript : MonoBehaviour
 
     public void UpdateScore()
     {
+        SH = GameObject.Find("ScoreHolder");
         SH.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Team1Score.ToString();
         SH.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Team2Score.ToString();
     }
