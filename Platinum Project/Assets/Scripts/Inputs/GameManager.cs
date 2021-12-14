@@ -42,9 +42,9 @@ public class GameManager : MonoBehaviour
     public float TrapperNumber = 0;
     public float RunnererNumber = 0;
 
-    public bool IsBegin = false;
-    public bool withWheel = false;
-    private bool IsFWAlreadyInstantiate = false;
+    [HideInInspector] public bool IsBegin = false;
+    [HideInInspector] public bool withWheel = false;
+    [HideInInspector] public bool IsFWAlreadyInstantiate = false;
     private void Awake()
     {
         if (Instance != null && Instance != this)
