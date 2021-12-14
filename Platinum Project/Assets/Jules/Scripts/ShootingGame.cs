@@ -118,8 +118,9 @@ public class ShootingGame : MiniGame
             RectTransform sightPos = _aimSightP2.GetComponent<RectTransform>();
             AudioManager.Instance.PlayShotSound();
 
-            foreach (var target in InstTargets)
+            for (int i = InstTargets.Count - 1; i >= 0; i--)
             {
+                GameObject target = InstTargets[i];
                 float diffMag = (sightPos.position - target.transform.position).magnitude;
                 if (diffMag < hitRange)
                 {
