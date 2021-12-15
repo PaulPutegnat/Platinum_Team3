@@ -359,14 +359,15 @@ MonoBehaviour:
   - {fileID: 7400000, guid: f211eff6ca046b945abecf3588820b49, type: 2}
   LosePrefab: {fileID: 2934588146529014267, guid: 27fc428e2b62b47458ae740d5ed6b6a8, type: 3}
   WinPrefab: {fileID: 4439272299899973804, guid: baba9535e565d09469b8618811ddf02d, type: 3}
+  HammerPrefab: {fileID: 0}
   handleP1: {fileID: 8769018616339458052}
   handleP2: {fileID: 8769018616593590408}
   intervalP1: {fileID: 8769018615756507813}
   intervalP2: {fileID: 8769018617800033482}
   IsDoubleIntervalEnum: 0
   speed: 0.5
-  minIntervalSize: 36
-  maxIntervalSize: 55
+  minIntervalSize: 50
+  maxIntervalSize: 70
 --- !u!1 &8769018617800033482
 GameObject:
   m_ObjectHideFlags: 0

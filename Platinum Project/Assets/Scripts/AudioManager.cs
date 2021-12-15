@@ -136,12 +136,14 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBadSliderSound()
     {
+        Debug.Log("Bad Slider!");
         _randomSoundNum = Random.Range(0, 4);
         _audioSource.PlayOneShot(_mgBadSliderSounds[_randomSoundNum]);
     }
 
     public void PlayGoodSliderSound()
     {
+        Debug.Log("Good Slider!");
         _randomSoundNum = Random.Range(0, 4);
         _audioSource.PlayOneShot(_mgGoodSliderSounds[_randomSoundNum]);
     }

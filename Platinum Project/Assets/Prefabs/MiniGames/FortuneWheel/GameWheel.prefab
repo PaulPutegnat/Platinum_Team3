@@ -59,6 +59,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: 1a65d4663402e4e4c807b978b4e82d54, type: 2}
   LosePrefab: {fileID: 0}
   WinPrefab: {fileID: 0}
+  HammerPrefab: {fileID: 0}
   nbOfGames: 3
   timeRotate: 3.5
   nbCircleRotate: 6
