@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8915500569448445237
+--- !u!114 &-5287271211854299919
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,21 +20,28 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Background
-  m_Shader: {fileID: 10760, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: M_Button_Main_FX
+  m_Shader: {fileID: -6465566751694194690, guid: 17764bb362d975a40a2a60e97c982766, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses:
-  - SHADOWCASTER
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_b18d7688bb8744a08b8befb354d950ca:
+        m_Texture: {fileID: 2800000, guid: 97fd4fc782cfa60419659dd7c6b96368, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_cca1e09e6dd64cc197056cf415036972:
+        m_Texture: {fileID: 2800000, guid: 97fd4fc782cfa60419659dd7c6b96368, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 66fd5dd56cf0fd24d82b882b3f56defd, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -53,16 +60,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _DetailTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: aa63a1469de4e364ab64d1227d7d8dea, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -81,6 +84,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_720873c82afa464e8292974be3a130b7_Out_0:
+        m_Texture: {fileID: 2800000, guid: e73eba5049bb4f444ae15f3b37360d5d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -94,17 +101,20 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_7ac69dd490504a498da49aea044f1ca7: 4.48
+    - Vector1_a9236b2745c34f448b61d9a2d5feb9b3: 1
+    - Vector1_c2613f9357164cbfb60a043ebde9c1d8: 2.04
+    - Vector1_ed1ec5320b2248e7bd710ea1723ff857: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ColorMask: 15
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -117,18 +127,18 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SrcBlend: 5
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _Strength: 0.2
-    - _Surface: 1
-    - _UseUIAlphaClip: 0
+    - _SrcBlend: 1
+    - _Surface: 0
     - _WorkflowMode: 1
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
+    - Color_555e4556555a4598b6f5092d45683cf3: {r: 1, g: 1, b: 0.68235296, a: 0}
+    - Vector2_6fc6f35c927e429fbed08749aa1373aa: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - Vector2_fa65bc8ab466402bb628aae8035a8b69: {r: 0, g: 0.41, b: 0, a: 0}
+    - Vector2_fd9829bdb25d477aac9c67ffd7d521ff: {r: -1.38, g: 0, b: 0, a: 0}
+    - Vector3_559c623243644f5b973977bbf13dc0d5: {r: 0, g: 0, b: 0, a: 0}
+    - Vector3_c2190f6a6b724e54804b95ba6eba4e6c: {r: 0, g: 0.92, b: 3.63, a: 0}
+    - Vector4_9bf2116c8eb24d7aa928d69aa31499ca: {r: -0.06, g: 0.07, b: 1.4, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

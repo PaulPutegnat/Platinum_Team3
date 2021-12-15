@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 410578495}
   - component: {fileID: 410578494}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: FX_Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,8 +213,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410578493}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.481, y: 0.14, z: 49}
-  m_LocalScale: {x: 1.2028186, y: 0.8224401, z: 0.8224401}
+  m_LocalPosition: {x: 1.54, y: 0.31, z: 49}
+  m_LocalScale: {x: 1.57882, y: 0.8224401, z: 1.068591}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 445860707}
   - component: {fileID: 445860706}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
