@@ -20,13 +20,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_FX_Main
-  m_Shader: {fileID: -6465566751694194690, guid: 84d89101e0d5d9d499bf8b572a401e9e, type: 3}
+  m_Name: M_Settings_FX
+  m_Shader: {fileID: -6465566751694194690, guid: 40aec2486f3b80d429fbc688aeba243d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 4000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -37,7 +37,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_cca1e09e6dd64cc197056cf415036972:
-        m_Texture: {fileID: 2800000, guid: 97fd4fc782cfa60419659dd7c6b96368, type: 3}
+        m_Texture: {fileID: 2800000, guid: b1a2ce6d2b87d3a489e5bda937f05122, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -101,9 +101,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_7ac69dd490504a498da49aea044f1ca7: 4.48
+    - Vector1_7ac69dd490504a498da49aea044f1ca7: 0
     - Vector1_a9236b2745c34f448b61d9a2d5feb9b3: 1
-    - Vector1_c2613f9357164cbfb60a043ebde9c1d8: 1.96
+    - Vector1_c2613f9357164cbfb60a043ebde9c1d8: 0.69
     - Vector1_ed1ec5320b2248e7bd710ea1723ff857: 0
     - _AlphaClip: 0
     - _Blend: 0
@@ -134,7 +134,7 @@ Material:
     m_Colors:
     - Color_555e4556555a4598b6f5092d45683cf3: {r: 1, g: 1, b: 0.68235296, a: 0}
     - Vector2_6fc6f35c927e429fbed08749aa1373aa: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - Vector2_fa65bc8ab466402bb628aae8035a8b69: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - Vector2_fa65bc8ab466402bb628aae8035a8b69: {r: 0.1, g: 0.2, b: 0, a: 0}
     - Vector2_fd9829bdb25d477aac9c67ffd7d521ff: {r: -1.38, g: 0, b: 0, a: 0}
     - Vector3_559c623243644f5b973977bbf13dc0d5: {r: 0, g: 0, b: 0, a: 0}
     - Vector3_c2190f6a6b724e54804b95ba6eba4e6c: {r: 0, g: 0.92, b: 3.63, a: 0}
