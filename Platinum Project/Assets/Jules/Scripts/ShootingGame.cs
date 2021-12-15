@@ -48,6 +48,10 @@ public class ShootingGame : MiniGame
     IEnumerator Start()
     {
         isGameBegin = false;
+        IsGameFinishWinCoroutineStarted = false;
+        IsGameFinishLoseCoroutineStarted = false;
+        IsHammerCoroutineStarted = false;
+
         yield return StartCoroutine(SpawnAnimation());
         isGameBegin = true;
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();

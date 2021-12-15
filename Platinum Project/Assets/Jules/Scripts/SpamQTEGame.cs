@@ -51,6 +51,10 @@ public class SpamQTEGame : MiniGame
     IEnumerator Start()
     {
         isGameBegin = false;
+        IsGameFinishWinCoroutineStarted = false;
+        IsGameFinishLoseCoroutineStarted = false;
+        IsHammerCoroutineStarted = false;
+
         yield return StartCoroutine(SpawnAnimation());
         isGameBegin = true;
 
