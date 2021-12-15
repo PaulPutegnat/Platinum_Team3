@@ -34,7 +34,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a144b4e8918ea4449eabef033553473, type: 3}
   m_Name: Atmospheric Fog
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     color: {r: 0.5566038, g: 0.54810274, b: 0.53822535, a: 1}
     sunColor: {r: 0.30936277, g: 0.7242836, b: 0.8301887, a: 1}

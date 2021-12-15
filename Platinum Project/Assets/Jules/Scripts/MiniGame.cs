@@ -51,7 +51,6 @@ public class MiniGame : MonoBehaviour
         yield return StartCoroutine(DespawnAnimation());
         GameObject instGameObject = Instantiate(LosePrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
         Animator myAnimator = instGameObject.GetComponent<Animator>();
-        //fwAnimation.Play(GameFinishList.name);
         yield return new WaitForSeconds(myAnimator.runtimeAnimatorController.animationClips[0].length);
         Destroy(instGameObject);
 
@@ -79,17 +78,19 @@ public class MiniGame : MonoBehaviour
         switch (TrapsEffects.instanceTrapsEffects.trapNum)
         {
             case 1:
+            case 2:
+            case 3:
                 effectText.text = "SCHNELL !";
                 break;
-            case 2:
+            case 4:
+            case 5:
                 effectText.text = "WATCH OUT ! A ROCK !";
                 break;
-            case 3:
+            case 6:
                 effectText.text = "SHAKE YOUR BOOTY !";
                 break;
         }
         Animator myAnimator = instGameObject.GetComponent<Animator>();
-        //fwAnimation.Play(GameFinishList.name);
         yield return new WaitForSeconds(myAnimator.runtimeAnimatorController.animationClips[0].length);
 
         Destroy(instGameObject);
@@ -105,7 +106,6 @@ public class MiniGame : MonoBehaviour
         yield return StartCoroutine(DespawnAnimation());
         GameObject instGameObject = Instantiate(HammerPrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
         Animator myAnimator = instGameObject.GetComponent<Animator>();
-        //fwAnimation.Play(GameFinishList.name);
         yield return new WaitForSeconds(myAnimator.runtimeAnimatorController.animationClips[0].length);
         Destroy(instGameObject);
 
