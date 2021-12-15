@@ -366,8 +366,8 @@ MonoBehaviour:
   intervalP2: {fileID: 8769018617800033482}
   IsDoubleIntervalEnum: 0
   speed: 0.5
-  minIntervalSize: 60
-  maxIntervalSize: 90
+  minIntervalSize: 50
+  maxIntervalSize: 70
 --- !u!1 &8769018617800033482
 GameObject:
   m_ObjectHideFlags: 0
