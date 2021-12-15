@@ -153,10 +153,6 @@ public class SlidingBarGame : MiniGame
                 {
                     // Game finish Win
                     //Debug.Log("GAME IS WIN");
-                    /*TrapsEffects.instanceTrapsEffects.TrapSelector(1);
-                    GameManager.Instance.SpawnFortuneWheel();
-                    StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);*/
                     if (!IsGameFinishWinCoroutineStarted)
                     {
                         StartCoroutine(GameFinishWin(1));
@@ -167,10 +163,6 @@ public class SlidingBarGame : MiniGame
                 {
                     // Game finish Semi-win
                     //Debug.Log("GAME IS SEMI-WIN");
-                    /*TrapsEffects.instanceTrapsEffects.TrapSelector(2);
-                    GameManager.Instance.SpawnFortuneWheel();
-                    StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);*/
                     if (!IsGameFinishWinCoroutineStarted)
                     {
                         StartCoroutine(GameFinishWin(2));
@@ -184,9 +176,6 @@ public class SlidingBarGame : MiniGame
                     {
                         StartCoroutine(GameFinishLose());
                     }
-                    /*GameManager.Instance.SpawnFortuneWheel();
-                    StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);*/
                 }
             }
         }
@@ -196,10 +185,7 @@ public class SlidingBarGame : MiniGame
             {
                 if (isP1Win)
                 {
-                    /*TrapsEffects.instanceTrapsEffects.TrapSelector(1);
-                    GameManager.Instance.SpawnFortuneWheel();
-                    StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);*/
+                    //TrapsEffects.instanceTrapsEffects.TrapSelector(1);
                     if (!IsGameFinishWinCoroutineStarted)
                     {
                         StartCoroutine(GameFinishWin(1));

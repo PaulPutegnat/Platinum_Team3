@@ -189,9 +189,6 @@ public class SpamQTEGame : MiniGame
         else
         {
             // Game Finish
-            /*GameManager.Instance.SpawnFortuneWheel();
-            StartCoroutine(DespawnAnimation());
-            Destroy(this.transform.parent.gameObject);*/
             if (!IsHammerCoroutineStarted)
             {
                 StartCoroutine(HammerShake());
