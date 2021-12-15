@@ -14,10 +14,11 @@ public class MiniGame : MonoBehaviour
     [SerializeField] private GameObject LosePrefab;
     [SerializeField] private GameObject WinPrefab;
     [SerializeField] private GameObject HammerPrefab;
+
     protected bool IsGameFinishLoseCoroutineStarted = false;
     protected bool IsGameFinishWinCoroutineStarted = false;
-    protected bool IsGameFinishSemiWinCoroutineStarted = false;
     protected bool IsHammerCoroutineStarted = false;
+    protected bool isGameBegin = false;
 
     public IEnumerator SpawnAnimation()
     {
