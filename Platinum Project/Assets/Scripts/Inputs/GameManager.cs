@@ -131,7 +131,6 @@ public class GameManager : MonoBehaviour
     public void CheckRunnersDeath()
     {
         DeadPlayer++;
-        DeadPlayer++;
         switch (DeadPlayer)
         {
             case 2:
