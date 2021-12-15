@@ -42,5 +42,6 @@ public class RunnersVictory : MonoBehaviour
         }
         PlayerManagerScript.Instance.UpdateScore();
         RunnersVictoryScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 }
