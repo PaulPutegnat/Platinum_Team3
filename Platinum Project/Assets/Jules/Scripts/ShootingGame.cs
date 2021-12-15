@@ -40,7 +40,7 @@ public class ShootingGame : MiniGame
     private Vector2 padPosP2;
     private bool IsP1Shooting = false;
     private bool IsP2Shooting = false;
-    private bool isGameFinshed = false;
+    private bool isGameFinished = false;
     private RectTransform thisRT;
 
     private List<GameObject> InstTargets = new List<GameObject>();
@@ -141,14 +141,14 @@ public class ShootingGame : MiniGame
 
             if (_ObjectivesPoints <= 0)
             {
-                isGameFinshed = true;
+                isGameFinished = true;
                 if (!IsGameFinishWinCoroutineStarted)
                 {
                     StartCoroutine(GameFinishWin(1));
                 }
             }
 
-            if (!isGameFinshed)
+            if (!isGameFinished)
             {
                 if (gameDuration > 0)
                 {
