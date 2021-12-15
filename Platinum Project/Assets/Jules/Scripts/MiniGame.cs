@@ -56,7 +56,6 @@ public class MiniGame : MonoBehaviour
         Destroy(instGameObject);
 
         GameManager.Instance.SpawnFortuneWheel();
-        IsGameFinishLoseCoroutineStarted = false;
         Destroy(this.transform.parent.gameObject);
         
     }
@@ -97,7 +96,6 @@ public class MiniGame : MonoBehaviour
 
         TrapsEffects.instanceTrapsEffects.TrapSelector(trapIndex);
         GameManager.Instance.SpawnFortuneWheel();
-        IsGameFinishWinCoroutineStarted = false;
         Destroy(this.transform.parent.gameObject);
     }
 
@@ -112,7 +110,6 @@ public class MiniGame : MonoBehaviour
         Destroy(instGameObject);
 
         GameManager.Instance.SpawnFortuneWheel();
-        IsHammerCoroutineStarted = false;
         Destroy(this.transform.parent.gameObject);
     }
 }

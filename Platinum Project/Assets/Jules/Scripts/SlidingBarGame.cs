@@ -53,6 +53,10 @@ public class SlidingBarGame : MiniGame
     IEnumerator Start()
     {
         isGameBegin = false;
+        IsGameFinishWinCoroutineStarted = false;
+        IsGameFinishLoseCoroutineStarted = false;
+        IsHammerCoroutineStarted = false;
+
         intervalP1.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP1.transform.localPosition.y);
         intervalP1.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 53f);
         intervalP1Size = intervalP1.GetComponent<RectTransform>().sizeDelta;
@@ -67,8 +71,6 @@ public class SlidingBarGame : MiniGame
             handleP2.transform.localPosition = new Vector3(posPercentP2 * 600, handleP2.transform.localPosition.y, 0f);
             intervalP2Size = intervalP2.GetComponent<RectTransform>().sizeDelta;
         }
-
-        
 
         if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] != null)
         {
