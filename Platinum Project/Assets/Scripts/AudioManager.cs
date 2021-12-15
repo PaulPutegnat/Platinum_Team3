@@ -89,8 +89,15 @@ public class AudioManager : MonoBehaviour
 
     public void ChangeVolume()
     {
-        AudioListener.volume = _volumeSlider.value;
-        Save();
+        if (_volumeSlider != null)
+        {
+            AudioListener.volume = _volumeSlider.value;
+            Save();
+        }
+        else
+        {
+
+        }
     }
 
     private void Load()
@@ -98,6 +105,10 @@ public class AudioManager : MonoBehaviour
         if (_volumeSlider != null)
         {
             _volumeSlider.value = PlayerPrefs.GetFloat("volume");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("volume", 0.5f);
         }
     }
 
