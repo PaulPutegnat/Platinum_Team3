@@ -140,12 +140,6 @@ public class AudioManager : MonoBehaviour
         _audioSource.PlayOneShot(_mgBadSliderSounds[_randomSoundNum]);
     }
 
-    public void PlayMediumSliderSound()
-    {
-        _randomSoundNum = Random.Range(0, 4);
-        _audioSource.PlayOneShot(_mgMediumSliderSounds[_randomSoundNum]);
-    }
-
     public void PlayGoodSliderSound()
     {
         _randomSoundNum = Random.Range(0, 4);

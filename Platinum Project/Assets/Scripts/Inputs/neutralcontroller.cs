@@ -13,8 +13,8 @@ public class neutralcontroller : MonoBehaviour
     private bool Comfirmation = false;
     [HideInInspector]public STATE _state;
     [HideInInspector]public int limit = 1;
-    private GameObject runnerRef;
-    private GameObject TrapperRef;
+    [HideInInspector] public GameObject runnerRef;
+    [HideInInspector] public GameObject TrapperRef;
     private RectTransform thisRT;
     private Transform R1;
     private Transform R2;
@@ -59,8 +59,8 @@ public class neutralcontroller : MonoBehaviour
             J4 = GameObject.FindGameObjectWithTag("J4").transform;
         }
 
-        controllerImage = GameObject.FindGameObjectWithTag("RendererNeutralPlayer").GetComponent<Image>();
-        opaqueFilter = GameObject.FindGameObjectWithTag("OpaqueFilterNeutralPlayer").GetComponent<Image>();
+        controllerImage = transform.GetChild(0).GetComponent<Image>();
+        opaqueFilter = transform.GetChild(1).GetComponent<Image>();
         opaqueFilter.color = new Color(0f, 0f, 0f, 0f);
         switch (GameManager.Instance.gameObject.GetComponent<PlayerInputManager>().playerCount)
         {

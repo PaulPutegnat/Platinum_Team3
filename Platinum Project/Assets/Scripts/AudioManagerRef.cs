@@ -31,11 +31,6 @@ public class AudioManagerRef : MonoBehaviour
         _audioManagerInstance.PlayBadSliderSound();
     }
 
-    public void PlayMediumSliderSoundRef()
-    {
-        _audioManagerInstance.PlayMediumSliderSound();
-    }
-
     public void PlayGoodSliderSoundRef()
     {
         _audioManagerInstance.PlayGoodSliderSound();
