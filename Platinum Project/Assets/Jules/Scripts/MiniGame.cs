@@ -50,7 +50,7 @@ public class MiniGame : MonoBehaviour
         GameObject instGameObject = Instantiate(LosePrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
         Animator myAnimator = instGameObject.GetComponent<Animator>();
         //fwAnimation.Play(GameFinishList.name);
-        yield return new WaitForSeconds(myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+        yield return new WaitForSeconds(myAnimator.runtimeAnimatorController.animationClips[0].length);
         Destroy(instGameObject);
 
         GameManager.Instance.SpawnFortuneWheel();
@@ -62,7 +62,7 @@ public class MiniGame : MonoBehaviour
     public IEnumerator GameFinishWin(int trapIndex)
     {
         IsGameFinishWinCoroutineStarted = true;
-        yield return StartCoroutine(DespawnAnimation());
+        StartCoroutine(DespawnAnimation());
         GameObject instGameObject = Instantiate(WinPrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
         TextMeshProUGUI myText = instGameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         switch (TrapsEffects.instanceTrapsEffects.trapNum)
@@ -79,7 +79,7 @@ public class MiniGame : MonoBehaviour
         }
         Animator myAnimator = instGameObject.GetComponent<Animator>();
         //fwAnimation.Play(GameFinishList.name);
-        yield return new WaitForSeconds(myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+        yield return new WaitForSeconds(myAnimator.runtimeAnimatorController.animationClips[0].length);
 
         Destroy(instGameObject);
 
@@ -96,7 +96,7 @@ public class MiniGame : MonoBehaviour
         GameObject instGameObject = Instantiate(HammerPrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
         Animator myAnimator = instGameObject.GetComponent<Animator>();
         //fwAnimation.Play(GameFinishList.name);
-        yield return new WaitForSeconds(myAnimator.GetCurrentAnimatorClipInfo(0).Length);
+        yield return new WaitForSeconds(myAnimator.runtimeAnimatorController.animationClips[0].length);
         Destroy(instGameObject);
 
         GameManager.Instance.SpawnFortuneWheel();

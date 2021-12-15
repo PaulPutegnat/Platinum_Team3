@@ -88,12 +88,14 @@ public class SlidingBarGame : MiniGame
                 isDoubleInterval = false;
                 intervalP2.SetActive(false);
                 handleP2.SetActive(false);
+                isTwoPlayer = false;
                 break;
 
             case IS_DOUBLE_INTERVAL.YES:
                 isDoubleInterval = true;
                 intervalP2.SetActive(true);
                 handleP2.SetActive(true);
+                isTwoPlayer = true;
                 break;
         }
 
