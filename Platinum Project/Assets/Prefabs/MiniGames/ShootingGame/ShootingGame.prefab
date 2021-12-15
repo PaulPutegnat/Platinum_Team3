@@ -60,6 +60,7 @@ MonoBehaviour:
   - {fileID: 7400000, guid: d90bc479b589f7c40a979516ea15bf8a, type: 2}
   LosePrefab: {fileID: 2934588146529014267, guid: 27fc428e2b62b47458ae740d5ed6b6a8, type: 3}
   WinPrefab: {fileID: 4439272299899973804, guid: baba9535e565d09469b8618811ddf02d, type: 3}
+  HammerPrefab: {fileID: 0}
   TimerSlider: {fileID: 1514497716289010537}
   _spawnArea: {fileID: 3636190370726257820}
   _targetPrefab: {fileID: 9030037093502666965, guid: 821559e41026e1c468ae2f812a5b76f7, type: 3}
@@ -70,7 +71,7 @@ MonoBehaviour:
   _aimSpeed: 600
   _nbTarget: 20
   hitRange: 30
-  _ObjectivesPoints: 16
+  _ObjectivesPoints: 17
   _pointText: {fileID: 4778349649981354083}
   gameDuration: 10
   timerText: {fileID: 1514497717663599360}

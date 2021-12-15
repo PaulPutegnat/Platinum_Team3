@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BrokenScreen: {fileID: 0}
-  trapNum: 3
+  trapNum: 2
   BrokenScreenDuration: 5
   BrokenScreenFadeInSpeed: 4
   BrokenScreenFadeOutSpeed: 1
-  speedMultiplicator: 1.8
+  speedMultiplicator: 1.85
   speedTrapDuration: 5
-  shakeTrapDuration: 1
-  shakeTrapMagnitude: 0.4
+  shakeTrapDuration: 1.5
+  shakeTrapMagnitude: 0.5
   _testcam: {fileID: 0}
