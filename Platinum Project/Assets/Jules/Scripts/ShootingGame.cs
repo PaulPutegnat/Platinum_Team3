@@ -117,7 +117,6 @@ public class ShootingGame : MiniGame
                         Destroy(target.gameObject);
                     }
                 }
-
             }
 
             if (IsP2Shooting)

@@ -16,8 +16,8 @@ public class EffectWheel : MonoBehaviour
     IEnumerator RotateWheel()
     {
         yield return new WaitForSeconds(.3f);
-        GameWheel fwScript = transform.parent.GetComponentInChildren<GameWheel>();
-        if (fwScript.index == 1)
+        GameWheel fwScript = GetComponentInChildren<GameWheel>();
+        if (fwScript.index == 2)
         {
             indexRandom = nbOfEffects;
         }
