@@ -149,6 +149,7 @@ public class ShootingGame : MiniGame
                 {
                     StartCoroutine(GameFinishWin(1));
                     isGameWin = true;
+                    gameDuration = 30f;
                 }
             }
 
