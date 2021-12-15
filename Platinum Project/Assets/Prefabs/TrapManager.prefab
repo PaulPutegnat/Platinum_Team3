@@ -48,8 +48,8 @@ MonoBehaviour:
   BrokenScreenDuration: 5
   BrokenScreenFadeInSpeed: 4
   BrokenScreenFadeOutSpeed: 1
-  speedMultiplicator: 1.7
+  speedMultiplicator: 1.8
   speedTrapDuration: 5
-  shakeTrapDuration: 3
+  shakeTrapDuration: 1
   shakeTrapMagnitude: 0.4
   _testcam: {fileID: 0}

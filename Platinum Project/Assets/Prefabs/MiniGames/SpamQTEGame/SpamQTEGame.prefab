@@ -144,7 +144,7 @@ MonoBehaviour:
   P1Button: {fileID: 882830798701891136}
   P2Button: {fileID: 7140335336486781264}
   gameDuration: 10
-  intervalTime: 5
+  intervalTime: 3
   timerText: {fileID: 836991248779785573}
   sliderMaxValue: 90
   decreaseSpeed: 10
