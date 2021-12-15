@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
 
+        Time.timeScale = 1f;
         pauseCanvas.SetActive(true);
         mainCanvas.SetActive(true);
 
@@ -147,7 +148,7 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("TrapManager").SetActive(false);
                 Camera.main.GetComponent<TestCam>().enabled = false;
                 GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.Find("NextGameButtonContainer").GetComponentInChildren<Button>().gameObject);
-
+                Time.timeScale = 0f;
                 break;
         }
     }
