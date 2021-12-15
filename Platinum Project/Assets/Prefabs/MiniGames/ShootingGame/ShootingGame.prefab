@@ -71,7 +71,7 @@ MonoBehaviour:
   _aimSpeed: 600
   _nbTarget: 20
   hitRange: 30
-  _ObjectivesPoints: 16
+  _ObjectivesPoints: 17
   _pointText: {fileID: 4778349649981354083}
   gameDuration: 10
   timerText: {fileID: 1514497717663599360}
