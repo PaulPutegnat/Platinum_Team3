@@ -47,15 +47,9 @@ public class SlidingBarGame : MiniGame
 
     private bool isTwoPlayer = false;
 
-    
-
-    private void Awake()
-    {
-        
-    }
-
     IEnumerator Start()
     {
+        isGameBegin = false;
         intervalP1.transform.localPosition = new Vector3(Random.Range(minIntervalPos, maxIntervalPos), intervalP1.transform.localPosition.y);
         intervalP1.GetComponent<RectTransform>().sizeDelta = new Vector2(Random.Range(minIntervalSize, (maxIntervalSize + 1)), 53f);
         intervalP1Size = intervalP1.GetComponent<RectTransform>().sizeDelta;
@@ -101,115 +95,104 @@ public class SlidingBarGame : MiniGame
 
         StartSlidingBarGame(true);
         yield return StartCoroutine(SpawnAnimation());
+        isGameBegin = true;
     }
 
     void Update()
     {
-
-        p1ButtonPressed = InputManager.inputManager.SlidingStopP1();
-        if (isTwoPlayer)
+        if (isGameBegin)
         {
-            p2ButtonPressed = InputManager.inputManager.SlidingStopP2();
-        }
-  
-        
-        if (p1ButtonPressed)
-        {
-            isP1Playing = false;
-        }
-
-        if (p2ButtonPressed)
-        {
-            isP2Playing = false;
-        }
-
-        if (isP1Playing)
-        {
-            handleP1.transform.localPosition = Vector3.Lerp(new Vector3(-530f, handleP1.transform.localPosition.y, 0), new Vector3(520f, handleP1.transform.localPosition.y, 0), posPercentP1);
-            posPercentP1 = Mathf.PingPong(Time.time * speed, 1f);
-            lastPosP1 = handleP1.transform.localPosition;
-        }
-        else
-        {
-            StopP1SlidingBarGame();
-        }
-
-        if (isP2Playing)
-        {
-            handleP2.transform.localPosition = Vector3.Lerp(new Vector3(520f, handleP2.transform.localPosition.y, 0), new Vector3(-530f, handleP2.transform.localPosition.y, 0), posPercentP2);
-            posPercentP2 = Mathf.PingPong(Time.time * speed, 1f);
-            lastPosP2 = handleP2.transform.localPosition;
-        }
-        else
-        {
-            StopP2SlidingBarGame();
-        }
-
-        if (isTwoPlayer)
-        {
-            if (!isP1Playing && !isP2Playing)
+            p1ButtonPressed = InputManager.inputManager.SlidingStopP1();
+            if (isTwoPlayer)
             {
-                if (isP1Win && isP2Win)
-                {
-                    // Game finish Win
-                    //Debug.Log("GAME IS WIN");
-                    /*TrapsEffects.instanceTrapsEffects.TrapSelector(1);
-                    GameManager.Instance.SpawnFortuneWheel();
-                    StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);*/
-                    if (!IsGameFinishWinCoroutineStarted)
-                    {
-                        StartCoroutine(GameFinishWin(1));
-                    }
+                p2ButtonPressed = InputManager.inputManager.SlidingStopP2();
+            }
 
-                }
-                else if ((isP1Win && !isP2Win) || (!isP1Win && isP2Win))
+
+            if (p1ButtonPressed)
+            {
+                isP1Playing = false;
+            }
+
+            if (p2ButtonPressed)
+            {
+                isP2Playing = false;
+            }
+
+            if (isP1Playing)
+            {
+                handleP1.transform.localPosition = Vector3.Lerp(new Vector3(-530f, handleP1.transform.localPosition.y, 0), new Vector3(520f, handleP1.transform.localPosition.y, 0), posPercentP1);
+                posPercentP1 = Mathf.PingPong(Time.time * speed, 1f);
+                lastPosP1 = handleP1.transform.localPosition;
+            }
+            else
+            {
+                StopP1SlidingBarGame();
+            }
+
+            if (isP2Playing)
+            {
+                handleP2.transform.localPosition = Vector3.Lerp(new Vector3(520f, handleP2.transform.localPosition.y, 0), new Vector3(-530f, handleP2.transform.localPosition.y, 0), posPercentP2);
+                posPercentP2 = Mathf.PingPong(Time.time * speed, 1f);
+                lastPosP2 = handleP2.transform.localPosition;
+            }
+            else
+            {
+                StopP2SlidingBarGame();
+            }
+
+            if (isTwoPlayer)
+            {
+                if (!isP1Playing && !isP2Playing)
                 {
-                    // Game finish Semi-win
-                    //Debug.Log("GAME IS SEMI-WIN");
-                    /*TrapsEffects.instanceTrapsEffects.TrapSelector(2);
-                    GameManager.Instance.SpawnFortuneWheel();
-                    StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);*/
-                    if (!IsGameFinishWinCoroutineStarted)
+                    if (isP1Win && isP2Win)
                     {
-                        StartCoroutine(GameFinishWin(2));
+                        // Game finish Win
+                        //Debug.Log("GAME IS WIN");
+                        if (!IsGameFinishWinCoroutineStarted)
+                        {
+                            StartCoroutine(GameFinishWin(1));
+                        }
+
                     }
-                }
-                else if (!isP1Win && !isP2Win)
-                {
-                    // Game finish lose
-                    //Debug.Log("GAME IS LOSE");
-                    if (!IsGameFinishLoseCoroutineStarted)
+                    else if ((isP1Win && !isP2Win) || (!isP1Win && isP2Win))
                     {
-                        StartCoroutine(GameFinishLose());
+                        // Game finish Semi-win
+                        //Debug.Log("GAME IS SEMI-WIN");
+                        if (!IsGameFinishWinCoroutineStarted)
+                        {
+                            StartCoroutine(GameFinishWin(2));
+                        }
                     }
-                    /*GameManager.Instance.SpawnFortuneWheel();
-                    StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);*/
+                    else if (!isP1Win && !isP2Win)
+                    {
+                        // Game finish lose
+                        //Debug.Log("GAME IS LOSE");
+                        if (!IsGameFinishLoseCoroutineStarted)
+                        {
+                            StartCoroutine(GameFinishLose());
+                        }
+                    }
                 }
             }
-        }
-        else
-        {
-            if (!isP1Playing)
+            else
             {
-                if (isP1Win)
+                if (!isP1Playing)
                 {
-                    /*TrapsEffects.instanceTrapsEffects.TrapSelector(1);
-                    GameManager.Instance.SpawnFortuneWheel();
-                    StartCoroutine(DespawnAnimation());
-                    Destroy(this.transform.parent.gameObject);*/
-                    if (!IsGameFinishWinCoroutineStarted)
+                    if (isP1Win)
                     {
-                        StartCoroutine(GameFinishWin(1));
+                        //TrapsEffects.instanceTrapsEffects.TrapSelector(1);
+                        if (!IsGameFinishWinCoroutineStarted)
+                        {
+                            StartCoroutine(GameFinishWin(1));
+                        }
                     }
-                }
-                else
-                {
-                    if (!IsGameFinishLoseCoroutineStarted)
+                    else
                     {
-                        StartCoroutine(GameFinishLose());
+                        if (!IsGameFinishLoseCoroutineStarted)
+                        {
+                            StartCoroutine(GameFinishLose());
+                        }
                     }
                 }
             }

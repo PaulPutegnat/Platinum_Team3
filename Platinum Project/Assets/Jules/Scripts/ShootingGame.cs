@@ -45,9 +45,11 @@ public class ShootingGame : MiniGame
 
     private List<GameObject> InstTargets = new List<GameObject>();
 
-    void Start()
+    IEnumerator Start()
     {
-        StartCoroutine(SpawnAnimation());
+        isGameBegin = false;
+        yield return StartCoroutine(SpawnAnimation());
+        isGameBegin = true;
         _spawnAreaRT = _spawnArea.GetComponent<RectTransform>();
         thisRT = this.gameObject.GetComponent<RectTransform>();
 
@@ -72,109 +74,105 @@ public class ShootingGame : MiniGame
 
     void Update()
     {
-        IsP1Shooting = InputManager.inputManager.ShootP1();
-        padPosP1 = InputManager.inputManager.AimShooterP1();
-
-        _aimSightP1.transform.Translate(padPosP1 * _aimSpeed * Time.deltaTime);
-        CheckLimit(_aimSightP1);
-
-        if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] != null)
+        if (isGameBegin)
         {
-            IsP2Shooting = InputManager.inputManager.ShootP2();
-            padPosP2 = InputManager.inputManager.AimShooterP2();
+            IsP1Shooting = InputManager.inputManager.ShootP1();
+            padPosP1 = InputManager.inputManager.AimShooterP1();
 
-            _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
-            CheckLimit(_aimSightP2);
-        }
+            _aimSightP1.transform.Translate(padPosP1 * _aimSpeed * Time.deltaTime);
+            CheckLimit(_aimSightP1);
 
-        if (Time.time > nextSpawnTime)
-        {
-            SpawnTarget();
-        }
-
-        if (IsP1Shooting)
-        {
-            RectTransform sightPos = _aimSightP1.GetComponent<RectTransform>();
-            AudioManager.Instance.PlayShotSound();
-            //Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().GetWorldCorners();
-
-            for (int i = InstTargets.Count - 1; i >= 0; i--)
+            if (PlayerManagerScript.Instance.players[PlayerManagerScript.TRAPPER2] != null)
             {
-                GameObject target = InstTargets[i];
-                float diffMag = (sightPos.position - target.transform.position).magnitude;
-                if (diffMag < hitRange)
+                IsP2Shooting = InputManager.inputManager.ShootP2();
+                padPosP2 = InputManager.inputManager.AimShooterP2();
+
+                _aimSightP2.transform.Translate(padPosP2 * _aimSpeed * Time.deltaTime);
+                CheckLimit(_aimSightP2);
+            }
+
+            if (Time.time > nextSpawnTime)
+            {
+                SpawnTarget();
+            }
+
+            if (IsP1Shooting)
+            {
+                RectTransform sightPos = _aimSightP1.GetComponent<RectTransform>();
+                AudioManager.Instance.PlayShotSound();
+                //Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().GetWorldCorners();
+
+                for (int i = InstTargets.Count - 1; i >= 0; i--)
                 {
-                    _ObjectivesPoints--;
-                    Vector2 offset = new Vector2(1f, 1f);
-                    StartCoroutine(SpawnEffect(_pointPrefab, target, offset));
-                    InstTargets.Remove(target);
-                    Destroy(target.gameObject);
+                    GameObject target = InstTargets[i];
+                    float diffMag = (sightPos.position - target.transform.position).magnitude;
+                    if (diffMag < hitRange)
+                    {
+                        _ObjectivesPoints--;
+                        Vector2 offset = new Vector2(1f, 1f);
+                        StartCoroutine(SpawnEffect(_pointPrefab, target, offset));
+                        InstTargets.Remove(target);
+                        Destroy(target.gameObject);
+                    }
+                }
+
+            }
+
+            if (IsP2Shooting)
+            {
+                RectTransform sightPos = _aimSightP2.GetComponent<RectTransform>();
+                AudioManager.Instance.PlayShotSound();
+
+                for (int i = InstTargets.Count - 1; i >= 0; i--)
+                {
+                    GameObject target = InstTargets[i];
+                    float diffMag = (sightPos.position - target.transform.position).magnitude;
+                    if (diffMag < hitRange)
+                    {
+                        _ObjectivesPoints--;
+                        Vector2 offset = new Vector2(1f, 1f);
+                        StartCoroutine(SpawnEffect(_pointPrefab, target, offset));
+                        InstTargets.Remove(target);
+                        Destroy(target.gameObject);
+                    }
                 }
             }
 
-        }
-
-        if (IsP2Shooting)
-        {
-            RectTransform sightPos = _aimSightP2.GetComponent<RectTransform>();
-            AudioManager.Instance.PlayShotSound();
-
-            for (int i = InstTargets.Count - 1; i >= 0; i--)
+            if (_ObjectivesPoints <= 0)
             {
-                GameObject target = InstTargets[i];
-                float diffMag = (sightPos.position - target.transform.position).magnitude;
-                if (diffMag < hitRange)
+                // Game finish Win
+                if (!IsGameFinishWinCoroutineStarted)
                 {
-                    _ObjectivesPoints--;
-                    Vector2 offset = new Vector2(1f, 1f);
-                    StartCoroutine(SpawnEffect(_pointPrefab, target, offset));
-                    InstTargets.Remove(target);
-                    Destroy(target.gameObject);
+                    StartCoroutine(GameFinishWin(1));
+                    isGameWin = true;
                 }
             }
-        }
 
-        if (_ObjectivesPoints <= 0)
-        {
-            // Game finish Win
-            /*GameManager.Instance.SpawnFortuneWheel();
-            StartCoroutine(DespawnAnimation());
-            TrapsEffects.instanceTrapsEffects.TrapSelector(1);
-            Destroy(this.transform.parent.gameObject);*/
-            isGameWin = true;
-            if (!IsGameFinishWinCoroutineStarted && isGameWin)
+            if (gameDuration > 0)
             {
-                StartCoroutine(GameFinishWin(1));
-            }
-        }
-
-        if (gameDuration > 0)
-        {
-            if (gameDuration < 15f)
-            {
-                timerColor = new Color(1, .5f, 0);
-                if (gameDuration < 5)
+                if (gameDuration < 15f)
                 {
-                    timerColor = Color.red;
+                    timerColor = new Color(1, .5f, 0);
+                    if (gameDuration < 5)
+                    {
+                        timerColor = Color.red;
+                    }
+                }
+                TimerSlider.value = gameDuration;
+                gameDuration -= Time.deltaTime;
+            }
+            else
+            {
+                // Game finish Lose
+                if (!IsGameFinishLoseCoroutineStarted && !isGameWin)
+                {
+                    StartCoroutine(GameFinishLose());
                 }
             }
-            TimerSlider.value = gameDuration;
-            gameDuration -= Time.deltaTime;
-        }
-        else
-        {
-            // Game finish Lose
-            if (!IsGameFinishLoseCoroutineStarted && !isGameWin)
-            {
-                StartCoroutine(GameFinishLose());
-            }
-            /*GameManager.Instance.SpawnFortuneWheel();
-            StartCoroutine(DespawnAnimation());
-            Destroy(this.transform.parent.gameObject);*/
-        }
 
-        timerText.text = gameDuration.ToString("f2");
-        _pointText.text = "Targets Left : " + _ObjectivesPoints.ToString();
+            timerText.text = gameDuration.ToString("f2");
+            _pointText.text = "Targets Left : " + _ObjectivesPoints.ToString();
+        }
     }
 
     public void SpawnTarget()
