@@ -40,6 +40,7 @@ public class ShootingGame : MiniGame
     private Vector2 padPosP2;
     private bool IsP1Shooting = false;
     private bool IsP2Shooting = false;
+    private bool isGameWin = false;
     private RectTransform thisRT;
 
     private List<GameObject> InstTargets = new List<GameObject>();
@@ -140,10 +141,10 @@ public class ShootingGame : MiniGame
             StartCoroutine(DespawnAnimation());
             TrapsEffects.instanceTrapsEffects.TrapSelector(1);
             Destroy(this.transform.parent.gameObject);*/
-            if (!IsGameFinishWinCoroutineStarted)
+            isGameWin = true;
+            if (!IsGameFinishWinCoroutineStarted && isGameWin)
             {
                 StartCoroutine(GameFinishWin(1));
-                gameDuration = 1;
             }
         }
 
@@ -163,7 +164,7 @@ public class ShootingGame : MiniGame
         else
         {
             // Game finish Lose
-            if (!IsGameFinishLoseCoroutineStarted)
+            if (!IsGameFinishLoseCoroutineStarted && !isGameWin)
             {
                 StartCoroutine(GameFinishLose());
             }
