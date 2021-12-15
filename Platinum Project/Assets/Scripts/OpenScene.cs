@@ -27,6 +27,4 @@ public class OpenScene : MonoBehaviour
         yield return new WaitUntil(() => black.color.a == 1);
         SceneManager.LoadScene("Main Menu");
     }
-
-
 }
