@@ -51,7 +51,6 @@ public class MiniGame : MonoBehaviour
         yield return StartCoroutine(DespawnAnimation());
         GameObject instGameObject = Instantiate(LosePrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
         Animator myAnimator = instGameObject.GetComponent<Animator>();
-        //fwAnimation.Play(GameFinishList.name);
         yield return new WaitForSeconds(myAnimator.runtimeAnimatorController.animationClips[0].length);
         Destroy(instGameObject);
 
@@ -89,7 +88,6 @@ public class MiniGame : MonoBehaviour
                 break;
         }
         Animator myAnimator = instGameObject.GetComponent<Animator>();
-        //fwAnimation.Play(GameFinishList.name);
         yield return new WaitForSeconds(myAnimator.runtimeAnimatorController.animationClips[0].length);
 
         Destroy(instGameObject);
@@ -105,7 +103,6 @@ public class MiniGame : MonoBehaviour
         yield return StartCoroutine(DespawnAnimation());
         GameObject instGameObject = Instantiate(HammerPrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
         Animator myAnimator = instGameObject.GetComponent<Animator>();
-        //fwAnimation.Play(GameFinishList.name);
         yield return new WaitForSeconds(myAnimator.runtimeAnimatorController.animationClips[0].length);
         Destroy(instGameObject);
 
