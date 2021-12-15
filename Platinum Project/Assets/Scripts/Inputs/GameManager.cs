@@ -97,9 +97,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("debut");
         PlayerManagerScript.Instance.InitPlayerGame();
         Camera.main.GetComponent<TestCam>().enabled = true;
-            
         IsGamePlaying = true;
-
+        MaterialDispenser.Instance.ApplyMat();
         GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
 
         GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
