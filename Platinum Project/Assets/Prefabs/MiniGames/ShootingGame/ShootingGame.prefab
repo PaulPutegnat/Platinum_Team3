@@ -232,7 +232,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 25, y: -25}
-  m_SizeDelta: {x: 394.0092, y: 50}
+  m_SizeDelta: {x: 473.2569, y: 62.3503}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1230613706661816845
 CanvasRenderer:
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Points : 0'
+  m_text: 'Targets left : 15'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2d6e4579ade876044a78ab92f6bd098d, type: 2}
   m_sharedMaterial: {fileID: 2194832045691481837, guid: 2d6e4579ade876044a78ab92f6bd098d, type: 2}

@@ -40,7 +40,7 @@ public class ShootingGame : MiniGame
     private Vector2 padPosP2;
     private bool IsP1Shooting = false;
     private bool IsP2Shooting = false;
-    private bool isGameWin = false;
+    private bool isGameFinished = false;
     private RectTransform thisRT;
 
     private List<GameObject> InstTargets = new List<GameObject>();
@@ -68,7 +68,6 @@ public class ShootingGame : MiniGame
 
         _aimSightP1.SetActive(true);
 
-        //Timer
         TimerSlider.maxValue = gameDuration;
         timerText.text = gameDuration.ToString();
         timerColor = TimerSlider.GetComponentInChildren<Image>().color;
@@ -104,7 +103,6 @@ public class ShootingGame : MiniGame
             {
                 RectTransform sightPos = _aimSightP1.GetComponent<RectTransform>();
                 AudioManager.Instance.PlayShotSound();
-                //Vector3 sightPos = _aimSightP1.GetComponent<RectTransform>().GetWorldCorners();
 
                 for (int i = InstTargets.Count - 1; i >= 0; i--)
                 {
@@ -119,7 +117,6 @@ public class ShootingGame : MiniGame
                         Destroy(target.gameObject);
                     }
                 }
-
             }
 
             if (IsP2Shooting)
@@ -144,35 +141,37 @@ public class ShootingGame : MiniGame
 
             if (_ObjectivesPoints <= 0)
             {
-                // Game finish Win
+                isGameFinished = true;
                 if (!IsGameFinishWinCoroutineStarted)
                 {
                     StartCoroutine(GameFinishWin(1));
-                    isGameWin = true;
                 }
             }
 
-            if (gameDuration > 0)
+            if (!isGameFinished)
             {
-                if (gameDuration < 15f)
+                if (gameDuration > 0)
                 {
-                    timerColor = new Color(1, .5f, 0);
-                    if (gameDuration < 5)
+                    if (gameDuration < 15f)
                     {
-                        timerColor = Color.red;
+                        timerColor = new Color(1, .5f, 0);
+                        if (gameDuration < 5)
+                        {
+                            timerColor = Color.red;
+                        }
+                    }
+                    TimerSlider.value = gameDuration;
+                    gameDuration -= Time.deltaTime;
+                }
+                else
+                {
+                    if (!IsGameFinishLoseCoroutineStarted)
+                    {
+                        StartCoroutine(GameFinishLose());
                     }
                 }
-                TimerSlider.value = gameDuration;
-                gameDuration -= Time.deltaTime;
             }
-            else
-            {
-                // Game finish Lose
-                if (!IsGameFinishLoseCoroutineStarted && !isGameWin)
-                {
-                    StartCoroutine(GameFinishLose());
-                }
-            }
+            
 
             timerText.text = gameDuration.ToString("f2");
             _pointText.text = "Targets Left : " + _ObjectivesPoints.ToString();

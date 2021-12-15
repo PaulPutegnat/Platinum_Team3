@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2386901536370315127}
   - component: {fileID: -4542432840738193597}
-  - component: {fileID: 8138579466771855542}
   m_Layer: 5
   m_Name: GameWheel
   m_TagString: Untagged
@@ -93,19 +92,6 @@ MonoBehaviour:
   - {fileID: 842542038618950009, guid: 73e007c9aca9c5b40a6635c6173c159e, type: 3}
   - {fileID: 8636577257879439774, guid: 9d9be6284e08933469a7778a6613602f, type: 3}
   DevOneGame: 0
---- !u!114 &8138579466771855542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2386901536370315126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfa4f4c9130ce4748a2d3b178e77745a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nbOfEffects: 3
 --- !u!1 &2386901537917435088
 GameObject:
   m_ObjectHideFlags: 0

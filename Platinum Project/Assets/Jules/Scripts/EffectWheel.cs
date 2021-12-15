@@ -16,15 +16,15 @@ public class EffectWheel : MonoBehaviour
     IEnumerator RotateWheel()
     {
         yield return new WaitForSeconds(.3f);
-        GameWheel fwScript = transform.parent.GetComponentInChildren<GameWheel>();
-        if (fwScript.index == 1)
+        GameWheel fwScript = GetComponentInChildren<GameWheel>();
+        if (fwScript.index == 2)
         {
             indexRandom = nbOfEffects;
         }
         else
         {
-            indexRandom = Random.Range(1, nbOfEffects);
-            Debug.Log("index trap effect : " + indexRandom);
+            indexRandom = (int)Random.Range(1, nbOfEffects);
+            //Debug.Log("index trap effect : " + indexRandom);
             TrapsEffects.instanceTrapsEffects.trapNum = indexRandom;
         }
     }
