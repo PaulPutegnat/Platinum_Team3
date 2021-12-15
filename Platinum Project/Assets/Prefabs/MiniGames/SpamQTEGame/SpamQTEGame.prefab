@@ -146,7 +146,7 @@ MonoBehaviour:
   gameDuration: 10
   intervalTime: 2.5
   timerText: {fileID: 836991248779785573}
-  sliderMaxValue: 90
+  sliderMaxValue: 100
   decreaseSpeed: 10
 --- !u!1 &836991248934432108
 GameObject:
