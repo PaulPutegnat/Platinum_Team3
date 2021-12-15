@@ -78,12 +78,15 @@ public class MiniGame : MonoBehaviour
         switch (TrapsEffects.instanceTrapsEffects.trapNum)
         {
             case 1:
+            case 2:
+            case 3:
                 effectText.text = "SCHNELL !";
                 break;
-            case 2:
+            case 4:
+            case 5:
                 effectText.text = "WATCH OUT ! A ROCK !";
                 break;
-            case 3:
+            case 6:
                 effectText.text = "SHAKE YOUR BOOTY !";
                 break;
         }
