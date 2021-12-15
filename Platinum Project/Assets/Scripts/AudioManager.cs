@@ -57,13 +57,15 @@ public class AudioManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("volume"))
         {
-            PlayerPrefs.SetFloat("volume", 1);
+            PlayerPrefs.SetFloat("volume", 0.75f);
             Load();
         }
         else
         {
             Load();
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         _audioSource = GetComponent<AudioSource>();
         _walkSounds = Resources.LoadAll<AudioClip>("FT_Runners_Rock_Walk");
@@ -77,6 +79,17 @@ public class AudioManager : MonoBehaviour
         _mgUiSounds = Resources.LoadAll<AudioClip>("UI_Button_Selection");
 
         PlaySingleSound("Particules_Sound");
+    }
+
+    private void OnSceneLoaded(Scene loadedScene, LoadSceneMode arg1)
+    {
+        if (loadedScene.name == "Main Menu")
+        {
+            _volumeSlider = FindObjectOfType<Slider>(true);
+            //_volumeSlider.onValueChanged.AddListener((value) => { ChangeVolume();});
+            _volumeSlider.onValueChanged.AddListener(delegate(float value){ChangeVolume();});
+            Load();
+        }
     }
 
     void Update()
@@ -94,10 +107,6 @@ public class AudioManager : MonoBehaviour
             AudioListener.volume = _volumeSlider.value;
             Save();
         }
-        else
-        {
-
-        }
     }
 
     private void Load()
@@ -105,10 +114,6 @@ public class AudioManager : MonoBehaviour
         if (_volumeSlider != null)
         {
             _volumeSlider.value = PlayerPrefs.GetFloat("volume");
-        }
-        else
-        {
-            PlayerPrefs.SetFloat("volume", 0.5f);
         }
     }
 
