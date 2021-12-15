@@ -45,6 +45,9 @@ public class SlidingBarGame : MiniGame
     private bool isP1Win = false;
     private bool isP2Win = false;
 
+    private bool p1AlreadyPlayedSound = false;
+    private bool p2AlreadyPlayedSound = false;
+
     private bool isTwoPlayer = false;
 
     
@@ -231,16 +234,24 @@ public class SlidingBarGame : MiniGame
             {
                 //Debug.Log("P1 a gagné!!!");
                 isP1Win = true;
-                AudioManager.Instance.PlayGoodSliderSound();
+                if (!p1AlreadyPlayedSound)
+                {
+                    AudioManager.Instance.PlayGoodSliderSound();
+                    p1AlreadyPlayedSound = true;
+                }
             }
             else
             {
                 //Debug.Log("P1 a perdu!!!");
                 isP1Win = false;
+            if (!p1AlreadyPlayedSound)
+            {
                 AudioManager.Instance.PlayBadSliderSound();
+                p1AlreadyPlayedSound = true;
             }
-
+        }
     }
+
     public void StopP2SlidingBarGame()
     {
         Vector3 handlePosP2 = handleP2.transform.localPosition;
@@ -252,13 +263,21 @@ public class SlidingBarGame : MiniGame
             {
                 //Debug.Log("P2 a gagné!!!");
                 isP2Win = true;
-                AudioManager.Instance.PlayGoodSliderSound();
+                if (!p2AlreadyPlayedSound)
+                {
+                    AudioManager.Instance.PlayGoodSliderSound();
+                    p2AlreadyPlayedSound = true;
+                }
             }
             else
             {
                 //Debug.Log("P2 a perdu!!!");
                 isP2Win = false;
-                AudioManager.Instance.PlayBadSliderSound();
+                if (!p2AlreadyPlayedSound)
+                {
+                    AudioManager.Instance.PlayBadSliderSound();
+                    p2AlreadyPlayedSound = true;
+                }
             }
         }
         else
@@ -267,13 +286,21 @@ public class SlidingBarGame : MiniGame
             {
                 //Debug.Log("P2 a gagné!!!");
                 isP2Win = true;
-                AudioManager.Instance.PlayGoodSliderSound();
+                if (!p2AlreadyPlayedSound)
+                {
+                    AudioManager.Instance.PlayGoodSliderSound();
+                    p2AlreadyPlayedSound = true;
+                }
             }
             else
             {
                 //Debug.Log("P2 a perdu!!!");
                 isP2Win = false;
-                AudioManager.Instance.PlayBadSliderSound();
+                if (!p2AlreadyPlayedSound)
+                {
+                    AudioManager.Instance.PlayBadSliderSound();
+                    p2AlreadyPlayedSound = true;
+                }
             }
         }
 
