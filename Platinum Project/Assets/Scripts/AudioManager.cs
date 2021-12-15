@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
@@ -75,7 +76,6 @@ public class AudioManager : MonoBehaviour
         _mgTargetSounds = Resources.LoadAll<AudioClip>("SFX_MG2_Target_Appearance");
         _mgUiSounds = Resources.LoadAll<AudioClip>("UI_Button_Selection");
 
-        PlaySingleSound("Music");
         PlaySingleSound("Particules_Sound");
     }
 
@@ -95,7 +95,10 @@ public class AudioManager : MonoBehaviour
 
     private void Load()
     {
-        _volumeSlider.value = PlayerPrefs.GetFloat("volume");
+        if (_volumeSlider != null)
+        {
+            _volumeSlider.value = PlayerPrefs.GetFloat("volume");
+        }
     }
 
     private void Save()
