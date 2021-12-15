@@ -28,13 +28,13 @@ public class MaterialDispenser : MonoBehaviour
     public void ApplyMat()
     {
         playerRefForMat = PlayerManagerScript.Instance.players[0].GetComponent<neutralcontroller>().runnerRef;
-        GameObject Idle =  playerRefForMat.transform.GetChild(0).gameObject;
-        
-        for (int i = 0; i < Idle.transform.childCount-1; i++)
+        GameObject Idle = playerRefForMat.transform.GetChild(0).gameObject;
+
+        for (int i = 0; i < Idle.transform.childCount - 1; i++)
         {
             GameObject child = Idle.transform.GetChild(i).gameObject;
             Material[] mats = child.GetComponent<SkinnedMeshRenderer>().materials;
-            
+
             switch (i)
             {
                 case 0:
@@ -119,7 +119,7 @@ public class MaterialDispenser : MonoBehaviour
                     break;
             }
 
-            
+
 
 
 
@@ -127,7 +127,7 @@ public class MaterialDispenser : MonoBehaviour
 
 
         playerRefForMat = PlayerManagerScript.Instance.players[1].GetComponent<neutralcontroller>().runnerRef;
-        for (int i = 0; i < Idle.transform.childCount-1; i++)
+        for (int i = 0; i < Idle.transform.childCount - 1; i++)
         {
             GameObject child = Idle.transform.GetChild(i).gameObject;
             Renderer rend = child.GetComponent<Renderer>();
