@@ -9,13 +9,24 @@ public class RunnersVictory : MonoBehaviour
 {
     public GameObject RunnersVictoryScreen;
     public ParticleSystem PS;
-   
+
+    private int limit = 1;
+
+    private void Update()
+    {
+        if ((transform.position.x - Camera.main.transform.position.x) < 50 && limit == 1)
+        {
+            limit--;
+            AudioManager.Instance.PlaySingleSound("End_Portal_Sound");
+        }
+    }
 
     void OnTriggerEnter(Collider col)
     {
         
         if (col.gameObject.name.Contains("Player"))
         {
+            AudioManager.Instance.StopSingleSound("End_Portal_Sound");
             StartCoroutine(Victory());
             var emission = PS.emission;
             emission.rateOverTime = 60f;
@@ -29,7 +40,6 @@ public class RunnersVictory : MonoBehaviour
 
     IEnumerator Victory()
     {
-
         yield return new WaitForSeconds(1);
         var emission = PS.emission;
         emission.enabled = false;
@@ -43,6 +53,7 @@ public class RunnersVictory : MonoBehaviour
             PlayerManagerScript.Instance.Team2Score++;
         }
         RunnersVictoryScreen.SetActive(true);
+        AudioManager.Instance.StopSingleSound("Music");
         AudioManager.Instance.PlaySingleSound("Runners_Victory_Jingle_Sound");
         GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(RunnersVictoryScreen.transform.GetComponentInChildren<Button>().gameObject);
         Time.timeScale = 0f;

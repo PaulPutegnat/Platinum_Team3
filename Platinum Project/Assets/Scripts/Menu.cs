@@ -12,7 +12,8 @@ public class Menu : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        PlayerManagerScript.Instance.WhenLeavingToMenu();
+        SceneManager.LoadScene("Main Menu_Particules");
     }
 
     public void ExitGame()
