@@ -97,8 +97,13 @@ public class AudioManager : MonoBehaviour
         {
             _volumeSlider = FindObjectOfType<Slider>(true);
             //_volumeSlider.onValueChanged.AddListener((value) => { ChangeVolume();});
-            _volumeSlider.onValueChanged.AddListener(delegate(float value){ChangeVolume();});
+            _volumeSlider.onValueChanged.AddListener(delegate(float value) { ChangeVolume(); });
             Load();
+        }
+
+        if (loadedScene.name == "07_Scene_Pres")
+        {
+            PlaySingleSound("Music");
         }
     }
 
