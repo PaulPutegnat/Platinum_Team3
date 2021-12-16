@@ -29,7 +29,7 @@ public class TutoJump : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            tutoCanvas.SetActive(false);
+            tutoCanvas = null;
         }
     }
 }
