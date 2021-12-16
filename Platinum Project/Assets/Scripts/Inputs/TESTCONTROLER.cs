@@ -304,6 +304,19 @@ public class TESTCONTROLER : MonoBehaviour
 
     }
 
+    public void PlayEmote1(InputAction.CallbackContext context)
+    {
+        animatotor.Play("Dance");
+    }
+    public void PlayEmote2(InputAction.CallbackContext context)
+    {
+        animatotor.Play("Hip Hop");
+    }
+    public void PlayEmote3(InputAction.CallbackContext context)
+    {
+        animatotor.Play("shuffling");
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (IsGrounded() && VelocityYLastFrame < -10)
