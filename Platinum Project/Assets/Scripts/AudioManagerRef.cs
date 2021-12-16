@@ -26,28 +26,8 @@ public class AudioManagerRef : MonoBehaviour
         _audioManagerInstance.PlayLandSound();
     }
 
-    public void PlayBadSliderSoundRef()
+    public void PlayRunnersJumpSoundRef()
     {
-        _audioManagerInstance.PlayBadSliderSound();
-    }
-
-    public void PlayGoodSliderSoundRef()
-    {
-        _audioManagerInstance.PlayGoodSliderSound();
-    }
-
-    public void PlayShotSoundRef()
-    {
-        _audioManagerInstance.PlayShotSound();
-    }
-
-    public void PlayTargetSoundRef()
-    {
-        _audioManagerInstance.PlayTargetSound();
-    }
-
-    public void PlayUiSoundRef()
-    {
-        _audioManagerInstance.PlayUiSound();
+        _audioManagerInstance.PlayRunnersJumpSound();
     }
 }

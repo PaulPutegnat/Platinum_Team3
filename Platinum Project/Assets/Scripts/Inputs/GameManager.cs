@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         PlayerManagerScript.Instance.InitPlayerGame();
         Camera.main.GetComponent<TestCam>().enabled = true;
         IsGamePlaying = true;
-        MaterialDispenser.Instance.ApplyMat();
+        //MaterialDispenser.Instance.ApplyMat();
         GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
 
         GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour
     public void CheckRunnersDeath()
     {
         DeadPlayer++;
+        AudioManager.Instance.PlaySingleSound("Runners_Death_Sound");
         switch (DeadPlayer)
         {
             case 2:
@@ -144,6 +145,7 @@ public class GameManager : MonoBehaviour
                 }
                 PlayerManagerScript.Instance.UpdateScore();
                 TrappersVictoryScreen.SetActive(true);
+                AudioManager.Instance.PlaySingleSound("Trappers_Victory_Jingle_Sound");
                 GameObject.Find("TrapManager").SetActive(false);
                 Camera.main.GetComponent<TestCam>().enabled = false;
                 GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.Find("NextGameButtonContainer").GetComponentInChildren<Button>().gameObject);

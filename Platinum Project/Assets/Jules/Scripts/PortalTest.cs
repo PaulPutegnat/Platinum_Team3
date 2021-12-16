@@ -16,7 +16,7 @@ public class PortalTest : MonoBehaviour
     public float decreaseSpeed;
     public int UpValue;
     public float sliderMaxValue;
-    public Vector3 SliderOffset;
+    private Vector3 SliderOffset;
 
     private PlayerInput playerInputP1;
     private PlayerInput playerInputP2;
@@ -32,6 +32,7 @@ public class PortalTest : MonoBehaviour
     private void Start()
     {
         portalCanvas = GameObject.FindGameObjectWithTag("PortalUI").transform;
+        SliderOffset = new Vector3(-3, 4, -6);
     }
     void Update()
     {
