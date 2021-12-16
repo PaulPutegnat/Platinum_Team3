@@ -42,7 +42,6 @@ public class RunnersVictory : MonoBehaviour
         {
             PlayerManagerScript.Instance.Team2Score++;
         }
-        PlayerManagerScript.Instance.UpdateScore();
         RunnersVictoryScreen.SetActive(true);
         AudioManager.Instance.PlaySingleSound("Runners_Victory_Jingle_Sound");
         GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(RunnersVictoryScreen.transform.GetComponentInChildren<Button>().gameObject);

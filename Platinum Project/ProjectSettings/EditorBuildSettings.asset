@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu_Particules.unity
     guid: 279aa46905d748f4597b65ee87be1c1f
-  - enabled: 0
-    path: Assets/Scenes/06_Scene_Pres.unity
-    guid: b2e9045d34d11494392326430dbacd46
   - enabled: 1
     path: Assets/Scenes/07_Scene_Pres.unity
     guid: e16b4746c0d5ed0418cbdc692594ee09
