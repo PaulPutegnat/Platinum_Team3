@@ -313,7 +313,6 @@ MonoBehaviour:
   players: []
   Team1Score: 0
   Team2Score: 0
-  RoundNumber: 5
   RoundNumberDone: 1
   SH: {fileID: 0}
 --- !u!4 &650291245
