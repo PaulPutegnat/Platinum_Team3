@@ -535,6 +535,7 @@ MonoBehaviour:
   PointsInfos: []
   i: 0
   speedUp: 1
+  SpeedParticleSystem: {fileID: 0}
 --- !u!1 &1510316687
 GameObject:
   m_ObjectHideFlags: 0
