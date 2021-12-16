@@ -125,97 +125,98 @@ public class MaterialDispenser : MonoBehaviour
 
         }
 
-
-        playerRefForMat = PlayerManagerScript.Instance.players[1].GetComponent<neutralcontroller>().runnerRef;
-        for (int i = 0; i < Idle.transform.childCount - 1; i++)
+        if (PlayerManagerScript.Instance.players[1] != null)
         {
-            GameObject child = Idle.transform.GetChild(i).gameObject;
-            Renderer rend = child.GetComponent<Renderer>();
-            Material[] mats = child.GetComponent<SkinnedMeshRenderer>().materials;
-            switch (i)
+            playerRefForMat = PlayerManagerScript.Instance.players[1].GetComponent<neutralcontroller>().runnerRef;
+            for (int i = 0; i < Idle.transform.childCount - 1; i++)
             {
-                case 0:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 1:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 2:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 3:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 4:
-                    mats[0] = matArrayMaterials2[1];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 5:
-                    mats[0] = matArrayMaterials2[1];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 6:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 7:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 8:
-                    mats[0] = matArrayMaterials2[1];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 9:
-                    mats[0] = matArrayMaterials2[1];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 10:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 11:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 12:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 13:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 14:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 15:
-                    mats[0] = matArrayMaterials2[2];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 16:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 17:
-                    mats[0] = matArrayMaterials2[0];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 18:
-                    mats[0] = matArrayMaterials2[2];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
-                case 19:
-                    mats[0] = matArrayMaterials2[2];
-                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
-                    break;
+                GameObject child = Idle.transform.GetChild(i).gameObject;
+                Renderer rend = child.GetComponent<Renderer>();
+                Material[] mats = child.GetComponent<SkinnedMeshRenderer>().materials;
+                switch (i)
+                {
+                    case 0:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 1:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 2:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 3:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 4:
+                        mats[0] = matArrayMaterials2[1];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 5:
+                        mats[0] = matArrayMaterials2[1];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 6:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 7:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 8:
+                        mats[0] = matArrayMaterials2[1];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 9:
+                        mats[0] = matArrayMaterials2[1];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 10:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 11:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 12:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 13:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 14:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 15:
+                        mats[0] = matArrayMaterials2[2];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 16:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 17:
+                        mats[0] = matArrayMaterials2[0];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 18:
+                        mats[0] = matArrayMaterials2[2];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                    case 19:
+                        mats[0] = matArrayMaterials2[2];
+                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                        break;
+                }
             }
         }
     }
-
 }
