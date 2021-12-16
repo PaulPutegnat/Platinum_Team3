@@ -69,7 +69,7 @@ MonoBehaviour:
   _targetList: {fileID: 3636190369601158993}
   _pointPrefab: {fileID: 733869603254909710, guid: f83fa2506983eeb4c91088ea37bd17a1, type: 3}
   _aimSpeed: 600
-  _nbTarget: 20
+  _nbTarget: 3
   hitRange: 30
   _ObjectivesPoints: 16
   _pointText: {fileID: 4778349649981354083}

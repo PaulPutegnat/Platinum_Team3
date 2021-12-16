@@ -64,6 +64,15 @@ public class CollideTobogan : MonoBehaviour
         {
             GetComponent<TESTCONTROLER>().enabled = true;
             rbRigidbody.velocity = new Vector3(velocityXLastFrame, 1,0);
+            AudioManager.Instance.StopSingleSound("Slope_Sound");
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.transform.CompareTag("tobogan"))
+        {
+            AudioManager.Instance.PlaySingleSound("Slope_Sound");
         }
     }
 }

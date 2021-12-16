@@ -20,7 +20,6 @@ public class PlayerManagerScript : MonoBehaviour
     public const int TRAPPER1 = 2;
     public const int TRAPPER2 = 3;
 
-    public int RoundNumber = 5;
     public int RoundNumberDone = 1;
     [SerializeField]GameObject SH;
     // Start is called before the first frame update
@@ -81,26 +80,33 @@ public class PlayerManagerScript : MonoBehaviour
             RoundNumberDone = 1;
             Team1Score = 0;
             Team2Score = 0;
-            UpdateScore();
+      
 
 
 }
 
     public IEnumerator NextRound()
     {
-        if (RoundNumber > 1)
-        {
+
             RoundNumberDone++;
-            RoundNumber--;
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
             asyncLoad.allowSceneActivation = false;
             yield return (asyncLoad.progress > 0.9f);
             StartCoroutine(loaded(asyncLoad));
-        }
-        else
+
+    }
+    public void WhenLeavingToMenu()
+    {
+        for (int i = 0; i < 4; i++)
         {
-            //FIN DU JEU
+            if (players[i])
+            {
+                Destroy(players[i]);
+            }
+
+
         }
+        Destroy(gameObject);
     }
     IEnumerator loaded(AsyncOperation sync)
     {
@@ -108,7 +114,7 @@ public class PlayerManagerScript : MonoBehaviour
         sync.allowSceneActivation = true;
         ReversePlayerArray();
         yield return new WaitForSeconds(0.1f);
-        UpdateScore();
+ 
         GameManager.Instance.ButtonPressed();
     }
 
@@ -145,10 +151,5 @@ public class PlayerManagerScript : MonoBehaviour
         }
     }
 
-    public void UpdateScore()
-    {
-        SH = GameObject.Find("ScoreHolder");
-        SH.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Team1Score.ToString();
-        SH.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = Team2Score.ToString();
-    }
+    
 }

@@ -143,13 +143,12 @@ public class GameManager : MonoBehaviour
                 {
                     PlayerManagerScript.Instance.Team1Score++;
                 }
-                PlayerManagerScript.Instance.UpdateScore();
                 TrappersVictoryScreen.SetActive(true);
+                AudioManager.Instance.StopSingleSound("Music");
                 AudioManager.Instance.PlaySingleSound("Trappers_Victory_Jingle_Sound");
                 GameObject.Find("TrapManager").SetActive(false);
                 Camera.main.GetComponent<TestCam>().enabled = false;
-                GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.Find("NextGameButtonContainer").GetComponentInChildren<Button>().gameObject);
-                Time.timeScale = 0f;
+                GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.Find("NextGameButton").GetComponentInChildren<Button>().gameObject);
                 break;
         }
     }

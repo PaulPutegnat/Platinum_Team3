@@ -77,15 +77,6 @@ public class ShootingGame : MiniGame
 
     void Update()
     {
-        if (_ObjectivesPoints <= 0)
-        {
-            isGameFinished = true;
-            if (!IsGameFinishWinCoroutineStarted)
-            {
-                StartCoroutine(GameFinishWin(1));
-            }
-        }
-
         if (isGameBegin)
         {
             IsP1Shooting = InputManager.inputManager.ShootP1();
@@ -148,6 +139,17 @@ public class ShootingGame : MiniGame
                 }
             }
 
+            if (_ObjectivesPoints <= 0 && gameDuration > 0)
+            {
+                isGameFinished = true;
+                if (!IsGameFinishWinCoroutineStarted)
+                {
+                    isGameBegin = false;
+                    StartCoroutine(GameFinishWin(1));
+                    return;
+                }
+            }
+
             if (!isGameFinished)
             {
                 if (gameDuration > 0)
@@ -165,8 +167,9 @@ public class ShootingGame : MiniGame
                 }
                 else
                 {
-                    if (!IsGameFinishLoseCoroutineStarted)
+                    if (!IsGameFinishLoseCoroutineStarted && _ObjectivesPoints > 0)
                     {
+                        isGameBegin = false;
                         StartCoroutine(GameFinishLose());
                     }
                 }
