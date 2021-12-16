@@ -12,6 +12,7 @@ public class Menu : MonoBehaviour
 
     public void BackToMenu()
     {
+        Destroy(PlayerManagerScript.Instance.gameObject);
         SceneManager.LoadScene("Main Menu");
     }
 
