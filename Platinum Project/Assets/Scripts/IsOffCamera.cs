@@ -45,6 +45,7 @@ public class IsOffCamera : MonoBehaviour
             times--;
             GetComponent<TESTCONTROLER>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<BoxCollider>().enabled = false;
             GetComponent<IsOffCamera>().enabled = false;
             foreach (Transform childTransform in transform.GetChild(0))
             {

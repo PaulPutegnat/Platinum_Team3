@@ -493,10 +493,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1938247552077916614, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1938247552077916614, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
       propertyPath: _volumeSlider
       value: 
       objectReference: {fileID: 2042237624}
@@ -3215,9 +3211,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 0981402ec22ee8b448c2dd65a7e0ea39, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 0981402ec22ee8b448c2dd65a7e0ea39, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 0981402ec22ee8b448c2dd65a7e0ea39, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: dcada26b2258eca49b2ab3634d324b1e, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: dcada26b2258eca49b2ab3634d324b1e, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: dcada26b2258eca49b2ab3634d324b1e, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -3325,7 +3321,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1457d8184a588f4479bf4b408a52495a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f50f293492d8c734ebd641e24ef2feab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
