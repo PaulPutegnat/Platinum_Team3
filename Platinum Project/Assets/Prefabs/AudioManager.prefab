@@ -65,7 +65,7 @@ MonoBehaviour:
     Loop: 0
     Source: {fileID: 0}
   - Name: Wheel_Sound
-    Clip: {fileID: 8300000, guid: 996a766ad5c70294992a800c38e789a5, type: 3}
+    Clip: {fileID: 8300000, guid: d38bd84d081919348befd3485072913d, type: 3}
     Volume: 1
     Pitch: 1
     Loop: 0
@@ -114,12 +114,6 @@ MonoBehaviour:
     Source: {fileID: 0}
   - Name: Portal_Explosion_Sound
     Clip: {fileID: 8300000, guid: a70c564462774ae44af8c767bda6f487, type: 3}
-    Volume: 1
-    Pitch: 1
-    Loop: 0
-    Source: {fileID: 0}
-  - Name: Runners_Death_Sound
-    Clip: {fileID: 8300000, guid: fadda76fdfa99c24885b502615369cc3, type: 3}
     Volume: 1
     Pitch: 1
     Loop: 0
