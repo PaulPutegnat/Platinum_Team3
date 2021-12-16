@@ -18,7 +18,7 @@ public class TutoSlide : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            tutoCanvas.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Tuto_UI/XboxOne_B");
+            tutoCanvas.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("UI_PROJECT/Tuto_UI/XboxOne_B");
             tutoCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "to slide";
 
             tutoCanvas.transform.position = transform.position;
