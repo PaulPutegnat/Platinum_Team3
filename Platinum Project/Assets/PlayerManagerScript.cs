@@ -95,6 +95,19 @@ public class PlayerManagerScript : MonoBehaviour
             StartCoroutine(loaded(asyncLoad));
 
     }
+    public void WhenLeavingToMenu()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (players[i])
+            {
+                Destroy(players[i]);
+            }
+
+
+        }
+        Destroy(gameObject);
+    }
     IEnumerator loaded(AsyncOperation sync)
     {
         
