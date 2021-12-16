@@ -34,15 +34,15 @@ public class TrapsEffects : MonoBehaviour
 
     public void TrapSelector(float semiWinSplit)
     {
-        if (trapNum == 1 || trapNum == 2 || trapNum == 3)
+        if (trapNum == 1 || trapNum == 2 || trapNum == 3 || trapNum == 4 || trapNum == 5)
         {
             StartCoroutine(CameraSpeedTrap(semiWinSplit));
         }
-        if (trapNum == 4 || trapNum == 5)
+        if (trapNum == 6 || trapNum == 7 || trapNum == 8)
         {
             StartCoroutine(BrokenScreenTrap(semiWinSplit));
         }
-        if (trapNum == 6)
+        if (trapNum == 9)
         {
             StartCoroutine(CameraShakeTrap(shakeTrapDuration, shakeTrapMagnitude));
         }
