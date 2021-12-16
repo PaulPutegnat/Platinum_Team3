@@ -17,7 +17,7 @@ public class TutoJump : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            tutoCanvas.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Tuto_UI/XboxOne_A");
+            tutoCanvas.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("UI_PROJECT/Tuto_UI/XboxOne_A");
             tutoCanvas.GetComponentInChildren<TextMeshProUGUI>().text = "to jump";
 
             tutoCanvas.transform.position = transform.position;
