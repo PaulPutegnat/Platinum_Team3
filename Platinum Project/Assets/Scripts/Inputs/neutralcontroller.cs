@@ -330,6 +330,7 @@ public class neutralcontroller : MonoBehaviour
         GetComponent<PlayerInput>().actions.FindAction("Emote1").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().PlayEmote1);
         GetComponent<PlayerInput>().actions.FindAction("Emote2").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().PlayEmote2);
         GetComponent<PlayerInput>().actions.FindAction("Emote3").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().PlayEmote3);
+        GetComponent<PlayerInput>().actions.FindAction("Emote4").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().PlayEmote4);
         //runnerRef.SetActive(false);
     }
 
