@@ -16,7 +16,7 @@ public class OpenScene : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown /*|| Gamepad.current.allControls.Any(x => x is ButtonControl button && x.IsPressed() && !x.synthetic)*/)
+        if (Input.anyKeyDown || Gamepad.current.allControls.Any(x => x is ButtonControl button && x.IsPressed(1) && !x.synthetic))
         {
             StartCoroutine(Fading());
         }

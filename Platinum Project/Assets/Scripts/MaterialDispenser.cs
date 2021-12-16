@@ -27,8 +27,7 @@ public class MaterialDispenser : MonoBehaviour
 
     public void ApplyMat()
     {
-        if (PlayerManagerScript.Instance.players[0] != null)
-        {
+        
             playerRefForMat = PlayerManagerScript.Instance.players[0].GetComponent<neutralcontroller>().runnerRef;
             GameObject Idle = playerRefForMat.transform.GetChild(0).gameObject;
 
@@ -120,20 +119,17 @@ public class MaterialDispenser : MonoBehaviour
                         child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
                         break;
                 }
+            
 
-
-
-
-
+            
             }
-        }
         
 
         if (PlayerManagerScript.Instance.players[1] != null)
         {
             
             playerRefForMat = PlayerManagerScript.Instance.players[1].GetComponent<neutralcontroller>().runnerRef;
-            GameObject Idle = playerRefForMat.transform.GetChild(0).gameObject;
+            Idle = playerRefForMat.transform.GetChild(0).gameObject;
             for (int i = 0; i < Idle.transform.childCount - 1; i++)
             {
                 GameObject child = Idle.transform.GetChild(i).gameObject;
@@ -223,6 +219,26 @@ public class MaterialDispenser : MonoBehaviour
                         break;
                 }
             }
+            Gradient gradient;
+            GradientColorKey[] colorKey;
+            GradientAlphaKey[] alphaKey;
+            gradient = new Gradient();
+
+            // Populate the color keys at the relative time 0 and 1 (0 and 100%)
+            colorKey = new GradientColorKey[2];
+            colorKey[0].color = Color.red;
+            colorKey[0].time = 0.0f;
+            colorKey[1].color = Color.red;
+            colorKey[1].time = 1.0f;
+
+            alphaKey = new GradientAlphaKey[2];
+            alphaKey[0].alpha = 125f/255f;
+            alphaKey[0].time = 0.0f;
+            alphaKey[1].alpha = 0.0f;
+            alphaKey[1].time = 0.585f;
+            gradient.SetKeys(colorKey, alphaKey);
+            playerRefForMat.GetComponentInChildren<TrailRenderer>().colorGradient = gradient;
+
         }
     }
 }
