@@ -78,6 +78,7 @@ public class PortalTest : MonoBehaviour
 
                 if (sliderCurrentValue >= sliderMaxValue)
                 {
+                    AudioManager.Instance.PlaySingleSound("Portal_Explosion_Sound");
                     transform.parent.transform.parent.GetChild(0).GetComponent<ParticleSystem>().Play();
                     Destroy(this.transform.parent.gameObject);
                     Destroy(newGameObject);

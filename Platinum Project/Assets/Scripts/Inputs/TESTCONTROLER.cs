@@ -152,6 +152,7 @@ public class TESTCONTROLER : MonoBehaviour
 
          if (jump && (IsGrounded() || CT > 0))
          { 
+             AudioManager.Instance.PlayRunnersJumpSound();
              //Vector2.up * Physics.gravity.y * (fallMultiplierFloat - 1) * Time.deltaTime;
              float InertyMultiplier = Mathf.Clamp(Mathf.Abs(_rigidbody.velocity.x) / maxspeed, neutralJumpForce, 1) ;
              JumpParticleSystem.Play();
