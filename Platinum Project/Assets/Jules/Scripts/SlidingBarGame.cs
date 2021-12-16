@@ -166,7 +166,7 @@ public class SlidingBarGame : MiniGame
                         //Debug.Log("GAME IS SEMI-WIN");
                         if (!IsGameFinishWinCoroutineStarted)
                         {
-                            StartCoroutine(GameFinishWin(2));
+                            StartCoroutine(GameFinishWin(1.2f));
                         }
                     }
                     else if (!isP1Win && !isP2Win)
