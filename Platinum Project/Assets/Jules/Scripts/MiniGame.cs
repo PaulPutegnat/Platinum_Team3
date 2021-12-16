@@ -82,13 +82,16 @@ public class MiniGame : MonoBehaviour
             case 1:
             case 2:
             case 3:
-                effectText.text = "SPEED UP !";
-                break;
             case 4:
             case 5:
-                effectText.text = "WATCH OUT ! A ROCK !";
+                effectText.text = "SPEED UP !";
                 break;
             case 6:
+            case 7:
+            case 8:
+                effectText.text = "WATCH OUT ! A ROCK !";
+                break;
+            case 9:
                 effectText.text = "SHAKE YOUR BOOTY !";
                 break;
         }
