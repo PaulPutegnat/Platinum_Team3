@@ -27,6 +27,6 @@ public class OpenScene : MonoBehaviour
         AudioManager.Instance.PlaySingleSound("Button_Click_Sound");
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => black.color.a == 1);
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Main Menu_Particules");
     }
 }

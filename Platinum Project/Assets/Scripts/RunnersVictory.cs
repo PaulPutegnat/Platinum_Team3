@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class RunnersVictory : MonoBehaviour
 {
@@ -43,6 +45,7 @@ public class RunnersVictory : MonoBehaviour
         PlayerManagerScript.Instance.UpdateScore();
         RunnersVictoryScreen.SetActive(true);
         AudioManager.Instance.PlaySingleSound("Runners_Victory_Jingle_Sound");
+        GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(RunnersVictoryScreen.transform.GetComponentInChildren<Button>().gameObject);
         Time.timeScale = 0f;
     }
 }
