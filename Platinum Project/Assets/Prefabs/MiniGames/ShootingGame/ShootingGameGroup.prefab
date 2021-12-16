@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 88
       objectReference: {fileID: 0}
+    - target: {fileID: 3636190369262651278, guid: aecd053d602d71a489fa931bb9c92896, type: 3}
+      propertyPath: _ObjectivesPoints
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3636190369262651312, guid: aecd053d602d71a489fa931bb9c92896, type: 3}
       propertyPath: m_Name
       value: ShootingGame

@@ -82,7 +82,7 @@ public class MiniGame : MonoBehaviour
             case 1:
             case 2:
             case 3:
-                effectText.text = "Speed up !";
+                effectText.text = "SPEED UP !";
                 break;
             case 4:
             case 5:
