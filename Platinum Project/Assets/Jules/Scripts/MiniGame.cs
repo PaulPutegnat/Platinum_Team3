@@ -47,6 +47,7 @@ public class MiniGame : MonoBehaviour
 
     public IEnumerator GameFinishLose()
     {
+        AudioManager.Instance.PlayMGLooseFeedbackSound();
         IsGameFinishLoseCoroutineStarted = true;
         yield return StartCoroutine(DespawnAnimation());
         GameObject instGameObject = Instantiate(LosePrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);
@@ -61,6 +62,7 @@ public class MiniGame : MonoBehaviour
 
     public IEnumerator GameFinishWin(float trapIndex)
     {
+        AudioManager.Instance.PlayMGWinFeedbackSound();
         IsGameFinishWinCoroutineStarted = true;
         StartCoroutine(DespawnAnimation());
         GameObject instGameObject = Instantiate(WinPrefab, GameObject.FindGameObjectWithTag("GameContainer").transform);

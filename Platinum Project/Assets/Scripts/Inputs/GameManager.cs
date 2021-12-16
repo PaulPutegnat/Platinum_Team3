@@ -143,7 +143,6 @@ public class GameManager : MonoBehaviour
                 {
                     PlayerManagerScript.Instance.Team1Score++;
                 }
-                PlayerManagerScript.Instance.UpdateScore();
                 TrappersVictoryScreen.SetActive(true);
                 AudioManager.Instance.PlaySingleSound("Trappers_Victory_Jingle_Sound");
                 GameObject.Find("TrapManager").SetActive(false);
