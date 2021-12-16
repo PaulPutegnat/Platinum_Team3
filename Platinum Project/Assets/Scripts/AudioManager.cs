@@ -25,6 +25,11 @@ public class AudioManager : MonoBehaviour
     private AudioClip[] _mgShotSounds;
     private AudioClip[] _mgTargetSounds;
     private AudioClip[] _mgUiSounds;
+    private AudioClip[] _brokenScreenSounds;
+    private AudioClip[] _runnersJumpSounds;
+    private AudioClip[] _mgHammerHitsSound;
+    private AudioClip[] _mgWinFeedbackSound;
+    private AudioClip[] _mgLooseFeedbackSound;
 
     private int _randomSoundNum;
 
@@ -77,6 +82,11 @@ public class AudioManager : MonoBehaviour
         _mgShotSounds = Resources.LoadAll<AudioClip>("SFX_MG2_Shot");
         _mgTargetSounds = Resources.LoadAll<AudioClip>("SFX_MG2_Target_Appearance");
         _mgUiSounds = Resources.LoadAll<AudioClip>("UI_Button_Selection");
+        _brokenScreenSounds = Resources.LoadAll<AudioClip>("UI_ScreenBroken");
+        _runnersJumpSounds = Resources.LoadAll<AudioClip>("SFX_Runners_Jump");
+        _mgHammerHitsSound = Resources.LoadAll<AudioClip>("SFX_MG_HammerHits");
+        _mgWinFeedbackSound = Resources.LoadAll<AudioClip>("SFX_MG_Feedback_Win_ST");
+        _mgLooseFeedbackSound = Resources.LoadAll<AudioClip>("SFX_MG_Feedback_Loose_ST");
 
         PlaySingleSound("Particules_Sound");
     }
@@ -89,14 +99,6 @@ public class AudioManager : MonoBehaviour
             //_volumeSlider.onValueChanged.AddListener((value) => { ChangeVolume();});
             _volumeSlider.onValueChanged.AddListener(delegate(float value){ChangeVolume();});
             Load();
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            PlayUiSound();
         }
     }
 
@@ -183,6 +185,36 @@ public class AudioManager : MonoBehaviour
     {
         _randomSoundNum = Random.Range(0, 3);
         _audioSource.PlayOneShot(_mgUiSounds[_randomSoundNum]);
+    }
+
+    public void PlayBrokenScreenSound()
+    {
+        _randomSoundNum = Random.Range(0, 3);
+        _audioSource.PlayOneShot(_brokenScreenSounds[_randomSoundNum]);
+    }
+
+    public void PlayRunnersJumpSound()
+    {
+        _randomSoundNum = Random.Range(0, 3);
+        _audioSource.PlayOneShot(_runnersJumpSounds[_randomSoundNum]);
+    }
+
+    public void PlayHammerHitsSound()
+    {
+        _randomSoundNum = Random.Range(0, 11);
+        _audioSource.PlayOneShot(_mgHammerHitsSound[_randomSoundNum]);
+    }
+
+    public void PlayMGWinFeedbackSound()
+    {
+        _randomSoundNum = Random.Range(0, 2);
+        _audioSource.PlayOneShot(_mgWinFeedbackSound[_randomSoundNum]);
+    }
+
+    public void PlayMGLooseFeedbackSound()
+    {
+        _randomSoundNum = Random.Range(0, 2);
+        _audioSource.PlayOneShot(_mgLooseFeedbackSound[_randomSoundNum]);
     }
 
     //How to play sound in scripts:

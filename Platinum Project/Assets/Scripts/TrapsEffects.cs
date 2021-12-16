@@ -51,6 +51,7 @@ public class TrapsEffects : MonoBehaviour
     public IEnumerator CameraSpeedTrap(float semiWinSplitRef)
     {
         Debug.Log("Speed Up!");
+        AudioManager.Instance.PlaySingleSound("Camera_Speed_Sound");
         _testcam.speedUp = speedMultiplicator  / semiWinSplitRef;
         yield return new WaitForSeconds(speedTrapDuration / semiWinSplitRef);
         _testcam.speedUp = 1;
@@ -66,6 +67,7 @@ public class TrapsEffects : MonoBehaviour
         {
             fadeAmount +=  BrokenScreenFadeInSpeed * Time.deltaTime;
 
+            AudioManager.Instance.PlayBrokenScreenSound();
             objectColor = new Color(BrokenScreen.color.r, BrokenScreen.color.g, BrokenScreen.color.b, fadeAmount);
             BrokenScreen.color = objectColor;
             yield return null;
@@ -90,6 +92,7 @@ public class TrapsEffects : MonoBehaviour
 
         float elapsed = 0.0f;
 
+        AudioManager.Instance.PlaySingleSound("Camera_Shake_Sound");
         while (elapsed < duration)
         {
             float x = Random.Range(-1f, 1f) * magnitude;

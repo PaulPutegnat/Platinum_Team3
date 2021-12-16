@@ -42,6 +42,7 @@ public class RunnersVictory : MonoBehaviour
         }
         PlayerManagerScript.Instance.UpdateScore();
         RunnersVictoryScreen.SetActive(true);
+        AudioManager.Instance.PlaySingleSound("Runners_Victory_Jingle_Sound");
         Time.timeScale = 0f;
     }
 }

@@ -59,7 +59,7 @@ public class MiniGame : MonoBehaviour
         
     }
 
-    public IEnumerator GameFinishWin(int trapIndex)
+    public IEnumerator GameFinishWin(float trapIndex)
     {
         IsGameFinishWinCoroutineStarted = true;
         StartCoroutine(DespawnAnimation());
@@ -71,7 +71,7 @@ public class MiniGame : MonoBehaviour
             case 1:
                 gameText.text = "Game win";
                 break;
-            case 2:
+            case 1.2f:
                 gameText.text = "Game Semi-win";
                 break;
         }
