@@ -26,12 +26,23 @@ public class TestCam : MonoBehaviour
 
     private GameObject _cameraHolder;
 
+    public ParticleSystem SpeedParticleSystem;
+
     void Start()
     {
+        SpeedParticleSystem.enableEmission = false;
         _cameraHolder = transform.parent.gameObject;
     }
     void Update()
     {
+        if (speedUp > 1)
+        {
+            SpeedParticleSystem.enableEmission = true;
+        }
+        else
+        {
+            SpeedParticleSystem.enableEmission = false;
+        }
         _timer += Time.deltaTime * speedUp;
         _percent = _timer / PointsInfos[i].StepDuration;
 
