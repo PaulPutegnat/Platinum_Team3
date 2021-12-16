@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
                 AudioManager.Instance.PlaySingleSound("Trappers_Victory_Jingle_Sound");
                 GameObject.Find("TrapManager").SetActive(false);
                 Camera.main.GetComponent<TestCam>().enabled = false;
-                GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.Find("NextGameButtonContainer").GetComponentInChildren<Button>().gameObject);
+                GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.Find("NextGameButton").GetComponentInChildren<Button>().gameObject);
                 Time.timeScale = 0f;
                 break;
         }
