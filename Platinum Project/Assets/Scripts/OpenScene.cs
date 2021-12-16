@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -11,6 +12,7 @@ public class OpenScene : MonoBehaviour
 {
     public Image black;
     public Animator anim;
+    public TextMeshPro text;
 
     void Update()
     {
