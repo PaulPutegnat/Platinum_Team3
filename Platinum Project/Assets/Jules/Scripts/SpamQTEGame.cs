@@ -113,6 +113,7 @@ public class SpamQTEGame : MiniGame
                     case PlayerTurnState.P1:
                         if (p1ButtonPressed)
                         {
+                            AudioManager.Instance.PlayHammerHitsSound();
                             sliderCurrentValue += 2f;
                             _state = PlayerTurnState.P2;
                             P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer");
@@ -125,6 +126,7 @@ public class SpamQTEGame : MiniGame
                     case PlayerTurnState.P2:
                         if (p2ButtonPressed)
                         {
+                            AudioManager.Instance.PlayHammerHitsSound();
                             sliderCurrentValue += 2f;
                             _state = PlayerTurnState.P1;
                             P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer");
@@ -145,6 +147,7 @@ public class SpamQTEGame : MiniGame
                     case PlayerTurnState.P1:
                         if (p1ButtonPressed)
                         {
+                            AudioManager.Instance.PlayHammerHitsSound();
                             sliderCurrentValue += 2f;
                             _state = PlayerTurnState.P2;
                             P1HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer");
@@ -157,6 +160,7 @@ public class SpamQTEGame : MiniGame
                     case PlayerTurnState.P2:
                         if (p2ButtonPressed)
                         {
+                            AudioManager.Instance.PlayHammerHitsSound();
                             sliderCurrentValue += 2f;
                             _state = PlayerTurnState.P1;
                             P2HammerSprite.sprite = Resources.Load<Sprite>("UI_PROJECT/Hammer_Mini_Game/Hammer");

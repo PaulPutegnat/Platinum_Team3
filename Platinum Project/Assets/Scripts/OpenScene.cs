@@ -14,10 +14,13 @@ public class OpenScene : MonoBehaviour
     public Animator anim;
     public TextMeshPro text;
 
+    private int limit = 1;
+
     void Update()
     {
-        if (Input.anyKeyDown || Gamepad.current.allControls.Any(x => x is ButtonControl button && x.IsPressed(1) && !x.synthetic))
+        if ((Input.anyKeyDown || Gamepad.current.allControls.Any(x => x is ButtonControl button && x.IsPressed() && !x.synthetic)) && limit == 1)
         {
+            limit--;
             StartCoroutine(Fading());
         }
     }
