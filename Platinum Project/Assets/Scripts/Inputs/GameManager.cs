@@ -149,7 +149,6 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("TrapManager").SetActive(false);
                 Camera.main.GetComponent<TestCam>().enabled = false;
                 GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.Find("NextGameButton").GetComponentInChildren<Button>().gameObject);
-                Time.timeScale = 0f;
                 break;
         }
     }
