@@ -5406,14 +5406,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1938247552077916614, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1938247552077916614, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
-      propertyPath: _volumeSlider
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5158962037874113967, guid: d69b9e6ed855d084e864e692cf8273c5, type: 3}
       propertyPath: m_RootOrder
       value: 0
