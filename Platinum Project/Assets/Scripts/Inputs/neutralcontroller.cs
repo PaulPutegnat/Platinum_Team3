@@ -79,13 +79,13 @@ public class neutralcontroller : MonoBehaviour
             case 3:
                 transform.SetParent(J3, false);
                 transform.localPosition = Vector3.zero;
-                controllerImage.color = new Color(1f, (64f / 255f), (118f / 255f));
+                controllerImage.color = new Color(0.69f, 0.13f, 0.84f);
                 break;
 
             case 4:
                 transform.SetParent(J4, false);
                 transform.localPosition = Vector3.zero;
-                controllerImage.color = new Color(1f, (222f / 255f), (92f / 255f));
+                controllerImage.color = new Color(0.97f, 0.7882f, 0.098f);
                 break;
         }
 
