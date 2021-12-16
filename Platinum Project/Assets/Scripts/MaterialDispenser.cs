@@ -107,8 +107,8 @@ public class MaterialDispenser : MonoBehaviour
                         child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
                         break;
                     case 17:
-                        mats[0] = matArrayMaterials1[0];
-                        child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
+                    mats[0] = matArrayMaterials1[2];
+                    child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
                         break;
                     case 18:
                         mats[0] = matArrayMaterials1[0];
@@ -206,7 +206,7 @@ public class MaterialDispenser : MonoBehaviour
                         child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
                         break;
                     case 17:
-                        mats[0] = matArrayMaterials2[0];
+                        mats[0] = matArrayMaterials1[2];
                         child.GetComponent<SkinnedMeshRenderer>().sharedMaterials = mats;
                         break;
                     case 18:
