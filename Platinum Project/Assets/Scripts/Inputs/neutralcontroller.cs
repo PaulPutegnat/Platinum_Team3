@@ -327,6 +327,9 @@ public class neutralcontroller : MonoBehaviour
         GetComponent<PlayerInput>().actions.FindAction("Movement").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnMove);
         GetComponent<PlayerInput>().actions.FindAction("Jump").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnJump);
         GetComponent<PlayerInput>().actions.FindAction("Sliding").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().OnSlide);
+        GetComponent<PlayerInput>().actions.FindAction("Emote1").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().PlayEmote1);
+        GetComponent<PlayerInput>().actions.FindAction("Emote2").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().PlayEmote2);
+        GetComponent<PlayerInput>().actions.FindAction("Emote3").performed += new Action<InputAction.CallbackContext>(runnerRef.GetComponent<TESTCONTROLER>().PlayEmote3);
         //runnerRef.SetActive(false);
     }
 

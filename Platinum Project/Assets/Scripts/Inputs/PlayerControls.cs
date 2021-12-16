@@ -89,6 +89,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Emote1"",
+                    ""type"": ""Button"",
+                    ""id"": ""85b1facb-2f0e-4677-813a-1a15d6de1d1e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Emote2"",
+                    ""type"": ""Button"",
+                    ""id"": ""8ce3031c-bbd3-48fe-b9b6-e9295b744054"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Emote3"",
+                    ""type"": ""Button"",
+                    ""id"": ""dff195e3-5ec9-4945-b804-9221002fd227"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -265,6 +292,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""PortalSpam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be92b5cb-fd63-4b91-aab9-d16c56d6d7d2"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Emote3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""189f163c-193f-498a-8845-8713e47742a9"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Emote1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""740a7e46-1065-41a8-a803-ab8e0dc43be8"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Emote2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1578,6 +1638,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Echap = m_Player.FindAction("Echap", throwIfNotFound: true);
         m_Player_Sliding = m_Player.FindAction("Sliding", throwIfNotFound: true);
         m_Player_PortalSpam = m_Player.FindAction("PortalSpam", throwIfNotFound: true);
+        m_Player_Emote1 = m_Player.FindAction("Emote1", throwIfNotFound: true);
+        m_Player_Emote2 = m_Player.FindAction("Emote2", throwIfNotFound: true);
+        m_Player_Emote3 = m_Player.FindAction("Emote3", throwIfNotFound: true);
         // Trapper
         m_Trapper = asset.FindActionMap("Trapper", throwIfNotFound: true);
         m_Trapper_TrapSelection = m_Trapper.FindAction("Trap Selection", throwIfNotFound: true);
@@ -1688,6 +1751,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Echap;
     private readonly InputAction m_Player_Sliding;
     private readonly InputAction m_Player_PortalSpam;
+    private readonly InputAction m_Player_Emote1;
+    private readonly InputAction m_Player_Emote2;
+    private readonly InputAction m_Player_Emote3;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1699,6 +1765,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Echap => m_Wrapper.m_Player_Echap;
         public InputAction @Sliding => m_Wrapper.m_Player_Sliding;
         public InputAction @PortalSpam => m_Wrapper.m_Player_PortalSpam;
+        public InputAction @Emote1 => m_Wrapper.m_Player_Emote1;
+        public InputAction @Emote2 => m_Wrapper.m_Player_Emote2;
+        public InputAction @Emote3 => m_Wrapper.m_Player_Emote3;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1729,6 +1798,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @PortalSpam.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPortalSpam;
                 @PortalSpam.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPortalSpam;
                 @PortalSpam.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPortalSpam;
+                @Emote1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote1;
+                @Emote1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote1;
+                @Emote1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote1;
+                @Emote2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote2;
+                @Emote2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote2;
+                @Emote2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote2;
+                @Emote3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote3;
+                @Emote3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote3;
+                @Emote3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote3;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1754,6 +1832,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @PortalSpam.started += instance.OnPortalSpam;
                 @PortalSpam.performed += instance.OnPortalSpam;
                 @PortalSpam.canceled += instance.OnPortalSpam;
+                @Emote1.started += instance.OnEmote1;
+                @Emote1.performed += instance.OnEmote1;
+                @Emote1.canceled += instance.OnEmote1;
+                @Emote2.started += instance.OnEmote2;
+                @Emote2.performed += instance.OnEmote2;
+                @Emote2.canceled += instance.OnEmote2;
+                @Emote3.started += instance.OnEmote3;
+                @Emote3.performed += instance.OnEmote3;
+                @Emote3.canceled += instance.OnEmote3;
             }
         }
     }
@@ -2173,6 +2260,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnEchap(InputAction.CallbackContext context);
         void OnSliding(InputAction.CallbackContext context);
         void OnPortalSpam(InputAction.CallbackContext context);
+        void OnEmote1(InputAction.CallbackContext context);
+        void OnEmote2(InputAction.CallbackContext context);
+        void OnEmote3(InputAction.CallbackContext context);
     }
     public interface ITrapperActions
     {
