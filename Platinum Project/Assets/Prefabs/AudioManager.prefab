@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87506a26b685b52478b1f630e79bc7ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _volumeSlider: {fileID: 0}
   Sounds:
   - Name: Music
-    Clip: {fileID: 8300000, guid: 5c774a67c26f06349bf3b80756fdcd82, type: 3}
+    Clip: {fileID: 8300000, guid: 1ae5b3f443c8f574ab89839934f5aa3b, type: 3}
     Volume: 0.04
     Pitch: 1
     Loop: 1
@@ -71,6 +72,66 @@ MonoBehaviour:
     Source: {fileID: 0}
   - Name: Wheel_Finish_Sound
     Clip: {fileID: 8300000, guid: 39a077fa6b1456c4cbdac5e3eb63193c, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Slope_Sound
+    Clip: {fileID: 8300000, guid: c67a2a3345a61b54e8b1d1afdd5d1113, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: End_Music_Sound
+    Clip: {fileID: 8300000, guid: e8374063580c20543b8285d5233db496, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Runners_Victory_Jingle_Sound
+    Clip: {fileID: 8300000, guid: 2f44d9cbe944f0f48aa5dee08471383d, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Trappers_Victory_Jingle_Sound
+    Clip: {fileID: 8300000, guid: b519c34ae9867d746998ac534c28467c, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: End_Portal_Sound
+    Clip: {fileID: 8300000, guid: 739170742f10bfa4f9361ba0124b8bd0, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Camera_Shake_Sound
+    Clip: {fileID: 8300000, guid: 4f7b3e76f79777d4db600af77263f0a3, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Portal_Explosion_Sound
+    Clip: {fileID: 8300000, guid: a70c564462774ae44af8c767bda6f487, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Runners_Death_Sound
+    Clip: {fileID: 8300000, guid: fadda76fdfa99c24885b502615369cc3, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Runners_Death_Sound
+    Clip: {fileID: 8300000, guid: fadda76fdfa99c24885b502615369cc3, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Camera_Speed_Sound
+    Clip: {fileID: 8300000, guid: d6694c02e63f8ab4ea5d8200a0ed0ef2, type: 3}
     Volume: 1
     Pitch: 1
     Loop: 0

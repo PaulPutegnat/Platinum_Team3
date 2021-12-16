@@ -66,6 +66,7 @@ public class TrapsEffects : MonoBehaviour
         {
             fadeAmount +=  BrokenScreenFadeInSpeed * Time.deltaTime;
 
+            AudioManager.Instance.PlayBrokenScreenSound();
             objectColor = new Color(BrokenScreen.color.r, BrokenScreen.color.g, BrokenScreen.color.b, fadeAmount);
             BrokenScreen.color = objectColor;
             yield return null;
