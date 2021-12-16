@@ -142,6 +142,19 @@ public class AudioManager : MonoBehaviour
         //FindObjectOfType<AudioManager>().PlaySingleSound("name of the sound");
     }
 
+    public void StopSingleSound(string name)
+    {
+        Sound s = Array.Find(Sounds, sound => sound.Name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        s.Source.Stop();
+        //How to stop sound in scripts:
+        //FindObjectOfType<AudioManager>().StopSingleSound("name of the sound");
+    }
+
     public void PlayWalkSound()
     {
         _randomSoundNum = Random.Range(0, 11);
