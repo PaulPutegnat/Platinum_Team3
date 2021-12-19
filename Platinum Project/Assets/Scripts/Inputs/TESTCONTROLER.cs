@@ -316,6 +316,10 @@ public class TESTCONTROLER : MonoBehaviour
     {
         animatotor.Play("shuffling");
     }
+    public void PlayEmote4(InputAction.CallbackContext context)
+    {
+        animatotor.Play("Capoeira");
+    }
 
     private void OnCollisionEnter(Collision other)
     {

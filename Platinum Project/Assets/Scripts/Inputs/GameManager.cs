@@ -27,13 +27,13 @@ public class GameManager : MonoBehaviour
     public GameObject fortuneWheel;
 
     [Header("Canvas")]
-    public GameObject pauseCanvas;
+    
     public GameObject mainCanvas;
 
     [HideInInspector]public GameObject BeginButton;
     private GameObject TrapContainer;
 
-    private GameObject pausegGameObject;
+    
     public GameObject TrappersVictoryScreen;
 
     [Header("Spawn")]
@@ -53,12 +53,12 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         Time.timeScale = 1f;
-        pauseCanvas.SetActive(true);
+        
         mainCanvas.SetActive(true);
 
         MaxPlayers = GetComponent<PlayerInputManager>().maxPlayerCount;
         playersRefs = new GameObject[MaxPlayers];
-        pausegGameObject = pauseCanvas;
+        
         TrapContainer = GameObject.FindGameObjectWithTag("TrapContainer");
         TrapContainer.SetActive(false);
     }
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
         MaterialDispenser.Instance.ApplyMat();
         GameObject.FindGameObjectWithTag("AEnlever").SetActive(false);
 
-        GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(GameObject.FindObjectOfType<Pause>().FirstSelectedInUI);
+       
         TrapContainer.SetActive(true);
             
         if (withWheel)

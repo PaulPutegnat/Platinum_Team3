@@ -116,6 +116,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Emote4"",
+                    ""type"": ""Button"",
+                    ""id"": ""c35c40ab-9bea-4bec-9fb4-e5fbcea1bb0e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -325,6 +334,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Emote2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bdab7044-382c-4cb6-b9cd-c0b656318fda"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Emote4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1641,6 +1661,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Emote1 = m_Player.FindAction("Emote1", throwIfNotFound: true);
         m_Player_Emote2 = m_Player.FindAction("Emote2", throwIfNotFound: true);
         m_Player_Emote3 = m_Player.FindAction("Emote3", throwIfNotFound: true);
+        m_Player_Emote4 = m_Player.FindAction("Emote4", throwIfNotFound: true);
         // Trapper
         m_Trapper = asset.FindActionMap("Trapper", throwIfNotFound: true);
         m_Trapper_TrapSelection = m_Trapper.FindAction("Trap Selection", throwIfNotFound: true);
@@ -1754,6 +1775,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Emote1;
     private readonly InputAction m_Player_Emote2;
     private readonly InputAction m_Player_Emote3;
+    private readonly InputAction m_Player_Emote4;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -1768,6 +1790,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Emote1 => m_Wrapper.m_Player_Emote1;
         public InputAction @Emote2 => m_Wrapper.m_Player_Emote2;
         public InputAction @Emote3 => m_Wrapper.m_Player_Emote3;
+        public InputAction @Emote4 => m_Wrapper.m_Player_Emote4;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1807,6 +1830,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Emote3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote3;
                 @Emote3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote3;
                 @Emote3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote3;
+                @Emote4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote4;
+                @Emote4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote4;
+                @Emote4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEmote4;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1841,6 +1867,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Emote3.started += instance.OnEmote3;
                 @Emote3.performed += instance.OnEmote3;
                 @Emote3.canceled += instance.OnEmote3;
+                @Emote4.started += instance.OnEmote4;
+                @Emote4.performed += instance.OnEmote4;
+                @Emote4.canceled += instance.OnEmote4;
             }
         }
     }
@@ -2263,6 +2292,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnEmote1(InputAction.CallbackContext context);
         void OnEmote2(InputAction.CallbackContext context);
         void OnEmote3(InputAction.CallbackContext context);
+        void OnEmote4(InputAction.CallbackContext context);
     }
     public interface ITrapperActions
     {
