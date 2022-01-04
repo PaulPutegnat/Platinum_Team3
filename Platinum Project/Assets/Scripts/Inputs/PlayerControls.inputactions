@@ -295,11 +295,33 @@
                 },
                 {
                     "name": "",
+                    "id": "d776786a-d7ff-4063-8640-057b2b155a83",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Emote3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "189f163c-193f-498a-8845-8713e47742a9",
                     "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Emote1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a02543f8-fb28-4907-8af1-338f50f3d81b",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "Emote1",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -317,11 +339,33 @@
                 },
                 {
                     "name": "",
+                    "id": "39e38922-3521-42bb-98fc-ce1b0bb6fd4b",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Emote2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "bdab7044-382c-4cb6-b9cd-c0b656318fda",
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Emote4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13850cc4-7e4e-4b3b-8952-7672a83633d0",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "Emote4",
                     "isComposite": false,
                     "isPartOfComposite": false
